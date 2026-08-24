@@ -1,0 +1,134 @@
+[
+  {
+    "type": "hbm:hbm_ores",
+    "biomes": "#hbm:hbm_ore_biomes",
+    "feature": "hbm:cf_ore_uranium",
+    "placements": [
+      { "type": "minecraft:count", "count": 7 },
+      { "type": "minecraft:in_square_world" },
+      { "type": "minecraft:height_range", "height": { "type": "minecraft:uniform", "min_inclusive": { "absolute": 5 }, "max_inclusive": { "absolute": 24 } } },
+      { "type": "minecraft:biome" }
+    ]
+  },
+  {
+    "type": "hbm:hbm_ores",
+    "biomes": "#hbm:hbm_ore_biomes",
+    "feature": "hbm:cf_ore_aluminium",
+    "placements": [
+      { "type": "minecraft:count", "count": 6 },
+      { "type": "minecraft:in_square_world" },
+      { "type": "minecraft:height_range", "height": { "type": "minecraft:uniform", "min_inclusive": { "absolute": 10 }, "max_inclusive": { "absolute": 40 } } },
+      { "type": "minecraft:biome" }
+    ]
+  },
+  {
+    "type": "hbm:hbm_ores",
+    "biomes": "#hbm:hbm_ore_biomes",
+    "feature": "hbm:cf_ore_titanium",
+    "placements": [
+      { "type": "minecraft:count", "count": 5 },
+      { "type": "minecraft:in_square_world" },
+      { "type": "minecraft:height_range", "height": { "type": "minecraft:uniform", "min_inclusive": { "absolute": 5 }, "max_inclusive": { "absolute": 30 } } },
+      { "type": "minecraft:biome" }
+    ]
+  },
+  {
+    "type": "hbm:hbm_ores",
+    "biomes": "#hbm:hbm_ore_biomes",
+    "feature": "hbm:cf_ore_tungsten",
+    "placements": [
+      { "type": "minecraft:count", "count": 4 },
+      { "type": "minecraft:in_square_world" },
+      { "type": "minecraft:height_range", "height": { "type": "minecraft:uniform", "min_inclusive": { "absolute": 5 }, "max_inclusive": { "absolute": 25 } } },
+      { "type": "minecraft:biome" }
+    ]
+  },
+  {
+    "type": "hbm:hbm_ores",
+    "biomes": "#hbm:hbm_ore_biomes",
+    "feature": "hbm:cf_ore_copper",
+    "placements": [
+      { "type": "minecraft:count", "count": 8 },
+      { "type": "minecraft:in_square_world" },
+      { "type": "minecraft:height_range", "height": { "type": "minecraft:uniform", "min_inclusive": { "absolute": 5 }, "max_inclusive": { "absolute": 40 } } },
+      { "type": "minecraft:biome" }
+    ]
+  },
+  {
+    "type": "hbm:hbm_ores",
+    "biomes": "#hbm:hbm_ore_biomes",
+    "feature": "hbm:cf_ore_iron",
+    "placements": [
+      { "type": "minecraft:count", "count": 10 },
+      { "type": "minecraft:in_square_world" },
+      { "type": "minecraft:height_range", "height": { "type": "minecraft:uniform", "min_inclusive": { "absolute": 5 }, "max_inclusive": { "absolute": 50 } } },
+      { "type": "minecraft:biome" }
+    ]
+  },
+  {
+    "type": "hbm:hbm_ores",
+    "biomes": "#hbm:hbm_ore_biomes",
+    "feature": "hbm:cf_ore_lead",
+    "placements": [
+      { "type": "minecraft:count", "count": 6 },
+      { "type": "minecraft:in_square_world" },
+      { "type": "minecraft:height_range", "height": { "type": "minecraft:uniform", "min_inclusive": { "absolute": 5 }, "max_inclusive": { "absolute": 30 } } },
+      { "type": "minecraft:biome" }
+    ]
+  },
+  {
+    "type": "hbm:hbm_ores",
+    "biomes": "#hbm:hbm_ore_biomes",
+    "feature": "hbm:cf_ore_sulfur",
+    "placements": [
+      { "type": "minecraft:count", "count": 5 },
+      { "type": "minecraft:in_square_world" },
+      { "type": "minecraft:height_range", "height": { "type": "minecraft:uniform", "min_inclusive": { "absolute": 10 }, "max_inclusive": { "absolute": 50 } } },
+      { "type": "minecraft:biome" }
+    ]
+  },
+  {
+    "type": "hbm:hbm_ores",
+    "biomes": "#hbm:hbm_ore_biomes",
+    "feature": "hbm:cf_ore_thorium",
+    "placements": [
+      { "type": "minecraft:count", "count": 4 },
+      { "type": "minecraft:in_square_world" },
+      { "type": "minecraft:height_range", "height": { "type": "minecraft:uniform", "min_inclusive": { "absolute": 5 }, "max_inclusive": { "absolute": 25 } } },
+      { "type": "minecraft:biome" }
+    ]
+  },
+  {
+    "type": "hbm:hbm_ores",
+    "biomes": "#hbm:hbm_ore_biomes",
+    "feature": "hbm:cf_ore_cobalt",
+    "placements": [
+      { "type": "minecraft:count", "count": 4 },
+      { "type": "minecraft:in_square_world" },
+      { "type": "minecraft:height_range", "height": { "type": "minecraft:uniform", "min_inclusive": { "absolute": 5 }, "max_inclusive": { "absolute": 30 } } },
+      { "type": "minecraft:biome" }
+    ]
+  },
+  {
+    "type": "hbm:hbm_ores",
+    "biomes": "#hbm:hbm_ore_biomes",
+    "feature": "hbm:cf_ore_lignite",
+    "placements": [
+      { "type": "minecraft:count", "count": 6 },
+      { "type": "minecraft:in_square_world" },
+      { "type": "minecraft:height_range", "height": { "type": "minecraft:uniform", "min_inclusive": { "absolute": 10 }, "max_inclusive": { "absolute": 50 } } },
+      { "type": "minecraft:biome" }
+    ]
+  },
+  {
+    "type": "hbm:hbm_ores",
+    "biomes": "#hbm:hbm_ore_biomes",
+    "feature": "hbm:cf_ore_rare",
+    "placements": [
+      { "type": "minecraft:count", "count": 3 },
+      { "type": "minecraft:in_square_world" },
+      { "type": "minecraft:height_range", "height": { "type": "minecraft:uniform", "min_inclusive": { "absolute": 5 }, "max_inclusive": { "absolute": 35 } } },
+      { "type": "minecraft:biome" }
+    ]
+  }
+]

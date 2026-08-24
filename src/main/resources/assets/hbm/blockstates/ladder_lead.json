@@ -1,0 +1,1 @@
+{ "variants": { "facing=west": { "model": "hbm:block/ladder_lead", "y": 180 }, "facing=east": { "model": "hbm:block/ladder_lead" }, "facing=north": { "model": "hbm:block/ladder_lead", "y": 90 }, "facing=south": { "model": "hbm:block/ladder_lead", "y": 270 } } }

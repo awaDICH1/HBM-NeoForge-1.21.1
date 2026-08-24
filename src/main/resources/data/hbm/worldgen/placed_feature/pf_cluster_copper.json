@@ -1,0 +1,27 @@
+{
+  "feature": "hbm:cf_cluster_copper",
+  "placement": [
+    {
+      "type": "minecraft:count",
+      "count": 3
+    },
+    {
+      "type": "minecraft:in_square_world"
+    },
+    {
+      "type": "minecraft:height_range",
+      "height": {
+        "type": "minecraft:uniform",
+        "min_inclusive": {
+          "absolute": 15
+        },
+        "max_inclusive": {
+          "absolute": 34
+        }
+      }
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

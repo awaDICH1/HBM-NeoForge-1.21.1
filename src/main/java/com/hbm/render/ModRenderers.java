@@ -1,0 +1,148 @@
+package com.hbm.render;
+
+import com.hbm.Tags;
+import com.hbm.entity.ModEntities;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+
+/**
+ * Entity renderer registration.
+ * Registers placeholder renderers for all 128 entities.
+ */
+@EventBusSubscriber(modid = Tags.MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+public class ModRenderers {
+
+    @SubscribeEvent
+    public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
+        event.registerEntityRenderer(ModEntities.B_LA_CK_HO_LE.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.C_LO_UD_FL_EI_JA.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.C_LO_UD_FL_EI_JA_RA_IN_BO_W.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.C_LO_UD_SO_LI_NI_UM.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.C_LO_UD_TO_M.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.E_MP_BL_AS_T.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.F_AL_LO_UT_RA_IN.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.F_IR_EL_IN_GE_RI_NG.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.M_IS_T.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.N_UK_ET_OR_EX.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.Q_UA_SA_R.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.R_AG_IN_GV_OR_TE_X.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.S_PE_AR.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.V_OR_TE_X.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.D_IS_PE_RS_ER_CA_NI_ST_ER.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.G_RE_NA_DE_BO_UN_CY_GE_NE_RI_C.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.G_RE_NA_DE_IM_PA_CT_GE_NE_RI_C.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.G_RE_NA_DE_UN_IV_ER_SA_L.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.D_EL_IV_ER_YD_RO_NE.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.F_IR_EW_OR_KS.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.I_TE_MB_UO_YA_NT.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.M_OV_IN_GI_TE_M.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.M_OV_IN_GP_AC_KA_GE.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.P_AR_AC_HU_TE_CR_AT_E.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.R_EQ_UE_ST_DR_ON_E.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.T_NT_PR_IM_ED_BA_SE.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.B_AL_EF_IR_E.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.B_OM_BE_R.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.C130.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.D_EA_TH_BL_AS_T.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.E_MP.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.N_UK_EE_XP_LO_SI_ON_MK3.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.N_UK_EE_XP_LO_SI_ON_MK5.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.T_OM_BL_AS_T.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.B_OB_MA_ZO_N.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.B_OM_BL_ET_SE_LE_NA.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.M_IN_ER_RO_CK_ET.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.M_IR_V.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.M_IS_SI_LE_AN_TI_BA_LL_IS_TI_C.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.M_IS_SI_LE_CU_ST_OM.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.M_IS_SI_LE_SH_UT_TL_E.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.M_IS_SI_LE_ST_EA_LT_H.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.M_IS_SI_LE_TI_ER0.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.M_IS_SI_LE_TI_ER1.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.M_IS_SI_LE_TI_ER2.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.M_IS_SI_LE_TI_ER3.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.M_IS_SI_LE_TI_ER4.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.S_OY_UZ.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.S_OY_UZ_CA_PS_UL_E.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.C_RE_EP_ER_GO_LD.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.C_RE_EP_ER_NU_CL_EA_R.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.C_RE_EP_ER_PH_OS_GE_NE.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.C_RE_EP_ER_TA_IN_TE_D.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.C_RE_EP_ER_VO_LA_TI_LE.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.C_YB_ER_CR_AB.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.D_UC_K.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.D_UM_MY.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.F_BI.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.F_BI_DR_ON_E.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.G_LO_WI_NG_ON_E.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.H_UN_TE_RC_HO_PP_ER.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.M_AS_KM_AN.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.P_AR_AS_IT_EM_AG_GO_T.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.P_IG_EO_N.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.Q_UA_CK_OS.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.R_AD_BE_AS_T.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.T_AI_NT_CR_AB.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.T_ES_LA_CR_AB.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.U_FO.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.U_ND_EA_DS_OL_DI_ER.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.B_OT_PR_IM_EB_OD_Y.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.B_OT_PR_IM_EH_EA_D.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.G_LY_PH_ID.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.G_LY_PH_ID_BE_HE_MO_TH.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.G_LY_PH_ID_BL_AS_TE_R.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.G_LY_PH_ID_BO_MB_AR_DI_ER.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.G_LY_PH_ID_BR_AW_LE_R.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.G_LY_PH_ID_BR_EN_DA.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.G_LY_PH_ID_DI_GG_ER.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.G_LY_PH_ID_NU_CL_EA_R.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.G_LY_PH_ID_SC_OU_T.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.M_OD_FX_SH_AD_OW.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.A_AS_HE_LL.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.A_CI_DB_OM_B.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.A_RT_IL_LE_RY_RO_CK_ET.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.A_RT_IL_LE_RY_SH_EL_L.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.B_EA_MV_OR_TE_X.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.B_OM_BL_ET_ZE_TA.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.B_OX_CA_R.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.B_UI_LD_IN_G.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.B_UL_LE_T.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.B_UL_LE_TB_AS_E.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.B_UL_LE_TB_AS_EM_K4.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.B_UL_LE_TB_AS_EM_K4C_L.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.B_UL_LE_TB_AS_EN_T.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.B_UL_LE_TB_EA_MB_AS_E.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.B_UR_NI_NG_FO_EQ.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.C_HE_MI_CA_L.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.C_HO_PP_ER_MI_NE.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.C_OG.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.C_OI_N.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.C_OM_BI_NE_BA_LL.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.D_IS_CH_AR_GE.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.D_UC_HE_SS_GA_MB_IT.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.E_XP_LO_SI_VE_BE_AM.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.F_AL_LI_NG_NU_KE.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.F_IR_E.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.L_AS_ER.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.L_AS_ER_BE_AM.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.L_N2.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.M_ET_EO_R.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.M_IN_ER_BE_AM.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.M_IN_IM_IR_V.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.M_IN_IN_UK_E.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.M_OD_BE_AM.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.P_LA_SM_AB_EA_M.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.R_AI_LG_UN_BL_AS_T.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.R_AI_NB_OW.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.R_BM_KD_EB_RI_S.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.R_OC_KE_T.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.R_UB_BL_E.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.S_AW_BL_AD_E.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.S_CH_RA_B.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.S_HR_AP_NE_L.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.S_PA_RK_BE_AM.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.T_OM.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.T_OR_PE_DO.get(), com.hbm.render.entity.RenderEmpty::new);
+        event.registerEntityRenderer(ModEntities.Z_IR_NO_XD_EB_RI_S.get(), com.hbm.render.entity.RenderEmpty::new);
+    }
+}

@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:plains",
+    "minecraft:sunflower_plains",
+    "minecraft:desert",
+    "minecraft:extreme_hills",
+    "minecraft:modified_gravelly_hills",
+    "minecraft:windswept_hills",
+    "minecraft:wooded_badlands",
+    "minecraft:eroded_badlands"
+  ]
+}

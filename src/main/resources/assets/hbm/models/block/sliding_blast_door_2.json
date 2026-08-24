@@ -1,0 +1,4 @@
+﻿{
+  "parent": "minecraft:block/cube_all",
+  "textures": { "all": "hbm:block/sliding_blast_door_2" }
+}

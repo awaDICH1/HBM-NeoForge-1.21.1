@@ -1,0 +1,359 @@
+//VANILLA - Fixed
+        COAL.gem(Items.COAL).dustSmall(POWDER_COAL_TINY).dust(POWDER_COAL);
+        IRON.crystal(CRYSTAL_IRON).plate(PLATE_IRON).dust(POWDER_IRON).ore(ORE_GNEISS_IRON.get());
+        GOLD.crystal(CRYSTAL_GOLD).plate(PLATE_GOLD).dust(POWDER_GOLD).ore(ORE_GNEISS_GOLD.get());
+        LAPIS.crystal(CRYSTAL_LAPIS).dust(POWDER_LAPIS);
+        NETHERQUARTZ.gem(Items.QUARTZ).dust(POWDER_QUARTZ).ore(Blocks.QUARTZ_ORE);
+        QUARTZ.dust(POWDER_QUARTZ);
+        DIAMOND.crystal(CRYSTAL_DIAMOND).dust(POWDER_DIAMOND).ore(GRAVEL_DIAMOND.get(), ORE_SELLAFIELD_DIAMOND.get());
+        EMERALD.dust(POWDER_EMERALD).ore(ORE_SELLAFIELD_EMERALD.get());
+        REDSTONE.crystal(CRYSTAL_REDSTONE);
+
+        /*
+         * RADIOACTIVE
+         */
+        U.rad(HazardRegistry.u).nugget(NUGGET_URANIUM).billet(BILLET_URANIUM).crystal(CRYSTAL_URANIUM).ingot(INGOT_URANIUM).dust(POWDER_URANIUM).block(BLOCK_URANIUM.get()).ore(ORE_URANIUM.get(), ORE_URANIUM_SCORCHED.get(), ORE_GNEISS_URANIUM.get(), ORE_GNEISS_URANIUM_SCORCHED.get(), ORE_NETHER_URANIUM.get(), ORE_NETHER_URANIUM_SCORCHED.get(), ORE_SELLAFIELD_URANIUM_SCORCHED.get()).oreNether(ORE_NETHER_URANIUM.get(), ORE_NETHER_URANIUM_SCORCHED.get());
+        U233.rad(HazardRegistry.u233).nugget(NUGGET_U233).billet(BILLET_U233).ingot(INGOT_U233).block(BLOCK_U233.get());
+        U235.rad(HazardRegistry.u235).nugget(NUGGET_U235).billet(BILLET_U235).ingot(INGOT_U235).block(BLOCK_U235.get());
+        U238.rad(HazardRegistry.u238).nugget(NUGGET_U238).billet(BILLET_U238).ingot(INGOT_U238).block(BLOCK_U238.get());
+        TH232.rad(HazardRegistry.th232).nugget(NUGGET_TH232).billet(BILLET_TH232).crystal(CRYSTAL_THORIUM).ingot(INGOT_TH232).dust(POWDER_THORIUM).block(BLOCK_THORIUM.get()).ore(ORE_THORIUM.get());
+        PU.rad(HazardRegistry.pu).nugget(NUGGET_PLUTONIUM).billet(BILLET_PLUTONIUM).crystal(CRYSTAL_PLUTONIUM).ingot(INGOT_PLUTONIUM).dust(POWDER_PLUTONIUM).block(BLOCK_PLUTONIUM.get()).ore(ORE_NETHER_PLUTONIUM.get()).oreNether(ORE_NETHER_PLUTONIUM.get());
+        PURG.rad(HazardRegistry.purg).nugget(NUGGET_PU_MIX).billet(BILLET_PU_MIX).ingot(INGOT_PU_MIX).block(BLOCK_PU_MIX.get());
+        PU238.rad(HazardRegistry.pu238).hot(3F).nugget(NUGGET_PU238).billet(BILLET_PU238).ingot(INGOT_PU238).block(BLOCK_PU238.get());
+        PU239.rad(HazardRegistry.pu239).nugget(NUGGET_PU239).billet(BILLET_PU239).ingot(INGOT_PU239).block(BLOCK_PU239.get());
+        PU240.rad(HazardRegistry.pu240).nugget(NUGGET_PU240).billet(BILLET_PU240).ingot(INGOT_PU240).block(BLOCK_PU240.get());
+        PU241.rad(HazardRegistry.pu241).nugget(NUGGET_PU241).billet(BILLET_PU241).ingot(INGOT_PU241);                                                                //.block(block_pu241);
+        AM241.rad(HazardRegistry.am241).nugget(NUGGET_AM241).billet(BILLET_AM241).ingot(INGOT_AM241);
+        AM242.rad(HazardRegistry.am242).nugget(NUGGET_AM242).billet(BILLET_AM242).ingot(INGOT_AM242);
+        AMRG.rad(HazardRegistry.amrg).nugget(NUGGET_AM_MIX).billet(BILLET_AM_MIX).ingot(INGOT_AM_MIX);
+        NP237.rad(HazardRegistry.np237).nugget(NUGGET_NEPTUNIUM).billet(BILLET_NEPTUNIUM).ingot(INGOT_NEPTUNIUM).dust(POWDER_NEPTUNIUM).block(BLOCK_NEPTUNIUM.get());
+        PO210.rad(HazardRegistry.po210).hot(3).nugget(NUGGET_POLONIUM).billet(BILLET_POLONIUM).ingot(INGOT_POLONIUM).dust(POWDER_POLONIUM).block(BLOCK_POLONIUM.get());
+        TC99.rad(HazardRegistry.tc99).nugget(NUGGET_TECHNETIUM).billet(BILLET_TECHNETIUM).ingot(INGOT_TECHNETIUM);
+        RA226.rad(HazardRegistry.ra226).nugget(NUGGET_RA226).billet(BILLET_RA226).ingot(INGOT_RA226).dust(POWDER_RA226).block(BLOCK_RA226.get());
+        AC227.rad(HazardRegistry.ac227).nugget(NUGGET_ACTINIUM).billet(BILLET_ACTINIUM).ingot(INGOT_ACTINIUM).dust(POWDER_ACTINIUM).block(BLOCK_ACTINIUM.get()).dustSmall(POWDER_ACTINIUM_TINY);
+        CO60.rad(HazardRegistry.co60).hot(1).nugget(NUGGET_CO60).billet(BILLET_CO60).ingot(INGOT_CO60).dust(POWDER_CO60).dustSmall(POWDER_CO60_TINY);
+        AU198.rad(HazardRegistry.au198).hot(5).nugget(NUGGET_AU198).billet(BILLET_AU198).ingot(INGOT_AU198).dust(POWDER_AU198).dustSmall(POWDER_AU198_TINY);
+        PB209.rad(HazardRegistry.pb209).blinding(50F).hot(7).nugget(NUGGET_PB209).billet(BILLET_PB209).ingot(INGOT_PB209).dust(POWDER_PB209).dustSmall(POWDER_PB209_TINY);
+        SA326.rad(HazardRegistry.sa326).blinding(50F).nugget(NUGGET_SCHRABIDIUM).billet(BILLET_SCHRABIDIUM).crystal(CRYSTAL_SCHRABIDIUM).ingot(INGOT_SCHRABIDIUM).dust(POWDER_SCHRABIDIUM).plate(PLATE_SCHRABIDIUM).plateCast(Mats.MAT_SCHRABIDIUM.make(PLATE_CAST.get())).block(BLOCK_SCHRABIDIUM.get()).ore(ORE_SCHRABIDIUM.get(), ORE_GNEISS_SCHRABIDIUM.get(), ORE_NETHER_SCHRABIDIUM.get(), ORE_SELLAFIELD_SCHRABIDIUM.get()).oreNether(ORE_NETHER_SCHRABIDIUM.get());
+        SA327.rad(HazardRegistry.sa327).blinding(50F).nugget(NUGGET_SOLINIUM).billet(BILLET_SOLINIUM).ingot(INGOT_SOLINIUM).block(BLOCK_SOLINIUM.get());
+        SBD.rad(HazardRegistry.sb).blinding(50F).ingot(INGOT_SCHRABIDATE).dust(POWDER_SCHRABIDATE).block(BLOCK_SCHRABIDATE.get());
+        SRN.rad(HazardRegistry.sr).blinding(50F).ingot(INGOT_SCHRARANIUM).block(BLOCK_SCHRARANIUM.get()).crystal(CRYSTAL_SCHRARANIUM);
+        GH336.rad(HazardRegistry.gh336).nugget(NUGGET_GH336).billet(BILLET_GH336).ingot(INGOT_GH336);
+        MUD.rad(HazardRegistry.mud).ingot(INGOT_MUD);
+
+        /*
+         * STABLE
+         */
+        TI.ingot(INGOT_TITANIUM).crystal(CRYSTAL_TITANIUM).dust(POWDER_TITANIUM).plate(PLATE_TITANIUM).block(BLOCK_TITANIUM.get()).ore(ORE_TITANIUM.get());
+        CU.ingot(INGOT_COPPER).crystal(CRYSTAL_COPPER).dust(POWDER_COPPER).plate(PLATE_COPPER).block(BLOCK_COPPER.get()).ore(ORE_COPPER.get(), ORE_GNEISS_COPPER.get());
+        MINGRADE.ingot(INGOT_RED_COPPER).dust(POWDER_RED_COPPER).block(BLOCK_RED_COPPER.get());
+        W.ingot(INGOT_TUNGSTEN).dust(POWDER_TUNGSTEN).crystal(CRYSTAL_TUNGSTEN).block(BLOCK_TUNGSTEN.get()).ore(ORE_TUNGSTEN.get(), ORE_NETHER_TUNGSTEN.get()).oreNether(ORE_NETHER_TUNGSTEN.get());
+        WC.ingot(INGOT_TUNGSTEN_CARBIDE);
+        AL.ingot(INGOT_ALUMINIUM).dust(POWDER_ALUMINIUM).crystal(CRYSTAL_ALUMINIUM).plate(PLATE_ALUMINIUM).block(BLOCK_ALUMINIUM.get()).ore(ORE_ALUMINIUM.get());
+        STEEL.ingot(INGOT_STEEL).dustSmall(POWDER_STEEL_TINY).dust(POWDER_STEEL).plate(PLATE_STEEL).block(BLOCK_STEEL.get());
+        TCALLOY.ingot(INGOT_TCALLOY).dust(POWDER_TCALLOY).block(BLOCK_TCALLOY.get());
+        CDALLOY.ingot(INGOT_CDALLOY).block(BLOCK_CDALLOY.get());
+        BBRONZE.ingot(INGOT_BISMUTH_BRONZE);
+        ABRONZE.ingot(INGOT_ARSENIC_BRONZE);
+        BSCCO.ingot(INGOT_BSCCO);
+        PB.nugget(NUGGET_LEAD).ingot(INGOT_LEAD).crystal(CRYSTAL_LEAD).dust(POWDER_LEAD).plate(PLATE_LEAD).block(BLOCK_LEAD.get()).ore(ORE_LEAD.get());
+        BI.nugget(NUGGET_BISMUTH).billet(BILLET_BISMUTH).ingot(INGOT_BISMUTH).dust(POWDER_BISMUTH).block(BLOCK_BISMUTH.get());
+        AS.nugget(NUGGET_ARSENIC).ingot(INGOT_ARSENIC);
+        CA.ingot(INGOT_CALCIUM).dust(POWDER_CALCIUM);
+        CD.ingot(INGOT_CADMIUM).dust(POWDER_CADMIUM).block(BLOCK_CADMIUM.get());
+        TA.nugget(NUGGET_TANTALIUM).gem(GEM_TANTALIUM).ingot(INGOT_TANTALIUM).dust(POWDER_TANTALIUM).block(BLOCK_TANTALIUM.get());
+        COLTAN.ingot(FRAGMENT_COLTAN).dust(POWDER_COLTAN_ORE).block(BLOCK_COLTAN.get()).ore(ORE_COLTAN.get());
+        NB.nugget(NUGGET_NIOBIUM, FRAGMENT_NIOBIUM).ingot(INGOT_NIOBIUM).dustSmall(POWDER_NIOBIUM_TINY).dust(POWDER_NIOBIUM).block(BLOCK_NIOBIUM.get());
+        BE.nugget(NUGGET_BERYLLIUM).billet(BILLET_BERYLLIUM).crystal(CRYSTAL_BERYLLIUM).ingot(INGOT_BERYLLIUM).dust(POWDER_BERYLLIUM).block(BLOCK_BERYLLIUM.get()).ore(ORE_BERYLLIUM.get());
+        CO.nugget(FRAGMENT_COBALT).nugget(NUGGET_COBALT).billet(BILLET_COBALT).crystal(CRYSTAL_COBALT).ingot(INGOT_COBALT).dust(POWDER_COBALT).dustSmall(POWDER_COBALT_TINY).block(BLOCK_COBALT.get()).ore(ORE_COBALT.get(), ORE_NETHER_COBALT.get());
+        B.nugget(FRAGMENT_BORON).ingot(INGOT_BORON).dustSmall(POWDER_BORON_TINY).dust(POWDER_BORON).block(BLOCK_BORON.get());
+        SI.nugget(NUGGET_SILICON).billet(BILLET_SILICON).ingot(INGOT_SILICON);
+        GRAPHITE.ingot(INGOT_GRAPHITE).block(BLOCK_GRAPHITE.get());
+        CARBON.ingot(INGOT_GRAPHITE).block(BLOCK_GRAPHITE.get());
+        DURA.ingot(INGOT_DURA_STEEL).dust(POWDER_DURA_STEEL).plate(PLATE_DURA_STEEL).block(BLOCK_DURA_STEEL.get());
+        POLYMER.ingot(INGOT_POLYMER).dust(POWDER_POLYMER).block(BLOCK_POLYMER.get());
+        BAKELITE.ingot(INGOT_BAKELITE).dust(POWDER_BAKELITE).block(BLOCK_BAKELITE.get());
+        LATEX.gem(BALL_RESIN).ingot(INGOT_BIORUBBER);
+        RUBBER.ingot(INGOT_RUBBER).block(BLOCK_RUBBER.get());
+        //PET																	.ingot(ingot_pet); Oh yeah this one was commented by HBM himself for some reason
+        PC.ingot(INGOT_PC);
+        PVC.ingot(INGOT_PVC);
+        MAGTUNG.ingot(INGOT_MAGNETIZED_TUNGSTEN).dust(POWDER_MAGNETIZED_TUNGSTEN).block(BLOCK_MAGNETIZED_TUNGSTEN.get());
+        CMB.ingot(INGOT_COMBINE_STEEL).dust(POWDER_COMBINE_STEEL).plate(PLATE_COMBINE_STEEL).block(BLOCK_COMBINE_STEEL.get());
+        DESH.nugget(NUGGET_DESH).ingot(INGOT_DESH).dust(POWDER_DESH).block(BLOCK_DESH.get());
+        STAR.ingot(INGOT_STARMETAL).block(BLOCK_STARMETAL.get()).crystal(CRYSTAL_STARMETAL);
+        GUNMETAL.ingot(INGOT_GUNMETAL).plate(PLATE_GUNMETAL);
+        WEAPONSTEEL.ingot(INGOT_WEAPONSTEEL).plate(PLATE_WEAPONSTEEL);
+        BIGMT.ingot(INGOT_SATURNITE).plate(PLATE_SATURNITE);
+        FERRO.ingot(INGOT_FERROURANIUM);
+        EUPH.nugget(NUGGET_EUPHEMIUM).ingot(INGOT_EUPHEMIUM).dust(POWDER_EUPHEMIUM).block(BLOCK_EUPHEMIUM.get());
+        DNT.nugget(NUGGET_DINEUTRONIUM).ingot(INGOT_DINEUTRONIUM).dust(POWDER_DINEUTRONIUM).block(BLOCK_DINEUTRONIUM.get());
+        FIBER.ingot(INGOT_FIBERGLASS).block(BLOCK_FIBERGLASS.get());
+        ASBESTOS.asbestos(1F).ingot(INGOT_ASBESTOS).crystal(CRYSTAL_ASBESTOS).dust(POWDER_ASBESTOS).block(BLOCK_ASBESTOS.get()).ore(ORE_ASBESTOS.get(), ORE_GNEISS_ASBESTOS.get(), DictFrame.fromOne(BASALT_ORE.get(), EnumBasaltOreType.ASBESTOS), DictFrame.fromOne(STONE_RESOURCE.get(), EnumStoneType.ASBESTOS));
+        OSMIRIDIUM.nugget(NUGGET_OSMIRIDIUM).ingot(INGOT_OSMIRIDIUM).crystal(CRYSTAL_OSMIRIDIUM);
+
+        /*
+         * DUST AND GEM ORES
+         */
+        S.dust(SULFUR).block(BLOCK_SULFUR.get()).crystal(CRYSTAL_SULFUR).ore(ORE_SULFUR.get(), ORE_NETHER_SULFUR.get() ,DictFrame.fromOne(BASALT_ORE.get(), EnumBasaltOreType.SULFUR), DictFrame.fromOne(STONE_RESOURCE.get(), EnumStoneType.SULFUR)).oreNether(ORE_NETHER_SULFUR.get());
+        KNO.dust(NITER).block(BLOCK_NITER.get()).crystal(CRYSTAL_NITER).ore(ORE_NITER.get());
+        F.dust(FLUORITE).block(BLOCK_FLUORITE.get()).crystal(CRYSTAL_FLUORITE).ore(ORE_FLUORITE.get(), DictFrame.fromOne(BASALT_ORE.get(), EnumBasaltOreType.FLUORITE));
+        LIGNITE.gem(LIGNITE).dust(POWDER_LIGNITE).ore(ORE_LIGNITE.get());
+        COALCOKE.gem(fromOne(COKE, EnumCokeType.COAL)).block(fromOne(BLOCK_COKE.get(), EnumCokeType.COAL));
+        PETCOKE.gem(fromOne(COKE, EnumCokeType.PETROLEUM)).block(fromOne(BLOCK_COKE.get(), EnumCokeType.PETROLEUM));
+        LIGCOKE.gem(fromOne(COKE, EnumCokeType.LIGNITE)).block(fromOne(BLOCK_COKE.get(), EnumCokeType.LIGNITE));
+        CINNABAR.crystal(CINNABAR).gem(CINNABAR).ore(ORE_CINNABAR.get(), ORE_DEPTH_CINNABAR.get());
+        BORAX.dust(POWDER_BORAX).ore(ORE_DEPTH_BORAX.get());
+        CHLOROCALCITE.dust(POWDER_CHLOROCALCITE);
+        MOLYSITE.dust(POWDER_MOLYSITE).ore(DictFrame.fromOne(BASALT_ORE.get(), EnumBasaltOreType.MOLYSITE));
+        SODALITE.gem(GEM_SODALITE);
+        ALEXANDRITE.gem(GEM_ALEXANDRITE);
+
+        VOLCANIC.gem(GEM_VOLCANIC).ore(DictFrame.fromOne(BASALT_ORE.get(), EnumBasaltOreType.GEM));
+        HEMATITE.ore(fromOne(STONE_RESOURCE.get(), EnumStoneType.HEMATITE));
+        MALACHITE.ingot(DictFrame.fromOne(CHUNK_ORE, EnumChunkType.MALACHITE)).ore(fromOne(STONE_RESOURCE.get(), EnumStoneType.MALACHITE));
+        LIMESTONE.dust(POWDER_LIMESTONE).ore(fromOne(STONE_RESOURCE.get(), EnumStoneType.LIMESTONE));
+        BAUXITE.gem(fromOne(STONE_RESOURCE.get(), EnumStoneType.BAUXITE));
+        CRYOLITE.crystal(fromOne(CHUNK_ORE, EnumChunkType.CRYOLITE));
+        SLAG.block(BLOCK_SLAG.get());
+
+        /*
+         * HAZARDS, MISC
+         */
+        LI.hydro(1F).ingot(LITHIUM).dustSmall(POWDER_LITHIUM_TINY).dust(POWDER_LITHIUM).crystal(CRYSTAL_LITHIUM).block(BLOCK_LITHIUM.get()).ore(ORE_GNEISS_LITHIUM.get());
+        NA.hydro(1F).hazIngot().dust(POWDER_SODIUM);
+
+        /*
+         * PHOSPHORUS
+         */
+        P_WHITE.hot(5).ingot(INGOT_PHOSPHORUS).block(BLOCK_WHITE_PHOSPHORUS.get());
+        P_RED.dust(POWDER_FIRE).block(BLOCK_RED_PHOSPHORUS.get()).crystal(CRYSTAL_PHOSPHORUS);
+
+        /*
+         * RARE METALS
+         */
+        AUSTRALIUM.nugget(NUGGET_AUSTRALIUM).billet(BILLET_AUSTRALIUM).ingot(INGOT_AUSTRALIUM).dust(POWDER_AUSTRALIUM).block(BLOCK_AUSTRALIUM.get()).ore(ORE_AUSTRALIUM.get());
+
+        /*
+         * RARE EARTHS
+         */
+
+        RAREEARTH.ingot(DictFrame.fromOne(ModItems.CHUNK_ORE.get(), EnumChunkType.RARE)).ore(ORE_RARE.get(), ORE_GNEISS_RARE.get());
+
+        LA.nugget(FRAGMENT_LANTHANIUM).ingot(INGOT_LANTHANIUM).dustSmall(POWDER_LANTHANIUM_TINY).dust(POWDER_LANTHANIUM).block(BLOCK_LANTHANIUM.get());
+        ZR.nugget(NUGGET_ZIRCONIUM).ingot(INGOT_ZIRCONIUM).billet(BILLET_ZIRCONIUM).dust(POWDER_ZIRCONIUM).block(BLOCK_ZIRCONIUM.get()).ore(ORE_DEPTH_ZIRCONIUM.get());
+        ND.nugget(FRAGMENT_NEODYMIUM).dustSmall(POWDER_NEODYMIUM_TINY).dust(POWDER_NEODYMIUM).ore(ORE_DEPTH_NETHER_NEODYMIUM.get()).oreNether(ORE_DEPTH_NETHER_NEODYMIUM.get());
+        CE.nugget(FRAGMENT_CERIUM).dustSmall(POWDER_CERIUM_TINY).dust(POWDER_CERIUM);
+
+        /*
+         * NITAN
+         */
+        I.ingot(INGOT_IODINE).dust(POWDER_IODINE).dustSmall(POWDER_IODINE_TINY);
+        AT.ingot(INGOT_ASTATINE).dust(POWDER_ASTATINE);
+        CS.ingot(INGOT_CAESIUM).dust(POWDER_CAESIUM);
+//        SR.ingot(ingot_strontium).dust(POWDER_STRONTIUM);
+        BR.ingot(INGOT_BROMINE).dust(POWDER_BROMINE);
+        TS.ingot(INGOT_TENNESSINE).dust(POWDER_TENNESSINE);
+
+        /*
+         * FISSION FRAGMENTS
+         */
+        SR.hot(1F).hydro(1F).hazIngot().dust(POWDER_STRONTIUM);
+        SR90.rad(HazardRegistry.sr90).hot(1F).hydro(1F).dustSmall(POWDER_SR90_TINY).dust(POWDER_SR90).ingot(INGOT_SR90).billet(BILLET_SR90).nugget(NUGGET_SR90);
+        I131.rad(HazardRegistry.i131).hot(1F).ingot(INGOT_I131).dustSmall(POWDER_I131_TINY).dust(POWDER_I131);
+        XE135.rad(HazardRegistry.xe135).hot(10F).dustSmall(POWDER_XE135_TINY).dust(POWDER_XE135);
+        CS137.rad(HazardRegistry.cs137).hot(3F).hydro(3F).dustSmall(POWDER_CS137_TINY).dust(POWDER_CS137);
+        AT209.rad(HazardRegistry.at209).hot(20F).dust(POWDER_AT209).dustSmall(POWDER_AT209_TINY);
+
+        /*
+         * COLLECTIONS
+         */
+        ANY_GUNPOWDER.dust(Items.GUNPOWDER, BALLISTITE, CORDITE);
+        ANY_SMOKELESS.dust(BALLISTITE, CORDITE);
+        ANY_PLASTICEXPLOSIVE.ingot(INGOT_SEMTEX, INGOT_C4);
+        ANY_HIGHEXPLOSIVE.ingot(BALL_TNT).ingot(BALL_TATB);
+        ANY_CONCRETE.any(CONCRETE.get(), CONCRETE_SMOOTH.get(), CONCRETE_ASBESTOS.get(), DUCRETE.get(), DUCRETE_SMOOTH.get());
+            // TODO P4.2 tag/P3/P4: for(int i = 0; i < 16; i++) { ANY_CONCRETE.any(new ItemStack(ModBlocks.CONCRETE_COLORED.get().get(), 1, i)); }
+            // TODO P4.2 tag/P3/P4: for(int i = 0; i < 8; i++) { ANY_CONCRETE.any(new ItemStack(ModBlocks.CONCRETE_COLORED.get()_EXT.get(), 1, i)); }
+        ANY_COKE.gem(fromAll(COKE, EnumCokeType.VALUES)).block(fromAll(BLOCK_COKE.get(), EnumCokeType.VALUES));
+        ANY_BISMOID.ingot(INGOT_BISMUTH, INGOT_ARSENIC).nugget(NUGGET_BISMUTH, NUGGET_ARSENIC).block(BLOCK_BISMUTH.get());
+        ANY_ASH.any(fromOne(ModItems.POWDER_ASH.get().get().get().get().get(), EnumAshType.WOOD), fromOne(ModItems.POWDER_ASH.get().get().get().get().get(), EnumAshType.COAL), fromOne(ModItems.POWDER_ASH.get().get().get().get().get(), EnumAshType.MISC), fromOne(ModItems.POWDER_ASH.get().get().get().get().get(), EnumAshType.FLY), fromOne(ModItems.POWDER_ASH.get().get().get().get().get(), EnumAshType.SOOT));
+
+
+        /*
+         * TAR
+         */
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre(KEY_OIL_TAR, fromOne(OIL_TAR, EnumTarType.CRUDE));
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre(KEY_CRACK_TAR, fromOne(OIL_TAR, EnumTarType.CRACK));
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre(KEY_COAL_TAR, fromOne(OIL_TAR, EnumTarType.COAL));
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre(KEY_WOOD_TAR, fromOne(OIL_TAR, EnumTarType.WOOD));
+
+        /*
+         * TANKS
+         */
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre(KEY_UNIVERSAL_TANK, new ItemStack(FLUID_TANK_FULL, 1, OreDictionary.WILDCARD_VALUE));
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre(KEY_HAZARD_TANK, new ItemStack(FLUID_TANK_LEAD_FULL, 1, OreDictionary.WILDCARD_VALUE));
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre(KEY_UNIVERSAL_BARREL, new ItemStack(FLUID_BARREL_FULL, 1, OreDictionary.WILDCARD_VALUE));
+        if (GeneralConfig.enableFluidContainersV2) {
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre(KEY_UNIVERSAL_TANK, new ItemStack(FLUID_TANK_V2, 1, OreDictionary.WILDCARD_VALUE));
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre(KEY_HAZARD_TANK, new ItemStack(FLUID_TANK_LEAD_V2, 1, OreDictionary.WILDCARD_VALUE));
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre(KEY_UNIVERSAL_BARREL, new ItemStack(FLUID_BARREL_V2, 1, OreDictionary.WILDCARD_VALUE));
+        }
+
+        /*
+         * TOOLS
+         */
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre(KEY_TOOL_SCREWDRIVER, new ItemStack(SCREWDRIVER, 1, OreDictionary.WILDCARD_VALUE));
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre(KEY_TOOL_SCREWDRIVER, new ItemStack(SCREWDRIVER_DESH, 1, OreDictionary.WILDCARD_VALUE));
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre(KEY_TOOL_HANDDRILL, new ItemStack(HAND_DRILL, 1, OreDictionary.WILDCARD_VALUE));
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre(KEY_TOOL_HANDDRILL, new ItemStack(HAND_DRILL_DESH, 1, OreDictionary.WILDCARD_VALUE));
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre(KEY_TOOL_CHEMISTRYSET, new ItemStack(CHEMISTRY_SET, 1, OreDictionary.WILDCARD_VALUE));
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre(KEY_TOOL_CHEMISTRYSET, new ItemStack(CHEMISTRY_SET_BORON, 1, OreDictionary.WILDCARD_VALUE));
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre(KEY_TOOL_TORCH, new ItemStack(BLOWTORCH, 1, OreDictionary.WILDCARD_VALUE));
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre(KEY_TOOL_TORCH, new ItemStack(ACETYLENE_TORCH, 1, OreDictionary.WILDCARD_VALUE));
+
+        /*
+         * GLYPHID M E A T
+         */
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre(KEY_GLYPHID_MEAT, new ItemStack(GLYPHID_MEAT));
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre(KEY_GLYPHID_MEAT, new ItemStack(GLYPHID_MEAT_GRILLED));
+
+        for (NTMMaterial mat : Mats.orderedList) {
+            if (mat.smeltable == NTMMaterial.SmeltingBehavior.SMELTABLE) {
+            // TODO P4.2 tag/P3/P4: if (mat.autogen.contains(MaterialShapes.CASTPLATE)) for (String name : mat.names)
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre(MaterialShapes.CASTPLATE.name() + name, new ItemStack(ModItems.PLATE_CAST.get(), 1, mat.id));
+            // TODO P4.2 tag/P3/P4: if (mat.autogen.contains(MaterialShapes.WELDEDPLATE)) for (String name : mat.names)
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre(MaterialShapes.WELDEDPLATE.name() + name, new ItemStack(ModItems.PLATE_WELDED.get(), 1, mat.id));
+            // TODO P4.2 tag/P3/P4: if (mat.autogen.contains(MaterialShapes.HEAVY_COMPONENT)) for (String name : mat.names)
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre(MaterialShapes.HEAVY_COMPONENT.name() + name, new ItemStack(ModItems.HEAVY_COMPONENT.get(), 1, mat.id));
+            // TODO P4.2 tag/P3/P4: if (mat.autogen.contains(MaterialShapes.DENSEWIRE)) for (String name : mat.names)
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre(MaterialShapes.DENSEWIRE.name() + name, new ItemStack(ModItems.WIRE_DENSE.get(), 1, mat.id));
+            }
+            // TODO P4.2 tag/P3/P4: if (mat.autogen.contains(MaterialShapes.BOLT)) for (String name : mat.names)
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre(MaterialShapes.BOLT.name() + name, new ItemStack(ModItems.BOLT.get(), 1, mat.id));
+            // TODO P4.2 tag/P3/P4: if (mat.autogen.contains(MaterialShapes.INGOT)) for (String name : mat.names)
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre(MaterialShapes.INGOT.name() + name, new ItemStack(ModItems.INGOT_RAW.get(), 1, mat.id));
+            // TODO P4.2 tag/P3/P4: if (mat.autogen.contains(MaterialShapes.SHELL)) for (String name : mat.names)
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre(MaterialShapes.SHELL.name() + name, new ItemStack(ModItems.SHELL.get(), 1, mat.id));
+            // TODO P4.2 tag/P3/P4: if (mat.autogen.contains(MaterialShapes.PIPE)) for (String name : mat.names)
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre(MaterialShapes.PIPE.name() + name, new ItemStack(ModItems.PIPE.get(), 1, mat.id));
+            // TODO P4.2 tag/P3/P4: if (mat.autogen.contains(MaterialShapes.FRAGMENT)) for (String name : mat.names)
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre(MaterialShapes.FRAGMENT.name() + name, new ItemStack(ModItems.BEDROCK_ORE_FRAGMENT.get().get().get().get().get().get().get(), 1, mat.id));
+            // TODO P4.2 tag/P3/P4: if (mat.autogen.contains(MaterialShapes.WIRE)) for (String name : mat.names)
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre(MaterialShapes.WIRE.name() + name, new ItemStack(ModItems.WIRE_FINE.get(), 1, mat.id));
+
+            // TODO P4.2 tag/P3/P4: if (mat.autogen.contains(MaterialShapes.LIGHTBARREL)) for (String name : mat.names)
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre(MaterialShapes.LIGHTBARREL.name() + name, new ItemStack(ModItems.PART_BARREL_LIGHT.get(), 1, mat.id));
+            // TODO P4.2 tag/P3/P4: if (mat.autogen.contains(MaterialShapes.HEAVYBARREL)) for (String name : mat.names)
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre(MaterialShapes.HEAVYBARREL.name() + name, new ItemStack(ModItems.PART_BARREL_HEAVY.get(), 1, mat.id));
+            // TODO P4.2 tag/P3/P4: if (mat.autogen.contains(MaterialShapes.LIGHTRECEIVER)) for (String name : mat.names)
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre(MaterialShapes.LIGHTRECEIVER.name() + name, new ItemStack(ModItems.PART_RECEIVER_LIGHT.get(), 1, mat.id));
+            // TODO P4.2 tag/P3/P4: if (mat.autogen.contains(MaterialShapes.HEAVYRECEIVER)) for (String name : mat.names)
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre(MaterialShapes.HEAVYRECEIVER.name() + name, new ItemStack(ModItems.PART_RECEIVER_HEAVY.get(), 1, mat.id));
+            // TODO P4.2 tag/P3/P4: if (mat.autogen.contains(MaterialShapes.MECHANISM)) for (String name : mat.names)
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre(MaterialShapes.MECHANISM.name() + name, new ItemStack(ModItems.PART_MECHANISM.get(), 1, mat.id));
+            // TODO P4.2 tag/P3/P4: if (mat.autogen.contains(MaterialShapes.STOCK)) for (String name : mat.names)
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre(MaterialShapes.STOCK.name() + name, new ItemStack(ModItems.PART_STOCK.get(), 1, mat.id));
+            // TODO P4.2 tag/P3/P4: if (mat.autogen.contains(MaterialShapes.GRIP)) for (String name : mat.names)
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre(MaterialShapes.GRIP.name() + name, new ItemStack(ModItems.PART_GRIP.get(), 1, mat.id));
+        }
+
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre("itemRubber", INGOT_RUBBER);
+
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre("coalCoke", fromOne(COKE, EnumCokeType.COAL));
+
+            // TODO P4.2 tag/P3/P4: for (String name : new String[]{"fuelCoke", "COKE"}) {
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre(name, fromOne(COKE, EnumCokeType.COAL));
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre(name, fromOne(COKE, EnumCokeType.LIGNITE));
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre(name, fromOne(COKE, EnumCokeType.PETROLEUM));
+        }
+
+
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre("briquetteCoal", fromOne(BRIQUETTE, EnumBriquetteType.COAL));
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre("briquetteLignite", fromOne(BRIQUETTE, EnumBriquetteType.LIGNITE));
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre("briquetteWood", fromOne(BRIQUETTE, EnumBriquetteType.WOOD));
+
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre(getReflector(), NEUTRON_REFLECTOR);
+
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre("logWood", PINK_LOG.get());
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre("logWoodPink", PINK_LOG.get());
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre("plankWood", PINK_PLANKS.get());
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre("plankWoodPink", PINK_PLANKS.get());
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre("slabWood", PINK_SLAB.get());
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre("slabWoodPink", PINK_SLAB.get());
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre("stairWood", PINK_STAIRS.get());
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre("stairWoodPink", PINK_STAIRS.get());
+
+        //TODO
+        String[] dyes = {"Black", "Red", "Green", "Brown", "Blue", "Purple", "Cyan", "LightGray", "Gray", "Pink", "Lime", "Yellow", "LightBlue", "Magenta", "Orange", "White"};
+        for (int i = 0; i < 16; i++) {
+            String dyeName = "dye" + dyes[i];
+
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre(dyeName, new ItemStack(ModItems.CHEMICAL_DYE.get(), 1, i));
+
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre(dyeName, new ItemStack(ModItems.CRAYON.get(), 1, i));
+        }
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre("dye", new ItemStack(CHEMICAL_DYE, 1, OreDictionary.WILDCARD_VALUE));
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre("dye", new ItemStack(CRAYON, 1, OreDictionary.WILDCARD_VALUE));
+
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre("dyeRed", CINNABAR);
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre("dye", CINNABAR);
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre("dyeYellow", SULFUR);
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre("dye", SULFUR);
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre("dyeBlack", POWDER_COAL);
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre("dye", POWDER_COAL);
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre("dyeBrown", POWDER_LIGNITE);
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre("dye", POWDER_LIGNITE);
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre("dyeLightGray", POWDER_TITANIUM);
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre("dye", POWDER_TITANIUM);
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre("dyeWhite", FLUORITE);
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre("dye", FLUORITE);
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre("dyeBlue", POWDER_LAPIS);
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre("dye", POWDER_LAPIS);
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre("dyeBlack", fromOne(OIL_TAR, EnumTarType.CRUDE));
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre("dyeBlack", fromOne(OIL_TAR, EnumTarType.CRACK));
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre("dyeGray", fromOne(OIL_TAR, EnumTarType.COAL));
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre("dyeBrown", fromOne(OIL_TAR, EnumTarType.WOOD));
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre("dyeCyan", fromOne(OIL_TAR, EnumTarType.WAX));
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre("dyeWhite", fromOne(OIL_TAR, EnumTarType.PARAFFIN));
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre("dye", new ItemStack(OIL_TAR, 1, OreDictionary.WILDCARD_VALUE));
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre("dyeOrange", POWDER_CADMIUM);
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre("dye", POWDER_CADMIUM);
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre("dyeLightGray", fromOne(POWDER_ASH, EnumAshType.WOOD));
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre("dyeBlack", fromOne(POWDER_ASH, EnumAshType.COAL));
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre("dyeGray", fromOne(POWDER_ASH, EnumAshType.MISC));
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre("dyeBrown", fromOne(POWDER_ASH, EnumAshType.FLY));
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre("dyeBlack", fromOne(POWDER_ASH, EnumAshType.SOOT));
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre("dyeMagenta", fromOne(POWDER_ASH, EnumAshType.FULLERENE));
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre("dye", new ItemStack(POWDER_ASH, 1, OreDictionary.WILDCARD_VALUE));
+
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre("blockGlass", GLASS_BORON.get());
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre("blockGlass", GLASS_LEAD.get());
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre("blockGlass", GLASS_URANIUM.get());
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre("blockGlass", GLASS_TRINITITE.get());
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre("blockGlass", GLASS_POLONIUM.get());
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre("blockGlass", GLASS_ASH.get());
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre("blockGlassYellow", GLASS_URANIUM.get());
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre("blockGlassLime", GLASS_TRINITITE.get());
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre("blockGlassRed", GLASS_POLONIUM.get());
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre("blockGlassBlack", GLASS_ASH.get());
+
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre("container1000lubricant", BDCL);
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre("container1000water", Items.WATER_BUCKET);
+            // TODO P4.2 tag/P3/P4: OreDictionary.registerOre("itemSilicon", BILLET_SILICON);
+
+		for(NTMMaterial mat : Mats.orderedList) {
+			if(mat.autogen.contains(MaterialShapes.FRAGMENT)) {
+				String name = mat.names[0];
+				if(!OreDictionary.getOres(MaterialShapes.DUST.name() + name).isEmpty()) CraftingManager.add9To1ForODM(mat.make(ModItems.BEDROCK_ORE_FRAGMENT.get().get().get().get().get().get().get()), OreDictionary.getOres(MaterialShapes.DUST.name() + name).get(0));
+				else if(!OreDictionary.getOres(MaterialShapes.GEM.name() + name).isEmpty()) CraftingManager.add9To1ForODM(mat.make(ModItems.BEDROCK_ORE_FRAGMENT.get().get().get().get().get().get().get()), OreDictionary.getOres(MaterialShapes.GEM.name() + name).get(0));
+				else if(!OreDictionary.getOres(MaterialShapes.CRYSTAL.name() + name).isEmpty()) CraftingManager.add9To1ForODM(mat.make(ModItems.BEDROCK_ORE_FRAGMENT.get().get().get().get().get().get().get()), OreDictionary.getOres(MaterialShapes.CRYSTAL.name() + name).get(0));
+				else if(!OreDictionary.getOres(MaterialShapes.INGOT.name() + name).isEmpty()) CraftingManager.add9To1ForODM(mat.make(ModItems.BEDROCK_ORE_FRAGMENT.get().get().get().get().get().get().get()), OreDictionary.getOres(MaterialShapes.INGOT.name() + name).get(0));
+				else if(!OreDictionary.getOres(MaterialShapes.BILLET.name() + name).isEmpty()) CraftingManager.addBilletFragmentForODM(OreDictionary.getOres(MaterialShapes.BILLET.name() + name).get(0), mat.make(ModItems.BEDROCK_ORE_FRAGMENT.get().get().get().get().get().get().get()));
+				else CraftingManager.add9To1ForODM(mat.make(ModItems.BEDROCK_ORE_FRAGMENT.get().get().get().get().get().get().get()), new ItemStack(ModItems.NOTHING.get()));
+			}
+		}
+
+        MaterialShapes.registerCompatShapes();
+        compensateMojangSpaghettiBullshit();
+    

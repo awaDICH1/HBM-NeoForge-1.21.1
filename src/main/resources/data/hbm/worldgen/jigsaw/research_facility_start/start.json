@@ -1,0 +1,13 @@
+[
+  {
+    "type": "hbm:research_facility_base",
+    "element": {
+      "element_type": "minecraft:single_pool_element",
+      "location": "hbm:research_facility_base",
+      "projection": "rigid",
+      "processors": "minecraft:empty",
+      "structure": "hbm:research_facility"
+    },
+    "weight": 1
+  }
+]

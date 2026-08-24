@@ -1,0 +1,4 @@
+﻿{
+  "parent": "minecraft:block/fence_post",
+  "textures": { "texture": "hbm:block/concrete_smooth" }
+}

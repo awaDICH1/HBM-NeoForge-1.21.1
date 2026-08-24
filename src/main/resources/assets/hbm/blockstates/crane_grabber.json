@@ -1,0 +1,5 @@
+﻿{
+  "variants": {
+    "": { "model": "hbm:block/crane_grabber" }
+  }
+}

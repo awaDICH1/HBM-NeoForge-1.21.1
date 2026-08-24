@@ -1,0 +1,13 @@
+[
+  {
+    "type": "hbm:launch_site_base",
+    "element": {
+      "element_type": "minecraft:single_pool_element",
+      "location": "hbm:launch_site_base",
+      "projection": "rigid",
+      "processors": "minecraft:empty",
+      "structure": "hbm:launch_site"
+    },
+    "weight": 1
+  }
+]

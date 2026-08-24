@@ -1,0 +1,5 @@
+﻿{
+  "variants": {
+    "": { "model": "hbm:block/machine_rtg_grey" }
+  }
+}

@@ -1,0 +1,5217 @@
+package com.hbm.blocks;
+
+import com.hbm.Tags;
+import com.hbm.blocks.generic.BlockHydroreactive;
+import com.hbm.blocks.generic.BlockNoDrop;
+import com.hbm.blocks.generic.BlockNTMDirt;
+import com.hbm.blocks.generic.BlockNTMLadder;
+import com.hbm.blocks.generic.BlockNTMTrapdoor;
+import com.hbm.blocks.generic.BlockPinkLog;
+import com.hbm.blocks.generic.BlockRedBrick;
+import com.hbm.blocks.generic.BlockSpeedy;
+import com.hbm.blocks.generic.BlockWriting;
+import com.hbm.blocks.generic.DecoPoleTop;
+import com.hbm.blocks.machine.MachineAshpit;
+import com.hbm.tileentity.machine.TileEntityBarrel;
+import com.hbm.tileentity.machine.TileEntityGasCentrifuge;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.FenceBlock;
+import net.minecraft.world.level.block.SlabBlock;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.StairBlock;
+import net.minecraft.world.level.block.WallBlock;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.neoforge.registries.DeferredBlock;
+import net.neoforged.neoforge.registries.DeferredItem;
+import net.neoforged.neoforge.registries.DeferredRegister;
+
+/**
+ * 閺傜懓娼″▔銊ュ斀娑擃厼绺鹃妴? * 鏉╀胶些閼?1.12.2 com.hbm.blocks.ModBlocks閿涘牏瀹?600 娑?static Block 鐎涙顔?+ ALL_BLOCKS +
+ * ModBlocks.BLOCKS.register 瀵邦亞骞?+ 閺傜懓娼￠弸鍕偓鐘叉珤閸愬懓鍤滅悰灞炬暈閸?ItemBlock閿涘鈧? *
+ * 1.21.1 閺傛澘鑸伴幀渚婄窗DeferredRegister.Blocks + DeferredBlock 鐎涙顔岄敍娑欐煙閸ф澧块崫浣稿礋閻欘剚鏁為崘灞烩偓? * P1 閸掑洨澧栭崗鍫熸暈閸?asphalt閿涘牆甯?ModBlocks.asphalt閿涘绗?machine_ashpit閿涘牆甯?ModBlocks.machine_ashpit閿涘鈧? */
+public class ModBlocks {
+
+    public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(Tags.MODID);
+    public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(Tags.MODID);
+
+    // ===== 濞屻儵娼氶敍鍫濆斧 1.12.2閿?====
+    // public static final Block asphalt = new BlockSpeedy(Material.ROCK, "asphalt", 1.5)
+    //         .setCreativeTab(MainRegistry.blockTab).setHardness(15.0F).setResistance(120.0F);
+    public static final DeferredBlock<Block> ASPHALT = BLOCKS.register("asphalt",
+            () -> new BlockSpeedy(BlockBehaviour.Properties.of()
+                    .strength(15.0F, 120.0F)
+                    .sound(SoundType.STONE), 1.5D));
+    public static final DeferredItem<BlockItem> ASPHALT_ITEM = ITEMS.registerSimpleBlockItem(ASPHALT);
+
+    // ===== 閻忔壆鍎稿Σ鑺ユ簚閸ｎ煉绱欓崢?1.12.2閿?====
+    // public static final Block machine_ashpit = new MachineAshpit("machine_ashpit")
+    //         .setHardness(5.0F).setResistance(10.0F).setCreativeTab(MainRegistry.machineTab);
+    public static final DeferredBlock<Block> ASHPIT = BLOCKS.register("machine_ashpit",
+            () -> new MachineAshpit(BlockBehaviour.Properties.of()
+                    .strength(5.0F, 10.0F)
+                    .sound(SoundType.METAL)));
+    public static final DeferredItem<BlockItem> ASHPIT_ITEM = ITEMS.registerSimpleBlockItem(ASHPIT);
+
+    // ===== P3 缁楊兛绔撮幍鐧哥窗blocks.generic 缁犫偓閸楁洘鏌熼崸妤嬬礄濞夈劌鍞介崥宥勭瑢閸?CE 鐎瑰苯鍙忔稉鈧懛杈剧礆 =====
+
+    // 閸? new BlockRedBrick(Material.ROCK, "brick_red").setResistance(10_000)
+    // 閿涘湣aterial.ROCK 姒涙顓荤涵顒€瀹抽幐?1.5 鏉╂垳鎶€閿涙稒妫ら崚娑⑩偓鐘崇埉閿?
+    public static final DeferredBlock<Block> BRICK_RED = BLOCKS.register("brick_red",
+            () -> new BlockRedBrick(BlockBehaviour.Properties.of().strength(1.5F, 10_000F)));
+    public static final DeferredItem<BlockItem> BRICK_RED_ITEM = ITEMS.registerSimpleBlockItem(BRICK_RED);
+
+    // 閸? new BlockNoDrop(Material.IRON, "oil_pipe").setHardness(5).setResistance(10)閿涘牊妫ら崚娑⑩偓鐘崇埉閿?
+    public static final DeferredBlock<Block> OIL_PIPE = BLOCKS.register("oil_pipe",
+            () -> new BlockNoDrop(BlockBehaviour.Properties.of().strength(5.0F, 10.0F)));
+    public static final DeferredItem<BlockItem> OIL_PIPE_ITEM = ITEMS.registerSimpleBlockItem(OIL_PIPE);
+
+    // 閸? new BlockNoDrop(Material.IRON, "drill_pipe").setHardness(5).setResistance(10)閿涘牊妫ら崚娑⑩偓鐘崇埉閿?
+    public static final DeferredBlock<Block> DRILL_PIPE = BLOCKS.register("drill_pipe",
+            () -> new BlockNoDrop(BlockBehaviour.Properties.of().strength(5.0F, 10.0F)));
+    public static final DeferredItem<BlockItem> DRILL_PIPE_ITEM = ITEMS.registerSimpleBlockItem(DRILL_PIPE);
+
+    // 閸? new BlockHydroreactive(Material.IRON, "block_lithium").setCreativeTab(blockTab).setHardness(5).setResistance(10)
+    public static final DeferredBlock<Block> BLOCK_LITHIUM = BLOCKS.register("block_lithium",
+            () -> new BlockHydroreactive(BlockBehaviour.Properties.of().strength(5.0F, 10.0F)));
+    public static final DeferredItem<BlockItem> BLOCK_LITHIUM_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_LITHIUM);
+
+    // 閸? new BlockWriting(Material.ROCK, "brick_concrete_marked").setCreativeTab(blockTab).setHardness(15).setResistance(160)
+    public static final DeferredBlock<Block> BRICK_CONCRETE_MARKED = BLOCKS.register("brick_concrete_marked",
+            () -> new BlockWriting(BlockBehaviour.Properties.of().strength(15.0F, 160.0F)));
+    public static final DeferredItem<BlockItem> BRICK_CONCRETE_MARKED_ITEM = ITEMS.registerSimpleBlockItem(BRICK_CONCRETE_MARKED);
+
+    // 閸? new DecoPoleTop(Material.IRON, "pole_top").setCreativeTab(blockTab).setHardness(5).setResistance(15)
+    // 閿涘湑UTOUT 濞撳弶鐓嬮悽杈侀崹?json 閻?"render_type" 婢圭増妲戦敍宀冾潌 blockstates/pole_top.json閿?
+    public static final DeferredBlock<Block> POLE_TOP = BLOCKS.register("pole_top",
+            () -> new DecoPoleTop(BlockBehaviour.Properties.of().strength(5.0F, 15.0F).noOcclusion()));
+    public static final DeferredItem<BlockItem> POLE_TOP_ITEM = ITEMS.registerSimpleBlockItem(POLE_TOP);
+
+    // 閸? new BlockNTMDirt("ntm_dirt").setSoundType(GROUND).setHardness(0.5)閿涘牊妫ら崚娑⑩偓鐘崇埉閿涘鈧柡鈧?.21 濞夈儱婀￠棅铏櫏娑?SoundType.GRAVEL
+    public static final DeferredBlock<Block> NTM_DIRT = BLOCKS.register("ntm_dirt",
+            () -> new BlockNTMDirt(BlockBehaviour.Properties.of().strength(0.5F).sound(SoundType.GRAVEL)));
+    public static final DeferredItem<BlockItem> NTM_DIRT_ITEM = ITEMS.registerSimpleBlockItem(NTM_DIRT);
+
+    // 閸? new BlockPinkLog("pink_log").setSoundType(WOOD).setHardness(0.5)閿涘牊妫ら崚娑⑩偓鐘崇埉閿?
+    public static final DeferredBlock<Block> PINK_LOG = BLOCKS.register("pink_log",
+            () -> new BlockPinkLog(BlockBehaviour.Properties.of().strength(0.5F).sound(SoundType.WOOD)));
+    public static final DeferredItem<BlockItem> PINK_LOG_ITEM = ITEMS.registerSimpleBlockItem(PINK_LOG);
+
+    // ===== P3 缁楊兛绨╅幍鐧哥窗濮婎垰鐡欓敍?2 娑擃亷绱濋崢?blockTab閿?.25/2.0閿涘oundType.LADDER 娑撳骸甯?BlockLadder 娑撯偓閼疯揪绱?=====
+    // 閸? new BlockNTMLadder("ladder_xxx").setHardness(0.25F).setResistance(2.0F).setCreativeTab(blockTab)
+    public static final DeferredBlock<Block> LADDER_STURDY = BLOCKS.register("ladder_sturdy",
+            () -> new BlockNTMLadder(BlockBehaviour.Properties.of().strength(0.25F, 2.0F).sound(SoundType.LADDER)));
+    public static final DeferredItem<BlockItem> LADDER_STURDY_ITEM = ITEMS.registerSimpleBlockItem(LADDER_STURDY);
+    public static final DeferredBlock<Block> LADDER_IRON = BLOCKS.register("ladder_iron",
+            () -> new BlockNTMLadder(BlockBehaviour.Properties.of().strength(0.25F, 2.0F).sound(SoundType.LADDER)));
+    public static final DeferredItem<BlockItem> LADDER_IRON_ITEM = ITEMS.registerSimpleBlockItem(LADDER_IRON);
+    public static final DeferredBlock<Block> LADDER_GOLD = BLOCKS.register("ladder_gold",
+            () -> new BlockNTMLadder(BlockBehaviour.Properties.of().strength(0.25F, 2.0F).sound(SoundType.LADDER)));
+    public static final DeferredItem<BlockItem> LADDER_GOLD_ITEM = ITEMS.registerSimpleBlockItem(LADDER_GOLD);
+    public static final DeferredBlock<Block> LADDER_ALUMINIUM = BLOCKS.register("ladder_aluminium",
+            () -> new BlockNTMLadder(BlockBehaviour.Properties.of().strength(0.25F, 2.0F).sound(SoundType.LADDER)));
+    public static final DeferredItem<BlockItem> LADDER_ALUMINIUM_ITEM = ITEMS.registerSimpleBlockItem(LADDER_ALUMINIUM);
+    public static final DeferredBlock<Block> LADDER_COPPER = BLOCKS.register("ladder_copper",
+            () -> new BlockNTMLadder(BlockBehaviour.Properties.of().strength(0.25F, 2.0F).sound(SoundType.LADDER)));
+    public static final DeferredItem<BlockItem> LADDER_COPPER_ITEM = ITEMS.registerSimpleBlockItem(LADDER_COPPER);
+    public static final DeferredBlock<Block> LADDER_TITANIUM = BLOCKS.register("ladder_titanium",
+            () -> new BlockNTMLadder(BlockBehaviour.Properties.of().strength(0.25F, 2.0F).sound(SoundType.LADDER)));
+    public static final DeferredItem<BlockItem> LADDER_TITANIUM_ITEM = ITEMS.registerSimpleBlockItem(LADDER_TITANIUM);
+    public static final DeferredBlock<Block> LADDER_LEAD = BLOCKS.register("ladder_lead",
+            () -> new BlockNTMLadder(BlockBehaviour.Properties.of().strength(0.25F, 2.0F).sound(SoundType.LADDER)));
+    public static final DeferredItem<BlockItem> LADDER_LEAD_ITEM = ITEMS.registerSimpleBlockItem(LADDER_LEAD);
+    public static final DeferredBlock<Block> LADDER_COBALT = BLOCKS.register("ladder_cobalt",
+            () -> new BlockNTMLadder(BlockBehaviour.Properties.of().strength(0.25F, 2.0F).sound(SoundType.LADDER)));
+    public static final DeferredItem<BlockItem> LADDER_COBALT_ITEM = ITEMS.registerSimpleBlockItem(LADDER_COBALT);
+    public static final DeferredBlock<Block> LADDER_STEEL = BLOCKS.register("ladder_steel",
+            () -> new BlockNTMLadder(BlockBehaviour.Properties.of().strength(0.25F, 2.0F).sound(SoundType.LADDER)));
+    public static final DeferredItem<BlockItem> LADDER_STEEL_ITEM = ITEMS.registerSimpleBlockItem(LADDER_STEEL);
+    public static final DeferredBlock<Block> LADDER_TUNGSTEN = BLOCKS.register("ladder_tungsten",
+            () -> new BlockNTMLadder(BlockBehaviour.Properties.of().strength(0.25F, 2.0F).sound(SoundType.LADDER)));
+    public static final DeferredItem<BlockItem> LADDER_TUNGSTEN_ITEM = ITEMS.registerSimpleBlockItem(LADDER_TUNGSTEN);
+    public static final DeferredBlock<Block> LADDER_RED = BLOCKS.register("ladder_red",
+            () -> new BlockNTMLadder(BlockBehaviour.Properties.of().strength(0.25F, 2.0F).sound(SoundType.LADDER)));
+    public static final DeferredItem<BlockItem> LADDER_RED_ITEM = ITEMS.registerSimpleBlockItem(LADDER_RED);
+    public static final DeferredBlock<Block> LADDER_RED_TOP = BLOCKS.register("ladder_red_top",
+            () -> new BlockNTMLadder(BlockBehaviour.Properties.of().strength(0.25F, 2.0F).sound(SoundType.LADDER)));
+    public static final DeferredItem<BlockItem> LADDER_RED_TOP_ITEM = ITEMS.registerSimpleBlockItem(LADDER_RED_TOP);
+
+    // ===== P3 缁楊兛绨╅幍鐧哥窗闁姐垹鍩楀ú缁樻緲闂傤煉绱欓崢?blockTab閿?/8閿涘ETAL閿?=====
+    // 閸? new BlockNTMTrapdoor(Material.IRON, "trapdoor_steel").setHardness(3F).setResistance(8.0F)
+    //      .setSoundType(METAL).setCreativeTab(blockTab)
+    public static final DeferredBlock<Block> TRAPDOOR_STEEL = BLOCKS.register("trapdoor_steel",
+            () -> new BlockNTMTrapdoor(BlockBehaviour.Properties.of().strength(3.0F, 8.0F).sound(SoundType.METAL).noOcclusion()));
+    public static final DeferredItem<BlockItem> TRAPDOOR_STEEL_ITEM = ITEMS.registerSimpleBlockItem(TRAPDOOR_STEEL);
+    // P3.2 registerOres placeholder (CE: Block basalt_ore, real class P3 block batch)
+    public static final DeferredBlock<Block> BASALT_ORE = BLOCKS.register("basalt_ore",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BASALT_ORE_ITEM = ITEMS.registerSimpleBlockItem(BASALT_ORE);
+    // P3.2 registerOres placeholder (CE: Block block_actinium, real class P3 block batch)
+    public static final DeferredBlock<Block> BLOCK_ACTINIUM = BLOCKS.register("block_actinium",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_ACTINIUM_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_ACTINIUM);
+    // P3.2 registerOres placeholder (CE: Block block_aluminium, real class P3 block batch)
+    public static final DeferredBlock<Block> BLOCK_ALUMINIUM = BLOCKS.register("block_aluminium",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_ALUMINIUM_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_ALUMINIUM);
+    // P3.2 registerOres placeholder (CE: Block block_asbestos, real class P3 block batch)
+    public static final DeferredBlock<Block> BLOCK_ASBESTOS = BLOCKS.register("block_asbestos",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_ASBESTOS_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_ASBESTOS);
+    // P3.2 registerOres placeholder (CE: Block block_australium, real class P3 block batch)
+    public static final DeferredBlock<Block> BLOCK_AUSTRALIUM = BLOCKS.register("block_australium",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_AUSTRALIUM_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_AUSTRALIUM);
+    // P3.2 registerOres placeholder (CE: Block block_bakelite, real class P3 block batch)
+    public static final DeferredBlock<Block> BLOCK_BAKELITE = BLOCKS.register("block_bakelite",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_BAKELITE_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_BAKELITE);
+    // P3.2 registerOres placeholder (CE: Block block_beryllium, real class P3 block batch)
+    public static final DeferredBlock<Block> BLOCK_BERYLLIUM = BLOCKS.register("block_beryllium",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_BERYLLIUM_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_BERYLLIUM);
+    // P3.2 registerOres placeholder (CE: Block block_bismuth, real class P3 block batch)
+    public static final DeferredBlock<Block> BLOCK_BISMUTH = BLOCKS.register("block_bismuth",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_BISMUTH_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_BISMUTH);
+    // P3.2 registerOres placeholder (CE: Block block_boron, real class P3 block batch)
+    public static final DeferredBlock<Block> BLOCK_BORON = BLOCKS.register("block_boron",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_BORON_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_BORON);
+    // P3.2 registerOres placeholder (CE: Block block_cadmium, real class P3 block batch)
+    public static final DeferredBlock<Block> BLOCK_CADMIUM = BLOCKS.register("block_cadmium",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_CADMIUM_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_CADMIUM);
+    // P3.2 registerOres placeholder (CE: Block block_cdalloy, real class P3 block batch)
+    public static final DeferredBlock<Block> BLOCK_CDALLOY = BLOCKS.register("block_cdalloy",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_CDALLOY_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_CDALLOY);
+    // P3.2 registerOres placeholder (CE: Block block_cobalt, real class P3 block batch)
+    public static final DeferredBlock<Block> BLOCK_COBALT = BLOCKS.register("block_cobalt",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_COBALT_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_COBALT);
+    // P3.2 registerOres placeholder (CE: Block block_coke, real class P3 block batch)
+    public static final DeferredBlock<Block> BLOCK_COKE = BLOCKS.register("block_coke",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_COKE_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_COKE);
+    // P3.2 registerOres placeholder (CE: Block block_coltan, real class P3 block batch)
+    public static final DeferredBlock<Block> BLOCK_COLTAN = BLOCKS.register("block_coltan",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_COLTAN_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_COLTAN);
+    // P3.2 registerOres placeholder (CE: Block block_combine_steel, real class P3 block batch)
+    public static final DeferredBlock<Block> BLOCK_COMBINE_STEEL = BLOCKS.register("block_combine_steel",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_COMBINE_STEEL_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_COMBINE_STEEL);
+    // P3.2 registerOres placeholder (CE: Block block_copper, real class P3 block batch)
+    public static final DeferredBlock<Block> BLOCK_COPPER = BLOCKS.register("block_copper",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_COPPER_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_COPPER);
+    // P3.2 registerOres placeholder (CE: Block block_desh, real class P3 block batch)
+    public static final DeferredBlock<Block> BLOCK_DESH = BLOCKS.register("block_desh",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_DESH_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_DESH);
+    // P3.2 registerOres placeholder (CE: Block block_dineutronium, real class P3 block batch)
+    public static final DeferredBlock<Block> BLOCK_DINEUTRONIUM = BLOCKS.register("block_dineutronium",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_DINEUTRONIUM_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_DINEUTRONIUM);
+    // P3.2 registerOres placeholder (CE: Block block_dura_steel, real class P3 block batch)
+    public static final DeferredBlock<Block> BLOCK_DURA_STEEL = BLOCKS.register("block_dura_steel",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_DURA_STEEL_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_DURA_STEEL);
+    // P3.2 registerOres placeholder (CE: Block block_euphemium, real class P3 block batch)
+    public static final DeferredBlock<Block> BLOCK_EUPHEMIUM = BLOCKS.register("block_euphemium",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_EUPHEMIUM_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_EUPHEMIUM);
+    // P3.2 registerOres placeholder (CE: Block block_fiberglass, real class P3 block batch)
+    public static final DeferredBlock<Block> BLOCK_FIBERGLASS = BLOCKS.register("block_fiberglass",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_FIBERGLASS_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_FIBERGLASS);
+    // P3.2 registerOres placeholder (CE: Block block_fluorite, real class P3 block batch)
+    public static final DeferredBlock<Block> BLOCK_FLUORITE = BLOCKS.register("block_fluorite",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_FLUORITE_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_FLUORITE);
+    // P3.2 registerOres placeholder (CE: Block block_graphite, real class P3 block batch)
+    public static final DeferredBlock<Block> BLOCK_GRAPHITE = BLOCKS.register("block_graphite",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_GRAPHITE_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_GRAPHITE);
+    // P3.2 registerOres placeholder (CE: Block block_lanthanium, real class P3 block batch)
+    public static final DeferredBlock<Block> BLOCK_LANTHANIUM = BLOCKS.register("block_lanthanium",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_LANTHANIUM_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_LANTHANIUM);
+    // P3.2 registerOres placeholder (CE: Block block_lead, real class P3 block batch)
+    public static final DeferredBlock<Block> BLOCK_LEAD = BLOCKS.register("block_lead",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_LEAD_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_LEAD);
+    // P3.2 registerOres placeholder (CE: Block block_magnetized_tungsten, real class P3 block batch)
+    public static final DeferredBlock<Block> BLOCK_MAGNETIZED_TUNGSTEN = BLOCKS.register("block_magnetized_tungsten",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_MAGNETIZED_TUNGSTEN_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_MAGNETIZED_TUNGSTEN);
+    // P3.2 registerOres placeholder (CE: Block block_neptunium, real class P3 block batch)
+    public static final DeferredBlock<Block> BLOCK_NEPTUNIUM = BLOCKS.register("block_neptunium",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_NEPTUNIUM_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_NEPTUNIUM);
+    // P3.2 registerOres placeholder (CE: Block block_niobium, real class P3 block batch)
+    public static final DeferredBlock<Block> BLOCK_NIOBIUM = BLOCKS.register("block_niobium",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_NIOBIUM_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_NIOBIUM);
+    // P3.2 registerOres placeholder (CE: Block block_niter, real class P3 block batch)
+    public static final DeferredBlock<Block> BLOCK_NITER = BLOCKS.register("block_niter",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_NITER_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_NITER);
+    // P3.2 registerOres placeholder (CE: Block block_plutonium, real class P3 block batch)
+    public static final DeferredBlock<Block> BLOCK_PLUTONIUM = BLOCKS.register("block_plutonium",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_PLUTONIUM_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_PLUTONIUM);
+    // P3.2 registerOres placeholder (CE: Block block_polonium, real class P3 block batch)
+    public static final DeferredBlock<Block> BLOCK_POLONIUM = BLOCKS.register("block_polonium",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_POLONIUM_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_POLONIUM);
+    // P3.2 registerOres placeholder (CE: Block block_polymer, real class P3 block batch)
+    public static final DeferredBlock<Block> BLOCK_POLYMER = BLOCKS.register("block_polymer",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_POLYMER_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_POLYMER);
+    // P3.2 registerOres placeholder (CE: Block block_pu_mix, real class P3 block batch)
+    public static final DeferredBlock<Block> BLOCK_PU_MIX = BLOCKS.register("block_pu_mix",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_PU_MIX_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_PU_MIX);
+    // P3.2 registerOres placeholder (CE: Block block_pu238, real class P3 block batch)
+    public static final DeferredBlock<Block> BLOCK_PU238 = BLOCKS.register("block_pu238",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_PU238_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_PU238);
+    // P3.2 registerOres placeholder (CE: Block block_pu239, real class P3 block batch)
+    public static final DeferredBlock<Block> BLOCK_PU239 = BLOCKS.register("block_pu239",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_PU239_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_PU239);
+    // P3.2 registerOres placeholder (CE: Block block_pu240, real class P3 block batch)
+    public static final DeferredBlock<Block> BLOCK_PU240 = BLOCKS.register("block_pu240",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_PU240_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_PU240);
+    // P3.2 registerOres placeholder (CE: Block block_ra226, real class P3 block batch)
+    public static final DeferredBlock<Block> BLOCK_RA226 = BLOCKS.register("block_ra226",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_RA226_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_RA226);
+    // P3.2 registerOres placeholder (CE: Block block_red_copper, real class P3 block batch)
+    public static final DeferredBlock<Block> BLOCK_RED_COPPER = BLOCKS.register("block_red_copper",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_RED_COPPER_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_RED_COPPER);
+    // P3.2 registerOres placeholder (CE: Block block_red_phosphorus, real class P3 block batch)
+    public static final DeferredBlock<Block> BLOCK_RED_PHOSPHORUS = BLOCKS.register("block_red_phosphorus",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_RED_PHOSPHORUS_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_RED_PHOSPHORUS);
+    // P3.2 registerOres placeholder (CE: Block block_rubber, real class P3 block batch)
+    public static final DeferredBlock<Block> BLOCK_RUBBER = BLOCKS.register("block_rubber",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_RUBBER_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_RUBBER);
+    // P3.2 registerOres placeholder (CE: Block block_schrabidate, real class P3 block batch)
+    public static final DeferredBlock<Block> BLOCK_SCHRABIDATE = BLOCKS.register("block_schrabidate",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_SCHRABIDATE_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_SCHRABIDATE);
+    // P3.2 registerOres placeholder (CE: Block block_schrabidium, real class P3 block batch)
+    public static final DeferredBlock<Block> BLOCK_SCHRABIDIUM = BLOCKS.register("block_schrabidium",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_SCHRABIDIUM_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_SCHRABIDIUM);
+    // P3.2 registerOres placeholder (CE: Block block_schraranium, real class P3 block batch)
+    public static final DeferredBlock<Block> BLOCK_SCHRARANIUM = BLOCKS.register("block_schraranium",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_SCHRARANIUM_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_SCHRARANIUM);
+    // P3.2 registerOres placeholder (CE: Block block_slag, real class P3 block batch)
+    public static final DeferredBlock<Block> BLOCK_SLAG = BLOCKS.register("block_slag",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_SLAG_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_SLAG);
+    // P3.2 registerOres placeholder (CE: Block block_solinium, real class P3 block batch)
+    public static final DeferredBlock<Block> BLOCK_SOLINIUM = BLOCKS.register("block_solinium",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_SOLINIUM_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_SOLINIUM);
+    // P3.2 registerOres placeholder (CE: Block block_starmetal, real class P3 block batch)
+    public static final DeferredBlock<Block> BLOCK_STARMETAL = BLOCKS.register("block_starmetal",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_STARMETAL_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_STARMETAL);
+    // P3.2 registerOres placeholder (CE: Block block_steel, real class P3 block batch)
+    public static final DeferredBlock<Block> BLOCK_STEEL = BLOCKS.register("block_steel",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_STEEL_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_STEEL);
+    // P3.2 registerOres placeholder (CE: Block block_sulfur, real class P3 block batch)
+    public static final DeferredBlock<Block> BLOCK_SULFUR = BLOCKS.register("block_sulfur",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_SULFUR_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_SULFUR);
+    // P3.2 registerOres placeholder (CE: Block block_tantalium, real class P3 block batch)
+    public static final DeferredBlock<Block> BLOCK_TANTALIUM = BLOCKS.register("block_tantalium",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_TANTALIUM_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_TANTALIUM);
+    // P3.2 registerOres placeholder (CE: Block block_tcalloy, real class P3 block batch)
+    public static final DeferredBlock<Block> BLOCK_TCALLOY = BLOCKS.register("block_tcalloy",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_TCALLOY_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_TCALLOY);
+    // P3.2 registerOres placeholder (CE: Block block_thorium, real class P3 block batch)
+    public static final DeferredBlock<Block> BLOCK_THORIUM = BLOCKS.register("block_thorium",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_THORIUM_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_THORIUM);
+    // P3.2 registerOres placeholder (CE: Block block_titanium, real class P3 block batch)
+    public static final DeferredBlock<Block> BLOCK_TITANIUM = BLOCKS.register("block_titanium",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_TITANIUM_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_TITANIUM);
+    // P3.2 registerOres placeholder (CE: Block block_tungsten, real class P3 block batch)
+    public static final DeferredBlock<Block> BLOCK_TUNGSTEN = BLOCKS.register("block_tungsten",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_TUNGSTEN_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_TUNGSTEN);
+    // P3.2 registerOres placeholder (CE: Block block_u233, real class P3 block batch)
+    public static final DeferredBlock<Block> BLOCK_U233 = BLOCKS.register("block_u233",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_U233_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_U233);
+    // P3.2 registerOres placeholder (CE: Block block_u235, real class P3 block batch)
+    public static final DeferredBlock<Block> BLOCK_U235 = BLOCKS.register("block_u235",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_U235_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_U235);
+    // P3.2 registerOres placeholder (CE: Block block_u238, real class P3 block batch)
+    public static final DeferredBlock<Block> BLOCK_U238 = BLOCKS.register("block_u238",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_U238_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_U238);
+    // P3.2 registerOres placeholder (CE: Block block_uranium, real class P3 block batch)
+    public static final DeferredBlock<Block> BLOCK_URANIUM = BLOCKS.register("block_uranium",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_URANIUM_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_URANIUM);
+    // P3.2 registerOres placeholder (CE: Block block_white_phosphorus, real class P3 block batch)
+    public static final DeferredBlock<Block> BLOCK_WHITE_PHOSPHORUS = BLOCKS.register("block_white_phosphorus",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_WHITE_PHOSPHORUS_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_WHITE_PHOSPHORUS);
+    // P3.2 registerOres placeholder (CE: Block block_zirconium, real class P3 block batch)
+    public static final DeferredBlock<Block> BLOCK_ZIRCONIUM = BLOCKS.register("block_zirconium",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_ZIRCONIUM_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_ZIRCONIUM);
+    // P3.2 registerOres placeholder (CE: Block concrete, real class P3 block batch)
+    public static final DeferredBlock<Block> CONCRETE = BLOCKS.register("concrete",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> CONCRETE_ITEM = ITEMS.registerSimpleBlockItem(CONCRETE);
+    // P3.2 registerOres placeholder (CE: Block concrete_asbestos, real class P3 block batch)
+    public static final DeferredBlock<Block> CONCRETE_ASBESTOS = BLOCKS.register("concrete_asbestos",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> CONCRETE_ASBESTOS_ITEM = ITEMS.registerSimpleBlockItem(CONCRETE_ASBESTOS);
+    // P3.2 registerOres placeholder (CE: Block concrete_colored, real class P3 block batch)
+    public static final DeferredBlock<Block> CONCRETE_COLORED = BLOCKS.register("concrete_colored",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> CONCRETE_COLORED_ITEM = ITEMS.registerSimpleBlockItem(CONCRETE_COLORED);
+    // P3.2 registerOres placeholder (CE: Block concrete_colored_ext, real class P3 block batch)
+    public static final DeferredBlock<Block> CONCRETE_COLORED_EXT = BLOCKS.register("concrete_colored_ext",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> CONCRETE_COLORED_EXT_ITEM = ITEMS.registerSimpleBlockItem(CONCRETE_COLORED_EXT);
+    // P3.2 registerOres placeholder (CE: Block concrete_smooth, real class P3 block batch)
+    public static final DeferredBlock<Block> CONCRETE_SMOOTH = BLOCKS.register("concrete_smooth",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> CONCRETE_SMOOTH_ITEM = ITEMS.registerSimpleBlockItem(CONCRETE_SMOOTH);
+    // P3.2 registerOres placeholder (CE: Block ducrete, real class P3 block batch)
+    public static final DeferredBlock<Block> DUCRETE = BLOCKS.register("ducrete",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> DUCRETE_ITEM = ITEMS.registerSimpleBlockItem(DUCRETE);
+    // P3.2 registerOres placeholder (CE: Block ducrete_smooth, real class P3 block batch)
+    public static final DeferredBlock<Block> DUCRETE_SMOOTH = BLOCKS.register("ducrete_smooth",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> DUCRETE_SMOOTH_ITEM = ITEMS.registerSimpleBlockItem(DUCRETE_SMOOTH);
+    // P3.2 registerOres placeholder (CE: Block glass_ash, real class P3 block batch)
+    public static final DeferredBlock<Block> GLASS_ASH = BLOCKS.register("glass_ash",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> GLASS_ASH_ITEM = ITEMS.registerSimpleBlockItem(GLASS_ASH);
+    // P3.2 registerOres placeholder (CE: Block glass_boron, real class P3 block batch)
+    public static final DeferredBlock<Block> GLASS_BORON = BLOCKS.register("glass_boron",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> GLASS_BORON_ITEM = ITEMS.registerSimpleBlockItem(GLASS_BORON);
+    // P3.2 registerOres placeholder (CE: Block glass_lead, real class P3 block batch)
+    public static final DeferredBlock<Block> GLASS_LEAD = BLOCKS.register("glass_lead",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> GLASS_LEAD_ITEM = ITEMS.registerSimpleBlockItem(GLASS_LEAD);
+    // P3.2 registerOres placeholder (CE: Block glass_polonium, real class P3 block batch)
+    public static final DeferredBlock<Block> GLASS_POLONIUM = BLOCKS.register("glass_polonium",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> GLASS_POLONIUM_ITEM = ITEMS.registerSimpleBlockItem(GLASS_POLONIUM);
+    // P3.2 registerOres placeholder (CE: Block glass_trinitite, real class P3 block batch)
+    public static final DeferredBlock<Block> GLASS_TRINITITE = BLOCKS.register("glass_trinitite",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> GLASS_TRINITITE_ITEM = ITEMS.registerSimpleBlockItem(GLASS_TRINITITE);
+    // P3.2 registerOres placeholder (CE: Block glass_uranium, real class P3 block batch)
+    public static final DeferredBlock<Block> GLASS_URANIUM = BLOCKS.register("glass_uranium",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> GLASS_URANIUM_ITEM = ITEMS.registerSimpleBlockItem(GLASS_URANIUM);
+    // P3.2 registerOres placeholder (CE: Block gravel_diamond, real class P3 block batch)
+    public static final DeferredBlock<Block> GRAVEL_DIAMOND = BLOCKS.register("gravel_diamond",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> GRAVEL_DIAMOND_ITEM = ITEMS.registerSimpleBlockItem(GRAVEL_DIAMOND);
+    // P3.2 registerOres placeholder (CE: Block ore_aluminium, real class P3 block batch)
+    public static final DeferredBlock<Block> ORE_ALUMINIUM = BLOCKS.register("ore_aluminium",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> ORE_ALUMINIUM_ITEM = ITEMS.registerSimpleBlockItem(ORE_ALUMINIUM);
+    // P3.2 registerOres placeholder (CE: Block ore_asbestos, real class P3 block batch)
+    public static final DeferredBlock<Block> ORE_ASBESTOS = BLOCKS.register("ore_asbestos",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> ORE_ASBESTOS_ITEM = ITEMS.registerSimpleBlockItem(ORE_ASBESTOS);
+    // P3.2 registerOres placeholder (CE: Block ore_australium, real class P3 block batch)
+    public static final DeferredBlock<Block> ORE_AUSTRALIUM = BLOCKS.register("ore_australium",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> ORE_AUSTRALIUM_ITEM = ITEMS.registerSimpleBlockItem(ORE_AUSTRALIUM);
+    // P3.2 registerOres placeholder (CE: Block ore_beryllium, real class P3 block batch)
+    public static final DeferredBlock<Block> ORE_BERYLLIUM = BLOCKS.register("ore_beryllium",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> ORE_BERYLLIUM_ITEM = ITEMS.registerSimpleBlockItem(ORE_BERYLLIUM);
+    // P3.2 registerOres placeholder (CE: Block ore_cinnabar, real class P3 block batch)
+    public static final DeferredBlock<Block> ORE_CINNABAR = BLOCKS.register("ore_cinnabar",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> ORE_CINNABAR_ITEM = ITEMS.registerSimpleBlockItem(ORE_CINNABAR);
+    // P3.2 registerOres placeholder (CE: Block ore_cobalt, real class P3 block batch)
+    public static final DeferredBlock<Block> ORE_COBALT = BLOCKS.register("ore_cobalt",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> ORE_COBALT_ITEM = ITEMS.registerSimpleBlockItem(ORE_COBALT);
+    // P3.2 registerOres placeholder (CE: Block ore_coltan, real class P3 block batch)
+    public static final DeferredBlock<Block> ORE_COLTAN = BLOCKS.register("ore_coltan",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> ORE_COLTAN_ITEM = ITEMS.registerSimpleBlockItem(ORE_COLTAN);
+    // P3.2 registerOres placeholder (CE: Block ore_copper, real class P3 block batch)
+    public static final DeferredBlock<Block> ORE_COPPER = BLOCKS.register("ore_copper",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> ORE_COPPER_ITEM = ITEMS.registerSimpleBlockItem(ORE_COPPER);
+    // P3.2 registerOres placeholder (CE: Block ore_depth_borax, real class P3 block batch)
+    public static final DeferredBlock<Block> ORE_DEPTH_BORAX = BLOCKS.register("ore_depth_borax",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> ORE_DEPTH_BORAX_ITEM = ITEMS.registerSimpleBlockItem(ORE_DEPTH_BORAX);
+    // P3.2 registerOres placeholder (CE: Block ore_depth_cinnabar, real class P3 block batch)
+    public static final DeferredBlock<Block> ORE_DEPTH_CINNABAR = BLOCKS.register("ore_depth_cinnabar",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> ORE_DEPTH_CINNABAR_ITEM = ITEMS.registerSimpleBlockItem(ORE_DEPTH_CINNABAR);
+    // P3.2 registerOres placeholder (CE: Block ore_depth_nether_neodymium, real class P3 block batch)
+    public static final DeferredBlock<Block> ORE_DEPTH_NETHER_NEODYMIUM = BLOCKS.register("ore_depth_nether_neodymium",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> ORE_DEPTH_NETHER_NEODYMIUM_ITEM = ITEMS.registerSimpleBlockItem(ORE_DEPTH_NETHER_NEODYMIUM);
+    // P3.2 registerOres placeholder (CE: Block ore_depth_zirconium, real class P3 block batch)
+    public static final DeferredBlock<Block> ORE_DEPTH_ZIRCONIUM = BLOCKS.register("ore_depth_zirconium",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> ORE_DEPTH_ZIRCONIUM_ITEM = ITEMS.registerSimpleBlockItem(ORE_DEPTH_ZIRCONIUM);
+    // P3.2 registerOres placeholder (CE: Block ore_fluorite, real class P3 block batch)
+    public static final DeferredBlock<Block> ORE_FLUORITE = BLOCKS.register("ore_fluorite",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> ORE_FLUORITE_ITEM = ITEMS.registerSimpleBlockItem(ORE_FLUORITE);
+    // P3.2 registerOres placeholder (CE: Block ore_gneiss_asbestos, real class P3 block batch)
+    public static final DeferredBlock<Block> ORE_GNEISS_ASBESTOS = BLOCKS.register("ore_gneiss_asbestos",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> ORE_GNEISS_ASBESTOS_ITEM = ITEMS.registerSimpleBlockItem(ORE_GNEISS_ASBESTOS);
+    // P3.2 registerOres placeholder (CE: Block ore_gneiss_copper, real class P3 block batch)
+    public static final DeferredBlock<Block> ORE_GNEISS_COPPER = BLOCKS.register("ore_gneiss_copper",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> ORE_GNEISS_COPPER_ITEM = ITEMS.registerSimpleBlockItem(ORE_GNEISS_COPPER);
+    // P3.2 registerOres placeholder (CE: Block ore_gneiss_gold, real class P3 block batch)
+    public static final DeferredBlock<Block> ORE_GNEISS_GOLD = BLOCKS.register("ore_gneiss_gold",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> ORE_GNEISS_GOLD_ITEM = ITEMS.registerSimpleBlockItem(ORE_GNEISS_GOLD);
+    // P3.2 registerOres placeholder (CE: Block ore_gneiss_iron, real class P3 block batch)
+    public static final DeferredBlock<Block> ORE_GNEISS_IRON = BLOCKS.register("ore_gneiss_iron",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> ORE_GNEISS_IRON_ITEM = ITEMS.registerSimpleBlockItem(ORE_GNEISS_IRON);
+    // P3.2 registerOres placeholder (CE: Block ore_gneiss_lithium, real class P3 block batch)
+    public static final DeferredBlock<Block> ORE_GNEISS_LITHIUM = BLOCKS.register("ore_gneiss_lithium",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> ORE_GNEISS_LITHIUM_ITEM = ITEMS.registerSimpleBlockItem(ORE_GNEISS_LITHIUM);
+    // P3.2 registerOres placeholder (CE: Block ore_gneiss_rare, real class P3 block batch)
+    public static final DeferredBlock<Block> ORE_GNEISS_RARE = BLOCKS.register("ore_gneiss_rare",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> ORE_GNEISS_RARE_ITEM = ITEMS.registerSimpleBlockItem(ORE_GNEISS_RARE);
+    // P3.2 registerOres placeholder (CE: Block ore_gneiss_schrabidium, real class P3 block batch)
+    public static final DeferredBlock<Block> ORE_GNEISS_SCHRABIDIUM = BLOCKS.register("ore_gneiss_schrabidium",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> ORE_GNEISS_SCHRABIDIUM_ITEM = ITEMS.registerSimpleBlockItem(ORE_GNEISS_SCHRABIDIUM);
+    // P3.2 registerOres placeholder (CE: Block ore_gneiss_uranium, real class P3 block batch)
+    public static final DeferredBlock<Block> ORE_GNEISS_URANIUM = BLOCKS.register("ore_gneiss_uranium",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> ORE_GNEISS_URANIUM_ITEM = ITEMS.registerSimpleBlockItem(ORE_GNEISS_URANIUM);
+    // P3.2 registerOres placeholder (CE: Block ore_gneiss_uranium_scorched, real class P3 block batch)
+    public static final DeferredBlock<Block> ORE_GNEISS_URANIUM_SCORCHED = BLOCKS.register("ore_gneiss_uranium_scorched",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> ORE_GNEISS_URANIUM_SCORCHED_ITEM = ITEMS.registerSimpleBlockItem(ORE_GNEISS_URANIUM_SCORCHED);
+    // P3.2 registerOres placeholder (CE: Block ore_lead, real class P3 block batch)
+    public static final DeferredBlock<Block> ORE_LEAD = BLOCKS.register("ore_lead",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> ORE_LEAD_ITEM = ITEMS.registerSimpleBlockItem(ORE_LEAD);
+    // P3.2 registerOres placeholder (CE: Block ore_lignite, real class P3 block batch)
+    public static final DeferredBlock<Block> ORE_LIGNITE = BLOCKS.register("ore_lignite",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> ORE_LIGNITE_ITEM = ITEMS.registerSimpleBlockItem(ORE_LIGNITE);
+    // P3.2 registerOres placeholder (CE: Block ore_nether_cobalt, real class P3 block batch)
+    public static final DeferredBlock<Block> ORE_NETHER_COBALT = BLOCKS.register("ore_nether_cobalt",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> ORE_NETHER_COBALT_ITEM = ITEMS.registerSimpleBlockItem(ORE_NETHER_COBALT);
+    // P3.2 registerOres placeholder (CE: Block ore_nether_plutonium, real class P3 block batch)
+    public static final DeferredBlock<Block> ORE_NETHER_PLUTONIUM = BLOCKS.register("ore_nether_plutonium",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> ORE_NETHER_PLUTONIUM_ITEM = ITEMS.registerSimpleBlockItem(ORE_NETHER_PLUTONIUM);
+    // P3.2 registerOres placeholder (CE: Block ore_nether_schrabidium, real class P3 block batch)
+    public static final DeferredBlock<Block> ORE_NETHER_SCHRABIDIUM = BLOCKS.register("ore_nether_schrabidium",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> ORE_NETHER_SCHRABIDIUM_ITEM = ITEMS.registerSimpleBlockItem(ORE_NETHER_SCHRABIDIUM);
+    // P3.2 registerOres placeholder (CE: Block ore_nether_sulfur, real class P3 block batch)
+    public static final DeferredBlock<Block> ORE_NETHER_SULFUR = BLOCKS.register("ore_nether_sulfur",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> ORE_NETHER_SULFUR_ITEM = ITEMS.registerSimpleBlockItem(ORE_NETHER_SULFUR);
+    // P3.2 registerOres placeholder (CE: Block ore_nether_tungsten, real class P3 block batch)
+    public static final DeferredBlock<Block> ORE_NETHER_TUNGSTEN = BLOCKS.register("ore_nether_tungsten",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> ORE_NETHER_TUNGSTEN_ITEM = ITEMS.registerSimpleBlockItem(ORE_NETHER_TUNGSTEN);
+    // P3.2 registerOres placeholder (CE: Block ore_nether_uranium, real class P3 block batch)
+    public static final DeferredBlock<Block> ORE_NETHER_URANIUM = BLOCKS.register("ore_nether_uranium",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> ORE_NETHER_URANIUM_ITEM = ITEMS.registerSimpleBlockItem(ORE_NETHER_URANIUM);
+    // P3.2 registerOres placeholder (CE: Block ore_nether_uranium_scorched, real class P3 block batch)
+    public static final DeferredBlock<Block> ORE_NETHER_URANIUM_SCORCHED = BLOCKS.register("ore_nether_uranium_scorched",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> ORE_NETHER_URANIUM_SCORCHED_ITEM = ITEMS.registerSimpleBlockItem(ORE_NETHER_URANIUM_SCORCHED);
+    // P3.2 registerOres placeholder (CE: Block ore_niter, real class P3 block batch)
+    public static final DeferredBlock<Block> ORE_NITER = BLOCKS.register("ore_niter",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> ORE_NITER_ITEM = ITEMS.registerSimpleBlockItem(ORE_NITER);
+    // P3.2 registerOres placeholder (CE: Block ore_rare, real class P3 block batch)
+    public static final DeferredBlock<Block> ORE_RARE = BLOCKS.register("ore_rare",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> ORE_RARE_ITEM = ITEMS.registerSimpleBlockItem(ORE_RARE);
+    // P3.2 registerOres placeholder (CE: Block ore_schrabidium, real class P3 block batch)
+    public static final DeferredBlock<Block> ORE_SCHRABIDIUM = BLOCKS.register("ore_schrabidium",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> ORE_SCHRABIDIUM_ITEM = ITEMS.registerSimpleBlockItem(ORE_SCHRABIDIUM);
+    // P3.2 registerOres placeholder (CE: Block ore_sellafield_diamond, real class P3 block batch)
+    public static final DeferredBlock<Block> ORE_SELLAFIELD_DIAMOND = BLOCKS.register("ore_sellafield_diamond",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> ORE_SELLAFIELD_DIAMOND_ITEM = ITEMS.registerSimpleBlockItem(ORE_SELLAFIELD_DIAMOND);
+    // P3.2 registerOres placeholder (CE: Block ore_sellafield_emerald, real class P3 block batch)
+    public static final DeferredBlock<Block> ORE_SELLAFIELD_EMERALD = BLOCKS.register("ore_sellafield_emerald",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> ORE_SELLAFIELD_EMERALD_ITEM = ITEMS.registerSimpleBlockItem(ORE_SELLAFIELD_EMERALD);
+    // P3.2 registerOres placeholder (CE: Block ore_sellafield_schrabidium, real class P3 block batch)
+    public static final DeferredBlock<Block> ORE_SELLAFIELD_SCHRABIDIUM = BLOCKS.register("ore_sellafield_schrabidium",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> ORE_SELLAFIELD_SCHRABIDIUM_ITEM = ITEMS.registerSimpleBlockItem(ORE_SELLAFIELD_SCHRABIDIUM);
+    // P3.2 registerOres placeholder (CE: Block ore_sellafield_uranium_scorched, real class P3 block batch)
+    public static final DeferredBlock<Block> ORE_SELLAFIELD_URANIUM_SCORCHED = BLOCKS.register("ore_sellafield_uranium_scorched",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> ORE_SELLAFIELD_URANIUM_SCORCHED_ITEM = ITEMS.registerSimpleBlockItem(ORE_SELLAFIELD_URANIUM_SCORCHED);
+    // P3.2 registerOres placeholder (CE: Block ore_sulfur, real class P3 block batch)
+    public static final DeferredBlock<Block> ORE_SULFUR = BLOCKS.register("ore_sulfur",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> ORE_SULFUR_ITEM = ITEMS.registerSimpleBlockItem(ORE_SULFUR);
+    // P3.2 registerOres placeholder (CE: Block ore_thorium, real class P3 block batch)
+    public static final DeferredBlock<Block> ORE_THORIUM = BLOCKS.register("ore_thorium",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> ORE_THORIUM_ITEM = ITEMS.registerSimpleBlockItem(ORE_THORIUM);
+    // P3.2 registerOres placeholder (CE: Block ore_titanium, real class P3 block batch)
+    public static final DeferredBlock<Block> ORE_TITANIUM = BLOCKS.register("ore_titanium",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> ORE_TITANIUM_ITEM = ITEMS.registerSimpleBlockItem(ORE_TITANIUM);
+    // P3.2 registerOres placeholder (CE: Block ore_tungsten, real class P3 block batch)
+    public static final DeferredBlock<Block> ORE_TUNGSTEN = BLOCKS.register("ore_tungsten",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> ORE_TUNGSTEN_ITEM = ITEMS.registerSimpleBlockItem(ORE_TUNGSTEN);
+    // P3.2 registerOres placeholder (CE: Block ore_uranium, real class P3 block batch)
+    public static final DeferredBlock<Block> ORE_URANIUM = BLOCKS.register("ore_uranium",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> ORE_URANIUM_ITEM = ITEMS.registerSimpleBlockItem(ORE_URANIUM);
+    // P3.2 registerOres placeholder (CE: Block ore_uranium_scorched, real class P3 block batch)
+    public static final DeferredBlock<Block> ORE_URANIUM_SCORCHED = BLOCKS.register("ore_uranium_scorched",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> ORE_URANIUM_SCORCHED_ITEM = ITEMS.registerSimpleBlockItem(ORE_URANIUM_SCORCHED);
+    // P3.2 registerOres placeholder (CE: Block pink_planks, real class P3 block batch)
+    public static final DeferredBlock<Block> PINK_PLANKS = BLOCKS.register("pink_planks",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> PINK_PLANKS_ITEM = ITEMS.registerSimpleBlockItem(PINK_PLANKS);
+    // P3.2 registerOres placeholder (CE: Block pink_slab, real class P3 block batch)
+    public static final DeferredBlock<Block> PINK_SLAB = BLOCKS.register("pink_slab",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> PINK_SLAB_ITEM = ITEMS.registerSimpleBlockItem(PINK_SLAB);
+    // P3.2 registerOres placeholder (CE: Block pink_stairs, real class P3 block batch)
+    public static final DeferredBlock<Block> PINK_STAIRS = BLOCKS.register("pink_stairs",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> PINK_STAIRS_ITEM = ITEMS.registerSimpleBlockItem(PINK_STAIRS);
+    // P3.2 registerOres placeholder (CE: Block stone_resource, real class P3 block batch)
+    public static final DeferredBlock<Block> STONE_RESOURCE = BLOCKS.register("stone_resource",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> STONE_RESOURCE_ITEM = ITEMS.registerSimpleBlockItem(STONE_RESOURCE);
+
+    // ===== P5.2 Barrel 三件套（EntityBlock 方块 + BlockItem） =====
+    public static final DeferredBlock<Block> BARREL = BLOCKS.register("barrel",
+            () -> new BlockBarrel(BlockBehaviour.Properties.of().strength(2.0F, 10.0F).sound(SoundType.METAL)));
+    public static final DeferredItem<BlockItem> BARREL_ITEM = ITEMS.registerSimpleBlockItem(BARREL);
+
+    /**
+     * Barrel 方块（1.21 EntityBlock：newBlockEntity/getTicker）。
+     * 1.12 的匿名 Block implements ITileEntityProvider 在 1.21 需用具名类 implements EntityBlock。
+     */
+    public static class BlockBarrel extends Block implements net.minecraft.world.level.block.EntityBlock {
+
+        public BlockBarrel(BlockBehaviour.Properties properties) {
+            super(properties);
+        }
+
+        @Override
+        public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+            return TileEntityBarrel.create(pos, state);
+        }
+
+        @Override
+        public <T extends BlockEntity> net.minecraft.world.level.block.entity.BlockEntityTicker<T> getTicker(
+                net.minecraft.world.level.Level level, BlockState state,
+                net.minecraft.world.level.block.entity.BlockEntityType<T> type) {
+            return type == com.hbm.tileentity.ModTileEntities.BARREL.get()
+                    ? (lvl, pos, st, te) -> ((TileEntityBarrel) te).tick()
+                    : null;
+        }
+    }
+
+    // P5.2 SILEXRecipes 依赖 (CE: BlockTikite ore_tikite, real class P3 block batch)
+    public static final DeferredBlock<Block> ORE_TIKITE = BLOCKS.register("ore_tikite",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> ORE_TIKITE_ITEM = ITEMS.registerSimpleBlockItem(ORE_TIKITE);
+
+    // ===== P5.2 GasCentrifuge 三件套 =====
+    public static final DeferredBlock<Block> GAS_CENT = BLOCKS.register("gas_cent",
+            () -> new BlockGasCentrifuge(BlockBehaviour.Properties.of().strength(3.0F, 15.0F).sound(SoundType.METAL)));
+    public static final DeferredItem<BlockItem> GAS_CENT_ITEM = ITEMS.registerSimpleBlockItem(GAS_CENT);
+
+    public static class BlockGasCentrifuge extends Block implements net.minecraft.world.level.block.EntityBlock {
+
+        public BlockGasCentrifuge(BlockBehaviour.Properties properties) {
+            super(properties);
+        }
+
+        @Override
+        public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+            return TileEntityGasCentrifuge.create(pos, state);
+        }
+
+        @Override
+        public <T extends BlockEntity> net.minecraft.world.level.block.entity.BlockEntityTicker<T> getTicker(
+                net.minecraft.world.level.Level level, BlockState state,
+                net.minecraft.world.level.block.entity.BlockEntityType<T> type) {
+            return type == com.hbm.tileentity.ModTileEntities.GAS_CENT.get()
+                    ? (lvl, pos, st, te) -> ((TileEntityGasCentrifuge) te).tick()
+                    : null;
+        }
+
+        @Override
+        protected net.minecraft.world.InteractionResult useWithoutItem(BlockState state, net.minecraft.world.level.Level level,
+                BlockPos pos, net.minecraft.world.entity.player.Player player, net.minecraft.world.phys.BlockHitResult hit) {
+            if (!level.isClientSide && level.getBlockEntity(pos) instanceof TileEntityGasCentrifuge te) {
+                player.openMenu(te.getMenuProvider(), buf -> buf.writeBlockPos(pos));
+            }
+            return net.minecraft.world.InteractionResult.SUCCESS;
+        }
+    }
+
+    // ===== P5.3 Slab/Stair blocks (6 materials x 2 = 12 new blocks) =====
+
+    // --- Asphalt ---
+    public static final DeferredBlock<SlabBlock> ASPHALT_SLAB = BLOCKS.register("asphalt_slab",
+            () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(ASPHALT.get())));
+    public static final DeferredItem<BlockItem> ASPHALT_SLAB_ITEM = ITEMS.registerSimpleBlockItem(ASPHALT_SLAB);
+    public static final DeferredBlock<StairBlock> ASPHALT_STAIRS = BLOCKS.register("asphalt_stairs",
+            () -> new StairBlock(ASPHALT.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(ASPHALT.get())));
+    public static final DeferredItem<BlockItem> ASPHALT_STAIRS_ITEM = ITEMS.registerSimpleBlockItem(ASPHALT_STAIRS);
+
+    // --- Brick Red ---
+    public static final DeferredBlock<SlabBlock> BRICK_RED_SLAB = BLOCKS.register("brick_red_slab",
+            () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(BRICK_RED.get())));
+    public static final DeferredItem<BlockItem> BRICK_RED_SLAB_ITEM = ITEMS.registerSimpleBlockItem(BRICK_RED_SLAB);
+    public static final DeferredBlock<StairBlock> BRICK_RED_STAIRS = BLOCKS.register("brick_red_stairs",
+            () -> new StairBlock(BRICK_RED.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(BRICK_RED.get())));
+    public static final DeferredItem<BlockItem> BRICK_RED_STAIRS_ITEM = ITEMS.registerSimpleBlockItem(BRICK_RED_STAIRS);
+
+    // --- Concrete ---
+    public static final DeferredBlock<SlabBlock> CONCRETE_SLAB = BLOCKS.register("concrete_slab",
+            () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(CONCRETE.get())));
+    public static final DeferredItem<BlockItem> CONCRETE_SLAB_ITEM = ITEMS.registerSimpleBlockItem(CONCRETE_SLAB);
+    public static final DeferredBlock<StairBlock> CONCRETE_STAIRS = BLOCKS.register("concrete_stairs",
+            () -> new StairBlock(CONCRETE.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(CONCRETE.get())));
+    public static final DeferredItem<BlockItem> CONCRETE_STAIRS_ITEM = ITEMS.registerSimpleBlockItem(CONCRETE_STAIRS);
+
+    // --- Concrete Smooth ---
+    public static final DeferredBlock<SlabBlock> CONCRETE_SMOOTH_SLAB = BLOCKS.register("concrete_smooth_slab",
+            () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(CONCRETE_SMOOTH.get())));
+    public static final DeferredItem<BlockItem> CONCRETE_SMOOTH_SLAB_ITEM = ITEMS.registerSimpleBlockItem(CONCRETE_SMOOTH_SLAB);
+    public static final DeferredBlock<StairBlock> CONCRETE_SMOOTH_STAIRS = BLOCKS.register("concrete_smooth_stairs",
+            () -> new StairBlock(CONCRETE_SMOOTH.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(CONCRETE_SMOOTH.get())));
+    public static final DeferredItem<BlockItem> CONCRETE_SMOOTH_STAIRS_ITEM = ITEMS.registerSimpleBlockItem(CONCRETE_SMOOTH_STAIRS);
+
+    // --- Ducrete ---
+    public static final DeferredBlock<SlabBlock> DUCRETE_SLAB = BLOCKS.register("ducrete_slab",
+            () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(DUCRETE.get())));
+    public static final DeferredItem<BlockItem> DUCRETE_SLAB_ITEM = ITEMS.registerSimpleBlockItem(DUCRETE_SLAB);
+    public static final DeferredBlock<StairBlock> DUCRETE_STAIRS = BLOCKS.register("ducrete_stairs",
+            () -> new StairBlock(DUCRETE.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(DUCRETE.get())));
+    public static final DeferredItem<BlockItem> DUCRETE_STAIRS_ITEM = ITEMS.registerSimpleBlockItem(DUCRETE_STAIRS);
+
+    // --- Ducrete Smooth ---
+    public static final DeferredBlock<SlabBlock> DUCRETE_SMOOTH_SLAB = BLOCKS.register("ducrete_smooth_slab",
+            () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(DUCRETE_SMOOTH.get())));
+    public static final DeferredItem<BlockItem> DUCRETE_SMOOTH_SLAB_ITEM = ITEMS.registerSimpleBlockItem(DUCRETE_SMOOTH_SLAB);
+    public static final DeferredBlock<StairBlock> DUCRETE_SMOOTH_STAIRS = BLOCKS.register("ducrete_smooth_stairs",
+            () -> new StairBlock(DUCRETE_SMOOTH.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(DUCRETE_SMOOTH.get())));
+    public static final DeferredItem<BlockItem> DUCRETE_SMOOTH_STAIRS_ITEM = ITEMS.registerSimpleBlockItem(DUCRETE_SMOOTH_STAIRS);
+
+    // ===== P5.4 Wall blocks (6 materials) =====
+
+    public static final DeferredBlock<WallBlock> ASPHALT_WALL = BLOCKS.register("asphalt_wall",
+            () -> new WallBlock(BlockBehaviour.Properties.ofFullCopy(ASPHALT.get())));
+    public static final DeferredItem<BlockItem> ASPHALT_WALL_ITEM = ITEMS.registerSimpleBlockItem(ASPHALT_WALL);
+
+    public static final DeferredBlock<WallBlock> BRICK_RED_WALL = BLOCKS.register("brick_red_wall",
+            () -> new WallBlock(BlockBehaviour.Properties.ofFullCopy(BRICK_RED.get())));
+    public static final DeferredItem<BlockItem> BRICK_RED_WALL_ITEM = ITEMS.registerSimpleBlockItem(BRICK_RED_WALL);
+
+    public static final DeferredBlock<WallBlock> CONCRETE_WALL = BLOCKS.register("concrete_wall",
+            () -> new WallBlock(BlockBehaviour.Properties.ofFullCopy(CONCRETE.get())));
+    public static final DeferredItem<BlockItem> CONCRETE_WALL_ITEM = ITEMS.registerSimpleBlockItem(CONCRETE_WALL);
+
+    public static final DeferredBlock<WallBlock> CONCRETE_SMOOTH_WALL = BLOCKS.register("concrete_smooth_wall",
+            () -> new WallBlock(BlockBehaviour.Properties.ofFullCopy(CONCRETE_SMOOTH.get())));
+    public static final DeferredItem<BlockItem> CONCRETE_SMOOTH_WALL_ITEM = ITEMS.registerSimpleBlockItem(CONCRETE_SMOOTH_WALL);
+
+    public static final DeferredBlock<WallBlock> DUCRETE_WALL = BLOCKS.register("ducrete_wall",
+            () -> new WallBlock(BlockBehaviour.Properties.ofFullCopy(DUCRETE.get())));
+    public static final DeferredItem<BlockItem> DUCRETE_WALL_ITEM = ITEMS.registerSimpleBlockItem(DUCRETE_WALL);
+
+    public static final DeferredBlock<WallBlock> DUCRETE_SMOOTH_WALL = BLOCKS.register("ducrete_smooth_wall",
+            () -> new WallBlock(BlockBehaviour.Properties.ofFullCopy(DUCRETE_SMOOTH.get())));
+    public static final DeferredItem<BlockItem> DUCRETE_SMOOTH_WALL_ITEM = ITEMS.registerSimpleBlockItem(DUCRETE_SMOOTH_WALL);
+
+    // ===== P5.4 Fence blocks (4 materials) =====
+
+    public static final DeferredBlock<FenceBlock> ASPHALT_FENCE = BLOCKS.register("asphalt_fence",
+            () -> new FenceBlock(BlockBehaviour.Properties.ofFullCopy(ASPHALT.get())));
+    public static final DeferredItem<BlockItem> ASPHALT_FENCE_ITEM = ITEMS.registerSimpleBlockItem(ASPHALT_FENCE);
+
+    public static final DeferredBlock<FenceBlock> BRICK_RED_FENCE = BLOCKS.register("brick_red_fence",
+            () -> new FenceBlock(BlockBehaviour.Properties.ofFullCopy(BRICK_RED.get())));
+    public static final DeferredItem<BlockItem> BRICK_RED_FENCE_ITEM = ITEMS.registerSimpleBlockItem(BRICK_RED_FENCE);
+
+    public static final DeferredBlock<FenceBlock> CONCRETE_FENCE = BLOCKS.register("concrete_fence",
+            () -> new FenceBlock(BlockBehaviour.Properties.ofFullCopy(CONCRETE.get())));
+    public static final DeferredItem<BlockItem> CONCRETE_FENCE_ITEM = ITEMS.registerSimpleBlockItem(CONCRETE_FENCE);
+
+    public static final DeferredBlock<FenceBlock> CONCRETE_SMOOTH_FENCE = BLOCKS.register("concrete_smooth_fence",
+            () -> new FenceBlock(BlockBehaviour.Properties.ofFullCopy(CONCRETE_SMOOTH.get())));
+    public static final DeferredItem<BlockItem> CONCRETE_SMOOTH_FENCE_ITEM = ITEMS.registerSimpleBlockItem(CONCRETE_SMOOTH_FENCE);
+
+    // ===== P5.8 Compressor 三件套（升级为 EntityBlock） =====
+
+    public static final DeferredBlock<Block> COMPRESSOR = BLOCKS.register("compressor",
+            () -> new BlockCompressor(BlockBehaviour.Properties.of()
+                    .strength(3.0F, 6.0F)
+                    .sound(SoundType.METAL)
+                    .requiresCorrectToolForDrops()));
+    public static final DeferredItem<BlockItem> COMPRESSOR_ITEM = ITEMS.registerSimpleBlockItem(COMPRESSOR);
+
+    public static class BlockCompressor extends Block implements net.minecraft.world.level.block.EntityBlock {
+
+        public BlockCompressor(BlockBehaviour.Properties properties) {
+            super(properties);
+        }
+
+        @Override
+        public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+            return com.hbm.tileentity.machine.TileEntityCompressor.create(pos, state);
+        }
+
+        @Override
+        public <T extends BlockEntity> net.minecraft.world.level.block.entity.BlockEntityTicker<T> getTicker(
+                net.minecraft.world.level.Level level, BlockState state,
+                net.minecraft.world.level.block.entity.BlockEntityType<T> type) {
+            return type == com.hbm.tileentity.ModTileEntities.COMPRESSOR_TE.get()
+                    ? (lvl, pos, st, te) -> ((com.hbm.tileentity.machine.TileEntityCompressor) te).tick()
+                    : null;
+        }
+
+        @Override
+        protected net.minecraft.world.InteractionResult useWithoutItem(BlockState state, net.minecraft.world.level.Level level,
+                BlockPos pos, net.minecraft.world.entity.player.Player player, net.minecraft.world.phys.BlockHitResult hit) {
+            if (!level.isClientSide && level.getBlockEntity(pos) instanceof com.hbm.tileentity.machine.TileEntityCompressor te) {
+                player.openMenu(te.getMenuProvider(), buf -> buf.writeBlockPos(pos));
+            }
+            return net.minecraft.world.InteractionResult.SUCCESS;
+        }
+    }
+
+    // ===== P5.6 New metal blocks (Nickel, Chromium, Molybdenum, Silicon) =====
+
+    public static final DeferredBlock<Block> BLOCK_NICKEL = BLOCKS.register("block_nickel",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_NICKEL_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_NICKEL);
+
+    public static final DeferredBlock<Block> BLOCK_CHROMIUM = BLOCKS.register("block_chromium",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_CHROMIUM_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_CHROMIUM);
+
+    public static final DeferredBlock<Block> BLOCK_MOLYBDENUM = BLOCKS.register("block_molybdenum",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_MOLYBDENUM_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_MOLYBDENUM);
+
+    public static final DeferredBlock<Block> BLOCK_SILICON = BLOCKS.register("block_silicon",
+            () -> new Block(BlockBehaviour.Properties.of()));
+    public static final DeferredItem<BlockItem> BLOCK_SILICON_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_SILICON);
+
+    // ===== P5.7 FluidTank 三件套 =====
+    public static final DeferredBlock<Block> FLUID_TANK = BLOCKS.register("fluid_tank",
+            () -> new BlockFluidTank(BlockBehaviour.Properties.of().strength(3.0F, 12.0F).sound(SoundType.METAL)));
+    public static final DeferredItem<BlockItem> FLUID_TANK_ITEM = ITEMS.registerSimpleBlockItem(FLUID_TANK);
+
+    public static class BlockFluidTank extends Block implements net.minecraft.world.level.block.EntityBlock {
+
+        public BlockFluidTank(BlockBehaviour.Properties properties) {
+            super(properties);
+        }
+
+        @Override
+        public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+            return com.hbm.tileentity.machine.TileEntityFluidTank.create(pos, state);
+        }
+
+        @Override
+        public <T extends BlockEntity> net.minecraft.world.level.block.entity.BlockEntityTicker<T> getTicker(
+                net.minecraft.world.level.Level level, BlockState state,
+                net.minecraft.world.level.block.entity.BlockEntityType<T> type) {
+            return type == com.hbm.tileentity.ModTileEntities.FLUID_TANK_TE.get()
+                    ? (lvl, pos, st, te) -> ((com.hbm.tileentity.machine.TileEntityFluidTank) te).tick()
+                    : null;
+        }
+
+        @Override
+        protected net.minecraft.world.InteractionResult useWithoutItem(BlockState state, net.minecraft.world.level.Level level,
+                BlockPos pos, net.minecraft.world.entity.player.Player player, net.minecraft.world.phys.BlockHitResult hit) {
+            if (!level.isClientSide && level.getBlockEntity(pos) instanceof com.hbm.tileentity.machine.TileEntityFluidTank te) {
+                player.openMenu(te.getMenuProvider(), buf -> buf.writeBlockPos(pos));
+            }
+            return net.minecraft.world.InteractionResult.SUCCESS;
+        }
+    }
+
+    // ===== P5.7 RBMKConsole 三件套 =====
+    public static final DeferredBlock<Block> RBMK_CONSOLE = BLOCKS.register("rbmk_console",
+            () -> new BlockRBMKConsole(BlockBehaviour.Properties.of().strength(5.0F, 20.0F).sound(SoundType.METAL)));
+    public static final DeferredItem<BlockItem> RBMK_CONSOLE_ITEM = ITEMS.registerSimpleBlockItem(RBMK_CONSOLE);
+
+    public static class BlockRBMKConsole extends Block implements net.minecraft.world.level.block.EntityBlock {
+
+        public BlockRBMKConsole(BlockBehaviour.Properties properties) {
+            super(properties);
+        }
+
+        @Override
+        public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+            return com.hbm.tileentity.machine.TileEntityRBMKConsole.create(pos, state);
+        }
+
+        @Override
+        public <T extends BlockEntity> net.minecraft.world.level.block.entity.BlockEntityTicker<T> getTicker(
+                net.minecraft.world.level.Level level, BlockState state,
+                net.minecraft.world.level.block.entity.BlockEntityType<T> type) {
+            return type == com.hbm.tileentity.ModTileEntities.RBMK_CONSOLE_TE.get()
+                    ? (lvl, pos, st, te) -> ((com.hbm.tileentity.machine.TileEntityRBMKConsole) te).tick()
+                    : null;
+        }
+
+        @Override
+        protected net.minecraft.world.InteractionResult useWithoutItem(BlockState state, net.minecraft.world.level.Level level,
+                BlockPos pos, net.minecraft.world.entity.player.Player player, net.minecraft.world.phys.BlockHitResult hit) {
+            if (!level.isClientSide && level.getBlockEntity(pos) instanceof com.hbm.tileentity.machine.TileEntityRBMKConsole te) {
+                player.openMenu(te.getMenuProvider(), buf -> buf.writeBlockPos(pos));
+            }
+            return net.minecraft.world.InteractionResult.SUCCESS;
+        }
+    }
+
+    // ===== P5.10 ChemicalReactor 三件套 =====
+    public static final DeferredBlock<Block> CHEMICAL_REACTOR = BLOCKS.register("chemical_reactor",
+            () -> new BlockChemicalReactor(BlockBehaviour.Properties.of().strength(3.5F, 10.0F).sound(SoundType.METAL)));
+    public static final DeferredItem<BlockItem> CHEMICAL_REACTOR_ITEM = ITEMS.registerSimpleBlockItem(CHEMICAL_REACTOR);
+
+    public static class BlockChemicalReactor extends Block implements net.minecraft.world.level.block.EntityBlock {
+
+        public BlockChemicalReactor(BlockBehaviour.Properties properties) {
+            super(properties);
+        }
+
+        @Override
+        public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+            return com.hbm.tileentity.machine.TileEntityChemicalReactor.create(pos, state);
+        }
+
+        @Override
+        public <T extends BlockEntity> net.minecraft.world.level.block.entity.BlockEntityTicker<T> getTicker(
+                net.minecraft.world.level.Level level, BlockState state,
+                net.minecraft.world.level.block.entity.BlockEntityType<T> type) {
+            return type == com.hbm.tileentity.ModTileEntities.CHEMICAL_REACTOR_TE.get()
+                    ? (lvl, pos, st, te) -> ((com.hbm.tileentity.machine.TileEntityChemicalReactor) te).tick()
+                    : null;
+        }
+
+        @Override
+        protected net.minecraft.world.InteractionResult useWithoutItem(BlockState state, net.minecraft.world.level.Level level,
+                BlockPos pos, net.minecraft.world.entity.player.Player player, net.minecraft.world.phys.BlockHitResult hit) {
+            if (!level.isClientSide && level.getBlockEntity(pos) instanceof com.hbm.tileentity.machine.TileEntityChemicalReactor te) {
+                player.openMenu(te.getMenuProvider(), buf -> buf.writeBlockPos(pos));
+            }
+            return net.minecraft.world.InteractionResult.SUCCESS;
+        }
+    }
+
+    // ===== P5.11 ArcFurnace 三件套 =====
+    public static final DeferredBlock<Block> ARC_FURNACE = BLOCKS.register("arc_furnace",
+            () -> new BlockArcFurnace(BlockBehaviour.Properties.of().strength(4.0F, 15.0F).sound(SoundType.METAL)));
+    public static final DeferredItem<BlockItem> ARC_FURNACE_ITEM = ITEMS.registerSimpleBlockItem(ARC_FURNACE);
+
+    public static class BlockArcFurnace extends Block implements net.minecraft.world.level.block.EntityBlock {
+
+        public BlockArcFurnace(BlockBehaviour.Properties properties) {
+            super(properties);
+        }
+
+        @Override
+        public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+            return com.hbm.tileentity.machine.TileEntityArcFurnace.create(pos, state);
+        }
+
+        @Override
+        public <T extends BlockEntity> net.minecraft.world.level.block.entity.BlockEntityTicker<T> getTicker(
+                net.minecraft.world.level.Level level, BlockState state,
+                net.minecraft.world.level.block.entity.BlockEntityType<T> type) {
+            return type == com.hbm.tileentity.ModTileEntities.ARC_FURNACE_TE.get()
+                    ? (lvl, pos, st, te) -> ((com.hbm.tileentity.machine.TileEntityArcFurnace) te).tick()
+                    : null;
+        }
+
+        @Override
+        protected net.minecraft.world.InteractionResult useWithoutItem(BlockState state, net.minecraft.world.level.Level level,
+                BlockPos pos, net.minecraft.world.entity.player.Player player, net.minecraft.world.phys.BlockHitResult hit) {
+            if (!level.isClientSide && level.getBlockEntity(pos) instanceof com.hbm.tileentity.machine.TileEntityArcFurnace te) {
+                player.openMenu(te.getMenuProvider(), buf -> buf.writeBlockPos(pos));
+            }
+            return net.minecraft.world.InteractionResult.SUCCESS;
+        }
+    }
+
+    // ===== P5.12 Centrifuge 三件套 =====
+    public static final DeferredBlock<Block> CENTRIFUGE = BLOCKS.register("centrifuge",
+            () -> new BlockCentrifuge(BlockBehaviour.Properties.of().strength(4.0F, 12.0F).sound(SoundType.METAL)));
+    public static final DeferredItem<BlockItem> CENTRIFUGE_ITEM = ITEMS.registerSimpleBlockItem(CENTRIFUGE);
+
+    public static class BlockCentrifuge extends Block implements net.minecraft.world.level.block.EntityBlock {
+
+        public BlockCentrifuge(BlockBehaviour.Properties properties) {
+            super(properties);
+        }
+
+        @Override
+        public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+            return com.hbm.tileentity.machine.TileEntityCentrifuge.create(pos, state);
+        }
+
+        @Override
+        public <T extends BlockEntity> net.minecraft.world.level.block.entity.BlockEntityTicker<T> getTicker(
+                net.minecraft.world.level.Level level, BlockState state,
+                net.minecraft.world.level.block.entity.BlockEntityType<T> type) {
+            return type == com.hbm.tileentity.ModTileEntities.CENTRIFUGE_TE.get()
+                    ? (lvl, pos, st, te) -> ((com.hbm.tileentity.machine.TileEntityCentrifuge) te).tick()
+                    : null;
+        }
+
+        @Override
+        protected net.minecraft.world.InteractionResult useWithoutItem(BlockState state, net.minecraft.world.level.Level level,
+                BlockPos pos, net.minecraft.world.entity.player.Player player, net.minecraft.world.phys.BlockHitResult hit) {
+            if (!level.isClientSide && level.getBlockEntity(pos) instanceof com.hbm.tileentity.machine.TileEntityCentrifuge te) {
+                player.openMenu(te.getMenuProvider(), buf -> buf.writeBlockPos(pos));
+            }
+            return net.minecraft.world.InteractionResult.SUCCESS;
+        }
+    }
+
+    // ===== P5.13 Crusher 三件套 =====
+    public static final DeferredBlock<Block> CRUSHER = BLOCKS.register("crusher",
+            () -> new BlockCrusher(BlockBehaviour.Properties.of().strength(3.5F, 10.0F).sound(SoundType.METAL)));
+    public static final DeferredItem<BlockItem> CRUSHER_ITEM = ITEMS.registerSimpleBlockItem(CRUSHER);
+
+    public static class BlockCrusher extends Block implements net.minecraft.world.level.block.EntityBlock {
+
+        public BlockCrusher(BlockBehaviour.Properties properties) {
+            super(properties);
+        }
+
+        @Override
+        public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+            return com.hbm.tileentity.machine.TileEntityCrusher.create(pos, state);
+        }
+
+        @Override
+        public <T extends BlockEntity> net.minecraft.world.level.block.entity.BlockEntityTicker<T> getTicker(
+                net.minecraft.world.level.Level level, BlockState state,
+                net.minecraft.world.level.block.entity.BlockEntityType<T> type) {
+            return type == com.hbm.tileentity.ModTileEntities.CRUSHER_TE.get()
+                    ? (lvl, pos, st, te) -> ((com.hbm.tileentity.machine.TileEntityCrusher) te).tick()
+                    : null;
+        }
+
+        @Override
+        protected net.minecraft.world.InteractionResult useWithoutItem(BlockState state, net.minecraft.world.level.Level level,
+                BlockPos pos, net.minecraft.world.entity.player.Player player, net.minecraft.world.phys.BlockHitResult hit) {
+            if (!level.isClientSide && level.getBlockEntity(pos) instanceof com.hbm.tileentity.machine.TileEntityCrusher te) {
+                player.openMenu(te.getMenuProvider(), buf -> buf.writeBlockPos(pos));
+            }
+            return net.minecraft.world.InteractionResult.SUCCESS;
+        }
+    }
+
+    // ===== P5.14 FluidReactor 三件套 =====
+    public static final DeferredBlock<Block> FLUID_REACTOR = BLOCKS.register("fluid_reactor",
+            () -> new BlockFluidReactor(BlockBehaviour.Properties.of().strength(4.0F, 12.0F).sound(SoundType.METAL)));
+    public static final DeferredItem<BlockItem> FLUID_REACTOR_ITEM = ITEMS.registerSimpleBlockItem(FLUID_REACTOR);
+
+    public static class BlockFluidReactor extends Block implements net.minecraft.world.level.block.EntityBlock {
+
+        public BlockFluidReactor(BlockBehaviour.Properties properties) {
+            super(properties);
+        }
+
+        @Override
+        public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+            return com.hbm.tileentity.machine.TileEntityFluidReactor.create(pos, state);
+        }
+
+        @Override
+        public <T extends BlockEntity> net.minecraft.world.level.block.entity.BlockEntityTicker<T> getTicker(
+                net.minecraft.world.level.Level level, BlockState state,
+                net.minecraft.world.level.block.entity.BlockEntityType<T> type) {
+            return type == com.hbm.tileentity.ModTileEntities.FLUID_REACTOR_TE.get()
+                    ? (lvl, pos, st, te) -> ((com.hbm.tileentity.machine.TileEntityFluidReactor) te).tick()
+                    : null;
+        }
+
+        @Override
+        protected net.minecraft.world.InteractionResult useWithoutItem(BlockState state, net.minecraft.world.level.Level level,
+                BlockPos pos, net.minecraft.world.entity.player.Player player, net.minecraft.world.phys.BlockHitResult hit) {
+            if (!level.isClientSide && level.getBlockEntity(pos) instanceof com.hbm.tileentity.machine.TileEntityFluidReactor te) {
+                player.openMenu(te.getMenuProvider(), buf -> buf.writeBlockPos(pos));
+            }
+            return net.minecraft.world.InteractionResult.SUCCESS;
+        }
+    }
+
+    // ===== P5.14 Assembler 三件套 =====
+    public static final DeferredBlock<Block> ASSEMBLER = BLOCKS.register("assembler",
+            () -> new BlockAssembler(BlockBehaviour.Properties.of().strength(3.5F, 10.0F).sound(SoundType.METAL)));
+    public static final DeferredItem<BlockItem> ASSEMBLER_ITEM = ITEMS.registerSimpleBlockItem(ASSEMBLER);
+
+    public static class BlockAssembler extends Block implements net.minecraft.world.level.block.EntityBlock {
+
+        public BlockAssembler(BlockBehaviour.Properties properties) {
+            super(properties);
+        }
+
+        @Override
+        public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+            return com.hbm.tileentity.machine.TileEntityAssembler.create(pos, state);
+        }
+
+        @Override
+        public <T extends BlockEntity> net.minecraft.world.level.block.entity.BlockEntityTicker<T> getTicker(
+                net.minecraft.world.level.Level level, BlockState state,
+                net.minecraft.world.level.block.entity.BlockEntityType<T> type) {
+            return type == com.hbm.tileentity.ModTileEntities.ASSEMBLER_TE.get()
+                    ? (lvl, pos, st, te) -> ((com.hbm.tileentity.machine.TileEntityAssembler) te).tick()
+                    : null;
+        }
+
+        @Override
+        protected net.minecraft.world.InteractionResult useWithoutItem(BlockState state, net.minecraft.world.level.Level level,
+                BlockPos pos, net.minecraft.world.entity.player.Player player, net.minecraft.world.phys.BlockHitResult hit) {
+            if (!level.isClientSide && level.getBlockEntity(pos) instanceof com.hbm.tileentity.machine.TileEntityAssembler te) {
+                player.openMenu(te.getMenuProvider(), buf -> buf.writeBlockPos(pos));
+            }
+            return net.minecraft.world.InteractionResult.SUCCESS;
+        }
+    }
+
+    // ===== P5.15 RBMKReactor 三件套 =====
+    public static final DeferredBlock<Block> RBMK_REACTOR = BLOCKS.register("rbmk_reactor",
+            () -> new BlockRBMKReactor(BlockBehaviour.Properties.of().strength(10.0F, 50.0F).sound(SoundType.METAL)));
+    public static final DeferredItem<BlockItem> RBMK_REACTOR_ITEM = ITEMS.registerSimpleBlockItem(RBMK_REACTOR);
+
+    public static class BlockRBMKReactor extends Block implements net.minecraft.world.level.block.EntityBlock {
+
+        public BlockRBMKReactor(BlockBehaviour.Properties properties) {
+            super(properties);
+        }
+
+        @Override
+        public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+            return com.hbm.tileentity.machine.TileEntityRBMKReactor.create(pos, state);
+        }
+
+        @Override
+        public <T extends BlockEntity> net.minecraft.world.level.block.entity.BlockEntityTicker<T> getTicker(
+                net.minecraft.world.level.Level level, BlockState state,
+                net.minecraft.world.level.block.entity.BlockEntityType<T> type) {
+            return type == com.hbm.tileentity.ModTileEntities.RBMK_REACTOR_TE.get()
+                    ? (lvl, pos, st, te) -> ((com.hbm.tileentity.machine.TileEntityRBMKReactor) te).tick()
+                    : null;
+        }
+
+        @Override
+        protected net.minecraft.world.InteractionResult useWithoutItem(BlockState state, net.minecraft.world.level.Level level,
+                BlockPos pos, net.minecraft.world.entity.player.Player player, net.minecraft.world.phys.BlockHitResult hit) {
+            if (!level.isClientSide && level.getBlockEntity(pos) instanceof com.hbm.tileentity.machine.TileEntityRBMKReactor te) {
+                player.openMenu(te.getMenuProvider(), buf -> buf.writeBlockPos(pos));
+            }
+            return net.minecraft.world.InteractionResult.SUCCESS;
+        }
+    }
+
+    // ===== P5.15 HeatExchanger 三件套 =====
+    public static final DeferredBlock<Block> HEAT_EXCHANGER = BLOCKS.register("heat_exchanger",
+            () -> new BlockHeatExchanger(BlockBehaviour.Properties.of().strength(5.0F, 15.0F).sound(SoundType.METAL)));
+    public static final DeferredItem<BlockItem> HEAT_EXCHANGER_ITEM = ITEMS.registerSimpleBlockItem(HEAT_EXCHANGER);
+
+    public static class BlockHeatExchanger extends Block implements net.minecraft.world.level.block.EntityBlock {
+
+        public BlockHeatExchanger(BlockBehaviour.Properties properties) {
+            super(properties);
+        }
+
+        @Override
+        public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+            return com.hbm.tileentity.machine.TileEntityHeatExchanger.create(pos, state);
+        }
+
+        @Override
+        public <T extends BlockEntity> net.minecraft.world.level.block.entity.BlockEntityTicker<T> getTicker(
+                net.minecraft.world.level.Level level, BlockState state,
+                net.minecraft.world.level.block.entity.BlockEntityType<T> type) {
+            return type == com.hbm.tileentity.ModTileEntities.HEAT_EXCHANGER_TE.get()
+                    ? (lvl, pos, st, te) -> ((com.hbm.tileentity.machine.TileEntityHeatExchanger) te).tick()
+                    : null;
+        }
+
+        @Override
+        protected net.minecraft.world.InteractionResult useWithoutItem(BlockState state, net.minecraft.world.level.Level level,
+                BlockPos pos, net.minecraft.world.entity.player.Player player, net.minecraft.world.phys.BlockHitResult hit) {
+            if (!level.isClientSide && level.getBlockEntity(pos) instanceof com.hbm.tileentity.machine.TileEntityHeatExchanger te) {
+                player.openMenu(te.getMenuProvider(), buf -> buf.writeBlockPos(pos));
+            }
+            return net.minecraft.world.InteractionResult.SUCCESS;
+        }
+    }
+
+    // ===== P5.16 ParticleAccelerator 三件套 =====
+    public static final DeferredBlock<Block> PARTICLE_ACCELERATOR = BLOCKS.register("particle_accelerator",
+            () -> new BlockParticleAccelerator(BlockBehaviour.Properties.of().strength(8.0F, 30.0F).sound(SoundType.METAL)));
+    public static final DeferredItem<BlockItem> PARTICLE_ACCELERATOR_ITEM = ITEMS.registerSimpleBlockItem(PARTICLE_ACCELERATOR);
+
+    public static class BlockParticleAccelerator extends Block implements net.minecraft.world.level.block.EntityBlock {
+
+        public BlockParticleAccelerator(BlockBehaviour.Properties properties) {
+            super(properties);
+        }
+
+        @Override
+        public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+            return com.hbm.tileentity.machine.TileEntityParticleAccelerator.create(pos, state);
+        }
+
+        @Override
+        public <T extends BlockEntity> net.minecraft.world.level.block.entity.BlockEntityTicker<T> getTicker(
+                net.minecraft.world.level.Level level, BlockState state,
+                net.minecraft.world.level.block.entity.BlockEntityType<T> type) {
+            return type == com.hbm.tileentity.ModTileEntities.PARTICLE_ACCELERATOR_TE.get()
+                    ? (lvl, pos, st, te) -> ((com.hbm.tileentity.machine.TileEntityParticleAccelerator) te).tick()
+                    : null;
+        }
+
+        @Override
+        protected net.minecraft.world.InteractionResult useWithoutItem(BlockState state, net.minecraft.world.level.Level level,
+                BlockPos pos, net.minecraft.world.entity.player.Player player, net.minecraft.world.phys.BlockHitResult hit) {
+            if (!level.isClientSide && level.getBlockEntity(pos) instanceof com.hbm.tileentity.machine.TileEntityParticleAccelerator te) {
+                player.openMenu(te.getMenuProvider(), buf -> buf.writeBlockPos(pos));
+            }
+            return net.minecraft.world.InteractionResult.SUCCESS;
+        }
+    }
+
+    // ===== P5.16 Laser 三件套 =====
+    public static final DeferredBlock<Block> LASER = BLOCKS.register("laser",
+            () -> new BlockLaser(BlockBehaviour.Properties.of().strength(5.0F, 20.0F).sound(SoundType.METAL)));
+    public static final DeferredItem<BlockItem> LASER_ITEM = ITEMS.registerSimpleBlockItem(LASER);
+
+    public static class BlockLaser extends Block implements net.minecraft.world.level.block.EntityBlock {
+
+        public BlockLaser(BlockBehaviour.Properties properties) {
+            super(properties);
+        }
+
+        @Override
+        public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+            return com.hbm.tileentity.machine.TileEntityLaser.create(pos, state);
+        }
+
+        @Override
+        public <T extends BlockEntity> net.minecraft.world.level.block.entity.BlockEntityTicker<T> getTicker(
+                net.minecraft.world.level.Level level, BlockState state,
+                net.minecraft.world.level.block.entity.BlockEntityType<T> type) {
+            return type == com.hbm.tileentity.ModTileEntities.LASER_TE.get()
+                    ? (lvl, pos, st, te) -> ((com.hbm.tileentity.machine.TileEntityLaser) te).tick()
+                    : null;
+        }
+
+        @Override
+        protected net.minecraft.world.InteractionResult useWithoutItem(BlockState state, net.minecraft.world.level.Level level,
+                BlockPos pos, net.minecraft.world.entity.player.Player player, net.minecraft.world.phys.BlockHitResult hit) {
+            if (!level.isClientSide && level.getBlockEntity(pos) instanceof com.hbm.tileentity.machine.TileEntityLaser te) {
+                player.openMenu(te.getMenuProvider(), buf -> buf.writeBlockPos(pos));
+            }
+            return net.minecraft.world.InteractionResult.SUCCESS;
+        }
+    }
+
+// ============================================================================
+// Generated NeoForge block registrations for missing CE blocks
+// Total: 939 blocks
+// Each block is registered as a simple Block with a BlockItem
+// ============================================================================
+
+// ============================================================================
+// Section: public static final Block fatduck = new BlockBase(Material.IRON, "fatduck"); (10 blocks)
+// ============================================================================
+
+public static final DeferredBlock<Block> TEST_RENDER = BLOCKS.register("test_render",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> TEST_RENDER_ITEM = ITEMS.registerSimpleBlockItem(TEST_RENDER);
+
+public static final DeferredBlock<Block> OBJ_TESTER = BLOCKS.register("obj_tester",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> OBJ_TESTER_ITEM = ITEMS.registerSimpleBlockItem(OBJ_TESTER);
+
+public static final DeferredBlock<Block> CHEATER_VIRUS = BLOCKS.register("cheater_virus",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CHEATER_VIRUS_ITEM = ITEMS.registerSimpleBlockItem(CHEATER_VIRUS);
+
+public static final DeferredBlock<Block> CHEATER_VIRUS_SEED = BLOCKS.register("cheater_virus_seed",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CHEATER_VIRUS_SEED_ITEM = ITEMS.registerSimpleBlockItem(CHEATER_VIRUS_SEED);
+
+public static final DeferredBlock<Block> CRYSTAL_VIRUS = BLOCKS.register("crystal_virus",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CRYSTAL_VIRUS_ITEM = ITEMS.registerSimpleBlockItem(CRYSTAL_VIRUS);
+
+public static final DeferredBlock<Block> CRYSTAL_HARDENED = BLOCKS.register("crystal_hardened",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CRYSTAL_HARDENED_ITEM = ITEMS.registerSimpleBlockItem(CRYSTAL_HARDENED);
+
+public static final DeferredBlock<Block> CRYSTAL_PULSAR = BLOCKS.register("crystal_pulsar",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CRYSTAL_PULSAR_ITEM = ITEMS.registerSimpleBlockItem(CRYSTAL_PULSAR);
+
+public static final DeferredBlock<Block> BALEFIRE = BLOCKS.register("balefire",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BALEFIRE_ITEM = ITEMS.registerSimpleBlockItem(BALEFIRE);
+
+public static final DeferredBlock<Block> FIRE_DIGAMMA = BLOCKS.register("fire_digamma",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> FIRE_DIGAMMA_ITEM = ITEMS.registerSimpleBlockItem(FIRE_DIGAMMA);
+
+public static final DeferredBlock<Block> DIGAMMA_MATTER = BLOCKS.register("digamma_matter",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DIGAMMA_MATTER_ITEM = ITEMS.registerSimpleBlockItem(DIGAMMA_MATTER);
+
+// ============================================================================
+// Section: Dummy converter blocks for dumbasses who can't read (2 blocks)
+// ============================================================================
+
+public static final DeferredBlock<Block> MACHINE_CONVERTER_HE_RF = BLOCKS.register("machine_converter_he_rf",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_CONVERTER_HE_RF_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_CONVERTER_HE_RF);
+
+public static final DeferredBlock<Block> MACHINE_CONVERTER_RF_HE = BLOCKS.register("machine_converter_rf_he",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_CONVERTER_RF_HE_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_CONVERTER_RF_HE);
+
+// ============================================================================
+// Section: Generic blocks (33 blocks)
+// ============================================================================
+
+public static final DeferredBlock<Block> ASPHALT_LIGHT = BLOCKS.register("asphalt_light",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> ASPHALT_LIGHT_ITEM = ITEMS.registerSimpleBlockItem(ASPHALT_LIGHT);
+
+public static final DeferredBlock<Block> REINFORCED_GLASS = BLOCKS.register("reinforced_glass",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> REINFORCED_GLASS_ITEM = ITEMS.registerSimpleBlockItem(REINFORCED_GLASS);
+
+public static final DeferredBlock<Block> REINFORCED_GLASS_PANE = BLOCKS.register("reinforced_glass_pane",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> REINFORCED_GLASS_PANE_ITEM = ITEMS.registerSimpleBlockItem(REINFORCED_GLASS_PANE);
+
+public static final DeferredBlock<Block> REINFORCED_LIGHT = BLOCKS.register("reinforced_light",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> REINFORCED_LIGHT_ITEM = ITEMS.registerSimpleBlockItem(REINFORCED_LIGHT);
+
+public static final DeferredBlock<Block> REINFORCED_LAMP_OFF = BLOCKS.register("reinforced_lamp_off",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> REINFORCED_LAMP_OFF_ITEM = ITEMS.registerSimpleBlockItem(REINFORCED_LAMP_OFF);
+
+public static final DeferredBlock<Block> REINFORCED_LAMP_ON = BLOCKS.register("reinforced_lamp_on",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> REINFORCED_LAMP_ON_ITEM = ITEMS.registerSimpleBlockItem(REINFORCED_LAMP_ON);
+
+public static final DeferredBlock<Block> REINFORCED_STONE = BLOCKS.register("reinforced_stone",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> REINFORCED_STONE_ITEM = ITEMS.registerSimpleBlockItem(REINFORCED_STONE);
+
+public static final DeferredBlock<Block> BRICK_CONCRETE = BLOCKS.register("brick_concrete",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BRICK_CONCRETE_ITEM = ITEMS.registerSimpleBlockItem(BRICK_CONCRETE);
+
+public static final DeferredBlock<Block> BRICK_CONCRETE_MOSSY = BLOCKS.register("brick_concrete_mossy",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BRICK_CONCRETE_MOSSY_ITEM = ITEMS.registerSimpleBlockItem(BRICK_CONCRETE_MOSSY);
+
+public static final DeferredBlock<Block> BRICK_CONCRETE_CRACKED = BLOCKS.register("brick_concrete_cracked",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BRICK_CONCRETE_CRACKED_ITEM = ITEMS.registerSimpleBlockItem(BRICK_CONCRETE_CRACKED);
+
+public static final DeferredBlock<Block> BRICK_CONCRETE_BROKEN = BLOCKS.register("brick_concrete_broken",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BRICK_CONCRETE_BROKEN_ITEM = ITEMS.registerSimpleBlockItem(BRICK_CONCRETE_BROKEN);
+
+public static final DeferredBlock<Block> REINFORCED_BRICK = BLOCKS.register("reinforced_brick",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> REINFORCED_BRICK_ITEM = ITEMS.registerSimpleBlockItem(REINFORCED_BRICK);
+
+public static final DeferredBlock<Block> BRICK_COMPOUND = BLOCKS.register("brick_compound",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BRICK_COMPOUND_ITEM = ITEMS.registerSimpleBlockItem(BRICK_COMPOUND);
+
+public static final DeferredBlock<Block> BRICK_LIGHT = BLOCKS.register("brick_light",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BRICK_LIGHT_ITEM = ITEMS.registerSimpleBlockItem(BRICK_LIGHT);
+
+public static final DeferredBlock<Block> BRICK_ASBESTOS = BLOCKS.register("brick_asbestos",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BRICK_ASBESTOS_ITEM = ITEMS.registerSimpleBlockItem(BRICK_ASBESTOS);
+
+public static final DeferredBlock<Block> REINFORCED_SAND = BLOCKS.register("reinforced_sand",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> REINFORCED_SAND_ITEM = ITEMS.registerSimpleBlockItem(REINFORCED_SAND);
+
+public static final DeferredBlock<Block> BRICK_OBSIDIAN = BLOCKS.register("brick_obsidian",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BRICK_OBSIDIAN_ITEM = ITEMS.registerSimpleBlockItem(BRICK_OBSIDIAN);
+
+public static final DeferredBlock<Block> CMB_BRICK = BLOCKS.register("cmb_brick",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CMB_BRICK_ITEM = ITEMS.registerSimpleBlockItem(CMB_BRICK);
+
+public static final DeferredBlock<Block> CMB_BRICK_REINFORCED = BLOCKS.register("cmb_brick_reinforced",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CMB_BRICK_REINFORCED_ITEM = ITEMS.registerSimpleBlockItem(CMB_BRICK_REINFORCED);
+
+public static final DeferredBlock<Block> REINFORCED_LAMINATE = BLOCKS.register("reinforced_laminate",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> REINFORCED_LAMINATE_ITEM = ITEMS.registerSimpleBlockItem(REINFORCED_LAMINATE);
+
+public static final DeferredBlock<Block> REINFORCED_LAMINATE_PANE = BLOCKS.register("reinforced_laminate_pane",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> REINFORCED_LAMINATE_PANE_ITEM = ITEMS.registerSimpleBlockItem(REINFORCED_LAMINATE_PANE);
+
+public static final DeferredBlock<Block> REBAR = BLOCKS.register("rebar",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> REBAR_ITEM = ITEMS.registerSimpleBlockItem(REBAR);
+
+public static final DeferredBlock<Block> CONCRETE_REBAR = BLOCKS.register("concrete_rebar",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CONCRETE_REBAR_ITEM = ITEMS.registerSimpleBlockItem(CONCRETE_REBAR);
+
+public static final DeferredBlock<Block> CONCRETE_SUPER = BLOCKS.register("concrete_super",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CONCRETE_SUPER_ITEM = ITEMS.registerSimpleBlockItem(CONCRETE_SUPER);
+
+public static final DeferredBlock<Block> CONCRETE_SUPER_BROKEN = BLOCKS.register("concrete_super_broken",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CONCRETE_SUPER_BROKEN_ITEM = ITEMS.registerSimpleBlockItem(CONCRETE_SUPER_BROKEN);
+
+public static final DeferredBlock<Block> CONCRETE_PILLAR = BLOCKS.register("concrete_pillar",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CONCRETE_PILLAR_ITEM = ITEMS.registerSimpleBlockItem(CONCRETE_PILLAR);
+
+public static final DeferredBlock<Block> BRICK_DUCRETE = BLOCKS.register("ducrete_brick",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BRICK_DUCRETE_ITEM = ITEMS.registerSimpleBlockItem(BRICK_DUCRETE);
+
+public static final DeferredBlock<Block> REINFORCED_DUCRETE = BLOCKS.register("ducrete_reinforced",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> REINFORCED_DUCRETE_ITEM = ITEMS.registerSimpleBlockItem(REINFORCED_DUCRETE);
+
+public static final DeferredBlock<Block> LIGHTSTONE = BLOCKS.register("lightstone",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> LIGHTSTONE_ITEM = ITEMS.registerSimpleBlockItem(LIGHTSTONE);
+
+public static final DeferredBlock<Block> VINYL_TILE = BLOCKS.register("vinyl_tile",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> VINYL_TILE_ITEM = ITEMS.registerSimpleBlockItem(VINYL_TILE);
+
+public static final DeferredBlock<Block> TILE_LAB = BLOCKS.register("tile_lab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> TILE_LAB_ITEM = ITEMS.registerSimpleBlockItem(TILE_LAB);
+
+public static final DeferredBlock<Block> TILE_LAB_CRACKED = BLOCKS.register("tile_lab_cracked",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> TILE_LAB_CRACKED_ITEM = ITEMS.registerSimpleBlockItem(TILE_LAB_CRACKED);
+
+public static final DeferredBlock<Block> TILE_LAB_BROKEN = BLOCKS.register("tile_lab_broken",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> TILE_LAB_BROKEN_ITEM = ITEMS.registerSimpleBlockItem(TILE_LAB_BROKEN);
+
+// ============================================================================
+// Section: stairs (20 blocks)
+// ============================================================================
+
+public static final DeferredBlock<Block> REINFORCED_STONE_STAIRS = BLOCKS.register("reinforced_stone_stairs",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> REINFORCED_STONE_STAIRS_ITEM = ITEMS.registerSimpleBlockItem(REINFORCED_STONE_STAIRS);
+
+public static final DeferredBlock<Block> BRICK_CONCRETE_STAIRS = BLOCKS.register("brick_concrete_stairs",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BRICK_CONCRETE_STAIRS_ITEM = ITEMS.registerSimpleBlockItem(BRICK_CONCRETE_STAIRS);
+
+public static final DeferredBlock<Block> BRICK_CONCRETE_MOSSY_STAIRS = BLOCKS.register("brick_concrete_mossy_stairs",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BRICK_CONCRETE_MOSSY_STAIRS_ITEM = ITEMS.registerSimpleBlockItem(BRICK_CONCRETE_MOSSY_STAIRS);
+
+public static final DeferredBlock<Block> BRICK_CONCRETE_CRACKED_STAIRS = BLOCKS.register("brick_concrete_cracked_stairs",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BRICK_CONCRETE_CRACKED_STAIRS_ITEM = ITEMS.registerSimpleBlockItem(BRICK_CONCRETE_CRACKED_STAIRS);
+
+public static final DeferredBlock<Block> BRICK_CONCRETE_BROKEN_STAIRS = BLOCKS.register("brick_concrete_broken_stairs",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BRICK_CONCRETE_BROKEN_STAIRS_ITEM = ITEMS.registerSimpleBlockItem(BRICK_CONCRETE_BROKEN_STAIRS);
+
+public static final DeferredBlock<Block> REINFORCED_BRICK_STAIRS = BLOCKS.register("reinforced_brick_stairs",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> REINFORCED_BRICK_STAIRS_ITEM = ITEMS.registerSimpleBlockItem(REINFORCED_BRICK_STAIRS);
+
+public static final DeferredBlock<Block> BRICK_COMPOUND_STAIRS = BLOCKS.register("brick_compound_stairs",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BRICK_COMPOUND_STAIRS_ITEM = ITEMS.registerSimpleBlockItem(BRICK_COMPOUND_STAIRS);
+
+public static final DeferredBlock<Block> BRICK_ASBESTOS_STAIRS = BLOCKS.register("brick_asbestos_stairs",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BRICK_ASBESTOS_STAIRS_ITEM = ITEMS.registerSimpleBlockItem(BRICK_ASBESTOS_STAIRS);
+
+public static final DeferredBlock<Block> BRICK_LIGHT_STAIRS = BLOCKS.register("brick_light_stairs",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BRICK_LIGHT_STAIRS_ITEM = ITEMS.registerSimpleBlockItem(BRICK_LIGHT_STAIRS);
+
+public static final DeferredBlock<Block> LIGHTSTONE_TILE_STAIRS = BLOCKS.register("lightstone_tile_stairs",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> LIGHTSTONE_TILE_STAIRS_ITEM = ITEMS.registerSimpleBlockItem(LIGHTSTONE_TILE_STAIRS);
+
+public static final DeferredBlock<Block> LIGHTSTONE_BRICKS_STAIRS = BLOCKS.register("lightstone_bricks_stairs",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> LIGHTSTONE_BRICKS_STAIRS_ITEM = ITEMS.registerSimpleBlockItem(LIGHTSTONE_BRICKS_STAIRS);
+
+public static final DeferredBlock<Block> REINFORCED_SAND_STAIRS = BLOCKS.register("reinforced_sand_stairs",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> REINFORCED_SAND_STAIRS_ITEM = ITEMS.registerSimpleBlockItem(REINFORCED_SAND_STAIRS);
+
+public static final DeferredBlock<Block> BRICK_OBSIDIAN_STAIRS = BLOCKS.register("brick_obsidian_stairs",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BRICK_OBSIDIAN_STAIRS_ITEM = ITEMS.registerSimpleBlockItem(BRICK_OBSIDIAN_STAIRS);
+
+public static final DeferredBlock<Block> CMB_BRICK_REINFORCED_STAIRS = BLOCKS.register("cmb_brick_reinforced_stairs",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CMB_BRICK_REINFORCED_STAIRS_ITEM = ITEMS.registerSimpleBlockItem(CMB_BRICK_REINFORCED_STAIRS);
+
+public static final DeferredBlock<Block> CONCRETE_ASBESTOS_STAIRS = BLOCKS.register("concrete_asbestos_stairs",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CONCRETE_ASBESTOS_STAIRS_ITEM = ITEMS.registerSimpleBlockItem(CONCRETE_ASBESTOS_STAIRS);
+
+public static final DeferredBlock<Block> DUCRETE_BRICK_STAIRS = BLOCKS.register("ducrete_brick_stairs",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DUCRETE_BRICK_STAIRS_ITEM = ITEMS.registerSimpleBlockItem(DUCRETE_BRICK_STAIRS);
+
+public static final DeferredBlock<Block> DUCRETE_REINFORCED_STAIRS = BLOCKS.register("ducrete_reinforced_stairs",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DUCRETE_REINFORCED_STAIRS_ITEM = ITEMS.registerSimpleBlockItem(DUCRETE_REINFORCED_STAIRS);
+
+public static final DeferredBlock<Block> TILE_LAB_STAIRS = BLOCKS.register("tile_lab_stairs",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> TILE_LAB_STAIRS_ITEM = ITEMS.registerSimpleBlockItem(TILE_LAB_STAIRS);
+
+public static final DeferredBlock<Block> TILE_LAB_CRACKED_STAIRS = BLOCKS.register("tile_lab_cracked_stairs",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> TILE_LAB_CRACKED_STAIRS_ITEM = ITEMS.registerSimpleBlockItem(TILE_LAB_CRACKED_STAIRS);
+
+public static final DeferredBlock<Block> TILE_LAB_BROKEN_STAIRS = BLOCKS.register("tile_lab_broken_stairs",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> TILE_LAB_BROKEN_STAIRS_ITEM = ITEMS.registerSimpleBlockItem(TILE_LAB_BROKEN_STAIRS);
+
+// ============================================================================
+// Section: slabs (35 blocks)
+// ============================================================================
+
+public static final DeferredBlock<Block> REINFORCED_STONE_SLAB = BLOCKS.register("reinforced_stone_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> REINFORCED_STONE_SLAB_ITEM = ITEMS.registerSimpleBlockItem(REINFORCED_STONE_SLAB);
+
+public static final DeferredBlock<Block> BRICK_CONCRETE_SLAB = BLOCKS.register("brick_concrete_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BRICK_CONCRETE_SLAB_ITEM = ITEMS.registerSimpleBlockItem(BRICK_CONCRETE_SLAB);
+
+public static final DeferredBlock<Block> BRICK_CONCRETE_MOSSY_SLAB = BLOCKS.register("brick_concrete_mossy_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BRICK_CONCRETE_MOSSY_SLAB_ITEM = ITEMS.registerSimpleBlockItem(BRICK_CONCRETE_MOSSY_SLAB);
+
+public static final DeferredBlock<Block> BRICK_CONCRETE_CRACKED_SLAB = BLOCKS.register("brick_concrete_cracked_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BRICK_CONCRETE_CRACKED_SLAB_ITEM = ITEMS.registerSimpleBlockItem(BRICK_CONCRETE_CRACKED_SLAB);
+
+public static final DeferredBlock<Block> BRICK_CONCRETE_BROKEN_SLAB = BLOCKS.register("brick_concrete_broken_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BRICK_CONCRETE_BROKEN_SLAB_ITEM = ITEMS.registerSimpleBlockItem(BRICK_CONCRETE_BROKEN_SLAB);
+
+public static final DeferredBlock<Block> REINFORCED_BRICK_SLAB = BLOCKS.register("reinforced_brick_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> REINFORCED_BRICK_SLAB_ITEM = ITEMS.registerSimpleBlockItem(REINFORCED_BRICK_SLAB);
+
+public static final DeferredBlock<Block> BRICK_LIGHT_SLAB = BLOCKS.register("brick_light_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BRICK_LIGHT_SLAB_ITEM = ITEMS.registerSimpleBlockItem(BRICK_LIGHT_SLAB);
+
+public static final DeferredBlock<Block> BRICK_COMPOUND_SLAB = BLOCKS.register("brick_compound_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BRICK_COMPOUND_SLAB_ITEM = ITEMS.registerSimpleBlockItem(BRICK_COMPOUND_SLAB);
+
+public static final DeferredBlock<Block> BRICK_ASBESTOS_SLAB = BLOCKS.register("brick_asbestos_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BRICK_ASBESTOS_SLAB_ITEM = ITEMS.registerSimpleBlockItem(BRICK_ASBESTOS_SLAB);
+
+public static final DeferredBlock<Block> BRICK_FIRE_SLAB = BLOCKS.register("brick_fire_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BRICK_FIRE_SLAB_ITEM = ITEMS.registerSimpleBlockItem(BRICK_FIRE_SLAB);
+
+public static final DeferredBlock<Block> REINFORCED_SAND_SLAB = BLOCKS.register("reinforced_sand_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> REINFORCED_SAND_SLAB_ITEM = ITEMS.registerSimpleBlockItem(REINFORCED_SAND_SLAB);
+
+public static final DeferredBlock<Block> BRICK_OBSIDIAN_SLAB = BLOCKS.register("brick_obsidian_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BRICK_OBSIDIAN_SLAB_ITEM = ITEMS.registerSimpleBlockItem(BRICK_OBSIDIAN_SLAB);
+
+public static final DeferredBlock<Block> CMB_BRICK_REINFORCED_SLAB = BLOCKS.register("cmb_brick_reinforced_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CMB_BRICK_REINFORCED_SLAB_ITEM = ITEMS.registerSimpleBlockItem(CMB_BRICK_REINFORCED_SLAB);
+
+public static final DeferredBlock<Block> CONCRETE_WHITE_SLAB = BLOCKS.register("concrete_white_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CONCRETE_WHITE_SLAB_ITEM = ITEMS.registerSimpleBlockItem(CONCRETE_WHITE_SLAB);
+
+public static final DeferredBlock<Block> CONCRETE_ORANGE_SLAB = BLOCKS.register("concrete_orange_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CONCRETE_ORANGE_SLAB_ITEM = ITEMS.registerSimpleBlockItem(CONCRETE_ORANGE_SLAB);
+
+public static final DeferredBlock<Block> CONCRETE_MAGENTA_SLAB = BLOCKS.register("concrete_magenta_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CONCRETE_MAGENTA_SLAB_ITEM = ITEMS.registerSimpleBlockItem(CONCRETE_MAGENTA_SLAB);
+
+public static final DeferredBlock<Block> CONCRETE_LIGHT_BLUE_SLAB = BLOCKS.register("concrete_light_blue_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CONCRETE_LIGHT_BLUE_SLAB_ITEM = ITEMS.registerSimpleBlockItem(CONCRETE_LIGHT_BLUE_SLAB);
+
+public static final DeferredBlock<Block> CONCRETE_YELLOW_SLAB = BLOCKS.register("concrete_yellow_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CONCRETE_YELLOW_SLAB_ITEM = ITEMS.registerSimpleBlockItem(CONCRETE_YELLOW_SLAB);
+
+public static final DeferredBlock<Block> CONCRETE_LIME_SLAB = BLOCKS.register("concrete_lime_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CONCRETE_LIME_SLAB_ITEM = ITEMS.registerSimpleBlockItem(CONCRETE_LIME_SLAB);
+
+public static final DeferredBlock<Block> CONCRETE_PINK_SLAB = BLOCKS.register("concrete_pink_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CONCRETE_PINK_SLAB_ITEM = ITEMS.registerSimpleBlockItem(CONCRETE_PINK_SLAB);
+
+public static final DeferredBlock<Block> CONCRETE_GRAY_SLAB = BLOCKS.register("concrete_gray_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CONCRETE_GRAY_SLAB_ITEM = ITEMS.registerSimpleBlockItem(CONCRETE_GRAY_SLAB);
+
+public static final DeferredBlock<Block> CONCRETE_SILVER_SLAB = BLOCKS.register("concrete_silver_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CONCRETE_SILVER_SLAB_ITEM = ITEMS.registerSimpleBlockItem(CONCRETE_SILVER_SLAB);
+
+public static final DeferredBlock<Block> CONCRETE_CYAN_SLAB = BLOCKS.register("concrete_cyan_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CONCRETE_CYAN_SLAB_ITEM = ITEMS.registerSimpleBlockItem(CONCRETE_CYAN_SLAB);
+
+public static final DeferredBlock<Block> CONCRETE_PURPLE_SLAB = BLOCKS.register("concrete_purple_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CONCRETE_PURPLE_SLAB_ITEM = ITEMS.registerSimpleBlockItem(CONCRETE_PURPLE_SLAB);
+
+public static final DeferredBlock<Block> CONCRETE_BLUE_SLAB = BLOCKS.register("concrete_blue_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CONCRETE_BLUE_SLAB_ITEM = ITEMS.registerSimpleBlockItem(CONCRETE_BLUE_SLAB);
+
+public static final DeferredBlock<Block> CONCRETE_BROWN_SLAB = BLOCKS.register("concrete_brown_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CONCRETE_BROWN_SLAB_ITEM = ITEMS.registerSimpleBlockItem(CONCRETE_BROWN_SLAB);
+
+public static final DeferredBlock<Block> CONCRETE_GREEN_SLAB = BLOCKS.register("concrete_green_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CONCRETE_GREEN_SLAB_ITEM = ITEMS.registerSimpleBlockItem(CONCRETE_GREEN_SLAB);
+
+public static final DeferredBlock<Block> CONCRETE_RED_SLAB = BLOCKS.register("concrete_red_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CONCRETE_RED_SLAB_ITEM = ITEMS.registerSimpleBlockItem(CONCRETE_RED_SLAB);
+
+public static final DeferredBlock<Block> CONCRETE_BLACK_SLAB = BLOCKS.register("concrete_black_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CONCRETE_BLACK_SLAB_ITEM = ITEMS.registerSimpleBlockItem(CONCRETE_BLACK_SLAB);
+
+public static final DeferredBlock<Block> CONCRETE_ASBESTOS_SLAB = BLOCKS.register("concrete_asbestos_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CONCRETE_ASBESTOS_SLAB_ITEM = ITEMS.registerSimpleBlockItem(CONCRETE_ASBESTOS_SLAB);
+
+public static final DeferredBlock<Block> DUCRETE_BRICK_SLAB = BLOCKS.register("ducrete_brick_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DUCRETE_BRICK_SLAB_ITEM = ITEMS.registerSimpleBlockItem(DUCRETE_BRICK_SLAB);
+
+public static final DeferredBlock<Block> DUCRETE_REINFORCED_SLAB = BLOCKS.register("ducrete_reinforced_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DUCRETE_REINFORCED_SLAB_ITEM = ITEMS.registerSimpleBlockItem(DUCRETE_REINFORCED_SLAB);
+
+public static final DeferredBlock<Block> TILE_LAB_SLAB = BLOCKS.register("tile_lab_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> TILE_LAB_SLAB_ITEM = ITEMS.registerSimpleBlockItem(TILE_LAB_SLAB);
+
+public static final DeferredBlock<Block> TILE_LAB_CRACKED_SLAB = BLOCKS.register("tile_lab_cracked_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> TILE_LAB_CRACKED_SLAB_ITEM = ITEMS.registerSimpleBlockItem(TILE_LAB_CRACKED_SLAB);
+
+public static final DeferredBlock<Block> TILE_LAB_BROKEN_SLAB = BLOCKS.register("tile_lab_broken_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> TILE_LAB_BROKEN_SLAB_ITEM = ITEMS.registerSimpleBlockItem(TILE_LAB_BROKEN_SLAB);
+
+// ============================================================================
+// Section: double slabs (57 blocks)
+// ============================================================================
+
+public static final DeferredBlock<Block> REINFORCED_STONE_DOUBLE_SLAB = BLOCKS.register("reinforced_stone_double_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> REINFORCED_STONE_DOUBLE_SLAB_ITEM = ITEMS.registerSimpleBlockItem(REINFORCED_STONE_DOUBLE_SLAB);
+
+public static final DeferredBlock<Block> BRICK_CONCRETE_DOUBLE_SLAB = BLOCKS.register("brick_concrete_double_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BRICK_CONCRETE_DOUBLE_SLAB_ITEM = ITEMS.registerSimpleBlockItem(BRICK_CONCRETE_DOUBLE_SLAB);
+
+public static final DeferredBlock<Block> BRICK_CONCRETE_MOSSY_DOUBLE_SLAB = BLOCKS.register("brick_concrete_mossy_double_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BRICK_CONCRETE_MOSSY_DOUBLE_SLAB_ITEM = ITEMS.registerSimpleBlockItem(BRICK_CONCRETE_MOSSY_DOUBLE_SLAB);
+
+public static final DeferredBlock<Block> BRICK_CONCRETE_CRACKED_DOUBLE_SLAB = BLOCKS.register("brick_concrete_cracked_double_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BRICK_CONCRETE_CRACKED_DOUBLE_SLAB_ITEM = ITEMS.registerSimpleBlockItem(BRICK_CONCRETE_CRACKED_DOUBLE_SLAB);
+
+public static final DeferredBlock<Block> BRICK_CONCRETE_BROKEN_DOUBLE_SLAB = BLOCKS.register("brick_concrete_broken_double_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BRICK_CONCRETE_BROKEN_DOUBLE_SLAB_ITEM = ITEMS.registerSimpleBlockItem(BRICK_CONCRETE_BROKEN_DOUBLE_SLAB);
+
+public static final DeferredBlock<Block> REINFORCED_BRICK_DOUBLE_SLAB = BLOCKS.register("reinforced_brick_double_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> REINFORCED_BRICK_DOUBLE_SLAB_ITEM = ITEMS.registerSimpleBlockItem(REINFORCED_BRICK_DOUBLE_SLAB);
+
+public static final DeferredBlock<Block> BRICK_LIGHT_DOUBLE_SLAB = BLOCKS.register("brick_light_double_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BRICK_LIGHT_DOUBLE_SLAB_ITEM = ITEMS.registerSimpleBlockItem(BRICK_LIGHT_DOUBLE_SLAB);
+
+public static final DeferredBlock<Block> BRICK_COMPOUND_DOUBLE_SLAB = BLOCKS.register("brick_compound_double_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BRICK_COMPOUND_DOUBLE_SLAB_ITEM = ITEMS.registerSimpleBlockItem(BRICK_COMPOUND_DOUBLE_SLAB);
+
+public static final DeferredBlock<Block> BRICK_ASBESTOS_DOUBLE_SLAB = BLOCKS.register("brick_asbestos_double_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BRICK_ASBESTOS_DOUBLE_SLAB_ITEM = ITEMS.registerSimpleBlockItem(BRICK_ASBESTOS_DOUBLE_SLAB);
+
+public static final DeferredBlock<Block> BRICK_FIRE_DOUBLE_SLAB = BLOCKS.register("brick_fire_double_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BRICK_FIRE_DOUBLE_SLAB_ITEM = ITEMS.registerSimpleBlockItem(BRICK_FIRE_DOUBLE_SLAB);
+
+public static final DeferredBlock<Block> REINFORCED_SAND_DOUBLE_SLAB = BLOCKS.register("reinforced_sand_double_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> REINFORCED_SAND_DOUBLE_SLAB_ITEM = ITEMS.registerSimpleBlockItem(REINFORCED_SAND_DOUBLE_SLAB);
+
+public static final DeferredBlock<Block> BRICK_OBSIDIAN_DOUBLE_SLAB = BLOCKS.register("brick_obsidian_double_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BRICK_OBSIDIAN_DOUBLE_SLAB_ITEM = ITEMS.registerSimpleBlockItem(BRICK_OBSIDIAN_DOUBLE_SLAB);
+
+public static final DeferredBlock<Block> CMB_BRICK_REINFORCED_DOUBLE_SLAB = BLOCKS.register("cmb_brick_reinforced_double_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CMB_BRICK_REINFORCED_DOUBLE_SLAB_ITEM = ITEMS.registerSimpleBlockItem(CMB_BRICK_REINFORCED_DOUBLE_SLAB);
+
+public static final DeferredBlock<Block> CONCRETE_DOUBLE_SLAB = BLOCKS.register("concrete_double_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CONCRETE_DOUBLE_SLAB_ITEM = ITEMS.registerSimpleBlockItem(CONCRETE_DOUBLE_SLAB);
+
+public static final DeferredBlock<Block> CONCRETE_SMOOTH_DOUBLE_SLAB = BLOCKS.register("concrete_smooth_double_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CONCRETE_SMOOTH_DOUBLE_SLAB_ITEM = ITEMS.registerSimpleBlockItem(CONCRETE_SMOOTH_DOUBLE_SLAB);
+
+public static final DeferredBlock<Block> CONCRETE_WHITE_DOUBLE_SLAB = BLOCKS.register("concrete_white_double_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CONCRETE_WHITE_DOUBLE_SLAB_ITEM = ITEMS.registerSimpleBlockItem(CONCRETE_WHITE_DOUBLE_SLAB);
+
+public static final DeferredBlock<Block> CONCRETE_ORANGE_DOUBLE_SLAB = BLOCKS.register("concrete_orange_double_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CONCRETE_ORANGE_DOUBLE_SLAB_ITEM = ITEMS.registerSimpleBlockItem(CONCRETE_ORANGE_DOUBLE_SLAB);
+
+public static final DeferredBlock<Block> CONCRETE_MAGENTA_DOUBLE_SLAB = BLOCKS.register("concrete_magenta_double_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CONCRETE_MAGENTA_DOUBLE_SLAB_ITEM = ITEMS.registerSimpleBlockItem(CONCRETE_MAGENTA_DOUBLE_SLAB);
+
+public static final DeferredBlock<Block> CONCRETE_LIGHT_BLUE_DOUBLE_SLAB = BLOCKS.register("concrete_light_blue_double_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CONCRETE_LIGHT_BLUE_DOUBLE_SLAB_ITEM = ITEMS.registerSimpleBlockItem(CONCRETE_LIGHT_BLUE_DOUBLE_SLAB);
+
+public static final DeferredBlock<Block> CONCRETE_YELLOW_DOUBLE_SLAB = BLOCKS.register("concrete_yellow_double_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CONCRETE_YELLOW_DOUBLE_SLAB_ITEM = ITEMS.registerSimpleBlockItem(CONCRETE_YELLOW_DOUBLE_SLAB);
+
+public static final DeferredBlock<Block> CONCRETE_LIME_DOUBLE_SLAB = BLOCKS.register("concrete_lime_double_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CONCRETE_LIME_DOUBLE_SLAB_ITEM = ITEMS.registerSimpleBlockItem(CONCRETE_LIME_DOUBLE_SLAB);
+
+public static final DeferredBlock<Block> CONCRETE_PINK_DOUBLE_SLAB = BLOCKS.register("concrete_pink_double_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CONCRETE_PINK_DOUBLE_SLAB_ITEM = ITEMS.registerSimpleBlockItem(CONCRETE_PINK_DOUBLE_SLAB);
+
+public static final DeferredBlock<Block> CONCRETE_GRAY_DOUBLE_SLAB = BLOCKS.register("concrete_gray_double_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CONCRETE_GRAY_DOUBLE_SLAB_ITEM = ITEMS.registerSimpleBlockItem(CONCRETE_GRAY_DOUBLE_SLAB);
+
+public static final DeferredBlock<Block> CONCRETE_SILVER_DOUBLE_SLAB = BLOCKS.register("concrete_silver_double_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CONCRETE_SILVER_DOUBLE_SLAB_ITEM = ITEMS.registerSimpleBlockItem(CONCRETE_SILVER_DOUBLE_SLAB);
+
+public static final DeferredBlock<Block> CONCRETE_CYAN_DOUBLE_SLAB = BLOCKS.register("concrete_cyan_double_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CONCRETE_CYAN_DOUBLE_SLAB_ITEM = ITEMS.registerSimpleBlockItem(CONCRETE_CYAN_DOUBLE_SLAB);
+
+public static final DeferredBlock<Block> CONCRETE_PURPLE_DOUBLE_SLAB = BLOCKS.register("concrete_purple_double_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CONCRETE_PURPLE_DOUBLE_SLAB_ITEM = ITEMS.registerSimpleBlockItem(CONCRETE_PURPLE_DOUBLE_SLAB);
+
+public static final DeferredBlock<Block> CONCRETE_BLUE_DOUBLE_SLAB = BLOCKS.register("concrete_blue_double_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CONCRETE_BLUE_DOUBLE_SLAB_ITEM = ITEMS.registerSimpleBlockItem(CONCRETE_BLUE_DOUBLE_SLAB);
+
+public static final DeferredBlock<Block> CONCRETE_BROWN_DOUBLE_SLAB = BLOCKS.register("concrete_brown_double_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CONCRETE_BROWN_DOUBLE_SLAB_ITEM = ITEMS.registerSimpleBlockItem(CONCRETE_BROWN_DOUBLE_SLAB);
+
+public static final DeferredBlock<Block> CONCRETE_GREEN_DOUBLE_SLAB = BLOCKS.register("concrete_green_double_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CONCRETE_GREEN_DOUBLE_SLAB_ITEM = ITEMS.registerSimpleBlockItem(CONCRETE_GREEN_DOUBLE_SLAB);
+
+public static final DeferredBlock<Block> CONCRETE_RED_DOUBLE_SLAB = BLOCKS.register("concrete_red_double_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CONCRETE_RED_DOUBLE_SLAB_ITEM = ITEMS.registerSimpleBlockItem(CONCRETE_RED_DOUBLE_SLAB);
+
+public static final DeferredBlock<Block> CONCRETE_BLACK_DOUBLE_SLAB = BLOCKS.register("concrete_black_double_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CONCRETE_BLACK_DOUBLE_SLAB_ITEM = ITEMS.registerSimpleBlockItem(CONCRETE_BLACK_DOUBLE_SLAB);
+
+public static final DeferredBlock<Block> CONCRETE_ASBESTOS_DOUBLE_SLAB = BLOCKS.register("concrete_asbestos_double_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CONCRETE_ASBESTOS_DOUBLE_SLAB_ITEM = ITEMS.registerSimpleBlockItem(CONCRETE_ASBESTOS_DOUBLE_SLAB);
+
+public static final DeferredBlock<Block> DUCRETE_SMOOTH_DOUBLE_SLAB = BLOCKS.register("ducrete_smooth_double_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DUCRETE_SMOOTH_DOUBLE_SLAB_ITEM = ITEMS.registerSimpleBlockItem(DUCRETE_SMOOTH_DOUBLE_SLAB);
+
+public static final DeferredBlock<Block> DUCRETE_DOUBLE_SLAB = BLOCKS.register("ducrete_double_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DUCRETE_DOUBLE_SLAB_ITEM = ITEMS.registerSimpleBlockItem(DUCRETE_DOUBLE_SLAB);
+
+public static final DeferredBlock<Block> DUCRETE_BRICK_DOUBLE_SLAB = BLOCKS.register("ducrete_brick_double_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DUCRETE_BRICK_DOUBLE_SLAB_ITEM = ITEMS.registerSimpleBlockItem(DUCRETE_BRICK_DOUBLE_SLAB);
+
+public static final DeferredBlock<Block> DUCRETE_REINFORCED_DOUBLE_SLAB = BLOCKS.register("ducrete_reinforced_double_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DUCRETE_REINFORCED_DOUBLE_SLAB_ITEM = ITEMS.registerSimpleBlockItem(DUCRETE_REINFORCED_DOUBLE_SLAB);
+
+public static final DeferredBlock<Block> TILE_LAB_DOUBLE_SLAB = BLOCKS.register("tile_lab_double_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> TILE_LAB_DOUBLE_SLAB_ITEM = ITEMS.registerSimpleBlockItem(TILE_LAB_DOUBLE_SLAB);
+
+public static final DeferredBlock<Block> TILE_LAB_CRACKED_DOUBLE_SLAB = BLOCKS.register("tile_lab_cracked_double_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> TILE_LAB_CRACKED_DOUBLE_SLAB_ITEM = ITEMS.registerSimpleBlockItem(TILE_LAB_CRACKED_DOUBLE_SLAB);
+
+public static final DeferredBlock<Block> TILE_LAB_BROKEN_DOUBLE_SLAB = BLOCKS.register("tile_lab_broken_double_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> TILE_LAB_BROKEN_DOUBLE_SLAB_ITEM = ITEMS.registerSimpleBlockItem(TILE_LAB_BROKEN_DOUBLE_SLAB);
+
+public static final DeferredBlock<Block> LAMP_DEMON = BLOCKS.register("lamp_demon",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> LAMP_DEMON_ITEM = ITEMS.registerSimpleBlockItem(LAMP_DEMON);
+
+public static final DeferredBlock<Block> LANTERN = BLOCKS.register("lantern",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> LANTERN_ITEM = ITEMS.registerSimpleBlockItem(LANTERN);
+
+public static final DeferredBlock<Block> LANTERN_BEHEMOTH = BLOCKS.register("lantern_behemoth",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> LANTERN_BEHEMOTH_ITEM = ITEMS.registerSimpleBlockItem(LANTERN_BEHEMOTH);
+
+public static final DeferredBlock<Block> LAMP_TRITIUM_GREEN_OFF = BLOCKS.register("lamp_tritium_green_off",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> LAMP_TRITIUM_GREEN_OFF_ITEM = ITEMS.registerSimpleBlockItem(LAMP_TRITIUM_GREEN_OFF);
+
+public static final DeferredBlock<Block> LAMP_TRITIUM_GREEN_ON = BLOCKS.register("lamp_tritium_green_on",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> LAMP_TRITIUM_GREEN_ON_ITEM = ITEMS.registerSimpleBlockItem(LAMP_TRITIUM_GREEN_ON);
+
+public static final DeferredBlock<Block> LAMP_TRITIUM_BLUE_OFF = BLOCKS.register("lamp_tritium_blue_off",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> LAMP_TRITIUM_BLUE_OFF_ITEM = ITEMS.registerSimpleBlockItem(LAMP_TRITIUM_BLUE_OFF);
+
+public static final DeferredBlock<Block> LAMP_TRITIUM_BLUE_ON = BLOCKS.register("lamp_tritium_blue_on",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> LAMP_TRITIUM_BLUE_ON_ITEM = ITEMS.registerSimpleBlockItem(LAMP_TRITIUM_BLUE_ON);
+
+public static final DeferredBlock<Block> SPOTLIGHT_INCANDESCENT = BLOCKS.register("spotlight_incandescent",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> SPOTLIGHT_INCANDESCENT_ITEM = ITEMS.registerSimpleBlockItem(SPOTLIGHT_INCANDESCENT);
+
+public static final DeferredBlock<Block> SPOTLIGHT_INCANDESCENT_OFF = BLOCKS.register("spotlight_incandescent_off",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> SPOTLIGHT_INCANDESCENT_OFF_ITEM = ITEMS.registerSimpleBlockItem(SPOTLIGHT_INCANDESCENT_OFF);
+
+public static final DeferredBlock<Block> SPOTLIGHT_FLUORO = BLOCKS.register("spotlight_fluoro",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> SPOTLIGHT_FLUORO_ITEM = ITEMS.registerSimpleBlockItem(SPOTLIGHT_FLUORO);
+
+public static final DeferredBlock<Block> SPOTLIGHT_FLUORO_OFF = BLOCKS.register("spotlight_fluoro_off",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> SPOTLIGHT_FLUORO_OFF_ITEM = ITEMS.registerSimpleBlockItem(SPOTLIGHT_FLUORO_OFF);
+
+public static final DeferredBlock<Block> SPOTLIGHT_HALOGEN = BLOCKS.register("spotlight_halogen",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> SPOTLIGHT_HALOGEN_ITEM = ITEMS.registerSimpleBlockItem(SPOTLIGHT_HALOGEN);
+
+public static final DeferredBlock<Block> SPOTLIGHT_HALOGEN_OFF = BLOCKS.register("spotlight_halogen_off",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> SPOTLIGHT_HALOGEN_OFF_ITEM = ITEMS.registerSimpleBlockItem(SPOTLIGHT_HALOGEN_OFF);
+
+public static final DeferredBlock<Block> SPOTLIGHT_BEAM = BLOCKS.register("spotlight_beam",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> SPOTLIGHT_BEAM_ITEM = ITEMS.registerSimpleBlockItem(SPOTLIGHT_BEAM);
+
+public static final DeferredBlock<Block> FLOODLIGHT = BLOCKS.register("floodlight",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> FLOODLIGHT_ITEM = ITEMS.registerSimpleBlockItem(FLOODLIGHT);
+
+public static final DeferredBlock<Block> FLOODLIGHT_BEAM = BLOCKS.register("floodlight_beam",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> FLOODLIGHT_BEAM_ITEM = ITEMS.registerSimpleBlockItem(FLOODLIGHT_BEAM);
+
+public static final DeferredBlock<Block> BLOCK_SCRAP = BLOCKS.register("block_scrap",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BLOCK_SCRAP_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_SCRAP);
+
+public static final DeferredBlock<Block> BLOCK_ELECTRICAL_SCRAP = BLOCKS.register("block_electrical_scrap",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BLOCK_ELECTRICAL_SCRAP_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_ELECTRICAL_SCRAP);
+
+// ============================================================================
+// Section: Ores (62 blocks)
+// ============================================================================
+
+public static final DeferredBlock<Block> ORE_SELLAFIELD_RADGEM = BLOCKS.register("ore_sellafield_radgem",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> ORE_SELLAFIELD_RADGEM_ITEM = ITEMS.registerSimpleBlockItem(ORE_SELLAFIELD_RADGEM);
+
+public static final DeferredBlock<Block> CLUSTER_IRON = BLOCKS.register("cluster_iron",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CLUSTER_IRON_ITEM = ITEMS.registerSimpleBlockItem(CLUSTER_IRON);
+
+public static final DeferredBlock<Block> CLUSTER_TITANIUM = BLOCKS.register("cluster_titanium",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CLUSTER_TITANIUM_ITEM = ITEMS.registerSimpleBlockItem(CLUSTER_TITANIUM);
+
+public static final DeferredBlock<Block> CLUSTER_ALUMINIUM = BLOCKS.register("cluster_aluminium",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CLUSTER_ALUMINIUM_ITEM = ITEMS.registerSimpleBlockItem(CLUSTER_ALUMINIUM);
+
+public static final DeferredBlock<Block> CLUSTER_COPPER = BLOCKS.register("cluster_copper",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CLUSTER_COPPER_ITEM = ITEMS.registerSimpleBlockItem(CLUSTER_COPPER);
+
+public static final DeferredBlock<Block> STONE_DEPTH = BLOCKS.register("stone_depth",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> STONE_DEPTH_ITEM = ITEMS.registerSimpleBlockItem(STONE_DEPTH);
+
+public static final DeferredBlock<Block> ORE_ALEXANDRITE = BLOCKS.register("ore_alexandrite",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> ORE_ALEXANDRITE_ITEM = ITEMS.registerSimpleBlockItem(ORE_ALEXANDRITE);
+
+public static final DeferredBlock<Block> CLUSTER_DEPTH_IRON = BLOCKS.register("cluster_depth_iron",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CLUSTER_DEPTH_IRON_ITEM = ITEMS.registerSimpleBlockItem(CLUSTER_DEPTH_IRON);
+
+public static final DeferredBlock<Block> CLUSTER_DEPTH_TITANIUM = BLOCKS.register("cluster_depth_titanium",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CLUSTER_DEPTH_TITANIUM_ITEM = ITEMS.registerSimpleBlockItem(CLUSTER_DEPTH_TITANIUM);
+
+public static final DeferredBlock<Block> CLUSTER_DEPTH_TUNGSTEN = BLOCKS.register("cluster_depth_tungsten",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CLUSTER_DEPTH_TUNGSTEN_ITEM = ITEMS.registerSimpleBlockItem(CLUSTER_DEPTH_TUNGSTEN);
+
+public static final DeferredBlock<Block> ORE_BEDROCK_COLTAN = BLOCKS.register("ore_bedrock_coltan",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> ORE_BEDROCK_COLTAN_ITEM = ITEMS.registerSimpleBlockItem(ORE_BEDROCK_COLTAN);
+
+public static final DeferredBlock<Block> ORE_BEDROCK_OIL = BLOCKS.register("ore_bedrock_oil",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> ORE_BEDROCK_OIL_ITEM = ITEMS.registerSimpleBlockItem(ORE_BEDROCK_OIL);
+
+public static final DeferredBlock<Block> ORE_BEDROCK_BLOCK = BLOCKS.register("ore_bedrock_block",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> ORE_BEDROCK_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(ORE_BEDROCK_BLOCK);
+
+public static final DeferredBlock<Block> ORE_VOLCANO = BLOCKS.register("ore_volcano",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> ORE_VOLCANO_ITEM = ITEMS.registerSimpleBlockItem(ORE_VOLCANO);
+
+public static final DeferredBlock<Block> ORE_OIL = BLOCKS.register("ore_oil",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> ORE_OIL_ITEM = ITEMS.registerSimpleBlockItem(ORE_OIL);
+
+public static final DeferredBlock<Block> ORE_OIL_EMPTY = BLOCKS.register("ore_oil_empty",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> ORE_OIL_EMPTY_ITEM = ITEMS.registerSimpleBlockItem(ORE_OIL_EMPTY);
+
+public static final DeferredBlock<Block> ORE_OIL_SAND = BLOCKS.register("ore_oil_sand",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> ORE_OIL_SAND_ITEM = ITEMS.registerSimpleBlockItem(ORE_OIL_SAND);
+
+public static final DeferredBlock<Block> STONE_GNEISS = BLOCKS.register("stone_gneiss",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> STONE_GNEISS_ITEM = ITEMS.registerSimpleBlockItem(STONE_GNEISS);
+
+public static final DeferredBlock<Block> GNEISS_BRICK = BLOCKS.register("gneiss_brick",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> GNEISS_BRICK_ITEM = ITEMS.registerSimpleBlockItem(GNEISS_BRICK);
+
+public static final DeferredBlock<Block> GNEISS_TILE = BLOCKS.register("gneiss_tile",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> GNEISS_TILE_ITEM = ITEMS.registerSimpleBlockItem(GNEISS_TILE);
+
+public static final DeferredBlock<Block> GNEISS_CHISELED = BLOCKS.register("gneiss_chiseled",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> GNEISS_CHISELED_ITEM = ITEMS.registerSimpleBlockItem(GNEISS_CHISELED);
+
+public static final DeferredBlock<Block> ORE_GNEISS_GAS = BLOCKS.register("ore_gneiss_gas",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> ORE_GNEISS_GAS_ITEM = ITEMS.registerSimpleBlockItem(ORE_GNEISS_GAS);
+
+public static final DeferredBlock<Block> ORE_NETHER_COAL = BLOCKS.register("ore_nether_coal",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> ORE_NETHER_COAL_ITEM = ITEMS.registerSimpleBlockItem(ORE_NETHER_COAL);
+
+public static final DeferredBlock<Block> ORE_NETHER_SMOLDERING = BLOCKS.register("ore_nether_smoldering",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> ORE_NETHER_SMOLDERING_ITEM = ITEMS.registerSimpleBlockItem(ORE_NETHER_SMOLDERING);
+
+public static final DeferredBlock<Block> ORE_NETHER_FIRE = BLOCKS.register("ore_nether_fire",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> ORE_NETHER_FIRE_ITEM = ITEMS.registerSimpleBlockItem(ORE_NETHER_FIRE);
+
+public static final DeferredBlock<Block> STONE_DEPTH_NETHER = BLOCKS.register("stone_depth_nether",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> STONE_DEPTH_NETHER_ITEM = ITEMS.registerSimpleBlockItem(STONE_DEPTH_NETHER);
+
+public static final DeferredBlock<Block> ORE_DEPTH_NETHER_NITAN = BLOCKS.register("ore_depth_nether_nitan",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> ORE_DEPTH_NETHER_NITAN_ITEM = ITEMS.registerSimpleBlockItem(ORE_DEPTH_NETHER_NITAN);
+
+public static final DeferredBlock<Block> BLOCK_METEOR = BLOCKS.register("block_meteor",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BLOCK_METEOR_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_METEOR);
+
+public static final DeferredBlock<Block> BLOCK_METEOR_COBBLE = BLOCKS.register("block_meteor_cobble",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BLOCK_METEOR_COBBLE_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_METEOR_COBBLE);
+
+public static final DeferredBlock<Block> BLOCK_METEOR_BROKEN = BLOCKS.register("block_meteor_broken",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BLOCK_METEOR_BROKEN_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_METEOR_BROKEN);
+
+public static final DeferredBlock<Block> BLOCK_METEOR_MOLTEN = BLOCKS.register("block_meteor_molten",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BLOCK_METEOR_MOLTEN_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_METEOR_MOLTEN);
+
+public static final DeferredBlock<Block> BLOCK_METEOR_TREASURE = BLOCKS.register("block_meteor_treasure",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BLOCK_METEOR_TREASURE_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_METEOR_TREASURE);
+
+public static final DeferredBlock<Block> ORE_METEOR = BLOCKS.register("ore_meteor",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> ORE_METEOR_ITEM = ITEMS.registerSimpleBlockItem(ORE_METEOR);
+
+public static final DeferredBlock<Block> METEOR_POLISHED = BLOCKS.register("meteor_polished",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> METEOR_POLISHED_ITEM = ITEMS.registerSimpleBlockItem(METEOR_POLISHED);
+
+public static final DeferredBlock<Block> METEOR_BRICK = BLOCKS.register("meteor_brick",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> METEOR_BRICK_ITEM = ITEMS.registerSimpleBlockItem(METEOR_BRICK);
+
+public static final DeferredBlock<Block> METEOR_BRICK_MOSSY = BLOCKS.register("meteor_brick_mossy",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> METEOR_BRICK_MOSSY_ITEM = ITEMS.registerSimpleBlockItem(METEOR_BRICK_MOSSY);
+
+public static final DeferredBlock<Block> METEOR_BRICK_CRACKED = BLOCKS.register("meteor_brick_cracked",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> METEOR_BRICK_CRACKED_ITEM = ITEMS.registerSimpleBlockItem(METEOR_BRICK_CRACKED);
+
+public static final DeferredBlock<Block> METEOR_BRICK_CHISELED = BLOCKS.register("meteor_brick_chiseled",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> METEOR_BRICK_CHISELED_ITEM = ITEMS.registerSimpleBlockItem(METEOR_BRICK_CHISELED);
+
+public static final DeferredBlock<Block> METEOR_PILLAR = BLOCKS.register("meteor_pillar",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> METEOR_PILLAR_ITEM = ITEMS.registerSimpleBlockItem(METEOR_PILLAR);
+
+public static final DeferredBlock<Block> METEOR_SPAWNER = BLOCKS.register("meteor_spawner",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> METEOR_SPAWNER_ITEM = ITEMS.registerSimpleBlockItem(METEOR_SPAWNER);
+
+public static final DeferredBlock<Block> METEOR_BATTERY = BLOCKS.register("meteor_battery",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> METEOR_BATTERY_ITEM = ITEMS.registerSimpleBlockItem(METEOR_BATTERY);
+
+public static final DeferredBlock<Block> BRICK_JUNGLE = BLOCKS.register("brick_jungle",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BRICK_JUNGLE_ITEM = ITEMS.registerSimpleBlockItem(BRICK_JUNGLE);
+
+public static final DeferredBlock<Block> BRICK_JUNGLE_CRACKED = BLOCKS.register("brick_jungle_cracked",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BRICK_JUNGLE_CRACKED_ITEM = ITEMS.registerSimpleBlockItem(BRICK_JUNGLE_CRACKED);
+
+public static final DeferredBlock<Block> BRICK_JUNGLE_LAVA = BLOCKS.register("brick_jungle_lava",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BRICK_JUNGLE_LAVA_ITEM = ITEMS.registerSimpleBlockItem(BRICK_JUNGLE_LAVA);
+
+public static final DeferredBlock<Block> BRICK_JUNGLE_OOZE = BLOCKS.register("brick_jungle_ooze",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BRICK_JUNGLE_OOZE_ITEM = ITEMS.registerSimpleBlockItem(BRICK_JUNGLE_OOZE);
+
+public static final DeferredBlock<Block> BRICK_JUNGLE_MYSTIC = BLOCKS.register("brick_jungle_mystic",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BRICK_JUNGLE_MYSTIC_ITEM = ITEMS.registerSimpleBlockItem(BRICK_JUNGLE_MYSTIC);
+
+public static final DeferredBlock<Block> BRICK_JUNGLE_TRAP = BLOCKS.register("brick_jungle_trap",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BRICK_JUNGLE_TRAP_ITEM = ITEMS.registerSimpleBlockItem(BRICK_JUNGLE_TRAP);
+
+public static final DeferredBlock<Block> BRICK_JUNGLE_GLYPH = BLOCKS.register("brick_jungle_glyph",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BRICK_JUNGLE_GLYPH_ITEM = ITEMS.registerSimpleBlockItem(BRICK_JUNGLE_GLYPH);
+
+public static final DeferredBlock<Block> BRICK_JUNGLE_CIRCLE = BLOCKS.register("brick_jungle_circle",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BRICK_JUNGLE_CIRCLE_ITEM = ITEMS.registerSimpleBlockItem(BRICK_JUNGLE_CIRCLE);
+
+public static final DeferredBlock<Block> STONE_KEYHOLE = BLOCKS.register("stone_keyhole",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> STONE_KEYHOLE_ITEM = ITEMS.registerSimpleBlockItem(STONE_KEYHOLE);
+
+public static final DeferredBlock<Block> STONE_KEYHOLE_META = BLOCKS.register("stone_keyhole_meta",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> STONE_KEYHOLE_META_ITEM = ITEMS.registerSimpleBlockItem(STONE_KEYHOLE_META);
+
+public static final DeferredBlock<Block> DOOR_RED = BLOCKS.register("door_red",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DOOR_RED_ITEM = ITEMS.registerSimpleBlockItem(DOOR_RED);
+
+public static final DeferredBlock<Block> DECO_COMPUTER = BLOCKS.register("deco_computer",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DECO_COMPUTER_ITEM = ITEMS.registerSimpleBlockItem(DECO_COMPUTER);
+
+public static final DeferredBlock<Block> DECO_CRT = BLOCKS.register("deco_crt",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DECO_CRT_ITEM = ITEMS.registerSimpleBlockItem(DECO_CRT);
+
+public static final DeferredBlock<Block> DECO_TOASTER = BLOCKS.register("deco_toaster",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DECO_TOASTER_ITEM = ITEMS.registerSimpleBlockItem(DECO_TOASTER);
+
+public static final DeferredBlock<Block> FILING_CABINET = BLOCKS.register("filing_cabinet",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> FILING_CABINET_ITEM = ITEMS.registerSimpleBlockItem(FILING_CABINET);
+
+public static final DeferredBlock<Block> DUNGEON_SPAWNER = BLOCKS.register("dungeon_spawner",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DUNGEON_SPAWNER_ITEM = ITEMS.registerSimpleBlockItem(DUNGEON_SPAWNER);
+
+public static final DeferredBlock<Block> VENDING_MACHINE = BLOCKS.register("vending_machine",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> VENDING_MACHINE_ITEM = ITEMS.registerSimpleBlockItem(VENDING_MACHINE);
+
+public static final DeferredBlock<Block> BRICK_DUNGEON = BLOCKS.register("brick_dungeon",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BRICK_DUNGEON_ITEM = ITEMS.registerSimpleBlockItem(BRICK_DUNGEON);
+
+public static final DeferredBlock<Block> BRICK_DUNGEON_FLAT = BLOCKS.register("brick_dungeon_flat",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BRICK_DUNGEON_FLAT_ITEM = ITEMS.registerSimpleBlockItem(BRICK_DUNGEON_FLAT);
+
+public static final DeferredBlock<Block> BRICK_DUNGEON_TILE = BLOCKS.register("brick_dungeon_tile",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BRICK_DUNGEON_TILE_ITEM = ITEMS.registerSimpleBlockItem(BRICK_DUNGEON_TILE);
+
+public static final DeferredBlock<Block> BRICK_DUNGEON_CIRCLE = BLOCKS.register("brick_dungeon_circle",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BRICK_DUNGEON_CIRCLE_ITEM = ITEMS.registerSimpleBlockItem(BRICK_DUNGEON_CIRCLE);
+
+// ============================================================================
+// Section: Material Blocks (16 blocks)
+// ============================================================================
+
+public static final DeferredBlock<Block> BLOCK_NITER_REINFORCED = BLOCKS.register("block_niter_reinforced",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BLOCK_NITER_REINFORCED_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_NITER_REINFORCED);
+
+public static final DeferredBlock<Block> BLOCK_THORIUM_FUEL = BLOCKS.register("block_thorium_fuel",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BLOCK_THORIUM_FUEL_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_THORIUM_FUEL);
+
+public static final DeferredBlock<Block> BLOCK_MOX_FUEL = BLOCKS.register("block_mox_fuel",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BLOCK_MOX_FUEL_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_MOX_FUEL);
+
+public static final DeferredBlock<Block> BLOCK_PLUTONIUM_FUEL = BLOCKS.register("block_plutonium_fuel",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BLOCK_PLUTONIUM_FUEL_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_PLUTONIUM_FUEL);
+
+public static final DeferredBlock<Block> BLOCK_URANIUM_FUEL = BLOCKS.register("block_uranium_fuel",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BLOCK_URANIUM_FUEL_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_URANIUM_FUEL);
+
+public static final DeferredBlock<Block> BLOCK_TRINITITE = BLOCKS.register("block_trinitite",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BLOCK_TRINITITE_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_TRINITITE);
+
+public static final DeferredBlock<Block> BLOCK_SCHRABIDIUM_FUEL = BLOCKS.register("block_schrabidium_fuel",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BLOCK_SCHRABIDIUM_FUEL_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_SCHRABIDIUM_FUEL);
+
+public static final DeferredBlock<Block> BLOCK_AU198 = BLOCKS.register("block_au198",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BLOCK_AU198_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_AU198);
+
+public static final DeferredBlock<Block> BLOCK_SCHRABIDIUM_CLUSTER = BLOCKS.register("block_schrabidium_cluster",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BLOCK_SCHRABIDIUM_CLUSTER_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_SCHRABIDIUM_CLUSTER);
+
+public static final DeferredBlock<Block> BLOCK_EUPHEMIUM_CLUSTER = BLOCKS.register("block_euphemium_cluster",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BLOCK_EUPHEMIUM_CLUSTER_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_EUPHEMIUM_CLUSTER);
+
+public static final DeferredBlock<Block> BLOCK_SATURNITE = BLOCKS.register("block_saturnite",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BLOCK_SATURNITE_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_SATURNITE);
+
+public static final DeferredBlock<Block> TEKTITE = BLOCKS.register("tektite",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> TEKTITE_ITEM = ITEMS.registerSimpleBlockItem(TEKTITE);
+
+public static final DeferredBlock<Block> ORE_TEKTITE_OSMIRIDIUM = BLOCKS.register("ore_tektite_osmiridium",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> ORE_TEKTITE_OSMIRIDIUM_ITEM = ITEMS.registerSimpleBlockItem(ORE_TEKTITE_OSMIRIDIUM);
+
+public static final DeferredBlock<Block> IMPACT_DIRT = BLOCKS.register("impact_dirt",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> IMPACT_DIRT_ITEM = ITEMS.registerSimpleBlockItem(IMPACT_DIRT);
+
+public static final DeferredBlock<Block> GRAVEL_OBSIDIAN = BLOCKS.register("gravel_obsidian",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> GRAVEL_OBSIDIAN_ITEM = ITEMS.registerSimpleBlockItem(GRAVEL_OBSIDIAN);
+
+public static final DeferredBlock<Block> MOON_TURF = BLOCKS.register("moon_turf",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MOON_TURF_ITEM = ITEMS.registerSimpleBlockItem(MOON_TURF);
+
+// ============================================================================
+// Section: Deco blocks TODO: Add CTM (24 blocks)
+// ============================================================================
+
+public static final DeferredBlock<Block> DECO_TITANIUM = BLOCKS.register("deco_titanium",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DECO_TITANIUM_ITEM = ITEMS.registerSimpleBlockItem(DECO_TITANIUM);
+
+public static final DeferredBlock<Block> DECO_RED_COPPER = BLOCKS.register("deco_red_copper",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DECO_RED_COPPER_ITEM = ITEMS.registerSimpleBlockItem(DECO_RED_COPPER);
+
+public static final DeferredBlock<Block> DECO_TUNGSTEN = BLOCKS.register("deco_tungsten",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DECO_TUNGSTEN_ITEM = ITEMS.registerSimpleBlockItem(DECO_TUNGSTEN);
+
+public static final DeferredBlock<Block> DECO_ALUMINIUM = BLOCKS.register("deco_aluminium",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DECO_ALUMINIUM_ITEM = ITEMS.registerSimpleBlockItem(DECO_ALUMINIUM);
+
+public static final DeferredBlock<Block> DECO_STEEL = BLOCKS.register("deco_steel",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DECO_STEEL_ITEM = ITEMS.registerSimpleBlockItem(DECO_STEEL);
+
+public static final DeferredBlock<Block> DECO_RUSTY_STEEL = BLOCKS.register("deco_rusty_steel",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DECO_RUSTY_STEEL_ITEM = ITEMS.registerSimpleBlockItem(DECO_RUSTY_STEEL);
+
+public static final DeferredBlock<Block> DECO_LEAD = BLOCKS.register("deco_lead",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DECO_LEAD_ITEM = ITEMS.registerSimpleBlockItem(DECO_LEAD);
+
+public static final DeferredBlock<Block> DECO_BERYLLIUM = BLOCKS.register("deco_beryllium",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DECO_BERYLLIUM_ITEM = ITEMS.registerSimpleBlockItem(DECO_BERYLLIUM);
+
+public static final DeferredBlock<Block> DECO_ASBESTOS = BLOCKS.register("deco_asbestos",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DECO_ASBESTOS_ITEM = ITEMS.registerSimpleBlockItem(DECO_ASBESTOS);
+
+public static final DeferredBlock<Block> DECO_RBMK = BLOCKS.register("deco_rbmk",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DECO_RBMK_ITEM = ITEMS.registerSimpleBlockItem(DECO_RBMK);
+
+public static final DeferredBlock<Block> DECO_RBMK_SMOOTH = BLOCKS.register("deco_rbmk_smooth",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DECO_RBMK_SMOOTH_ITEM = ITEMS.registerSimpleBlockItem(DECO_RBMK_SMOOTH);
+
+public static final DeferredBlock<Block> DECO_RBMK_PANEL = BLOCKS.register("deco_rbmk_panel",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DECO_RBMK_PANEL_ITEM = ITEMS.registerSimpleBlockItem(DECO_RBMK_PANEL);
+
+public static final DeferredBlock<Block> DECO_RBMK_SMOOTH_PANEL = BLOCKS.register("deco_rbmk_smooth_panel",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DECO_RBMK_SMOOTH_PANEL_ITEM = ITEMS.registerSimpleBlockItem(DECO_RBMK_SMOOTH_PANEL);
+
+public static final DeferredBlock<Block> DECO_RBMK_PANEL_SLAB = BLOCKS.register("deco_rbmk_panel_slab2",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DECO_RBMK_PANEL_SLAB_ITEM = ITEMS.registerSimpleBlockItem(DECO_RBMK_PANEL_SLAB);
+
+public static final DeferredBlock<Block> DECO_RBMK_SMOOTH_PANEL_SLAB = BLOCKS.register("deco_rbmk_smooth_panel_slab2",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DECO_RBMK_SMOOTH_PANEL_SLAB_ITEM = ITEMS.registerSimpleBlockItem(DECO_RBMK_SMOOTH_PANEL_SLAB);
+
+public static final DeferredBlock<Block> DECO_LOOT = BLOCKS.register("deco_loot",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DECO_LOOT_ITEM = ITEMS.registerSimpleBlockItem(DECO_LOOT);
+
+public static final DeferredBlock<Block> BOBBLEHEAD = BLOCKS.register("bobblehead",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BOBBLEHEAD_ITEM = ITEMS.registerSimpleBlockItem(BOBBLEHEAD);
+
+public static final DeferredBlock<Block> SNOWGLOBE = BLOCKS.register("snowglobe",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> SNOWGLOBE_ITEM = ITEMS.registerSimpleBlockItem(SNOWGLOBE);
+
+public static final DeferredBlock<Block> PLUSHIE = BLOCKS.register("plushie",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> PLUSHIE_ITEM = ITEMS.registerSimpleBlockItem(PLUSHIE);
+
+public static final DeferredBlock<Block> PEDESTAL = BLOCKS.register("pedestal",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> PEDESTAL_ITEM = ITEMS.registerSimpleBlockItem(PEDESTAL);
+
+public static final DeferredBlock<Block> SKELETON_HOLDER = BLOCKS.register("skeleton_holder",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> SKELETON_HOLDER_ITEM = ITEMS.registerSimpleBlockItem(SKELETON_HOLDER);
+
+public static final DeferredBlock<Block> SPINNY_LIGHT = BLOCKS.register("spinny_light",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> SPINNY_LIGHT_ITEM = ITEMS.registerSimpleBlockItem(SPINNY_LIGHT);
+
+public static final DeferredBlock<Block> HAZMAT = BLOCKS.register("hazmat",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> HAZMAT_ITEM = ITEMS.registerSimpleBlockItem(HAZMAT);
+
+public static final DeferredBlock<Block> TAPE_RECORDER = BLOCKS.register("tape_recorder",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> TAPE_RECORDER_ITEM = ITEMS.registerSimpleBlockItem(TAPE_RECORDER);
+
+// ============================================================================
+// Section: Drillgon200: Thank god there was an obj file for this. (35 blocks)
+// ============================================================================
+
+public static final DeferredBlock<Block> STEEL_POLES = BLOCKS.register("steel_poles",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> STEEL_POLES_ITEM = ITEMS.registerSimpleBlockItem(STEEL_POLES);
+
+public static final DeferredBlock<Block> POLE_SATELLITE_RECEIVER = BLOCKS.register("pole_satellite_receiver",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> POLE_SATELLITE_RECEIVER_ITEM = ITEMS.registerSimpleBlockItem(POLE_SATELLITE_RECEIVER);
+
+public static final DeferredBlock<Block> STEEL_WALL = BLOCKS.register("steel_wall",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> STEEL_WALL_ITEM = ITEMS.registerSimpleBlockItem(STEEL_WALL);
+
+public static final DeferredBlock<Block> STEEL_CORNER = BLOCKS.register("steel_corner",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> STEEL_CORNER_ITEM = ITEMS.registerSimpleBlockItem(STEEL_CORNER);
+
+public static final DeferredBlock<Block> STEEL_ROOF = BLOCKS.register("steel_roof",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> STEEL_ROOF_ITEM = ITEMS.registerSimpleBlockItem(STEEL_ROOF);
+
+public static final DeferredBlock<Block> STEEL_BEAM = BLOCKS.register("steel_beam",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> STEEL_BEAM_ITEM = ITEMS.registerSimpleBlockItem(STEEL_BEAM);
+
+public static final DeferredBlock<Block> STEEL_SCAFFOLD = BLOCKS.register("steel_scaffold",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> STEEL_SCAFFOLD_ITEM = ITEMS.registerSimpleBlockItem(STEEL_SCAFFOLD);
+
+public static final DeferredBlock<Block> STEEL_GRATE = BLOCKS.register("steel_grate",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> STEEL_GRATE_ITEM = ITEMS.registerSimpleBlockItem(STEEL_GRATE);
+
+public static final DeferredBlock<Block> STEEL_GRATE_WIDE = BLOCKS.register("steel_grate_wide",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> STEEL_GRATE_WIDE_ITEM = ITEMS.registerSimpleBlockItem(STEEL_GRATE_WIDE);
+
+public static final DeferredBlock<Block> DECO_PIPE = BLOCKS.register("deco_pipe",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DECO_PIPE_ITEM = ITEMS.registerSimpleBlockItem(DECO_PIPE);
+
+public static final DeferredBlock<Block> DECO_PIPE_RUSTED = BLOCKS.register("deco_pipe_rusted",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DECO_PIPE_RUSTED_ITEM = ITEMS.registerSimpleBlockItem(DECO_PIPE_RUSTED);
+
+public static final DeferredBlock<Block> DECO_PIPE_GREEN = BLOCKS.register("deco_pipe_green",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DECO_PIPE_GREEN_ITEM = ITEMS.registerSimpleBlockItem(DECO_PIPE_GREEN);
+
+public static final DeferredBlock<Block> DECO_PIPE_GREEN_RUSTED = BLOCKS.register("deco_pipe_green_rusted",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DECO_PIPE_GREEN_RUSTED_ITEM = ITEMS.registerSimpleBlockItem(DECO_PIPE_GREEN_RUSTED);
+
+public static final DeferredBlock<Block> DECO_PIPE_RED = BLOCKS.register("deco_pipe_red",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DECO_PIPE_RED_ITEM = ITEMS.registerSimpleBlockItem(DECO_PIPE_RED);
+
+public static final DeferredBlock<Block> DECO_PIPE_MARKED = BLOCKS.register("deco_pipe_marked",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DECO_PIPE_MARKED_ITEM = ITEMS.registerSimpleBlockItem(DECO_PIPE_MARKED);
+
+public static final DeferredBlock<Block> DECO_PIPE_RIM = BLOCKS.register("deco_pipe_rim",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DECO_PIPE_RIM_ITEM = ITEMS.registerSimpleBlockItem(DECO_PIPE_RIM);
+
+public static final DeferredBlock<Block> DECO_PIPE_RIM_RUSTED = BLOCKS.register("deco_pipe_rim_rusted",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DECO_PIPE_RIM_RUSTED_ITEM = ITEMS.registerSimpleBlockItem(DECO_PIPE_RIM_RUSTED);
+
+public static final DeferredBlock<Block> DECO_PIPE_RIM_GREEN = BLOCKS.register("deco_pipe_rim_green",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DECO_PIPE_RIM_GREEN_ITEM = ITEMS.registerSimpleBlockItem(DECO_PIPE_RIM_GREEN);
+
+public static final DeferredBlock<Block> DECO_PIPE_RIM_GREEN_RUSTED = BLOCKS.register("deco_pipe_rim_green_rusted",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DECO_PIPE_RIM_GREEN_RUSTED_ITEM = ITEMS.registerSimpleBlockItem(DECO_PIPE_RIM_GREEN_RUSTED);
+
+public static final DeferredBlock<Block> DECO_PIPE_RIM_RED = BLOCKS.register("deco_pipe_rim_red",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DECO_PIPE_RIM_RED_ITEM = ITEMS.registerSimpleBlockItem(DECO_PIPE_RIM_RED);
+
+public static final DeferredBlock<Block> DECO_PIPE_RIM_MARKED = BLOCKS.register("deco_pipe_rim_marked",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DECO_PIPE_RIM_MARKED_ITEM = ITEMS.registerSimpleBlockItem(DECO_PIPE_RIM_MARKED);
+
+public static final DeferredBlock<Block> DECO_PIPE_FRAMED = BLOCKS.register("deco_pipe_framed",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DECO_PIPE_FRAMED_ITEM = ITEMS.registerSimpleBlockItem(DECO_PIPE_FRAMED);
+
+public static final DeferredBlock<Block> DECO_PIPE_FRAMED_RUSTED = BLOCKS.register("deco_pipe_framed_rusted",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DECO_PIPE_FRAMED_RUSTED_ITEM = ITEMS.registerSimpleBlockItem(DECO_PIPE_FRAMED_RUSTED);
+
+public static final DeferredBlock<Block> DECO_PIPE_FRAMED_GREEN = BLOCKS.register("deco_pipe_framed_green",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DECO_PIPE_FRAMED_GREEN_ITEM = ITEMS.registerSimpleBlockItem(DECO_PIPE_FRAMED_GREEN);
+
+public static final DeferredBlock<Block> DECO_PIPE_FRAMED_GREEN_RUSTED = BLOCKS.register("deco_pipe_framed_green_rusted",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DECO_PIPE_FRAMED_GREEN_RUSTED_ITEM = ITEMS.registerSimpleBlockItem(DECO_PIPE_FRAMED_GREEN_RUSTED);
+
+public static final DeferredBlock<Block> DECO_PIPE_FRAMED_RED = BLOCKS.register("deco_pipe_framed_red",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DECO_PIPE_FRAMED_RED_ITEM = ITEMS.registerSimpleBlockItem(DECO_PIPE_FRAMED_RED);
+
+public static final DeferredBlock<Block> DECO_PIPE_FRAMED_MARKED = BLOCKS.register("deco_pipe_framed_marked",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DECO_PIPE_FRAMED_MARKED_ITEM = ITEMS.registerSimpleBlockItem(DECO_PIPE_FRAMED_MARKED);
+
+public static final DeferredBlock<Block> DECO_PIPE_QUAD = BLOCKS.register("deco_pipe_quad",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DECO_PIPE_QUAD_ITEM = ITEMS.registerSimpleBlockItem(DECO_PIPE_QUAD);
+
+public static final DeferredBlock<Block> DECO_PIPE_QUAD_RUSTED = BLOCKS.register("deco_pipe_quad_rusted",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DECO_PIPE_QUAD_RUSTED_ITEM = ITEMS.registerSimpleBlockItem(DECO_PIPE_QUAD_RUSTED);
+
+public static final DeferredBlock<Block> DECO_PIPE_QUAD_GREEN = BLOCKS.register("deco_pipe_quad_green",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DECO_PIPE_QUAD_GREEN_ITEM = ITEMS.registerSimpleBlockItem(DECO_PIPE_QUAD_GREEN);
+
+public static final DeferredBlock<Block> DECO_PIPE_QUAD_GREEN_RUSTED = BLOCKS.register("deco_pipe_quad_green_rusted",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DECO_PIPE_QUAD_GREEN_RUSTED_ITEM = ITEMS.registerSimpleBlockItem(DECO_PIPE_QUAD_GREEN_RUSTED);
+
+public static final DeferredBlock<Block> DECO_PIPE_QUAD_RED = BLOCKS.register("deco_pipe_quad_red",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DECO_PIPE_QUAD_RED_ITEM = ITEMS.registerSimpleBlockItem(DECO_PIPE_QUAD_RED);
+
+public static final DeferredBlock<Block> DECO_PIPE_QUAD_MARKED = BLOCKS.register("deco_pipe_quad_marked",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DECO_PIPE_QUAD_MARKED_ITEM = ITEMS.registerSimpleBlockItem(DECO_PIPE_QUAD_MARKED);
+
+public static final DeferredBlock<Block> GLYPHID_BASE = BLOCKS.register("glyphid_base",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> GLYPHID_BASE_ITEM = ITEMS.registerSimpleBlockItem(GLYPHID_BASE);
+
+public static final DeferredBlock<Block> GLYPHID_SPAWNER = BLOCKS.register("glyphid_spawner",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> GLYPHID_SPAWNER_ITEM = ITEMS.registerSimpleBlockItem(GLYPHID_SPAWNER);
+
+// ============================================================================
+// Section: Radiation blocks (15 blocks)
+// ============================================================================
+
+public static final DeferredBlock<Block> MUSH = BLOCKS.register("mush",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MUSH_ITEM = ITEMS.registerSimpleBlockItem(MUSH);
+
+public static final DeferredBlock<Block> MUSH_BLOCK = BLOCKS.register("mush_block",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MUSH_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(MUSH_BLOCK);
+
+public static final DeferredBlock<Block> MUSH_BLOCK_STEM = BLOCKS.register("mush_block_stem",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MUSH_BLOCK_STEM_ITEM = ITEMS.registerSimpleBlockItem(MUSH_BLOCK_STEM);
+
+public static final DeferredBlock<Block> BLOCK_WASTE = BLOCKS.register("block_waste",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BLOCK_WASTE_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_WASTE);
+
+public static final DeferredBlock<Block> BLOCK_WASTE_PAINTED = BLOCKS.register("block_waste_painted",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BLOCK_WASTE_PAINTED_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_WASTE_PAINTED);
+
+public static final DeferredBlock<Block> BLOCK_WASTE_VITRIFIED = BLOCKS.register("block_waste_vitrified",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BLOCK_WASTE_VITRIFIED_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_WASTE_VITRIFIED);
+
+public static final DeferredBlock<Block> WASTE_MYCELIUM = BLOCKS.register("waste_mycelium",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> WASTE_MYCELIUM_ITEM = ITEMS.registerSimpleBlockItem(WASTE_MYCELIUM);
+
+public static final DeferredBlock<Block> WASTE_EARTH = BLOCKS.register("waste_earth",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> WASTE_EARTH_ITEM = ITEMS.registerSimpleBlockItem(WASTE_EARTH);
+
+public static final DeferredBlock<Block> WASTE_TRINITITE = BLOCKS.register("waste_trinitite",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> WASTE_TRINITITE_ITEM = ITEMS.registerSimpleBlockItem(WASTE_TRINITITE);
+
+public static final DeferredBlock<Block> WASTE_TRINITITE_RED = BLOCKS.register("waste_trinitite_red",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> WASTE_TRINITITE_RED_ITEM = ITEMS.registerSimpleBlockItem(WASTE_TRINITITE_RED);
+
+public static final DeferredBlock<Block> WASTE_LOG = BLOCKS.register("waste_log",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> WASTE_LOG_ITEM = ITEMS.registerSimpleBlockItem(WASTE_LOG);
+
+public static final DeferredBlock<Block> WASTE_PLANKS = BLOCKS.register("waste_planks",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> WASTE_PLANKS_ITEM = ITEMS.registerSimpleBlockItem(WASTE_PLANKS);
+
+public static final DeferredBlock<Block> WASTE_LEAVES = BLOCKS.register("waste_leaves",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> WASTE_LEAVES_ITEM = ITEMS.registerSimpleBlockItem(WASTE_LEAVES);
+
+public static final DeferredBlock<Block> WASTE_GRASS_TALL = BLOCKS.register("waste_grass_tall",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> WASTE_GRASS_TALL_ITEM = ITEMS.registerSimpleBlockItem(WASTE_GRASS_TALL);
+
+public static final DeferredBlock<Block> BURNING_EARTH = BLOCKS.register("burning_earth",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BURNING_EARTH_ITEM = ITEMS.registerSimpleBlockItem(BURNING_EARTH);
+
+// ============================================================================
+// Section: PollutedBecauseOilThings (54 blocks)
+// ============================================================================
+
+public static final DeferredBlock<Block> PLANT_FLOWER = BLOCKS.register("plant_flower",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> PLANT_FLOWER_ITEM = ITEMS.registerSimpleBlockItem(PLANT_FLOWER);
+
+public static final DeferredBlock<Block> PLANT_TALL = BLOCKS.register("plant_tall",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> PLANT_TALL_ITEM = ITEMS.registerSimpleBlockItem(PLANT_TALL);
+
+public static final DeferredBlock<Block> PLANT_DEAD = BLOCKS.register("plant_dead",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> PLANT_DEAD_ITEM = ITEMS.registerSimpleBlockItem(PLANT_DEAD);
+
+public static final DeferredBlock<Block> REEDS = BLOCKS.register("plant_reeds",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> REEDS_ITEM = ITEMS.registerSimpleBlockItem(REEDS);
+
+public static final DeferredBlock<Block> DIRT_DEAD = BLOCKS.register("dirt_dead",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DIRT_DEAD_ITEM = ITEMS.registerSimpleBlockItem(DIRT_DEAD);
+
+public static final DeferredBlock<Block> DIRT_OILY = BLOCKS.register("dirt_oily",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DIRT_OILY_ITEM = ITEMS.registerSimpleBlockItem(DIRT_OILY);
+
+public static final DeferredBlock<Block> SAND_DIRTY = BLOCKS.register("sand_dirty",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> SAND_DIRTY_ITEM = ITEMS.registerSimpleBlockItem(SAND_DIRTY);
+
+public static final DeferredBlock<Block> SAND_DIRTY_RED = BLOCKS.register("sand_dirty_red",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> SAND_DIRTY_RED_ITEM = ITEMS.registerSimpleBlockItem(SAND_DIRTY_RED);
+
+public static final DeferredBlock<Block> STONE_CRACKED = BLOCKS.register("stone_cracked",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> STONE_CRACKED_ITEM = ITEMS.registerSimpleBlockItem(STONE_CRACKED);
+
+public static final DeferredBlock<Block> FROZEN_GRASS = BLOCKS.register("frozen_grass",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> FROZEN_GRASS_ITEM = ITEMS.registerSimpleBlockItem(FROZEN_GRASS);
+
+public static final DeferredBlock<Block> FROZEN_LOG = BLOCKS.register("frozen_log",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> FROZEN_LOG_ITEM = ITEMS.registerSimpleBlockItem(FROZEN_LOG);
+
+public static final DeferredBlock<Block> FROZEN_PLANKS = BLOCKS.register("frozen_planks",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> FROZEN_PLANKS_ITEM = ITEMS.registerSimpleBlockItem(FROZEN_PLANKS);
+
+public static final DeferredBlock<Block> FROZEN_DIRT = BLOCKS.register("frozen_dirt",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> FROZEN_DIRT_ITEM = ITEMS.registerSimpleBlockItem(FROZEN_DIRT);
+
+public static final DeferredBlock<Block> FALLOUT = BLOCKS.register("fallout",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> FALLOUT_ITEM = ITEMS.registerSimpleBlockItem(FALLOUT);
+
+public static final DeferredBlock<Block> BLOCK_FALLOUT = BLOCKS.register("block_fallout",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BLOCK_FALLOUT_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_FALLOUT);
+
+public static final DeferredBlock<Block> FOAM_LAYER = BLOCKS.register("foam_layer",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> FOAM_LAYER_ITEM = ITEMS.registerSimpleBlockItem(FOAM_LAYER);
+
+public static final DeferredBlock<Block> SAND_BORON_LAYER = BLOCKS.register("sand_boron_layer",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> SAND_BORON_LAYER_ITEM = ITEMS.registerSimpleBlockItem(SAND_BORON_LAYER);
+
+public static final DeferredBlock<Block> LEAVES_LAYER = BLOCKS.register("leaves_layer",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> LEAVES_LAYER_ITEM = ITEMS.registerSimpleBlockItem(LEAVES_LAYER);
+
+public static final DeferredBlock<Block> OIL_SPILL = BLOCKS.register("oil_spill",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> OIL_SPILL_ITEM = ITEMS.registerSimpleBlockItem(OIL_SPILL);
+
+public static final DeferredBlock<Block> BLOCK_TRITIUM = BLOCKS.register("block_tritium",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BLOCK_TRITIUM_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_TRITIUM);
+
+public static final DeferredBlock<Block> BLOCK_SEMTEX = BLOCKS.register("block_semtex",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BLOCK_SEMTEX_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_SEMTEX);
+
+public static final DeferredBlock<Block> BLOCK_C4 = BLOCKS.register("block_c4",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BLOCK_C4_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_C4);
+
+public static final DeferredBlock<Block> BLOCK_SMORE = BLOCKS.register("block_smore",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BLOCK_SMORE_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_SMORE);
+
+public static final DeferredBlock<Block> SELLAFIELD_SLAKED = BLOCKS.register("sellafield_slaked",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> SELLAFIELD_SLAKED_ITEM = ITEMS.registerSimpleBlockItem(SELLAFIELD_SLAKED);
+
+public static final DeferredBlock<Block> SELLAFIELD_BEDROCK = BLOCKS.register("sellafield_bedrock",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> SELLAFIELD_BEDROCK_ITEM = ITEMS.registerSimpleBlockItem(SELLAFIELD_BEDROCK);
+
+public static final DeferredBlock<Block> SELLAFIELD = BLOCKS.register("sellafield",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> SELLAFIELD_ITEM = ITEMS.registerSimpleBlockItem(SELLAFIELD);
+
+public static final DeferredBlock<Block> GEYSIR_CHLORINE = BLOCKS.register("geysir_chlorine",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> GEYSIR_CHLORINE_ITEM = ITEMS.registerSimpleBlockItem(GEYSIR_CHLORINE);
+
+public static final DeferredBlock<Block> GEYSIR_NETHER = BLOCKS.register("geysir_nether",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> GEYSIR_NETHER_ITEM = ITEMS.registerSimpleBlockItem(GEYSIR_NETHER);
+
+public static final DeferredBlock<Block> BLOCK_YELLOWCAKE = BLOCKS.register("block_yellowcake",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BLOCK_YELLOWCAKE_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_YELLOWCAKE);
+
+public static final DeferredBlock<Block> BRICK_FIRE = BLOCKS.register("brick_fire",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BRICK_FIRE_ITEM = ITEMS.registerSimpleBlockItem(BRICK_FIRE);
+
+public static final DeferredBlock<Block> BRICK_FIRE_STAIRS = BLOCKS.register("brick_fire_stairs",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BRICK_FIRE_STAIRS_ITEM = ITEMS.registerSimpleBlockItem(BRICK_FIRE_STAIRS);
+
+public static final DeferredBlock<Block> BLOCK_INSULATOR = BLOCKS.register("block_insulator",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BLOCK_INSULATOR_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_INSULATOR);
+
+public static final DeferredBlock<Block> BLOCK_FOAM = BLOCKS.register("block_foam",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BLOCK_FOAM_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_FOAM);
+
+public static final DeferredBlock<Block> BLOCK_GRAPHITE_DRILLED = BLOCKS.register("block_graphite_drilled",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BLOCK_GRAPHITE_DRILLED_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_GRAPHITE_DRILLED);
+
+public static final DeferredBlock<Block> BLOCK_GRAPHITE_FUEL = BLOCKS.register("block_graphite_fuel",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BLOCK_GRAPHITE_FUEL_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_GRAPHITE_FUEL);
+
+public static final DeferredBlock<Block> BLOCK_GRAPHITE_PLUTONIUM = BLOCKS.register("block_graphite_plutonium",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BLOCK_GRAPHITE_PLUTONIUM_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_GRAPHITE_PLUTONIUM);
+
+public static final DeferredBlock<Block> BLOCK_GRAPHITE_ROD = BLOCKS.register("block_graphite_rod",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BLOCK_GRAPHITE_ROD_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_GRAPHITE_ROD);
+
+public static final DeferredBlock<Block> BLOCK_GRAPHITE_SOURCE = BLOCKS.register("block_graphite_source",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BLOCK_GRAPHITE_SOURCE_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_GRAPHITE_SOURCE);
+
+public static final DeferredBlock<Block> BLOCK_GRAPHITE_LITHIUM = BLOCKS.register("block_graphite_lithium",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BLOCK_GRAPHITE_LITHIUM_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_GRAPHITE_LITHIUM);
+
+public static final DeferredBlock<Block> BLOCK_GRAPHITE_TRITIUM = BLOCKS.register("block_graphite_tritium",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BLOCK_GRAPHITE_TRITIUM_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_GRAPHITE_TRITIUM);
+
+public static final DeferredBlock<Block> BLOCK_GRAPHITE_DETECTOR = BLOCKS.register("block_graphite_detector",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BLOCK_GRAPHITE_DETECTOR_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_GRAPHITE_DETECTOR);
+
+public static final DeferredBlock<Block> DEPTH_BRICK = BLOCKS.register("depth_brick",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DEPTH_BRICK_ITEM = ITEMS.registerSimpleBlockItem(DEPTH_BRICK);
+
+public static final DeferredBlock<Block> DEPTH_TILES = BLOCKS.register("depth_tiles",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DEPTH_TILES_ITEM = ITEMS.registerSimpleBlockItem(DEPTH_TILES);
+
+public static final DeferredBlock<Block> DEPTH_NETHER_BRICK = BLOCKS.register("depth_nether_brick",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DEPTH_NETHER_BRICK_ITEM = ITEMS.registerSimpleBlockItem(DEPTH_NETHER_BRICK);
+
+public static final DeferredBlock<Block> DEPTH_NETHER_TILES = BLOCKS.register("depth_nether_tiles",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DEPTH_NETHER_TILES_ITEM = ITEMS.registerSimpleBlockItem(DEPTH_NETHER_TILES);
+
+public static final DeferredBlock<Block> DEPTH_DNT = BLOCKS.register("depth_dnt",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DEPTH_DNT_ITEM = ITEMS.registerSimpleBlockItem(DEPTH_DNT);
+
+public static final DeferredBlock<Block> STONE_POROUS = BLOCKS.register("stone_porous",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> STONE_POROUS_ITEM = ITEMS.registerSimpleBlockItem(STONE_POROUS);
+
+public static final DeferredBlock<Block> BASALT = BLOCKS.register("basalt",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BASALT_ITEM = ITEMS.registerSimpleBlockItem(BASALT);
+
+public static final DeferredBlock<Block> ORE_BASALT = BLOCKS.register("ore_basalt",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> ORE_BASALT_ITEM = ITEMS.registerSimpleBlockItem(ORE_BASALT);
+
+public static final DeferredBlock<Block> BASALT_SMOOTH = BLOCKS.register("basalt_smooth",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BASALT_SMOOTH_ITEM = ITEMS.registerSimpleBlockItem(BASALT_SMOOTH);
+
+public static final DeferredBlock<Block> BASALT_BRICK = BLOCKS.register("basalt_brick",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BASALT_BRICK_ITEM = ITEMS.registerSimpleBlockItem(BASALT_BRICK);
+
+public static final DeferredBlock<Block> BASALT_POLISHED = BLOCKS.register("basalt_polished",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BASALT_POLISHED_ITEM = ITEMS.registerSimpleBlockItem(BASALT_POLISHED);
+
+public static final DeferredBlock<Block> BASALT_TILES = BLOCKS.register("basalt_tiles",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BASALT_TILES_ITEM = ITEMS.registerSimpleBlockItem(BASALT_TILES);
+
+public static final DeferredBlock<Block> BLOCK_CAP = BLOCKS.register("block_cap",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BLOCK_CAP_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_CAP);
+
+// ============================================================================
+// Section: Bombs (45 blocks)
+// ============================================================================
+
+public static final DeferredBlock<Block> NUKE_GADGET = BLOCKS.register("nuke_gadget",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> NUKE_GADGET_ITEM = ITEMS.registerSimpleBlockItem(NUKE_GADGET);
+
+public static final DeferredBlock<Block> NUKE_BOY = BLOCKS.register("nuke_boy",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> NUKE_BOY_ITEM = ITEMS.registerSimpleBlockItem(NUKE_BOY);
+
+public static final DeferredBlock<Block> NUKE_MAN = BLOCKS.register("nuke_man",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> NUKE_MAN_ITEM = ITEMS.registerSimpleBlockItem(NUKE_MAN);
+
+public static final DeferredBlock<Block> NUKE_MIKE = BLOCKS.register("nuke_mike",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> NUKE_MIKE_ITEM = ITEMS.registerSimpleBlockItem(NUKE_MIKE);
+
+public static final DeferredBlock<Block> NUKE_TSAR = BLOCKS.register("nuke_tsar",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> NUKE_TSAR_ITEM = ITEMS.registerSimpleBlockItem(NUKE_TSAR);
+
+public static final DeferredBlock<Block> NUKE_FLEIJA = BLOCKS.register("nuke_fleija",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> NUKE_FLEIJA_ITEM = ITEMS.registerSimpleBlockItem(NUKE_FLEIJA);
+
+public static final DeferredBlock<Block> NUKE_PROTOTYPE = BLOCKS.register("nuke_prototype",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> NUKE_PROTOTYPE_ITEM = ITEMS.registerSimpleBlockItem(NUKE_PROTOTYPE);
+
+public static final DeferredBlock<Block> NUKE_SOLINIUM = BLOCKS.register("nuke_solinium",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> NUKE_SOLINIUM_ITEM = ITEMS.registerSimpleBlockItem(NUKE_SOLINIUM);
+
+public static final DeferredBlock<Block> NUKE_N2 = BLOCKS.register("nuke_n2",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> NUKE_N2_ITEM = ITEMS.registerSimpleBlockItem(NUKE_N2);
+
+public static final DeferredBlock<Block> NUKE_FSTBMB = BLOCKS.register("nuke_fstbmb",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> NUKE_FSTBMB_ITEM = ITEMS.registerSimpleBlockItem(NUKE_FSTBMB);
+
+public static final DeferredBlock<Block> NUKE_CUSTOM = BLOCKS.register("nuke_custom",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> NUKE_CUSTOM_ITEM = ITEMS.registerSimpleBlockItem(NUKE_CUSTOM);
+
+public static final DeferredBlock<Block> BOMB_MULTI = BLOCKS.register("bomb_multi",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BOMB_MULTI_ITEM = ITEMS.registerSimpleBlockItem(BOMB_MULTI);
+
+public static final DeferredBlock<Block> CRASHED_BOMB = BLOCKS.register("crashed_bomb",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CRASHED_BOMB_ITEM = ITEMS.registerSimpleBlockItem(CRASHED_BOMB);
+
+public static final DeferredBlock<Block> FIREWORKS = BLOCKS.register("fireworks",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> FIREWORKS_ITEM = ITEMS.registerSimpleBlockItem(FIREWORKS);
+
+public static final DeferredBlock<Block> CHARGE_DYNAMITE = BLOCKS.register("charge_dynamite",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CHARGE_DYNAMITE_ITEM = ITEMS.registerSimpleBlockItem(CHARGE_DYNAMITE);
+
+public static final DeferredBlock<Block> CHARGE_MINER = BLOCKS.register("charge_miner",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CHARGE_MINER_ITEM = ITEMS.registerSimpleBlockItem(CHARGE_MINER);
+
+public static final DeferredBlock<Block> CHARGE_C4 = BLOCKS.register("charge_c4",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CHARGE_C4_ITEM = ITEMS.registerSimpleBlockItem(CHARGE_C4);
+
+public static final DeferredBlock<Block> CHARGE_SEMTEX = BLOCKS.register("charge_semtex",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CHARGE_SEMTEX_ITEM = ITEMS.registerSimpleBlockItem(CHARGE_SEMTEX);
+
+public static final DeferredBlock<Block> MINE_AP = BLOCKS.register("mine_ap",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MINE_AP_ITEM = ITEMS.registerSimpleBlockItem(MINE_AP);
+
+public static final DeferredBlock<Block> MINE_HE = BLOCKS.register("mine_he",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MINE_HE_ITEM = ITEMS.registerSimpleBlockItem(MINE_HE);
+
+public static final DeferredBlock<Block> MINE_SHRAP = BLOCKS.register("mine_shrap",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MINE_SHRAP_ITEM = ITEMS.registerSimpleBlockItem(MINE_SHRAP);
+
+public static final DeferredBlock<Block> MINE_FAT = BLOCKS.register("mine_fat",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MINE_FAT_ITEM = ITEMS.registerSimpleBlockItem(MINE_FAT);
+
+public static final DeferredBlock<Block> MINE_NAVAL = BLOCKS.register("mine_naval",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MINE_NAVAL_ITEM = ITEMS.registerSimpleBlockItem(MINE_NAVAL);
+
+public static final DeferredBlock<Block> DYNAMITE = BLOCKS.register("dynamite",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DYNAMITE_ITEM = ITEMS.registerSimpleBlockItem(DYNAMITE);
+
+public static final DeferredBlock<Block> TNT = BLOCKS.register("tnt_ntm",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> TNT_ITEM = ITEMS.registerSimpleBlockItem(TNT);
+
+public static final DeferredBlock<Block> SEMTEX = BLOCKS.register("semtex",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> SEMTEX_ITEM = ITEMS.registerSimpleBlockItem(SEMTEX);
+
+public static final DeferredBlock<Block> C4 = BLOCKS.register("c4",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> C4_ITEM = ITEMS.registerSimpleBlockItem(C4);
+
+public static final DeferredBlock<Block> FISSURE_BOMB = BLOCKS.register("fissure_bomb",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> FISSURE_BOMB_ITEM = ITEMS.registerSimpleBlockItem(FISSURE_BOMB);
+
+public static final DeferredBlock<Block> FLAME_WAR = BLOCKS.register("flame_war",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> FLAME_WAR_ITEM = ITEMS.registerSimpleBlockItem(FLAME_WAR);
+
+public static final DeferredBlock<Block> FLOAT_BOMB = BLOCKS.register("float_bomb",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> FLOAT_BOMB_ITEM = ITEMS.registerSimpleBlockItem(FLOAT_BOMB);
+
+public static final DeferredBlock<Block> EMP_BOMB = BLOCKS.register("emp_bomb",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> EMP_BOMB_ITEM = ITEMS.registerSimpleBlockItem(EMP_BOMB);
+
+public static final DeferredBlock<Block> THERM_ENDO = BLOCKS.register("therm_endo",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> THERM_ENDO_ITEM = ITEMS.registerSimpleBlockItem(THERM_ENDO);
+
+public static final DeferredBlock<Block> THERM_EXO = BLOCKS.register("therm_exo",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> THERM_EXO_ITEM = ITEMS.registerSimpleBlockItem(THERM_EXO);
+
+public static final DeferredBlock<Block> DET_CORD = BLOCKS.register("det_cord",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DET_CORD_ITEM = ITEMS.registerSimpleBlockItem(DET_CORD);
+
+public static final DeferredBlock<Block> DET_MINER = BLOCKS.register("det_miner",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DET_MINER_ITEM = ITEMS.registerSimpleBlockItem(DET_MINER);
+
+public static final DeferredBlock<Block> DET_CHARGE = BLOCKS.register("det_charge",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DET_CHARGE_ITEM = ITEMS.registerSimpleBlockItem(DET_CHARGE);
+
+public static final DeferredBlock<Block> DET_N2 = BLOCKS.register("det_n2",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DET_N2_ITEM = ITEMS.registerSimpleBlockItem(DET_N2);
+
+public static final DeferredBlock<Block> DET_NUKE = BLOCKS.register("det_nuke",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DET_NUKE_ITEM = ITEMS.registerSimpleBlockItem(DET_NUKE);
+
+public static final DeferredBlock<Block> DET_BALE = BLOCKS.register("det_bale",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DET_BALE_ITEM = ITEMS.registerSimpleBlockItem(DET_BALE);
+
+public static final DeferredBlock<Block> RED_BARREL = BLOCKS.register("red_barrel",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RED_BARREL_ITEM = ITEMS.registerSimpleBlockItem(RED_BARREL);
+
+public static final DeferredBlock<Block> PINK_BARREL = BLOCKS.register("pink_barrel",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> PINK_BARREL_ITEM = ITEMS.registerSimpleBlockItem(PINK_BARREL);
+
+public static final DeferredBlock<Block> YELLOW_BARREL = BLOCKS.register("yellow_barrel",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> YELLOW_BARREL_ITEM = ITEMS.registerSimpleBlockItem(YELLOW_BARREL);
+
+public static final DeferredBlock<Block> VITRIFIED_BARREL = BLOCKS.register("vitrified_barrel",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> VITRIFIED_BARREL_ITEM = ITEMS.registerSimpleBlockItem(VITRIFIED_BARREL);
+
+public static final DeferredBlock<Block> LOX_BARREL = BLOCKS.register("lox_barrel",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> LOX_BARREL_ITEM = ITEMS.registerSimpleBlockItem(LOX_BARREL);
+
+public static final DeferredBlock<Block> TAINT_BARREL = BLOCKS.register("taint_barrel",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> TAINT_BARREL_ITEM = ITEMS.registerSimpleBlockItem(TAINT_BARREL);
+
+// ============================================================================
+// Section: Cables (19 blocks)
+// ============================================================================
+
+public static final DeferredBlock<Block> RED_CABLE = BLOCKS.register("red_cable",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RED_CABLE_ITEM = ITEMS.registerSimpleBlockItem(RED_CABLE);
+
+public static final DeferredBlock<Block> RED_CABLE_BOX = BLOCKS.register("red_cable_box",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RED_CABLE_BOX_ITEM = ITEMS.registerSimpleBlockItem(RED_CABLE_BOX);
+
+public static final DeferredBlock<Block> RED_CABLE_PAINTABLE = BLOCKS.register("red_cable_paintable",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RED_CABLE_PAINTABLE_ITEM = ITEMS.registerSimpleBlockItem(RED_CABLE_PAINTABLE);
+
+public static final DeferredBlock<Block> RED_WIRE_COATED = BLOCKS.register("red_wire_coated",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RED_WIRE_COATED_ITEM = ITEMS.registerSimpleBlockItem(RED_WIRE_COATED);
+
+public static final DeferredBlock<Block> RED_WIRE_SEALED = BLOCKS.register("red_wire_sealed",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RED_WIRE_SEALED_ITEM = ITEMS.registerSimpleBlockItem(RED_WIRE_SEALED);
+
+public static final DeferredBlock<Block> CABLE_SWITCH = BLOCKS.register("cable_switch",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CABLE_SWITCH_ITEM = ITEMS.registerSimpleBlockItem(CABLE_SWITCH);
+
+public static final DeferredBlock<Block> CABLE_DETECTOR = BLOCKS.register("cable_detector",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CABLE_DETECTOR_ITEM = ITEMS.registerSimpleBlockItem(CABLE_DETECTOR);
+
+public static final DeferredBlock<Block> MACHINE_DETECTOR = BLOCKS.register("machine_detector",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_DETECTOR_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_DETECTOR);
+
+public static final DeferredBlock<Block> CABLE_DIODE = BLOCKS.register("cable_diode",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CABLE_DIODE_ITEM = ITEMS.registerSimpleBlockItem(CABLE_DIODE);
+
+public static final DeferredBlock<Block> RED_CABLE_GAUGE = BLOCKS.register("red_cable_gauge",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RED_CABLE_GAUGE_ITEM = ITEMS.registerSimpleBlockItem(RED_CABLE_GAUGE);
+
+public static final DeferredBlock<Block> RED_CONNECTOR = BLOCKS.register("red_connector",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RED_CONNECTOR_ITEM = ITEMS.registerSimpleBlockItem(RED_CONNECTOR);
+
+public static final DeferredBlock<Block> RED_CONNECTOR_SUPER = BLOCKS.register("connector_red_super",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RED_CONNECTOR_SUPER_ITEM = ITEMS.registerSimpleBlockItem(RED_CONNECTOR_SUPER);
+
+public static final DeferredBlock<Block> RED_PYLON = BLOCKS.register("red_pylon",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RED_PYLON_ITEM = ITEMS.registerSimpleBlockItem(RED_PYLON);
+
+public static final DeferredBlock<Block> RED_PYLON_LARGE = BLOCKS.register("red_pylon_large",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RED_PYLON_LARGE_ITEM = ITEMS.registerSimpleBlockItem(RED_PYLON_LARGE);
+
+public static final DeferredBlock<Block> RED_PYLON_MEDIUM_WOOD = BLOCKS.register("red_pylon_medium_wood",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RED_PYLON_MEDIUM_WOOD_ITEM = ITEMS.registerSimpleBlockItem(RED_PYLON_MEDIUM_WOOD);
+
+public static final DeferredBlock<Block> RED_PYLON_MEDIUM_WOOD_TRANSFORMER = BLOCKS.register("red_pylon_medium_transformer",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RED_PYLON_MEDIUM_WOOD_TRANSFORMER_ITEM = ITEMS.registerSimpleBlockItem(RED_PYLON_MEDIUM_WOOD_TRANSFORMER);
+
+public static final DeferredBlock<Block> RED_PYLON_MEDIUM_STEEL = BLOCKS.register("red_pylon_steel",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RED_PYLON_MEDIUM_STEEL_ITEM = ITEMS.registerSimpleBlockItem(RED_PYLON_MEDIUM_STEEL);
+
+public static final DeferredBlock<Block> RED_PYLON_MEDIUM_STEEL_TRANSFORMER = BLOCKS.register("red_pylon_steel_transformer",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RED_PYLON_MEDIUM_STEEL_TRANSFORMER_ITEM = ITEMS.registerSimpleBlockItem(RED_PYLON_MEDIUM_STEEL_TRANSFORMER);
+
+public static final DeferredBlock<Block> SUBSTATION = BLOCKS.register("substation",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> SUBSTATION_ITEM = ITEMS.registerSimpleBlockItem(SUBSTATION);
+
+// ============================================================================
+// Section: Tanks (24 blocks)
+// ============================================================================
+
+public static final DeferredBlock<Block> BARREL_PLASTIC = BLOCKS.register("barrel_plastic",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BARREL_PLASTIC_ITEM = ITEMS.registerSimpleBlockItem(BARREL_PLASTIC);
+
+public static final DeferredBlock<Block> BARREL_CORRODED = BLOCKS.register("barrel_corroded",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BARREL_CORRODED_ITEM = ITEMS.registerSimpleBlockItem(BARREL_CORRODED);
+
+public static final DeferredBlock<Block> BARREL_IRON = BLOCKS.register("barrel_iron",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BARREL_IRON_ITEM = ITEMS.registerSimpleBlockItem(BARREL_IRON);
+
+public static final DeferredBlock<Block> BARREL_STEEL = BLOCKS.register("barrel_steel",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BARREL_STEEL_ITEM = ITEMS.registerSimpleBlockItem(BARREL_STEEL);
+
+public static final DeferredBlock<Block> BARREL_TCALLOY = BLOCKS.register("barrel_tcalloy",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BARREL_TCALLOY_ITEM = ITEMS.registerSimpleBlockItem(BARREL_TCALLOY);
+
+public static final DeferredBlock<Block> BARREL_ANTIMATTER = BLOCKS.register("barrel_antimatter",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BARREL_ANTIMATTER_ITEM = ITEMS.registerSimpleBlockItem(BARREL_ANTIMATTER);
+
+public static final DeferredBlock<Block> MACHINE_UF6_TANK = BLOCKS.register("machine_uf6_tank",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_UF6_TANK_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_UF6_TANK);
+
+public static final DeferredBlock<Block> MACHINE_PUF6_TANK = BLOCKS.register("machine_puf6_tank",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_PUF6_TANK_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_PUF6_TANK);
+
+public static final DeferredBlock<Block> MACHINE_FLUIDTANK = BLOCKS.register("machine_fluidtank",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_FLUIDTANK_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_FLUIDTANK);
+
+public static final DeferredBlock<Block> MACHINE_BAT9000 = BLOCKS.register("machine_bat9000",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_BAT9000_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_BAT9000);
+
+public static final DeferredBlock<Block> MACHINE_BIGASSTANK = BLOCKS.register("machine_bigasstank",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_BIGASSTANK_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_BIGASSTANK);
+
+public static final DeferredBlock<Block> MACHINE_ORBUS = BLOCKS.register("machine_orbus",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_ORBUS_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_ORBUS);
+
+public static final DeferredBlock<Block> CM_BLOCK = BLOCKS.register("cm_block",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CM_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(CM_BLOCK);
+
+public static final DeferredBlock<Block> CM_SHEET = BLOCKS.register("cm_sheet",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CM_SHEET_ITEM = ITEMS.registerSimpleBlockItem(CM_SHEET);
+
+public static final DeferredBlock<Block> CM_ENGINE = BLOCKS.register("cm_engine",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CM_ENGINE_ITEM = ITEMS.registerSimpleBlockItem(CM_ENGINE);
+
+public static final DeferredBlock<Block> CM_TANK = BLOCKS.register("cm_tank",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CM_TANK_ITEM = ITEMS.registerSimpleBlockItem(CM_TANK);
+
+public static final DeferredBlock<Block> CM_CIRCUIT = BLOCKS.register("cm_circuit",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CM_CIRCUIT_ITEM = ITEMS.registerSimpleBlockItem(CM_CIRCUIT);
+
+public static final DeferredBlock<Block> CM_PORT = BLOCKS.register("cm_port",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CM_PORT_ITEM = ITEMS.registerSimpleBlockItem(CM_PORT);
+
+public static final DeferredBlock<Block> CM_FLUX = BLOCKS.register("cm_flux",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CM_FLUX_ITEM = ITEMS.registerSimpleBlockItem(CM_FLUX);
+
+public static final DeferredBlock<Block> CM_HEAT = BLOCKS.register("cm_heat",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CM_HEAT_ITEM = ITEMS.registerSimpleBlockItem(CM_HEAT);
+
+public static final DeferredBlock<Block> CUSTOM_MACHINE = BLOCKS.register("custom_machine",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CUSTOM_MACHINE_ITEM = ITEMS.registerSimpleBlockItem(CUSTOM_MACHINE);
+
+public static final DeferredBlock<Block> CM_ANCHOR = BLOCKS.register("custom_machine_anchor",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CM_ANCHOR_ITEM = ITEMS.registerSimpleBlockItem(CM_ANCHOR);
+
+public static final DeferredBlock<Block> MACHINE_ARMOR_TABLE = BLOCKS.register("machine_armor_table",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_ARMOR_TABLE_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_ARMOR_TABLE);
+
+public static final DeferredBlock<Block> MACHINE_WEAPON_TABLE = BLOCKS.register("machine_weapon_table",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_WEAPON_TABLE_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_WEAPON_TABLE);
+
+// ============================================================================
+// Section: Turrets (13 blocks)
+// ============================================================================
+
+public static final DeferredBlock<Block> TURRET_ARTY = BLOCKS.register("turret_arty",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> TURRET_ARTY_ITEM = ITEMS.registerSimpleBlockItem(TURRET_ARTY);
+
+public static final DeferredBlock<Block> TURRET_HIMARS = BLOCKS.register("turret_himars",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> TURRET_HIMARS_ITEM = ITEMS.registerSimpleBlockItem(TURRET_HIMARS);
+
+public static final DeferredBlock<Block> TURRET_CHEKHOV = BLOCKS.register("turret_chekhov",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> TURRET_CHEKHOV_ITEM = ITEMS.registerSimpleBlockItem(TURRET_CHEKHOV);
+
+public static final DeferredBlock<Block> TURRET_FRIENDLY = BLOCKS.register("turret_friendly",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> TURRET_FRIENDLY_ITEM = ITEMS.registerSimpleBlockItem(TURRET_FRIENDLY);
+
+public static final DeferredBlock<Block> TURRET_JEREMY = BLOCKS.register("turret_jeremy",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> TURRET_JEREMY_ITEM = ITEMS.registerSimpleBlockItem(TURRET_JEREMY);
+
+public static final DeferredBlock<Block> TURRET_TAUON = BLOCKS.register("turret_tauon",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> TURRET_TAUON_ITEM = ITEMS.registerSimpleBlockItem(TURRET_TAUON);
+
+public static final DeferredBlock<Block> TURRET_RICHARD = BLOCKS.register("turret_richard",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> TURRET_RICHARD_ITEM = ITEMS.registerSimpleBlockItem(TURRET_RICHARD);
+
+public static final DeferredBlock<Block> TURRET_HOWARD = BLOCKS.register("turret_howard",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> TURRET_HOWARD_ITEM = ITEMS.registerSimpleBlockItem(TURRET_HOWARD);
+
+public static final DeferredBlock<Block> TURRET_HOWARD_DAMAGED = BLOCKS.register("turret_howard_damaged",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> TURRET_HOWARD_DAMAGED_ITEM = ITEMS.registerSimpleBlockItem(TURRET_HOWARD_DAMAGED);
+
+public static final DeferredBlock<Block> TURRET_MAXWELL = BLOCKS.register("turret_maxwell",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> TURRET_MAXWELL_ITEM = ITEMS.registerSimpleBlockItem(TURRET_MAXWELL);
+
+public static final DeferredBlock<Block> TURRET_FRITZ = BLOCKS.register("turret_fritz",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> TURRET_FRITZ_ITEM = ITEMS.registerSimpleBlockItem(TURRET_FRITZ);
+
+public static final DeferredBlock<Block> TURRET_SENTRY = BLOCKS.register("turret_sentry",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> TURRET_SENTRY_ITEM = ITEMS.registerSimpleBlockItem(TURRET_SENTRY);
+
+public static final DeferredBlock<Block> TURRET_SENTRY_DAMAGED = BLOCKS.register("turret_sentry_damaged",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> TURRET_SENTRY_DAMAGED_ITEM = ITEMS.registerSimpleBlockItem(TURRET_SENTRY_DAMAGED);
+
+// ============================================================================
+// Section: Rails (2 blocks)
+// ============================================================================
+
+public static final DeferredBlock<Block> RAIL_HIGHSPEED = BLOCKS.register("rail_highspeed",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RAIL_HIGHSPEED_ITEM = ITEMS.registerSimpleBlockItem(RAIL_HIGHSPEED);
+
+public static final DeferredBlock<Block> RAIL_BOOSTER = BLOCKS.register("rail_booster",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RAIL_BOOSTER_ITEM = ITEMS.registerSimpleBlockItem(RAIL_BOOSTER);
+
+// ============================================================================
+// Section: Machines (5 blocks)
+// ============================================================================
+
+public static final DeferredBlock<Block> MACHINE_SIREN = BLOCKS.register("machine_siren",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_SIREN_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_SIREN);
+
+public static final DeferredBlock<Block> BROADCASTER_PC = BLOCKS.register("broadcaster_pc",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BROADCASTER_PC_ITEM = ITEMS.registerSimpleBlockItem(BROADCASTER_PC);
+
+public static final DeferredBlock<Block> GEIGER = BLOCKS.register("geiger",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> GEIGER_ITEM = ITEMS.registerSimpleBlockItem(GEIGER);
+
+public static final DeferredBlock<Block> HEV_BATTERY = BLOCKS.register("hev_battery_block",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> HEV_BATTERY_ITEM = ITEMS.registerSimpleBlockItem(HEV_BATTERY);
+
+public static final DeferredBlock<Block> FENCE_METAL = BLOCKS.register("fence_metal",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> FENCE_METAL_ITEM = ITEMS.registerSimpleBlockItem(FENCE_METAL);
+
+// ============================================================================
+// Section: A lot of stuff with uses no one knows (6 blocks)
+// ============================================================================
+
+public static final DeferredBlock<Block> ASH_DIGAMMA = BLOCKS.register("ash_digamma",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> ASH_DIGAMMA_ITEM = ITEMS.registerSimpleBlockItem(ASH_DIGAMMA);
+
+public static final DeferredBlock<Block> SAND_BORON = BLOCKS.register("sand_boron",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> SAND_BORON_ITEM = ITEMS.registerSimpleBlockItem(SAND_BORON);
+
+public static final DeferredBlock<Block> SAND_LEAD = BLOCKS.register("sand_lead",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> SAND_LEAD_ITEM = ITEMS.registerSimpleBlockItem(SAND_LEAD);
+
+public static final DeferredBlock<Block> SAND_URANIUM = BLOCKS.register("sand_uranium",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> SAND_URANIUM_ITEM = ITEMS.registerSimpleBlockItem(SAND_URANIUM);
+
+public static final DeferredBlock<Block> SAND_POLONIUM = BLOCKS.register("sand_polonium",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> SAND_POLONIUM_ITEM = ITEMS.registerSimpleBlockItem(SAND_POLONIUM);
+
+public static final DeferredBlock<Block> SAND_QUARTZ = BLOCKS.register("sand_quartz",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> SAND_QUARTZ_ITEM = ITEMS.registerSimpleBlockItem(SAND_QUARTZ);
+
+// ============================================================================
+// Section: Drillgon200: hee hoo ultrakill (4 blocks)
+// ============================================================================
+
+public static final DeferredBlock<Block> SAND_GOLD = BLOCKS.register("sand_gold",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> SAND_GOLD_ITEM = ITEMS.registerSimpleBlockItem(SAND_GOLD);
+
+public static final DeferredBlock<Block> SAND_GOLD198 = BLOCKS.register("sand_gold198",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> SAND_GOLD198_ITEM = ITEMS.registerSimpleBlockItem(SAND_GOLD198);
+
+public static final DeferredBlock<Block> GLASS_QUARTZ = BLOCKS.register("glass_quartz",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> GLASS_QUARTZ_ITEM = ITEMS.registerSimpleBlockItem(GLASS_QUARTZ);
+
+public static final DeferredBlock<Block> GLASS_POLARIZED = BLOCKS.register("glass_polarized",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> GLASS_POLARIZED_ITEM = ITEMS.registerSimpleBlockItem(GLASS_POLARIZED);
+
+// ============================================================================
+// Section: when door when door when door port more doors where is the doors (36 blocks)
+// ============================================================================
+
+public static final DeferredBlock<Block> SEAL_FRAME = BLOCKS.register("seal_frame",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> SEAL_FRAME_ITEM = ITEMS.registerSimpleBlockItem(SEAL_FRAME);
+
+public static final DeferredBlock<Block> SEAL_CONTROLLER = BLOCKS.register("seal_controller",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> SEAL_CONTROLLER_ITEM = ITEMS.registerSimpleBlockItem(SEAL_CONTROLLER);
+
+public static final DeferredBlock<Block> SEAL_HATCH = BLOCKS.register("seal_hatch",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> SEAL_HATCH_ITEM = ITEMS.registerSimpleBlockItem(SEAL_HATCH);
+
+public static final DeferredBlock<Block> SILO_HATCH_DRILLGON = BLOCKS.register("silo_hatch_drillgon",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> SILO_HATCH_DRILLGON_ITEM = ITEMS.registerSimpleBlockItem(SILO_HATCH_DRILLGON);
+
+public static final DeferredBlock<Block> VAULT_DOOR = BLOCKS.register("vault_door",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> VAULT_DOOR_ITEM = ITEMS.registerSimpleBlockItem(VAULT_DOOR);
+
+public static final DeferredBlock<Block> BLAST_DOOR = BLOCKS.register("blast_door",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BLAST_DOOR_ITEM = ITEMS.registerSimpleBlockItem(BLAST_DOOR);
+
+public static final DeferredBlock<Block> SLIDING_BLAST_DOOR_LEGACY = BLOCKS.register("sliding_blast_door_legacy",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> SLIDING_BLAST_DOOR_LEGACY_ITEM = ITEMS.registerSimpleBlockItem(SLIDING_BLAST_DOOR_LEGACY);
+
+public static final DeferredBlock<Block> SLIDING_BLAST_DOOR_2 = BLOCKS.register("sliding_blast_door_2",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> SLIDING_BLAST_DOOR_2_ITEM = ITEMS.registerSimpleBlockItem(SLIDING_BLAST_DOOR_2);
+
+public static final DeferredBlock<Block> SLIDING_BLAST_DOOR_KEYPAD = BLOCKS.register("sliding_blast_door_keypad",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> SLIDING_BLAST_DOOR_KEYPAD_ITEM = ITEMS.registerSimpleBlockItem(SLIDING_BLAST_DOOR_KEYPAD);
+
+public static final DeferredBlock<Block> SLIDING_BLAST_DOOR = BLOCKS.register("sliding_blast_door",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> SLIDING_BLAST_DOOR_ITEM = ITEMS.registerSimpleBlockItem(SLIDING_BLAST_DOOR);
+
+public static final DeferredBlock<Block> SMALL_HATCH = BLOCKS.register("small_hatch",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> SMALL_HATCH_ITEM = ITEMS.registerSimpleBlockItem(SMALL_HATCH);
+
+public static final DeferredBlock<Block> SLIDING_SEAL_DOOR = BLOCKS.register("sliding_seal_door",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> SLIDING_SEAL_DOOR_ITEM = ITEMS.registerSimpleBlockItem(SLIDING_SEAL_DOOR);
+
+public static final DeferredBlock<Block> SLIDING_GATE_DOOR = BLOCKS.register("sliding_gate_door",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> SLIDING_GATE_DOOR_ITEM = ITEMS.registerSimpleBlockItem(SLIDING_GATE_DOOR);
+
+public static final DeferredBlock<Block> QE_CONTAINMENT = BLOCKS.register("qe_containment",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> QE_CONTAINMENT_ITEM = ITEMS.registerSimpleBlockItem(QE_CONTAINMENT);
+
+public static final DeferredBlock<Block> QE_SLIDING_DOOR = BLOCKS.register("qe_sliding",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> QE_SLIDING_DOOR_ITEM = ITEMS.registerSimpleBlockItem(QE_SLIDING_DOOR);
+
+public static final DeferredBlock<Block> FIRE_DOOR = BLOCKS.register("fire_door",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> FIRE_DOOR_ITEM = ITEMS.registerSimpleBlockItem(FIRE_DOOR);
+
+public static final DeferredBlock<Block> WATER_DOOR = BLOCKS.register("water_door",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> WATER_DOOR_ITEM = ITEMS.registerSimpleBlockItem(WATER_DOOR);
+
+public static final DeferredBlock<Block> LARGE_VEHICLE_DOOR = BLOCKS.register("large_vehicle_door",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> LARGE_VEHICLE_DOOR_ITEM = ITEMS.registerSimpleBlockItem(LARGE_VEHICLE_DOOR);
+
+public static final DeferredBlock<Block> ROUND_AIRLOCK_DOOR = BLOCKS.register("round_airlock_door",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> ROUND_AIRLOCK_DOOR_ITEM = ITEMS.registerSimpleBlockItem(ROUND_AIRLOCK_DOOR);
+
+public static final DeferredBlock<Block> SECURE_ACCESS_DOOR = BLOCKS.register("secure_access_door",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> SECURE_ACCESS_DOOR_ITEM = ITEMS.registerSimpleBlockItem(SECURE_ACCESS_DOOR);
+
+public static final DeferredBlock<Block> TRANSITION_SEAL = BLOCKS.register("transition_seal",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> TRANSITION_SEAL_ITEM = ITEMS.registerSimpleBlockItem(TRANSITION_SEAL);
+
+public static final DeferredBlock<Block> SILO_HATCH = BLOCKS.register("silo_hatch",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> SILO_HATCH_ITEM = ITEMS.registerSimpleBlockItem(SILO_HATCH);
+
+public static final DeferredBlock<Block> SILO_HATCH_LARGE = BLOCKS.register("silo_hatch_large",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> SILO_HATCH_LARGE_ITEM = ITEMS.registerSimpleBlockItem(SILO_HATCH_LARGE);
+
+public static final DeferredBlock<Block> KEYPAD_TEST = BLOCKS.register("keypad_test",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> KEYPAD_TEST_ITEM = ITEMS.registerSimpleBlockItem(KEYPAD_TEST);
+
+public static final DeferredBlock<Block> DOOR_METAL = BLOCKS.register("door_metal",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DOOR_METAL_ITEM = ITEMS.registerSimpleBlockItem(DOOR_METAL);
+
+public static final DeferredBlock<Block> DOOR_OFFICE = BLOCKS.register("door_office",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DOOR_OFFICE_ITEM = ITEMS.registerSimpleBlockItem(DOOR_OFFICE);
+
+public static final DeferredBlock<Block> DOOR_BUNKER = BLOCKS.register("door_bunker",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DOOR_BUNKER_ITEM = ITEMS.registerSimpleBlockItem(DOOR_BUNKER);
+
+public static final DeferredBlock<Block> BARBED_WIRE = BLOCKS.register("barbed_wire",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BARBED_WIRE_ITEM = ITEMS.registerSimpleBlockItem(BARBED_WIRE);
+
+public static final DeferredBlock<Block> BARBED_WIRE_FIRE = BLOCKS.register("barbed_wire_fire",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BARBED_WIRE_FIRE_ITEM = ITEMS.registerSimpleBlockItem(BARBED_WIRE_FIRE);
+
+public static final DeferredBlock<Block> BARBED_WIRE_POISON = BLOCKS.register("barbed_wire_poison",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BARBED_WIRE_POISON_ITEM = ITEMS.registerSimpleBlockItem(BARBED_WIRE_POISON);
+
+public static final DeferredBlock<Block> BARBED_WIRE_ACID = BLOCKS.register("barbed_wire_acid",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BARBED_WIRE_ACID_ITEM = ITEMS.registerSimpleBlockItem(BARBED_WIRE_ACID);
+
+public static final DeferredBlock<Block> BARBED_WIRE_WITHER = BLOCKS.register("barbed_wire_wither",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BARBED_WIRE_WITHER_ITEM = ITEMS.registerSimpleBlockItem(BARBED_WIRE_WITHER);
+
+public static final DeferredBlock<Block> BARBED_WIRE_ULTRADEATH = BLOCKS.register("barbed_wire_ultradeath",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BARBED_WIRE_ULTRADEATH_ITEM = ITEMS.registerSimpleBlockItem(BARBED_WIRE_ULTRADEATH);
+
+public static final DeferredBlock<Block> SPIKES = BLOCKS.register("spikes",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> SPIKES_ITEM = ITEMS.registerSimpleBlockItem(SPIKES);
+
+public static final DeferredBlock<Block> CHARGER = BLOCKS.register("charger",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CHARGER_ITEM = ITEMS.registerSimpleBlockItem(CHARGER);
+
+public static final DeferredBlock<Block> REFUELER = BLOCKS.register("refueler",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> REFUELER_ITEM = ITEMS.registerSimpleBlockItem(REFUELER);
+
+// ============================================================================
+// Section: Crates (56 blocks)
+// ============================================================================
+
+public static final DeferredBlock<Block> CRATE = BLOCKS.register("crate",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CRATE_ITEM = ITEMS.registerSimpleBlockItem(CRATE);
+
+public static final DeferredBlock<Block> CRATE_WEAPON = BLOCKS.register("crate_weapon",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CRATE_WEAPON_ITEM = ITEMS.registerSimpleBlockItem(CRATE_WEAPON);
+
+public static final DeferredBlock<Block> CRATE_LEAD = BLOCKS.register("crate_lead",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CRATE_LEAD_ITEM = ITEMS.registerSimpleBlockItem(CRATE_LEAD);
+
+public static final DeferredBlock<Block> CRATE_METAL = BLOCKS.register("crate_metal",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CRATE_METAL_ITEM = ITEMS.registerSimpleBlockItem(CRATE_METAL);
+
+public static final DeferredBlock<Block> CRATE_RED = BLOCKS.register("crate_red",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CRATE_RED_ITEM = ITEMS.registerSimpleBlockItem(CRATE_RED);
+
+public static final DeferredBlock<Block> CRATE_IRON = BLOCKS.register("crate_iron",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CRATE_IRON_ITEM = ITEMS.registerSimpleBlockItem(CRATE_IRON);
+
+public static final DeferredBlock<Block> CRATE_STEEL = BLOCKS.register("crate_steel",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CRATE_STEEL_ITEM = ITEMS.registerSimpleBlockItem(CRATE_STEEL);
+
+public static final DeferredBlock<Block> CRATE_DESH = BLOCKS.register("crate_desh",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CRATE_DESH_ITEM = ITEMS.registerSimpleBlockItem(CRATE_DESH);
+
+public static final DeferredBlock<Block> CRATE_TUNGSTEN = BLOCKS.register("crate_tungsten",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CRATE_TUNGSTEN_ITEM = ITEMS.registerSimpleBlockItem(CRATE_TUNGSTEN);
+
+public static final DeferredBlock<Block> CRATE_CAN = BLOCKS.register("crate_can",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CRATE_CAN_ITEM = ITEMS.registerSimpleBlockItem(CRATE_CAN);
+
+public static final DeferredBlock<Block> CRATE_JUNGLE = BLOCKS.register("crate_jungle",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CRATE_JUNGLE_ITEM = ITEMS.registerSimpleBlockItem(CRATE_JUNGLE);
+
+public static final DeferredBlock<Block> CRATE_AMMO = BLOCKS.register("crate_ammo",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CRATE_AMMO_ITEM = ITEMS.registerSimpleBlockItem(CRATE_AMMO);
+
+public static final DeferredBlock<Block> SAFE = BLOCKS.register("safe",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> SAFE_ITEM = ITEMS.registerSimpleBlockItem(SAFE);
+
+public static final DeferredBlock<Block> MASS_STORAGE = BLOCKS.register("mass_storage",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MASS_STORAGE_ITEM = ITEMS.registerSimpleBlockItem(MASS_STORAGE);
+
+public static final DeferredBlock<Block> MASS_STORAGE_WOOD = BLOCKS.register("mass_storage_wood",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MASS_STORAGE_WOOD_ITEM = ITEMS.registerSimpleBlockItem(MASS_STORAGE_WOOD);
+
+public static final DeferredBlock<Block> MASS_STORAGE_IRON = BLOCKS.register("mass_storage_iron",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MASS_STORAGE_IRON_ITEM = ITEMS.registerSimpleBlockItem(MASS_STORAGE_IRON);
+
+public static final DeferredBlock<Block> MASS_STORAGE_DESH = BLOCKS.register("mass_storage_desh",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MASS_STORAGE_DESH_ITEM = ITEMS.registerSimpleBlockItem(MASS_STORAGE_DESH);
+
+public static final DeferredBlock<Block> MACHINE_KEYFORGE = BLOCKS.register("machine_keyforge",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_KEYFORGE_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_KEYFORGE);
+
+public static final DeferredBlock<Block> MACHINE_SOLAR_BOILER = BLOCKS.register("machine_solar_boiler",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_SOLAR_BOILER_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_SOLAR_BOILER);
+
+public static final DeferredBlock<Block> SOLAR_MIRROR = BLOCKS.register("solar_mirror",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> SOLAR_MIRROR_ITEM = ITEMS.registerSimpleBlockItem(SOLAR_MIRROR);
+
+public static final DeferredBlock<Block> MACHINE_TELELINKER = BLOCKS.register("machine_telelinker",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_TELELINKER_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_TELELINKER);
+
+public static final DeferredBlock<Block> MACHINE_SATLINKER = BLOCKS.register("machine_satlinker",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_SATLINKER_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_SATLINKER);
+
+public static final DeferredBlock<Block> SAT_DOCK = BLOCKS.register("sat_dock",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> SAT_DOCK_ITEM = ITEMS.registerSimpleBlockItem(SAT_DOCK);
+
+public static final DeferredBlock<Block> SOYUZ_CAPSULE = BLOCKS.register("soyuz_capsule",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> SOYUZ_CAPSULE_ITEM = ITEMS.registerSimpleBlockItem(SOYUZ_CAPSULE);
+
+public static final DeferredBlock<Block> CRATE_SUPPLY = BLOCKS.register("crate_supply",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CRATE_SUPPLY_ITEM = ITEMS.registerSimpleBlockItem(CRATE_SUPPLY);
+
+public static final DeferredBlock<Block> BOOK_GUIDE = BLOCKS.register("book_guide",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BOOK_GUIDE_ITEM = ITEMS.registerSimpleBlockItem(BOOK_GUIDE);
+
+public static final DeferredBlock<Block> MACHINE_STEAM_ENGINE = BLOCKS.register("machine_steam_engine",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_STEAM_ENGINE_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_STEAM_ENGINE);
+
+public static final DeferredBlock<Block> MACHINE_BATTERY_SOCKET = BLOCKS.register("machine_battery_socket",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_BATTERY_SOCKET_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_BATTERY_SOCKET);
+
+public static final DeferredBlock<Block> MACHINE_BATTERY_REDD = BLOCKS.register("machine_battery_redd",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_BATTERY_REDD_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_BATTERY_REDD);
+
+public static final DeferredBlock<Block> MACHINE_BATTERY_POTATO = BLOCKS.register("machine_battery_potato",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_BATTERY_POTATO_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_BATTERY_POTATO);
+
+public static final DeferredBlock<Block> MACHINE_BATTERY = BLOCKS.register("machine_battery",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_BATTERY_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_BATTERY);
+
+public static final DeferredBlock<Block> MACHINE_LITHIUM_BATTERY = BLOCKS.register("machine_lithium_battery",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_LITHIUM_BATTERY_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_LITHIUM_BATTERY);
+
+public static final DeferredBlock<Block> MACHINE_SCHRABIDIUM_BATTERY = BLOCKS.register("machine_schrabidium_battery",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_SCHRABIDIUM_BATTERY_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_SCHRABIDIUM_BATTERY);
+
+public static final DeferredBlock<Block> MACHINE_DINEUTRONIUM_BATTERY = BLOCKS.register("machine_dineutronium_battery",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_DINEUTRONIUM_BATTERY_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_DINEUTRONIUM_BATTERY);
+
+public static final DeferredBlock<Block> MACHINE_FENSU = BLOCKS.register("machine_fensu",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_FENSU_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_FENSU);
+
+public static final DeferredBlock<Block> MACHINE_TRANSFORMER = BLOCKS.register("machine_transformer",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_TRANSFORMER_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_TRANSFORMER);
+
+public static final DeferredBlock<Block> MACHINE_TRANSFORMER_20 = BLOCKS.register("machine_transformer_20",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_TRANSFORMER_20_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_TRANSFORMER_20);
+
+public static final DeferredBlock<Block> MACHINE_TRANSFORMER_DNT = BLOCKS.register("machine_transformer_dnt",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_TRANSFORMER_DNT_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_TRANSFORMER_DNT);
+
+public static final DeferredBlock<Block> MACHINE_TRANSFORMER_DNT_20 = BLOCKS.register("machine_transformer_dnt_20",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_TRANSFORMER_DNT_20_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_TRANSFORMER_DNT_20);
+
+public static final DeferredBlock<Block> PRESS_PREHEATER = BLOCKS.register("press_preheater",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> PRESS_PREHEATER_ITEM = ITEMS.registerSimpleBlockItem(PRESS_PREHEATER);
+
+public static final DeferredBlock<Block> MACHINE_PRESS = BLOCKS.register("machine_press",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_PRESS_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_PRESS);
+
+public static final DeferredBlock<Block> MACHINE_EPRESS = BLOCKS.register("machine_epress",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_EPRESS_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_EPRESS);
+
+public static final DeferredBlock<Block> MACHINE_CONVEYOR_PRESS = BLOCKS.register("machine_conveyor_press",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_CONVEYOR_PRESS_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_CONVEYOR_PRESS);
+
+public static final DeferredBlock<Block> REACTOR_RESEARCH = BLOCKS.register("machine_reactor_small_new",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> REACTOR_RESEARCH_ITEM = ITEMS.registerSimpleBlockItem(REACTOR_RESEARCH);
+
+public static final DeferredBlock<Block> MACHINE_REACTOR_BREEDING = BLOCKS.register("machine_reactor_breeding",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_REACTOR_BREEDING_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_REACTOR_BREEDING);
+
+public static final DeferredBlock<Block> MACHINE_AMMO_PRESS = BLOCKS.register("machine_ammo_press",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_AMMO_PRESS_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_AMMO_PRESS);
+
+public static final DeferredBlock<Block> REACTOR_ZIRNOX = BLOCKS.register("machine_zirnox",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> REACTOR_ZIRNOX_ITEM = ITEMS.registerSimpleBlockItem(REACTOR_ZIRNOX);
+
+public static final DeferredBlock<Block> ZIRNOX_DESTROYED = BLOCKS.register("zirnox_destroyed",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> ZIRNOX_DESTROYED_ITEM = ITEMS.registerSimpleBlockItem(ZIRNOX_DESTROYED);
+
+public static final DeferredBlock<Block> MACHINE_CONTROLLER = BLOCKS.register("machine_controller",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_CONTROLLER_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_CONTROLLER);
+
+public static final DeferredBlock<Block> MACHINE_DIFURNACE_ON = BLOCKS.register("machine_difurnace_on",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_DIFURNACE_ON_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_DIFURNACE_ON);
+
+public static final DeferredBlock<Block> MACHINE_DIFURNACE_OFF = BLOCKS.register("machine_difurnace_off",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_DIFURNACE_OFF_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_DIFURNACE_OFF);
+
+public static final DeferredBlock<Block> MACHINE_DIFURNACE_EXT = BLOCKS.register("machine_difurnace_ext",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_DIFURNACE_EXT_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_DIFURNACE_EXT);
+
+public static final DeferredBlock<Block> MACHINE_DIFURNACE_RTG_ON = BLOCKS.register("machine_difurnace_rtg_on",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_DIFURNACE_RTG_ON_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_DIFURNACE_RTG_ON);
+
+public static final DeferredBlock<Block> MACHINE_DIFURNACE_RTG_OFF = BLOCKS.register("machine_difurnace_rtg_off",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_DIFURNACE_RTG_OFF_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_DIFURNACE_RTG_OFF);
+
+public static final DeferredBlock<Block> MACHINE_DIESEL = BLOCKS.register("machine_diesel",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_DIESEL_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_DIESEL);
+
+public static final DeferredBlock<Block> MACHINE_GENERATOR = BLOCKS.register("machine_generator",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_GENERATOR_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_GENERATOR);
+
+// ============================================================================
+// Section: RBMK rods and things and somethings (99 blocks)
+// ============================================================================
+
+public static final DeferredBlock<Block> RBMK_BLANK = BLOCKS.register("rbmk_blank",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RBMK_BLANK_ITEM = ITEMS.registerSimpleBlockItem(RBMK_BLANK);
+
+public static final DeferredBlock<Block> RBMK_ROD = BLOCKS.register("rbmk_rod",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RBMK_ROD_ITEM = ITEMS.registerSimpleBlockItem(RBMK_ROD);
+
+public static final DeferredBlock<Block> RBMK_ROD_MOD = BLOCKS.register("rbmk_rod_mod",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RBMK_ROD_MOD_ITEM = ITEMS.registerSimpleBlockItem(RBMK_ROD_MOD);
+
+public static final DeferredBlock<Block> RBMK_ROD_REASIM = BLOCKS.register("rbmk_rod_reasim",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RBMK_ROD_REASIM_ITEM = ITEMS.registerSimpleBlockItem(RBMK_ROD_REASIM);
+
+public static final DeferredBlock<Block> RBMK_ROD_REASIM_MOD = BLOCKS.register("rbmk_rod_reasim_mod",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RBMK_ROD_REASIM_MOD_ITEM = ITEMS.registerSimpleBlockItem(RBMK_ROD_REASIM_MOD);
+
+public static final DeferredBlock<Block> RBMK_CONTROL = BLOCKS.register("rbmk_control",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RBMK_CONTROL_ITEM = ITEMS.registerSimpleBlockItem(RBMK_CONTROL);
+
+public static final DeferredBlock<Block> RBMK_CONTROL_MOD = BLOCKS.register("rbmk_control_mod",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RBMK_CONTROL_MOD_ITEM = ITEMS.registerSimpleBlockItem(RBMK_CONTROL_MOD);
+
+public static final DeferredBlock<Block> RBMK_CONTROL_AUTO = BLOCKS.register("rbmk_control_auto",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RBMK_CONTROL_AUTO_ITEM = ITEMS.registerSimpleBlockItem(RBMK_CONTROL_AUTO);
+
+public static final DeferredBlock<Block> RBMK_CONTROL_REASIM = BLOCKS.register("rbmk_control_reasim",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RBMK_CONTROL_REASIM_ITEM = ITEMS.registerSimpleBlockItem(RBMK_CONTROL_REASIM);
+
+public static final DeferredBlock<Block> RBMK_CONTROL_REASIM_AUTO = BLOCKS.register("rbmk_control_reasim_auto",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RBMK_CONTROL_REASIM_AUTO_ITEM = ITEMS.registerSimpleBlockItem(RBMK_CONTROL_REASIM_AUTO);
+
+public static final DeferredBlock<Block> RBMK_BOILER = BLOCKS.register("rbmk_boiler",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RBMK_BOILER_ITEM = ITEMS.registerSimpleBlockItem(RBMK_BOILER);
+
+public static final DeferredBlock<Block> RBMK_HEATER = BLOCKS.register("rbmk_heater",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RBMK_HEATER_ITEM = ITEMS.registerSimpleBlockItem(RBMK_HEATER);
+
+public static final DeferredBlock<Block> RBMK_REFLECTOR = BLOCKS.register("rbmk_reflector",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RBMK_REFLECTOR_ITEM = ITEMS.registerSimpleBlockItem(RBMK_REFLECTOR);
+
+public static final DeferredBlock<Block> RBMK_ABSORBER = BLOCKS.register("rbmk_absorber",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RBMK_ABSORBER_ITEM = ITEMS.registerSimpleBlockItem(RBMK_ABSORBER);
+
+public static final DeferredBlock<Block> RBMK_MODERATOR = BLOCKS.register("rbmk_moderator",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RBMK_MODERATOR_ITEM = ITEMS.registerSimpleBlockItem(RBMK_MODERATOR);
+
+public static final DeferredBlock<Block> RBMK_OUTGASSER = BLOCKS.register("rbmk_outgasser",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RBMK_OUTGASSER_ITEM = ITEMS.registerSimpleBlockItem(RBMK_OUTGASSER);
+
+public static final DeferredBlock<Block> RBMK_COOLER = BLOCKS.register("rbmk_cooler",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RBMK_COOLER_ITEM = ITEMS.registerSimpleBlockItem(RBMK_COOLER);
+
+public static final DeferredBlock<Block> RBMK_STORAGE = BLOCKS.register("rbmk_storage",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RBMK_STORAGE_ITEM = ITEMS.registerSimpleBlockItem(RBMK_STORAGE);
+
+public static final DeferredBlock<Block> RBMK_CRANE_CONSOLE = BLOCKS.register("rbmk_crane_console",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RBMK_CRANE_CONSOLE_ITEM = ITEMS.registerSimpleBlockItem(RBMK_CRANE_CONSOLE);
+
+public static final DeferredBlock<Block> RBMK_DISPLAY_BLANK = BLOCKS.register("rbmk_display_blank",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RBMK_DISPLAY_BLANK_ITEM = ITEMS.registerSimpleBlockItem(RBMK_DISPLAY_BLANK);
+
+public static final DeferredBlock<Block> RBMK_DISPLAY = BLOCKS.register("rbmk_display",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RBMK_DISPLAY_ITEM = ITEMS.registerSimpleBlockItem(RBMK_DISPLAY);
+
+public static final DeferredBlock<Block> RBMK_KEY_PAD = BLOCKS.register("rbmk_key_pad",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RBMK_KEY_PAD_ITEM = ITEMS.registerSimpleBlockItem(RBMK_KEY_PAD);
+
+public static final DeferredBlock<Block> RBMK_GAUGE = BLOCKS.register("rbmk_gauge",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RBMK_GAUGE_ITEM = ITEMS.registerSimpleBlockItem(RBMK_GAUGE);
+
+public static final DeferredBlock<Block> RBMK_NUMITRON = BLOCKS.register("rbmk_numitron",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RBMK_NUMITRON_ITEM = ITEMS.registerSimpleBlockItem(RBMK_NUMITRON);
+
+public static final DeferredBlock<Block> RBMK_GRAPH = BLOCKS.register("rbmk_graph",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RBMK_GRAPH_ITEM = ITEMS.registerSimpleBlockItem(RBMK_GRAPH);
+
+public static final DeferredBlock<Block> RBMK_LEVER = BLOCKS.register("rbmk_lever",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RBMK_LEVER_ITEM = ITEMS.registerSimpleBlockItem(RBMK_LEVER);
+
+public static final DeferredBlock<Block> RBMK_INDICATOR = BLOCKS.register("rbmk_indicator",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RBMK_INDICATOR_ITEM = ITEMS.registerSimpleBlockItem(RBMK_INDICATOR);
+
+public static final DeferredBlock<Block> RBMK_TERMINAL = BLOCKS.register("rbmk_terminal",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RBMK_TERMINAL_ITEM = ITEMS.registerSimpleBlockItem(RBMK_TERMINAL);
+
+public static final DeferredBlock<Block> RBMK_AUTOLOADER = BLOCKS.register("rbmk_autoloader",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RBMK_AUTOLOADER_ITEM = ITEMS.registerSimpleBlockItem(RBMK_AUTOLOADER);
+
+public static final DeferredBlock<Block> RBMK_LOADER = BLOCKS.register("rbmk_loader",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RBMK_LOADER_ITEM = ITEMS.registerSimpleBlockItem(RBMK_LOADER);
+
+public static final DeferredBlock<Block> RBMK_STEAM_INLET = BLOCKS.register("rbmk_steam_inlet",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RBMK_STEAM_INLET_ITEM = ITEMS.registerSimpleBlockItem(RBMK_STEAM_INLET);
+
+public static final DeferredBlock<Block> RBMK_STEAM_OUTLET = BLOCKS.register("rbmk_steam_outlet",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RBMK_STEAM_OUTLET_ITEM = ITEMS.registerSimpleBlockItem(RBMK_STEAM_OUTLET);
+
+public static final DeferredBlock<Block> PRIBRIS = BLOCKS.register("pribris",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> PRIBRIS_ITEM = ITEMS.registerSimpleBlockItem(PRIBRIS);
+
+public static final DeferredBlock<Block> PRIBRIS_BURNING = BLOCKS.register("pribris_burning",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> PRIBRIS_BURNING_ITEM = ITEMS.registerSimpleBlockItem(PRIBRIS_BURNING);
+
+public static final DeferredBlock<Block> PRIBRIS_RADIATING = BLOCKS.register("pribris_radiating",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> PRIBRIS_RADIATING_ITEM = ITEMS.registerSimpleBlockItem(PRIBRIS_RADIATING);
+
+public static final DeferredBlock<Block> PRIBRIS_DIGAMMA = BLOCKS.register("pribris_digamma",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> PRIBRIS_DIGAMMA_ITEM = ITEMS.registerSimpleBlockItem(PRIBRIS_DIGAMMA);
+
+public static final DeferredBlock<Block> BLOCK_CORIUM = BLOCKS.register("block_corium",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BLOCK_CORIUM_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_CORIUM);
+
+public static final DeferredBlock<Block> BLOCK_CORIUM_COBBLE = BLOCKS.register("block_corium_cobble",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BLOCK_CORIUM_COBBLE_ITEM = ITEMS.registerSimpleBlockItem(BLOCK_CORIUM_COBBLE);
+
+public static final DeferredBlock<Block> MACHINE_ASSEMBLY_MACHINE = BLOCKS.register("machine_assembly_machine",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_ASSEMBLY_MACHINE_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_ASSEMBLY_MACHINE);
+
+public static final DeferredBlock<Block> MACHINE_ASSEMBLY_FACTORY = BLOCKS.register("machine_assembly_factory",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_ASSEMBLY_FACTORY_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_ASSEMBLY_FACTORY);
+
+public static final DeferredBlock<Block> MACHINE_PRECASS = BLOCKS.register("machine_precass",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_PRECASS_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_PRECASS);
+
+public static final DeferredBlock<Block> MACHINE_ARC_WELDER = BLOCKS.register("machine_arc_welder",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_ARC_WELDER_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_ARC_WELDER);
+
+public static final DeferredBlock<Block> MACHINE_SOLDERING_STATION = BLOCKS.register("machine_soldering_station",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_SOLDERING_STATION_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_SOLDERING_STATION);
+
+public static final DeferredBlock<Block> MACHINE_CHEMICAL_PLANT = BLOCKS.register("machine_chemical_plant",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_CHEMICAL_PLANT_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_CHEMICAL_PLANT);
+
+public static final DeferredBlock<Block> MACHINE_CHEMICAL_FACTORY = BLOCKS.register("machine_chemical_factory",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_CHEMICAL_FACTORY_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_CHEMICAL_FACTORY);
+
+public static final DeferredBlock<Block> MACHINE_PUREX = BLOCKS.register("machine_purex",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_PUREX_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_PUREX);
+
+public static final DeferredBlock<Block> MACHINE_STRAND_CASTER = BLOCKS.register("machine_strand_caster",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_STRAND_CASTER_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_STRAND_CASTER);
+
+public static final DeferredBlock<Block> MACHINE_MIXER = BLOCKS.register("machine_mixer",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_MIXER_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_MIXER);
+
+public static final DeferredBlock<Block> MACHINE_TURBINE = BLOCKS.register("machine_turbine",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_TURBINE_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_TURBINE);
+
+public static final DeferredBlock<Block> MACHINE_LARGE_TURBINE = BLOCKS.register("machine_large_turbine",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_LARGE_TURBINE_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_LARGE_TURBINE);
+
+public static final DeferredBlock<Block> MACHINE_INDUSTRIAL_TURBINE = BLOCKS.register("machine_industrial_turbine",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_INDUSTRIAL_TURBINE_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_INDUSTRIAL_TURBINE);
+
+public static final DeferredBlock<Block> MACHINE_CHUNGUS = BLOCKS.register("machine_chungus",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_CHUNGUS_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_CHUNGUS);
+
+public static final DeferredBlock<Block> MACHINE_CONDENSER = BLOCKS.register("machine_condenser",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_CONDENSER_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_CONDENSER);
+
+public static final DeferredBlock<Block> MACHINE_CONDENSER_POWERED = BLOCKS.register("machine_condenser_powered",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_CONDENSER_POWERED_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_CONDENSER_POWERED);
+
+public static final DeferredBlock<Block> MACHINE_TOWER_SMALL = BLOCKS.register("machine_tower_small",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_TOWER_SMALL_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_TOWER_SMALL);
+
+public static final DeferredBlock<Block> MACHINE_TOWER_LARGE = BLOCKS.register("machine_tower_large",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_TOWER_LARGE_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_TOWER_LARGE);
+
+public static final DeferredBlock<Block> MACHINE_DEUTERIUM_EXTRACTOR = BLOCKS.register("machine_deuterium_extractor",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_DEUTERIUM_EXTRACTOR_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_DEUTERIUM_EXTRACTOR);
+
+public static final DeferredBlock<Block> MACHINE_DEUTERIUM_TOWER = BLOCKS.register("machine_deuterium_tower",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_DEUTERIUM_TOWER_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_DEUTERIUM_TOWER);
+
+public static final DeferredBlock<Block> MACHINE_LIQUEFACTOR = BLOCKS.register("machine_liquefactor",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_LIQUEFACTOR_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_LIQUEFACTOR);
+
+public static final DeferredBlock<Block> MACHINE_SOLIDIFIER = BLOCKS.register("machine_solidifier",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_SOLIDIFIER_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_SOLIDIFIER);
+
+public static final DeferredBlock<Block> MACHINE_INTAKE = BLOCKS.register("machine_intake",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_INTAKE_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_INTAKE);
+
+public static final DeferredBlock<Block> MACHINE_COMPRESSOR = BLOCKS.register("machine_compressor",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_COMPRESSOR_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_COMPRESSOR);
+
+public static final DeferredBlock<Block> MACHINE_COMPRESSOR_COMPACT = BLOCKS.register("machine_compressor_compact",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_COMPRESSOR_COMPACT_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_COMPRESSOR_COMPACT);
+
+public static final DeferredBlock<Block> MACHINE_ELECTROLYSER = BLOCKS.register("machine_electrolyser",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_ELECTROLYSER_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_ELECTROLYSER);
+
+public static final DeferredBlock<Block> MACHINE_AUTOCRAFTER = BLOCKS.register("machine_autocrafter",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_AUTOCRAFTER_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_AUTOCRAFTER);
+
+public static final DeferredBlock<Block> MACHINE_FUNNEL = BLOCKS.register("machine_funnel",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_FUNNEL_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_FUNNEL);
+
+public static final DeferredBlock<Block> ANVIL_IRON = BLOCKS.register("anvil_iron",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> ANVIL_IRON_ITEM = ITEMS.registerSimpleBlockItem(ANVIL_IRON);
+
+public static final DeferredBlock<Block> ANVIL_LEAD = BLOCKS.register("anvil_lead",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> ANVIL_LEAD_ITEM = ITEMS.registerSimpleBlockItem(ANVIL_LEAD);
+
+public static final DeferredBlock<Block> ANVIL_STEEL = BLOCKS.register("anvil_steel",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> ANVIL_STEEL_ITEM = ITEMS.registerSimpleBlockItem(ANVIL_STEEL);
+
+public static final DeferredBlock<Block> ANVIL_DESH = BLOCKS.register("anvil_desh",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> ANVIL_DESH_ITEM = ITEMS.registerSimpleBlockItem(ANVIL_DESH);
+
+public static final DeferredBlock<Block> ANVIL_FERROURANIUM = BLOCKS.register("anvil_ferrouranium",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> ANVIL_FERROURANIUM_ITEM = ITEMS.registerSimpleBlockItem(ANVIL_FERROURANIUM);
+
+public static final DeferredBlock<Block> ANVIL_SATURNITE = BLOCKS.register("anvil_saturnite",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> ANVIL_SATURNITE_ITEM = ITEMS.registerSimpleBlockItem(ANVIL_SATURNITE);
+
+public static final DeferredBlock<Block> ANVIL_BISMUTH_BRONZE = BLOCKS.register("anvil_bismuth_bronze",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> ANVIL_BISMUTH_BRONZE_ITEM = ITEMS.registerSimpleBlockItem(ANVIL_BISMUTH_BRONZE);
+
+public static final DeferredBlock<Block> ANVIL_ARSENIC_BRONZE = BLOCKS.register("anvil_arsenic_bronze",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> ANVIL_ARSENIC_BRONZE_ITEM = ITEMS.registerSimpleBlockItem(ANVIL_ARSENIC_BRONZE);
+
+public static final DeferredBlock<Block> ANVIL_SCHRABIDATE = BLOCKS.register("anvil_schrabidate",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> ANVIL_SCHRABIDATE_ITEM = ITEMS.registerSimpleBlockItem(ANVIL_SCHRABIDATE);
+
+public static final DeferredBlock<Block> ANVIL_DNT = BLOCKS.register("anvil_dnt",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> ANVIL_DNT_ITEM = ITEMS.registerSimpleBlockItem(ANVIL_DNT);
+
+public static final DeferredBlock<Block> ANVIL_OSMIRIDIUM = BLOCKS.register("anvil_osmiridium",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> ANVIL_OSMIRIDIUM_ITEM = ITEMS.registerSimpleBlockItem(ANVIL_OSMIRIDIUM);
+
+public static final DeferredBlock<Block> ANVIL_MURKY = BLOCKS.register("anvil_murky",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> ANVIL_MURKY_ITEM = ITEMS.registerSimpleBlockItem(ANVIL_MURKY);
+
+public static final DeferredBlock<Block> CONVEYOR = BLOCKS.register("conveyor",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CONVEYOR_ITEM = ITEMS.registerSimpleBlockItem(CONVEYOR);
+
+public static final DeferredBlock<Block> CONVEYOR_DOUBLE = BLOCKS.register("conveyor_double",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CONVEYOR_DOUBLE_ITEM = ITEMS.registerSimpleBlockItem(CONVEYOR_DOUBLE);
+
+public static final DeferredBlock<Block> CONVEYOR_TRIPLE = BLOCKS.register("conveyor_triple",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CONVEYOR_TRIPLE_ITEM = ITEMS.registerSimpleBlockItem(CONVEYOR_TRIPLE);
+
+public static final DeferredBlock<Block> CONVEYOR_EXPRESS = BLOCKS.register("conveyor_express",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CONVEYOR_EXPRESS_ITEM = ITEMS.registerSimpleBlockItem(CONVEYOR_EXPRESS);
+
+public static final DeferredBlock<Block> CONVEYOR_CHUTE = BLOCKS.register("conveyor_chute",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CONVEYOR_CHUTE_ITEM = ITEMS.registerSimpleBlockItem(CONVEYOR_CHUTE);
+
+public static final DeferredBlock<Block> CONVEYOR_LIFT = BLOCKS.register("conveyor_lift",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CONVEYOR_LIFT_ITEM = ITEMS.registerSimpleBlockItem(CONVEYOR_LIFT);
+
+public static final DeferredBlock<Block> CRANE_EXTRACTOR = BLOCKS.register("crane_ejector",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CRANE_EXTRACTOR_ITEM = ITEMS.registerSimpleBlockItem(CRANE_EXTRACTOR);
+
+public static final DeferredBlock<Block> CRANE_INSERTER = BLOCKS.register("crane_inserter",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CRANE_INSERTER_ITEM = ITEMS.registerSimpleBlockItem(CRANE_INSERTER);
+
+public static final DeferredBlock<Block> CRANE_SPLITTER = BLOCKS.register("crane_splitter",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CRANE_SPLITTER_ITEM = ITEMS.registerSimpleBlockItem(CRANE_SPLITTER);
+
+public static final DeferredBlock<Block> CRANE_PARTITIONER = BLOCKS.register("crane_partitioner",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CRANE_PARTITIONER_ITEM = ITEMS.registerSimpleBlockItem(CRANE_PARTITIONER);
+
+public static final DeferredBlock<Block> CRANE_BOXER = BLOCKS.register("crane_boxer",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CRANE_BOXER_ITEM = ITEMS.registerSimpleBlockItem(CRANE_BOXER);
+
+public static final DeferredBlock<Block> CRANE_UNBOXER = BLOCKS.register("crane_unboxer",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CRANE_UNBOXER_ITEM = ITEMS.registerSimpleBlockItem(CRANE_UNBOXER);
+
+public static final DeferredBlock<Block> CRANE_ROUTER = BLOCKS.register("crane_router",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CRANE_ROUTER_ITEM = ITEMS.registerSimpleBlockItem(CRANE_ROUTER);
+
+public static final DeferredBlock<Block> CRANE_GRABBER = BLOCKS.register("crane_grabber",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CRANE_GRABBER_ITEM = ITEMS.registerSimpleBlockItem(CRANE_GRABBER);
+
+public static final DeferredBlock<Block> FAN = BLOCKS.register("fan",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> FAN_ITEM = ITEMS.registerSimpleBlockItem(FAN);
+
+public static final DeferredBlock<Block> DRONE_WAYPOINT = BLOCKS.register("drone_waypoint",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DRONE_WAYPOINT_ITEM = ITEMS.registerSimpleBlockItem(DRONE_WAYPOINT);
+
+public static final DeferredBlock<Block> DRONE_CRATE = BLOCKS.register("drone_crate",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DRONE_CRATE_ITEM = ITEMS.registerSimpleBlockItem(DRONE_CRATE);
+
+public static final DeferredBlock<Block> DRONE_WAYPOINT_REQUEST = BLOCKS.register("drone_waypoint_request",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DRONE_WAYPOINT_REQUEST_ITEM = ITEMS.registerSimpleBlockItem(DRONE_WAYPOINT_REQUEST);
+
+public static final DeferredBlock<Block> DRONE_DOCK = BLOCKS.register("drone_dock",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DRONE_DOCK_ITEM = ITEMS.registerSimpleBlockItem(DRONE_DOCK);
+
+public static final DeferredBlock<Block> DRONE_CRATE_PROVIDER = BLOCKS.register("drone_crate_provider",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DRONE_CRATE_PROVIDER_ITEM = ITEMS.registerSimpleBlockItem(DRONE_CRATE_PROVIDER);
+
+public static final DeferredBlock<Block> DRONE_CRATE_REQUESTER = BLOCKS.register("drone_crate_requester",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DRONE_CRATE_REQUESTER_ITEM = ITEMS.registerSimpleBlockItem(DRONE_CRATE_REQUESTER);
+
+// ============================================================================
+// Section: The usual machines (69 blocks)
+// ============================================================================
+
+public static final DeferredBlock<Block> MACHINE_FURNACE_BRICK_OFF = BLOCKS.register("machine_furnace_brick_off",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_FURNACE_BRICK_OFF_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_FURNACE_BRICK_OFF);
+
+public static final DeferredBlock<Block> MACHINE_FURNACE_BRICK_ON = BLOCKS.register("machine_furnace_brick_on",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_FURNACE_BRICK_ON_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_FURNACE_BRICK_ON);
+
+public static final DeferredBlock<Block> MACHINE_RTG_FURNACE_OFF = BLOCKS.register("machine_rtg_furnace_off",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_RTG_FURNACE_OFF_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_RTG_FURNACE_OFF);
+
+public static final DeferredBlock<Block> MACHINE_RTG_FURNACE_ON = BLOCKS.register("machine_rtg_furnace_on",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_RTG_FURNACE_ON_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_RTG_FURNACE_ON);
+
+public static final DeferredBlock<Block> LAUNCH_PAD = BLOCKS.register("launch_pad",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> LAUNCH_PAD_ITEM = ITEMS.registerSimpleBlockItem(LAUNCH_PAD);
+
+public static final DeferredBlock<Block> LAUNCH_PAD_RUSTED = BLOCKS.register("launch_pad_rusted",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> LAUNCH_PAD_RUSTED_ITEM = ITEMS.registerSimpleBlockItem(LAUNCH_PAD_RUSTED);
+
+public static final DeferredBlock<Block> LAUNCH_PAD_LARGE = BLOCKS.register("launch_pad_large",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> LAUNCH_PAD_LARGE_ITEM = ITEMS.registerSimpleBlockItem(LAUNCH_PAD_LARGE);
+
+public static final DeferredBlock<Block> MACHINE_CENTRIFUGE = BLOCKS.register("machine_centrifuge",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_CENTRIFUGE_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_CENTRIFUGE);
+
+public static final DeferredBlock<Block> MACHINE_GASCENT = BLOCKS.register("machine_gascent",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_GASCENT_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_GASCENT);
+
+public static final DeferredBlock<Block> MACHINE_SILEX = BLOCKS.register("machine_silex",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_SILEX_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_SILEX);
+
+public static final DeferredBlock<Block> MACHINE_ROTARY_FURNACE = BLOCKS.register("machine_rotary_furnace",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_ROTARY_FURNACE_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_ROTARY_FURNACE);
+
+public static final DeferredBlock<Block> MACHINE_BLAST_FURNACE = BLOCKS.register("machine_blast_furnace",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_BLAST_FURNACE_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_BLAST_FURNACE);
+
+public static final DeferredBlock<Block> MACHINE_FEL = BLOCKS.register("machine_fel",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_FEL_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_FEL);
+
+public static final DeferredBlock<Block> MACHINE_CRYSTALLIZER = BLOCKS.register("machine_crystallizer",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_CRYSTALLIZER_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_CRYSTALLIZER);
+
+public static final DeferredBlock<Block> MACHINE_SHREDDER = BLOCKS.register("machine_shredder",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_SHREDDER_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_SHREDDER);
+
+public static final DeferredBlock<Block> MACHINE_WASTE_DRUM = BLOCKS.register("machine_waste_drum",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_WASTE_DRUM_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_WASTE_DRUM);
+
+public static final DeferredBlock<Block> MACHINE_STORAGE_DRUM = BLOCKS.register("machine_storage_drum",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_STORAGE_DRUM_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_STORAGE_DRUM);
+
+public static final DeferredBlock<Block> MACHINE_WELL = BLOCKS.register("machine_well",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_WELL_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_WELL);
+
+public static final DeferredBlock<Block> MACHINE_PUMPJACK = BLOCKS.register("machine_pumpjack",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_PUMPJACK_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_PUMPJACK);
+
+public static final DeferredBlock<Block> MACHINE_FRACKING_TOWER = BLOCKS.register("machine_fracking_tower",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_FRACKING_TOWER_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_FRACKING_TOWER);
+
+public static final DeferredBlock<Block> MACHINE_FLARE = BLOCKS.register("machine_flare",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_FLARE_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_FLARE);
+
+public static final DeferredBlock<Block> CHIMNEY_BRICK = BLOCKS.register("chimney_brick",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CHIMNEY_BRICK_ITEM = ITEMS.registerSimpleBlockItem(CHIMNEY_BRICK);
+
+public static final DeferredBlock<Block> CHIMNEY_INDUSTRIAL = BLOCKS.register("chimney_industrial",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CHIMNEY_INDUSTRIAL_ITEM = ITEMS.registerSimpleBlockItem(CHIMNEY_INDUSTRIAL);
+
+public static final DeferredBlock<Block> MACHINE_AUTOSAW = BLOCKS.register("machine_autosaw",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_AUTOSAW_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_AUTOSAW);
+
+public static final DeferredBlock<Block> MACHINE_EXCAVATOR = BLOCKS.register("machine_excavator",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_EXCAVATOR_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_EXCAVATOR);
+
+public static final DeferredBlock<Block> MACHINE_ORE_SLOPPER = BLOCKS.register("machine_ore_slopper",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_ORE_SLOPPER_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_ORE_SLOPPER);
+
+public static final DeferredBlock<Block> MACHINE_ANNIHILATOR = BLOCKS.register("machine_annihilator",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_ANNIHILATOR_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_ANNIHILATOR);
+
+public static final DeferredBlock<Block> MACHINE_ROCKMILL = BLOCKS.register("machine_rockmill",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_ROCKMILL_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_ROCKMILL);
+
+public static final DeferredBlock<Block> MACHINE_MINING_LASER = BLOCKS.register("machine_mining_laser",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_MINING_LASER_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_MINING_LASER);
+
+public static final DeferredBlock<Block> SANDBAGS = BLOCKS.register("sandbags",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> SANDBAGS_ITEM = ITEMS.registerSimpleBlockItem(SANDBAGS);
+
+public static final DeferredBlock<Block> MACHINE_TURBOFAN = BLOCKS.register("machine_turbofan",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_TURBOFAN_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_TURBOFAN);
+
+public static final DeferredBlock<Block> MACHINE_WOOD_BURNER = BLOCKS.register("machine_wood_burner",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_WOOD_BURNER_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_WOOD_BURNER);
+
+public static final DeferredBlock<Block> MACHINE_TURBINEGAS = BLOCKS.register("machine_turbine_gas",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_TURBINEGAS_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_TURBINEGAS);
+
+public static final DeferredBlock<Block> MACHINE_COMBUSTION_ENGINE = BLOCKS.register("machine_combustion_engine",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_COMBUSTION_ENGINE_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_COMBUSTION_ENGINE);
+
+public static final DeferredBlock<Block> MACHINE_TELEPORTER = BLOCKS.register("machine_teleporter",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_TELEPORTER_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_TELEPORTER);
+
+public static final DeferredBlock<Block> TELEANCHOR = BLOCKS.register("teleanchor",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> TELEANCHOR_ITEM = ITEMS.registerSimpleBlockItem(TELEANCHOR);
+
+public static final DeferredBlock<Block> FIELD_DISTURBER = BLOCKS.register("field_disturber",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> FIELD_DISTURBER_ITEM = ITEMS.registerSimpleBlockItem(FIELD_DISTURBER);
+
+public static final DeferredBlock<Block> MACHINE_FORCEFIELD = BLOCKS.register("machine_forcefield",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_FORCEFIELD_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_FORCEFIELD);
+
+public static final DeferredBlock<Block> MACHINE_RADAR = BLOCKS.register("machine_radar",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_RADAR_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_RADAR);
+
+public static final DeferredBlock<Block> MACHINE_RADAR_LARGE = BLOCKS.register("machine_radar_large",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_RADAR_LARGE_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_RADAR_LARGE);
+
+public static final DeferredBlock<Block> RADAR_SCREEN = BLOCKS.register("radar_screen",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RADAR_SCREEN_ITEM = ITEMS.registerSimpleBlockItem(RADAR_SCREEN);
+
+public static final DeferredBlock<Block> RADIOBOX = BLOCKS.register("radiobox",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RADIOBOX_ITEM = ITEMS.registerSimpleBlockItem(RADIOBOX);
+
+public static final DeferredBlock<Block> RADIOREC = BLOCKS.register("radiorec",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RADIOREC_ITEM = ITEMS.registerSimpleBlockItem(RADIOREC);
+
+public static final DeferredBlock<Block> BM_POWER_BOX = BLOCKS.register("bm_power_box",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BM_POWER_BOX_ITEM = ITEMS.registerSimpleBlockItem(BM_POWER_BOX);
+
+public static final DeferredBlock<Block> TESLA = BLOCKS.register("tesla",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> TESLA_ITEM = ITEMS.registerSimpleBlockItem(TESLA);
+
+public static final DeferredBlock<Block> MACHINE_FRACTION_TOWER = BLOCKS.register("machine_fraction_tower",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_FRACTION_TOWER_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_FRACTION_TOWER);
+
+public static final DeferredBlock<Block> FRACTION_SPACER = BLOCKS.register("fraction_spacer",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> FRACTION_SPACER_ITEM = ITEMS.registerSimpleBlockItem(FRACTION_SPACER);
+
+public static final DeferredBlock<Block> MACHINE_CATALYTIC_CRACKER = BLOCKS.register("machine_catalytic_cracker",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_CATALYTIC_CRACKER_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_CATALYTIC_CRACKER);
+
+public static final DeferredBlock<Block> MACHINE_VACUUM_DISTILL = BLOCKS.register("machine_vacuum_distill",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_VACUUM_DISTILL_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_VACUUM_DISTILL);
+
+public static final DeferredBlock<Block> MACHINE_REFINERY = BLOCKS.register("machine_refinery",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_REFINERY_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_REFINERY);
+
+public static final DeferredBlock<Block> MACHINE_CATALYTIC_REFORMER = BLOCKS.register("machine_catalytic_reformer",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_CATALYTIC_REFORMER_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_CATALYTIC_REFORMER);
+
+public static final DeferredBlock<Block> MACHINE_HYDROTREATER = BLOCKS.register("machine_hydrotreater",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_HYDROTREATER_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_HYDROTREATER);
+
+public static final DeferredBlock<Block> MACHINE_COKER = BLOCKS.register("machine_coker",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_COKER_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_COKER);
+
+public static final DeferredBlock<Block> MACHINE_PYROOVEN = BLOCKS.register("machine_pyrooven",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_PYROOVEN_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_PYROOVEN);
+
+public static final DeferredBlock<Block> MACHINE_ELECTRIC_FURNACE_OFF = BLOCKS.register("machine_electric_furnace_off",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_ELECTRIC_FURNACE_OFF_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_ELECTRIC_FURNACE_OFF);
+
+public static final DeferredBlock<Block> MACHINE_ELECTRIC_FURNACE_ON = BLOCKS.register("machine_electric_furnace_on",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_ELECTRIC_FURNACE_ON_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_ELECTRIC_FURNACE_ON);
+
+public static final DeferredBlock<Block> MACHINE_ARC_FURNACE = BLOCKS.register("machine_arc_furnace",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_ARC_FURNACE_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_ARC_FURNACE);
+
+public static final DeferredBlock<Block> MACHINE_MICROWAVE = BLOCKS.register("machine_microwave",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_MICROWAVE_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_MICROWAVE);
+
+public static final DeferredBlock<Block> CAPACITOR_BUS = BLOCKS.register("capacitor_bus",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CAPACITOR_BUS_ITEM = ITEMS.registerSimpleBlockItem(CAPACITOR_BUS);
+
+public static final DeferredBlock<Block> CAPACITOR_COPPER = BLOCKS.register("capacitor_copper",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CAPACITOR_COPPER_ITEM = ITEMS.registerSimpleBlockItem(CAPACITOR_COPPER);
+
+public static final DeferredBlock<Block> CAPACITOR_GOLD = BLOCKS.register("capacitor_gold",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CAPACITOR_GOLD_ITEM = ITEMS.registerSimpleBlockItem(CAPACITOR_GOLD);
+
+public static final DeferredBlock<Block> CAPACITOR_NIOBIUM = BLOCKS.register("capacitor_niobium",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CAPACITOR_NIOBIUM_ITEM = ITEMS.registerSimpleBlockItem(CAPACITOR_NIOBIUM);
+
+public static final DeferredBlock<Block> CAPACITOR_TANTALIUM = BLOCKS.register("capacitor_tantalium",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CAPACITOR_TANTALIUM_ITEM = ITEMS.registerSimpleBlockItem(CAPACITOR_TANTALIUM);
+
+public static final DeferredBlock<Block> CAPACITOR_SCHRABIDATE = BLOCKS.register("capacitor_schrabidate",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CAPACITOR_SCHRABIDATE_ITEM = ITEMS.registerSimpleBlockItem(CAPACITOR_SCHRABIDATE);
+
+public static final DeferredBlock<Block> MACHINE_CYCLOTRON = BLOCKS.register("machine_cyclotron",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_CYCLOTRON_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_CYCLOTRON);
+
+public static final DeferredBlock<Block> MACHINE_EXPOSURE_CHAMBER = BLOCKS.register("machine_exposure_chamber",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_EXPOSURE_CHAMBER_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_EXPOSURE_CHAMBER);
+
+public static final DeferredBlock<Block> MACHINE_RADGEN = BLOCKS.register("machine_radgen",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_RADGEN_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_RADGEN);
+
+public static final DeferredBlock<Block> PUMP_STEAM = BLOCKS.register("pump_steam",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> PUMP_STEAM_ITEM = ITEMS.registerSimpleBlockItem(PUMP_STEAM);
+
+public static final DeferredBlock<Block> PUMP_ELECTRIC = BLOCKS.register("pump_electric",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> PUMP_ELECTRIC_ITEM = ITEMS.registerSimpleBlockItem(PUMP_ELECTRIC);
+
+// ============================================================================
+// Section: Heat-Based Machines (21 blocks)
+// ============================================================================
+
+public static final DeferredBlock<Block> HEATER_FIREBOX = BLOCKS.register("heater_firebox",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> HEATER_FIREBOX_ITEM = ITEMS.registerSimpleBlockItem(HEATER_FIREBOX);
+
+public static final DeferredBlock<Block> HEATER_OVEN = BLOCKS.register("heater_oven",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> HEATER_OVEN_ITEM = ITEMS.registerSimpleBlockItem(HEATER_OVEN);
+
+public static final DeferredBlock<Block> HEATER_OILBURNER = BLOCKS.register("heater_oilburner",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> HEATER_OILBURNER_ITEM = ITEMS.registerSimpleBlockItem(HEATER_OILBURNER);
+
+public static final DeferredBlock<Block> HEATER_ELECTRIC = BLOCKS.register("heater_electric",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> HEATER_ELECTRIC_ITEM = ITEMS.registerSimpleBlockItem(HEATER_ELECTRIC);
+
+public static final DeferredBlock<Block> HEATER_HEATEX = BLOCKS.register("heater_heatex",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> HEATER_HEATEX_ITEM = ITEMS.registerSimpleBlockItem(HEATER_HEATEX);
+
+public static final DeferredBlock<Block> FURNACE_IRON = BLOCKS.register("furnace_iron",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> FURNACE_IRON_ITEM = ITEMS.registerSimpleBlockItem(FURNACE_IRON);
+
+public static final DeferredBlock<Block> FURNACE_STEEL = BLOCKS.register("furnace_steel",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> FURNACE_STEEL_ITEM = ITEMS.registerSimpleBlockItem(FURNACE_STEEL);
+
+public static final DeferredBlock<Block> FURNACE_COMBINATION = BLOCKS.register("furnace_combination",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> FURNACE_COMBINATION_ITEM = ITEMS.registerSimpleBlockItem(FURNACE_COMBINATION);
+
+public static final DeferredBlock<Block> MACHINE_STIRLING = BLOCKS.register("machine_stirling",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_STIRLING_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_STIRLING);
+
+public static final DeferredBlock<Block> MACHINE_STIRLING_STEEL = BLOCKS.register("machine_stirling_steel",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_STIRLING_STEEL_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_STIRLING_STEEL);
+
+public static final DeferredBlock<Block> MACHINE_STIRLING_CREATIVE = BLOCKS.register("machine_stirling_creative",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_STIRLING_CREATIVE_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_STIRLING_CREATIVE);
+
+public static final DeferredBlock<Block> MACHINE_SAWMILL = BLOCKS.register("machine_sawmill",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_SAWMILL_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_SAWMILL);
+
+public static final DeferredBlock<Block> MACHINE_BOILER = BLOCKS.register("heat_boiler",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_BOILER_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_BOILER);
+
+public static final DeferredBlock<Block> MACHINE_CRUCIBLE = BLOCKS.register("machine_crucible",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_CRUCIBLE_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_CRUCIBLE);
+
+public static final DeferredBlock<Block> FOUNDRY_MOLD = BLOCKS.register("foundry_mold",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> FOUNDRY_MOLD_ITEM = ITEMS.registerSimpleBlockItem(FOUNDRY_MOLD);
+
+public static final DeferredBlock<Block> FOUNDRY_BASIN = BLOCKS.register("foundry_basin",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> FOUNDRY_BASIN_ITEM = ITEMS.registerSimpleBlockItem(FOUNDRY_BASIN);
+
+public static final DeferredBlock<Block> FOUNDRY_CHANNEL = BLOCKS.register("foundry_channel",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> FOUNDRY_CHANNEL_ITEM = ITEMS.registerSimpleBlockItem(FOUNDRY_CHANNEL);
+
+public static final DeferredBlock<Block> FOUNDRY_OUTLET = BLOCKS.register("foundry_outlet",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> FOUNDRY_OUTLET_ITEM = ITEMS.registerSimpleBlockItem(FOUNDRY_OUTLET);
+
+public static final DeferredBlock<Block> FOUNDRY_SLAGTAP = BLOCKS.register("foundry_slagtap",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> FOUNDRY_SLAGTAP_ITEM = ITEMS.registerSimpleBlockItem(FOUNDRY_SLAGTAP);
+
+public static final DeferredBlock<Block> SLAG = BLOCKS.register("slag",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> SLAG_ITEM = ITEMS.registerSimpleBlockItem(SLAG);
+
+public static final DeferredBlock<Block> MACHINE_INDUSTRIAL_BOILER = BLOCKS.register("machine_industrial_boiler",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_INDUSTRIAL_BOILER_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_INDUSTRIAL_BOILER);
+
+// ============================================================================
+// Section: Misc (7 blocks)
+// ============================================================================
+
+public static final DeferredBlock<Block> RADSENSOR = BLOCKS.register("radsensor",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RADSENSOR_ITEM = ITEMS.registerSimpleBlockItem(RADSENSOR);
+
+public static final DeferredBlock<Block> MACHINE_RTG_GREY = BLOCKS.register("machine_rtg_grey",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_RTG_GREY_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_RTG_GREY);
+
+public static final DeferredBlock<Block> MACHINE_MINIRTG = BLOCKS.register("machine_minirtg",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_MINIRTG_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_MINIRTG);
+
+public static final DeferredBlock<Block> MACHINE_POWERRTG = BLOCKS.register("rtg_polonium",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_POWERRTG_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_POWERRTG);
+
+public static final DeferredBlock<Block> MACHINE_RADIOLYSIS = BLOCKS.register("machine_radiolysis",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_RADIOLYSIS_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_RADIOLYSIS);
+
+public static final DeferredBlock<Block> MACHINE_HEPHAESTUS = BLOCKS.register("machine_hephaestus",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_HEPHAESTUS_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_HEPHAESTUS);
+
+public static final DeferredBlock<Block> MUFFLER = BLOCKS.register("muffler",
+        () -> new BlockMuffler());
+public static final DeferredItem<BlockItem> MUFFLER_ITEM = ITEMS.registerSimpleBlockItem(MUFFLER);
+
+// ============================================================================
+// Section: Launcher Components (8 blocks)
+// ============================================================================
+
+public static final DeferredBlock<Block> STRUCT_LAUNCHER = BLOCKS.register("struct_launcher",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> STRUCT_LAUNCHER_ITEM = ITEMS.registerSimpleBlockItem(STRUCT_LAUNCHER);
+
+public static final DeferredBlock<Block> STRUCT_SCAFFOLD = BLOCKS.register("struct_scaffold",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> STRUCT_SCAFFOLD_ITEM = ITEMS.registerSimpleBlockItem(STRUCT_SCAFFOLD);
+
+public static final DeferredBlock<Block> STRUCT_LAUNCHER_CORE = BLOCKS.register("struct_launcher_core",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> STRUCT_LAUNCHER_CORE_ITEM = ITEMS.registerSimpleBlockItem(STRUCT_LAUNCHER_CORE);
+
+public static final DeferredBlock<Block> STRUCT_LAUNCHER_CORE_LARGE = BLOCKS.register("struct_launcher_core_large",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> STRUCT_LAUNCHER_CORE_LARGE_ITEM = ITEMS.registerSimpleBlockItem(STRUCT_LAUNCHER_CORE_LARGE);
+
+public static final DeferredBlock<Block> STRUCT_SOYUZ_CORE = BLOCKS.register("struct_soyuz_core",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> STRUCT_SOYUZ_CORE_ITEM = ITEMS.registerSimpleBlockItem(STRUCT_SOYUZ_CORE);
+
+public static final DeferredBlock<Block> STRUCT_TORUS_CORE = BLOCKS.register("struct_torus_core",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> STRUCT_TORUS_CORE_ITEM = ITEMS.registerSimpleBlockItem(STRUCT_TORUS_CORE);
+
+public static final DeferredBlock<Block> STRUCT_WATZ_CORE = BLOCKS.register("struct_watz_core",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> STRUCT_WATZ_CORE_ITEM = ITEMS.registerSimpleBlockItem(STRUCT_WATZ_CORE);
+
+public static final DeferredBlock<Block> STRUCT_ICF_CORE = BLOCKS.register("struct_icf_core",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> STRUCT_ICF_CORE_ITEM = ITEMS.registerSimpleBlockItem(STRUCT_ICF_CORE);
+
+// ============================================================================
+// Section: Wood Barrier (1 blocks)
+// ============================================================================
+
+public static final DeferredBlock<Block> WOOD_BARRIER = BLOCKS.register("wood_barrier",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> WOOD_BARRIER_ITEM = ITEMS.registerSimpleBlockItem(WOOD_BARRIER);
+
+// ============================================================================
+// Section: PWR (11 blocks)
+// ============================================================================
+
+public static final DeferredBlock<Block> PWR_FUELROD = BLOCKS.register("pwr_fuelrod",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> PWR_FUELROD_ITEM = ITEMS.registerSimpleBlockItem(PWR_FUELROD);
+
+public static final DeferredBlock<Block> PWR_CONTROL = BLOCKS.register("pwr_control",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> PWR_CONTROL_ITEM = ITEMS.registerSimpleBlockItem(PWR_CONTROL);
+
+public static final DeferredBlock<Block> PWR_CHANNEL = BLOCKS.register("pwr_channel",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> PWR_CHANNEL_ITEM = ITEMS.registerSimpleBlockItem(PWR_CHANNEL);
+
+public static final DeferredBlock<Block> PWR_HEATEX = BLOCKS.register("pwr_heatex",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> PWR_HEATEX_ITEM = ITEMS.registerSimpleBlockItem(PWR_HEATEX);
+
+public static final DeferredBlock<Block> PWR_HEATSINK = BLOCKS.register("pwr_heatsink",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> PWR_HEATSINK_ITEM = ITEMS.registerSimpleBlockItem(PWR_HEATSINK);
+
+public static final DeferredBlock<Block> PWR_NEUTRON_SOURCE = BLOCKS.register("pwr_neutron_source",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> PWR_NEUTRON_SOURCE_ITEM = ITEMS.registerSimpleBlockItem(PWR_NEUTRON_SOURCE);
+
+public static final DeferredBlock<Block> PWR_REFLECTOR = BLOCKS.register("pwr_reflector",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> PWR_REFLECTOR_ITEM = ITEMS.registerSimpleBlockItem(PWR_REFLECTOR);
+
+public static final DeferredBlock<Block> PWR_CASING = BLOCKS.register("pwr_casing",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> PWR_CASING_ITEM = ITEMS.registerSimpleBlockItem(PWR_CASING);
+
+public static final DeferredBlock<Block> PWR_PORT = BLOCKS.register("pwr_port",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> PWR_PORT_ITEM = ITEMS.registerSimpleBlockItem(PWR_PORT);
+
+public static final DeferredBlock<Block> PWR_CONTROLLER = BLOCKS.register("pwr_controller",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> PWR_CONTROLLER_ITEM = ITEMS.registerSimpleBlockItem(PWR_CONTROLLER);
+
+public static final DeferredBlock<Block> PWR_BLOCK = BLOCKS.register("pwr_block",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> PWR_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(PWR_BLOCK);
+
+// ============================================================================
+// Section: Fusion fellas (19 blocks)
+// ============================================================================
+
+public static final DeferredBlock<Block> FUSION_HEATER = BLOCKS.register("fusion_heater",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> FUSION_HEATER_ITEM = ITEMS.registerSimpleBlockItem(FUSION_HEATER);
+
+public static final DeferredBlock<Block> FUSION_HATCH = BLOCKS.register("fusion_hatch",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> FUSION_HATCH_ITEM = ITEMS.registerSimpleBlockItem(FUSION_HATCH);
+
+public static final DeferredBlock<Block> FUSION_CORE = BLOCKS.register("fusion_core_block",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> FUSION_CORE_ITEM = ITEMS.registerSimpleBlockItem(FUSION_CORE);
+
+public static final DeferredBlock<Block> FUSION_COMPONENT = BLOCKS.register("fusion_component",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> FUSION_COMPONENT_ITEM = ITEMS.registerSimpleBlockItem(FUSION_COMPONENT);
+
+public static final DeferredBlock<Block> FUSION_TORUS = BLOCKS.register("fusion_torus",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> FUSION_TORUS_ITEM = ITEMS.registerSimpleBlockItem(FUSION_TORUS);
+
+public static final DeferredBlock<Block> FUSION_KLYSTRON = BLOCKS.register("fusion_klystron",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> FUSION_KLYSTRON_ITEM = ITEMS.registerSimpleBlockItem(FUSION_KLYSTRON);
+
+public static final DeferredBlock<Block> FUSION_KLYSTRON_CREATIVE = BLOCKS.register("fusion_klystron_creative",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> FUSION_KLYSTRON_CREATIVE_ITEM = ITEMS.registerSimpleBlockItem(FUSION_KLYSTRON_CREATIVE);
+
+public static final DeferredBlock<Block> FUSION_BREEDER = BLOCKS.register("fusion_breeder",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> FUSION_BREEDER_ITEM = ITEMS.registerSimpleBlockItem(FUSION_BREEDER);
+
+public static final DeferredBlock<Block> FUSION_COLLECTOR = BLOCKS.register("fusion_collector",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> FUSION_COLLECTOR_ITEM = ITEMS.registerSimpleBlockItem(FUSION_COLLECTOR);
+
+public static final DeferredBlock<Block> FUSION_BOILER = BLOCKS.register("fusion_boiler",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> FUSION_BOILER_ITEM = ITEMS.registerSimpleBlockItem(FUSION_BOILER);
+
+public static final DeferredBlock<Block> FUSION_MHDT = BLOCKS.register("fusion_mhdt",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> FUSION_MHDT_ITEM = ITEMS.registerSimpleBlockItem(FUSION_MHDT);
+
+public static final DeferredBlock<Block> FUSION_COUPLER = BLOCKS.register("fusion_coupler",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> FUSION_COUPLER_ITEM = ITEMS.registerSimpleBlockItem(FUSION_COUPLER);
+
+public static final DeferredBlock<Block> FUSION_PLASMA_FORGE = BLOCKS.register("fusion_plasma_forge",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> FUSION_PLASMA_FORGE_ITEM = ITEMS.registerSimpleBlockItem(FUSION_PLASMA_FORGE);
+
+public static final DeferredBlock<Block> MACHINE_ICF_PRESS = BLOCKS.register("machine_icf_press",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_ICF_PRESS_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_ICF_PRESS);
+
+public static final DeferredBlock<Block> ICF = BLOCKS.register("icf",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> ICF_ITEM = ITEMS.registerSimpleBlockItem(ICF);
+
+public static final DeferredBlock<Block> ICF_COMPONENT = BLOCKS.register("icf_component",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> ICF_COMPONENT_ITEM = ITEMS.registerSimpleBlockItem(ICF_COMPONENT);
+
+public static final DeferredBlock<Block> ICF_CONTROLLER = BLOCKS.register("icf_controller",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> ICF_CONTROLLER_ITEM = ITEMS.registerSimpleBlockItem(ICF_CONTROLLER);
+
+public static final DeferredBlock<Block> ICF_LASER_COMPONENT = BLOCKS.register("icf_laser_component",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> ICF_LASER_COMPONENT_ITEM = ITEMS.registerSimpleBlockItem(ICF_LASER_COMPONENT);
+
+public static final DeferredBlock<Block> ICF_BLOCK = BLOCKS.register("icf_block",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> ICF_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(ICF_BLOCK);
+
+// ============================================================================
+// Section: Watz Components (5 blocks)
+// ============================================================================
+
+public static final DeferredBlock<Block> WATZ_ELEMENT = BLOCKS.register("watz_element",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> WATZ_ELEMENT_ITEM = ITEMS.registerSimpleBlockItem(WATZ_ELEMENT);
+
+public static final DeferredBlock<Block> WATZ_COOLER = BLOCKS.register("watz_cooler",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> WATZ_COOLER_ITEM = ITEMS.registerSimpleBlockItem(WATZ_COOLER);
+
+public static final DeferredBlock<Block> WATZ_CASING = BLOCKS.register("watz_casing",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> WATZ_CASING_ITEM = ITEMS.registerSimpleBlockItem(WATZ_CASING);
+
+public static final DeferredBlock<Block> WATZ = BLOCKS.register("watz",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> WATZ_ITEM = ITEMS.registerSimpleBlockItem(WATZ);
+
+public static final DeferredBlock<Block> WATZ_PUMP = BLOCKS.register("watz_pump",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> WATZ_PUMP_ITEM = ITEMS.registerSimpleBlockItem(WATZ_PUMP);
+
+// ============================================================================
+// Section: DFC (5 blocks)
+// ============================================================================
+
+public static final DeferredBlock<Block> DFC_EMITTER = BLOCKS.register("dfc_emitter",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DFC_EMITTER_ITEM = ITEMS.registerSimpleBlockItem(DFC_EMITTER);
+
+public static final DeferredBlock<Block> DFC_INJECTOR = BLOCKS.register("dfc_injector",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DFC_INJECTOR_ITEM = ITEMS.registerSimpleBlockItem(DFC_INJECTOR);
+
+public static final DeferredBlock<Block> DFC_RECEIVER = BLOCKS.register("dfc_receiver",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DFC_RECEIVER_ITEM = ITEMS.registerSimpleBlockItem(DFC_RECEIVER);
+
+public static final DeferredBlock<Block> DFC_STABILIZER = BLOCKS.register("dfc_stabilizer",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DFC_STABILIZER_ITEM = ITEMS.registerSimpleBlockItem(DFC_STABILIZER);
+
+public static final DeferredBlock<Block> DFC_CORE = BLOCKS.register("dfc_core",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DFC_CORE_ITEM = ITEMS.registerSimpleBlockItem(DFC_CORE);
+
+// ============================================================================
+// Section: Hadron (15 blocks)
+// ============================================================================
+
+public static final DeferredBlock<Block> HADRON_COIL_ALLOY = BLOCKS.register("hadron_coil_alloy",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> HADRON_COIL_ALLOY_ITEM = ITEMS.registerSimpleBlockItem(HADRON_COIL_ALLOY);
+
+public static final DeferredBlock<Block> HADRON_COIL_GOLD = BLOCKS.register("hadron_coil_gold",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> HADRON_COIL_GOLD_ITEM = ITEMS.registerSimpleBlockItem(HADRON_COIL_GOLD);
+
+public static final DeferredBlock<Block> HADRON_COIL_NEODYMIUM = BLOCKS.register("hadron_coil_neodymium",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> HADRON_COIL_NEODYMIUM_ITEM = ITEMS.registerSimpleBlockItem(HADRON_COIL_NEODYMIUM);
+
+public static final DeferredBlock<Block> HADRON_COIL_MAGTUNG = BLOCKS.register("hadron_coil_magtung",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> HADRON_COIL_MAGTUNG_ITEM = ITEMS.registerSimpleBlockItem(HADRON_COIL_MAGTUNG);
+
+public static final DeferredBlock<Block> HADRON_COIL_SCHRABIDIUM = BLOCKS.register("hadron_coil_schrabidium",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> HADRON_COIL_SCHRABIDIUM_ITEM = ITEMS.registerSimpleBlockItem(HADRON_COIL_SCHRABIDIUM);
+
+public static final DeferredBlock<Block> HADRON_COIL_SCHRABIDATE = BLOCKS.register("hadron_coil_schrabidate",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> HADRON_COIL_SCHRABIDATE_ITEM = ITEMS.registerSimpleBlockItem(HADRON_COIL_SCHRABIDATE);
+
+public static final DeferredBlock<Block> HADRON_COIL_STARMETAL = BLOCKS.register("hadron_coil_starmetal",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> HADRON_COIL_STARMETAL_ITEM = ITEMS.registerSimpleBlockItem(HADRON_COIL_STARMETAL);
+
+public static final DeferredBlock<Block> HADRON_COIL_CHLOROPHYTE = BLOCKS.register("hadron_coil_chlorophyte",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> HADRON_COIL_CHLOROPHYTE_ITEM = ITEMS.registerSimpleBlockItem(HADRON_COIL_CHLOROPHYTE);
+
+public static final DeferredBlock<Block> HADRON_COIL_MESE = BLOCKS.register("hadron_coil_mese",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> HADRON_COIL_MESE_ITEM = ITEMS.registerSimpleBlockItem(HADRON_COIL_MESE);
+
+public static final DeferredBlock<Block> PA_SOURCE = BLOCKS.register("pa_source",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> PA_SOURCE_ITEM = ITEMS.registerSimpleBlockItem(PA_SOURCE);
+
+public static final DeferredBlock<Block> PA_BEAMLINE = BLOCKS.register("pa_beamline",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> PA_BEAMLINE_ITEM = ITEMS.registerSimpleBlockItem(PA_BEAMLINE);
+
+public static final DeferredBlock<Block> PA_RFC = BLOCKS.register("pa_rfc",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> PA_RFC_ITEM = ITEMS.registerSimpleBlockItem(PA_RFC);
+
+public static final DeferredBlock<Block> PA_QUADRUPOLE = BLOCKS.register("pa_quadrupole",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> PA_QUADRUPOLE_ITEM = ITEMS.registerSimpleBlockItem(PA_QUADRUPOLE);
+
+public static final DeferredBlock<Block> PA_DIPOLE = BLOCKS.register("pa_dipole",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> PA_DIPOLE_ITEM = ITEMS.registerSimpleBlockItem(PA_DIPOLE);
+
+public static final DeferredBlock<Block> PA_DETECTOR = BLOCKS.register("pa_detector",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> PA_DETECTOR_ITEM = ITEMS.registerSimpleBlockItem(PA_DETECTOR);
+
+// ============================================================================
+// Section: Missle launch pads (4 blocks)
+// ============================================================================
+
+public static final DeferredBlock<Block> MACHINE_MISSILE_ASSEMBLY = BLOCKS.register("machine_missile_assembly",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_MISSILE_ASSEMBLY_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_MISSILE_ASSEMBLY);
+
+public static final DeferredBlock<Block> COMPACT_LAUNCHER = BLOCKS.register("compact_launcher",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> COMPACT_LAUNCHER_ITEM = ITEMS.registerSimpleBlockItem(COMPACT_LAUNCHER);
+
+public static final DeferredBlock<Block> LAUNCH_TABLE = BLOCKS.register("launch_table",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> LAUNCH_TABLE_ITEM = ITEMS.registerSimpleBlockItem(LAUNCH_TABLE);
+
+public static final DeferredBlock<Block> SOYUZ_LAUNCHER = BLOCKS.register("soyuz_launcher",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> SOYUZ_LAUNCHER_ITEM = ITEMS.registerSimpleBlockItem(SOYUZ_LAUNCHER);
+
+// ============================================================================
+// Section: Satelites (6 blocks)
+// ============================================================================
+
+public static final DeferredBlock<Block> SAT_MAPPER = BLOCKS.register("deco_sat_mapper",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> SAT_MAPPER_ITEM = ITEMS.registerSimpleBlockItem(SAT_MAPPER);
+
+public static final DeferredBlock<Block> SAT_RADAR = BLOCKS.register("deco_sat_radar",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> SAT_RADAR_ITEM = ITEMS.registerSimpleBlockItem(SAT_RADAR);
+
+public static final DeferredBlock<Block> SAT_SCANNER = BLOCKS.register("deco_sat_scanner",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> SAT_SCANNER_ITEM = ITEMS.registerSimpleBlockItem(SAT_SCANNER);
+
+public static final DeferredBlock<Block> SAT_LASER = BLOCKS.register("deco_sat_laser",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> SAT_LASER_ITEM = ITEMS.registerSimpleBlockItem(SAT_LASER);
+
+public static final DeferredBlock<Block> SAT_FOEQ = BLOCKS.register("deco_sat_foeq",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> SAT_FOEQ_ITEM = ITEMS.registerSimpleBlockItem(SAT_FOEQ);
+
+public static final DeferredBlock<Block> SAT_RESONATOR = BLOCKS.register("deco_sat_resonator",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> SAT_RESONATOR_ITEM = ITEMS.registerSimpleBlockItem(SAT_RESONATOR);
+
+// ============================================================================
+// Section: Rad'nts (7 blocks)
+// ============================================================================
+
+public static final DeferredBlock<Block> RAD_ABSORBER = BLOCKS.register("rad_absorber",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RAD_ABSORBER_ITEM = ITEMS.registerSimpleBlockItem(RAD_ABSORBER);
+
+public static final DeferredBlock<Block> ABSORBER = BLOCKS.register("absorber",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> ABSORBER_ITEM = ITEMS.registerSimpleBlockItem(ABSORBER);
+
+public static final DeferredBlock<Block> ABSORBER_RED = BLOCKS.register("absorber_red",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> ABSORBER_RED_ITEM = ITEMS.registerSimpleBlockItem(ABSORBER_RED);
+
+public static final DeferredBlock<Block> ABSORBER_GREEN = BLOCKS.register("absorber_green",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> ABSORBER_GREEN_ITEM = ITEMS.registerSimpleBlockItem(ABSORBER_GREEN);
+
+public static final DeferredBlock<Block> ABSORBER_PINK = BLOCKS.register("absorber_pink",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> ABSORBER_PINK_ITEM = ITEMS.registerSimpleBlockItem(ABSORBER_PINK);
+
+public static final DeferredBlock<Block> DECON = BLOCKS.register("decon",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DECON_ITEM = ITEMS.registerSimpleBlockItem(DECON);
+
+public static final DeferredBlock<Block> DECON_DIGAMMA = BLOCKS.register("decon_digamma",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DECON_DIGAMMA_ITEM = ITEMS.registerSimpleBlockItem(DECON_DIGAMMA);
+
+// ============================================================================
+// Section: Misc and more misc (38 blocks)
+// ============================================================================
+
+public static final DeferredBlock<Block> VOLCANO_CORE = BLOCKS.register("volcano_core",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> VOLCANO_CORE_ITEM = ITEMS.registerSimpleBlockItem(VOLCANO_CORE);
+
+public static final DeferredBlock<Block> VOLCANO_RAD_CORE = BLOCKS.register("volcano_rad_core",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> VOLCANO_RAD_CORE_ITEM = ITEMS.registerSimpleBlockItem(VOLCANO_RAD_CORE);
+
+public static final DeferredBlock<Block> TAINT = BLOCKS.register("taint",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> TAINT_ITEM = ITEMS.registerSimpleBlockItem(TAINT);
+
+public static final DeferredBlock<Block> RESIDUE = BLOCKS.register("residue",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RESIDUE_ITEM = ITEMS.registerSimpleBlockItem(RESIDUE);
+
+public static final DeferredBlock<Block> VENT_CHLORINE = BLOCKS.register("vent_chlorine",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> VENT_CHLORINE_ITEM = ITEMS.registerSimpleBlockItem(VENT_CHLORINE);
+
+public static final DeferredBlock<Block> VENT_CLOUD = BLOCKS.register("vent_cloud",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> VENT_CLOUD_ITEM = ITEMS.registerSimpleBlockItem(VENT_CLOUD);
+
+public static final DeferredBlock<Block> VENT_PINK_CLOUD = BLOCKS.register("vent_pink_cloud",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> VENT_PINK_CLOUD_ITEM = ITEMS.registerSimpleBlockItem(VENT_PINK_CLOUD);
+
+public static final DeferredBlock<Block> VENT_CHLORINE_SEAL = BLOCKS.register("vent_chlorine_seal",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> VENT_CHLORINE_SEAL_ITEM = ITEMS.registerSimpleBlockItem(VENT_CHLORINE_SEAL);
+
+public static final DeferredBlock<Block> CHLORINE_GAS = BLOCKS.register("chlorine_gas",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CHLORINE_GAS_ITEM = ITEMS.registerSimpleBlockItem(CHLORINE_GAS);
+
+public static final DeferredBlock<Block> STALAGMITE = BLOCKS.register("stalagmite",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> STALAGMITE_ITEM = ITEMS.registerSimpleBlockItem(STALAGMITE);
+
+public static final DeferredBlock<Block> STALACTITE = BLOCKS.register("stalactite",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> STALACTITE_ITEM = ITEMS.registerSimpleBlockItem(STALACTITE);
+
+public static final DeferredBlock<Block> GAS_RADON = BLOCKS.register("gas_radon",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> GAS_RADON_ITEM = ITEMS.registerSimpleBlockItem(GAS_RADON);
+
+public static final DeferredBlock<Block> GAS_RADON_DENSE = BLOCKS.register("gas_radon_dense",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> GAS_RADON_DENSE_ITEM = ITEMS.registerSimpleBlockItem(GAS_RADON_DENSE);
+
+public static final DeferredBlock<Block> GAS_RADON_TOMB = BLOCKS.register("gas_radon_tomb",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> GAS_RADON_TOMB_ITEM = ITEMS.registerSimpleBlockItem(GAS_RADON_TOMB);
+
+public static final DeferredBlock<Block> GAS_MELTDOWN = BLOCKS.register("gas_meltdown",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> GAS_MELTDOWN_ITEM = ITEMS.registerSimpleBlockItem(GAS_MELTDOWN);
+
+public static final DeferredBlock<Block> GAS_MONOXIDE = BLOCKS.register("gas_monoxide",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> GAS_MONOXIDE_ITEM = ITEMS.registerSimpleBlockItem(GAS_MONOXIDE);
+
+public static final DeferredBlock<Block> GAS_ASBESTOS = BLOCKS.register("gas_asbestos",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> GAS_ASBESTOS_ITEM = ITEMS.registerSimpleBlockItem(GAS_ASBESTOS);
+
+public static final DeferredBlock<Block> GAS_COAL = BLOCKS.register("gas_coal",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> GAS_COAL_ITEM = ITEMS.registerSimpleBlockItem(GAS_COAL);
+
+public static final DeferredBlock<Block> GAS_FLAMMABLE = BLOCKS.register("gas_flammable",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> GAS_FLAMMABLE_ITEM = ITEMS.registerSimpleBlockItem(GAS_FLAMMABLE);
+
+public static final DeferredBlock<Block> GAS_EXPLOSIVE = BLOCKS.register("gas_explosive",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> GAS_EXPLOSIVE_ITEM = ITEMS.registerSimpleBlockItem(GAS_EXPLOSIVE);
+
+public static final DeferredBlock<Block> ANCIENT_SCRAP = BLOCKS.register("ancient_scrap",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> ANCIENT_SCRAP_ITEM = ITEMS.registerSimpleBlockItem(ANCIENT_SCRAP);
+
+public static final DeferredBlock<Block> RAILGUN_PLASMA = BLOCKS.register("railgun_plasma",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RAILGUN_PLASMA_ITEM = ITEMS.registerSimpleBlockItem(RAILGUN_PLASMA);
+
+public static final DeferredBlock<Block> FLUID_DUCT_PAINTABLE = BLOCKS.register("fluid_duct_paintable",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> FLUID_DUCT_PAINTABLE_ITEM = ITEMS.registerSimpleBlockItem(FLUID_DUCT_PAINTABLE);
+
+public static final DeferredBlock<Block> FLUID_DUCT_GAUGE = BLOCKS.register("fluid_duct_gauge",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> FLUID_DUCT_GAUGE_ITEM = ITEMS.registerSimpleBlockItem(FLUID_DUCT_GAUGE);
+
+public static final DeferredBlock<Block> FLUID_VALVE = BLOCKS.register("fluid_valve",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> FLUID_VALVE_ITEM = ITEMS.registerSimpleBlockItem(FLUID_VALVE);
+
+public static final DeferredBlock<Block> FLUID_SWITCH = BLOCKS.register("fluid_switch",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> FLUID_SWITCH_ITEM = ITEMS.registerSimpleBlockItem(FLUID_SWITCH);
+
+public static final DeferredBlock<Block> FLUID_COUNTER_VALVE = BLOCKS.register("fluid_counter_valve",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> FLUID_COUNTER_VALVE_ITEM = ITEMS.registerSimpleBlockItem(FLUID_COUNTER_VALVE);
+
+public static final DeferredBlock<Block> FLUID_PUMP = BLOCKS.register("fluid_pump",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> FLUID_PUMP_ITEM = ITEMS.registerSimpleBlockItem(FLUID_PUMP);
+
+public static final DeferredBlock<Block> MACHINE_DRAIN = BLOCKS.register("machine_drain",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MACHINE_DRAIN_ITEM = ITEMS.registerSimpleBlockItem(MACHINE_DRAIN);
+
+public static final DeferredBlock<Block> RADIO_TORCH_SENDER = BLOCKS.register("radio_torch_sender",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RADIO_TORCH_SENDER_ITEM = ITEMS.registerSimpleBlockItem(RADIO_TORCH_SENDER);
+
+public static final DeferredBlock<Block> RADIO_TORCH_RECEIVER = BLOCKS.register("radio_torch_receiver",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RADIO_TORCH_RECEIVER_ITEM = ITEMS.registerSimpleBlockItem(RADIO_TORCH_RECEIVER);
+
+public static final DeferredBlock<Block> RADIO_TORCH_COUNTER = BLOCKS.register("radio_torch_counter",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RADIO_TORCH_COUNTER_ITEM = ITEMS.registerSimpleBlockItem(RADIO_TORCH_COUNTER);
+
+public static final DeferredBlock<Block> RADIO_TORCH_LOGIC = BLOCKS.register("radio_torch_logic",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RADIO_TORCH_LOGIC_ITEM = ITEMS.registerSimpleBlockItem(RADIO_TORCH_LOGIC);
+
+public static final DeferredBlock<Block> RADIO_TORCH_READER = BLOCKS.register("radio_torch_reader",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RADIO_TORCH_READER_ITEM = ITEMS.registerSimpleBlockItem(RADIO_TORCH_READER);
+
+public static final DeferredBlock<Block> RADIO_TORCH_CONTROLLER = BLOCKS.register("radio_torch_controller",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RADIO_TORCH_CONTROLLER_ITEM = ITEMS.registerSimpleBlockItem(RADIO_TORCH_CONTROLLER);
+
+public static final DeferredBlock<Block> RADIO_TELEX = BLOCKS.register("radio_telex",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RADIO_TELEX_ITEM = ITEMS.registerSimpleBlockItem(RADIO_TELEX);
+
+public static final DeferredBlock<Block> RADIO_AUTOCAL = BLOCKS.register("radio_autocal",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RADIO_AUTOCAL_ITEM = ITEMS.registerSimpleBlockItem(RADIO_AUTOCAL);
+
+public static final DeferredBlock<Block> CARGO_ELEVATOR = BLOCKS.register("cargo_elevator",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CARGO_ELEVATOR_ITEM = ITEMS.registerSimpleBlockItem(CARGO_ELEVATOR);
+
+// ============================================================================
+// Section: Alcater: excecuting removal of classes/registry/render (5 blocks)
+// ============================================================================
+
+public static final DeferredBlock<Block> FLUID_DUCT_NEO = BLOCKS.register("fluid_duct_mk2",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> FLUID_DUCT_NEO_ITEM = ITEMS.registerSimpleBlockItem(FLUID_DUCT_NEO);
+
+public static final DeferredBlock<Block> FLUID_DUCT_BOX = BLOCKS.register("fluid_duct_box",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> FLUID_DUCT_BOX_ITEM = ITEMS.registerSimpleBlockItem(FLUID_DUCT_BOX);
+
+public static final DeferredBlock<Block> FLUID_DUCT_EXHAUST = BLOCKS.register("fluid_duct_exhaust",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> FLUID_DUCT_EXHAUST_ITEM = ITEMS.registerSimpleBlockItem(FLUID_DUCT_EXHAUST);
+
+public static final DeferredBlock<Block> FLUID_DUCT_PAINTABLE_BLOCK_EXHAUST = BLOCKS.register("fluid_duct_paintable_block_exhaust",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> FLUID_DUCT_PAINTABLE_BLOCK_EXHAUST_ITEM = ITEMS.registerSimpleBlockItem(FLUID_DUCT_PAINTABLE_BLOCK_EXHAUST);
+
+public static final DeferredBlock<Block> PIPE_ANCHOR = BLOCKS.register("pipe_anchor",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> PIPE_ANCHOR_ITEM = ITEMS.registerSimpleBlockItem(PIPE_ANCHOR);
+
+// ============================================================================
+// Section: 1.12.2 Exclusive solid pipes below. DO NOT REMOVE. (13 blocks)
+// ============================================================================
+
+public static final DeferredBlock<Block> FLUID_DUCT_SOLID = BLOCKS.register("fluid_duct_solid",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> FLUID_DUCT_SOLID_ITEM = ITEMS.registerSimpleBlockItem(FLUID_DUCT_SOLID);
+
+public static final DeferredBlock<Block> FLUID_DUCT_SOLID_SEALED = BLOCKS.register("fluid_duct_solid_sealed",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> FLUID_DUCT_SOLID_SEALED_ITEM = ITEMS.registerSimpleBlockItem(FLUID_DUCT_SOLID_SEALED);
+
+public static final DeferredBlock<Block> PNEUMATIC_TUBE = BLOCKS.register("pneumatic_tube",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> PNEUMATIC_TUBE_ITEM = ITEMS.registerSimpleBlockItem(PNEUMATIC_TUBE);
+
+public static final DeferredBlock<Block> PNEUMATIC_TUBE_PAINTABLE = BLOCKS.register("pneumatic_tube_paintable",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> PNEUMATIC_TUBE_PAINTABLE_ITEM = ITEMS.registerSimpleBlockItem(PNEUMATIC_TUBE_PAINTABLE);
+
+public static final DeferredBlock<Block> PNEUMATIC_STORAGE_ACCESS = BLOCKS.register("pneumatic_storage_access",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> PNEUMATIC_STORAGE_ACCESS_ITEM = ITEMS.registerSimpleBlockItem(PNEUMATIC_STORAGE_ACCESS);
+
+public static final DeferredBlock<Block> PNEUMATIC_STORAGE_CLUTTER = BLOCKS.register("pneumatic_storage_clutter",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> PNEUMATIC_STORAGE_CLUTTER_ITEM = ITEMS.registerSimpleBlockItem(PNEUMATIC_STORAGE_CLUTTER);
+
+public static final DeferredBlock<Block> CHAIN = BLOCKS.register("dungeon_chain",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CHAIN_ITEM = ITEMS.registerSimpleBlockItem(CHAIN);
+
+public static final DeferredBlock<Block> RAILING_END_FLOOR = BLOCKS.register("railing_end_floor",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RAILING_END_FLOOR_ITEM = ITEMS.registerSimpleBlockItem(RAILING_END_FLOOR);
+
+public static final DeferredBlock<Block> RAILING_END_SELF = BLOCKS.register("railing_end_self",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RAILING_END_SELF_ITEM = ITEMS.registerSimpleBlockItem(RAILING_END_SELF);
+
+public static final DeferredBlock<Block> RAILING_END_FLIPPED_FLOOR = BLOCKS.register("railing_end_flipped_floor",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RAILING_END_FLIPPED_FLOOR_ITEM = ITEMS.registerSimpleBlockItem(RAILING_END_FLIPPED_FLOOR);
+
+public static final DeferredBlock<Block> RAILING_END_FLIPPED_SELF = BLOCKS.register("railing_end_flipped_self",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RAILING_END_FLIPPED_SELF_ITEM = ITEMS.registerSimpleBlockItem(RAILING_END_FLIPPED_SELF);
+
+public static final DeferredBlock<Block> RAILING_NORMAL = BLOCKS.register("railing_normal",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RAILING_NORMAL_ITEM = ITEMS.registerSimpleBlockItem(RAILING_NORMAL);
+
+public static final DeferredBlock<Block> RAILING_BEND = BLOCKS.register("railing_bend",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RAILING_BEND_ITEM = ITEMS.registerSimpleBlockItem(RAILING_BEND);
+
+// ============================================================================
+// Section: Control panel (1 blocks)
+// ============================================================================
+
+public static final DeferredBlock<Block> CONTROL_PANEL_CUSTOM = BLOCKS.register("control_panel_custom",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CONTROL_PANEL_CUSTOM_ITEM = ITEMS.registerSimpleBlockItem(CONTROL_PANEL_CUSTOM);
+
+// ============================================================================
+// Section: Weird stuff (1 blocks)
+// ============================================================================
+
+public static final DeferredBlock<Block> BOXCAR = BLOCKS.register("boxcar",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BOXCAR_ITEM = ITEMS.registerSimpleBlockItem(BOXCAR);
+
+// ============================================================================
+// Section: HAS NO USE ON 1.7 (1 blocks)
+// ============================================================================
+
+public static final DeferredBlock<Block> BOAT = BLOCKS.register("boat",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> BOAT_ITEM = ITEMS.registerSimpleBlockItem(BOAT);
+
+// ============================================================================
+// Section: Drillgon200: Can't name with # symbol because json doesn't like it. (4 blocks)
+// ============================================================================
+
+public static final DeferredBlock<Block> STATUE_ELB = BLOCKS.register("null",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> STATUE_ELB_ITEM = ITEMS.registerSimpleBlockItem(STATUE_ELB);
+
+public static final DeferredBlock<Block> STATUE_ELB_G = BLOCKS.register("void",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> STATUE_ELB_G_ITEM = ITEMS.registerSimpleBlockItem(STATUE_ELB_G);
+
+public static final DeferredBlock<Block> STATUE_ELB_W = BLOCKS.register("ngtv",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> STATUE_ELB_W_ITEM = ITEMS.registerSimpleBlockItem(STATUE_ELB_W);
+
+public static final DeferredBlock<Block> STATUE_ELB_F = BLOCKS.register("undef",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> STATUE_ELB_F_ITEM = ITEMS.registerSimpleBlockItem(STATUE_ELB_F);
+
+// ============================================================================
+// Section: Dummy blocks (2 blocks)
+// ============================================================================
+
+public static final DeferredBlock<Block> DUMMY_BLOCK_UF6 = BLOCKS.register("dummy_block_uf6",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DUMMY_BLOCK_UF6_ITEM = ITEMS.registerSimpleBlockItem(DUMMY_BLOCK_UF6);
+
+public static final DeferredBlock<Block> DUMMY_BLOCK_PUF6 = BLOCKS.register("dummy_block_puf6",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DUMMY_BLOCK_PUF6_ITEM = ITEMS.registerSimpleBlockItem(DUMMY_BLOCK_PUF6);
+
+// ============================================================================
+// Section: Th3_Sl1ze: name me ONE reason we're keeping these then (24 blocks)
+// ============================================================================
+
+public static final DeferredBlock<Block> DUMMY_BLOCK_VAULT = BLOCKS.register("dummy_block_vault",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DUMMY_BLOCK_VAULT_ITEM = ITEMS.registerSimpleBlockItem(DUMMY_BLOCK_VAULT);
+
+public static final DeferredBlock<Block> DUMMY_BLOCK_BLAST = BLOCKS.register("dummy_block_blast",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DUMMY_BLOCK_BLAST_ITEM = ITEMS.registerSimpleBlockItem(DUMMY_BLOCK_BLAST);
+
+public static final DeferredBlock<Block> DUMMY_BLOCK_SILO_HATCH = BLOCKS.register("dummy_block_silo_hatch",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DUMMY_BLOCK_SILO_HATCH_ITEM = ITEMS.registerSimpleBlockItem(DUMMY_BLOCK_SILO_HATCH);
+
+public static final DeferredBlock<Block> DUMMY_PLATE_COMPACT_LAUNCHER = BLOCKS.register("dummy_plate_compact_launcher",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DUMMY_PLATE_COMPACT_LAUNCHER_ITEM = ITEMS.registerSimpleBlockItem(DUMMY_PLATE_COMPACT_LAUNCHER);
+
+public static final DeferredBlock<Block> DUMMY_PORT_COMPACT_LAUNCHER = BLOCKS.register("dummy_port_compact_launcher",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DUMMY_PORT_COMPACT_LAUNCHER_ITEM = ITEMS.registerSimpleBlockItem(DUMMY_PORT_COMPACT_LAUNCHER);
+
+public static final DeferredBlock<Block> DUMMY_PLATE_LAUNCH_TABLE = BLOCKS.register("dummy_plate_launch_table",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DUMMY_PLATE_LAUNCH_TABLE_ITEM = ITEMS.registerSimpleBlockItem(DUMMY_PLATE_LAUNCH_TABLE);
+
+public static final DeferredBlock<Block> DUMMY_PORT_LAUNCH_TABLE = BLOCKS.register("dummy_port_launch_table",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DUMMY_PORT_LAUNCH_TABLE_ITEM = ITEMS.registerSimpleBlockItem(DUMMY_PORT_LAUNCH_TABLE);
+
+public static final DeferredBlock<Block> DUMMY_PLATE_CARGO = BLOCKS.register("dummy_plate_cargo",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> DUMMY_PLATE_CARGO_ITEM = ITEMS.registerSimpleBlockItem(DUMMY_PLATE_CARGO);
+
+public static final DeferredBlock<Block> PINK_DOUBLE_SLAB = BLOCKS.register("pink_double_slab",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> PINK_DOUBLE_SLAB_ITEM = ITEMS.registerSimpleBlockItem(PINK_DOUBLE_SLAB);
+
+public static final DeferredBlock<Block> WAND_AIR = BLOCKS.register("wand_air",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> WAND_AIR_ITEM = ITEMS.registerSimpleBlockItem(WAND_AIR);
+
+public static final DeferredBlock<Block> WAND_LOOT = BLOCKS.register("wand_loot",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> WAND_LOOT_ITEM = ITEMS.registerSimpleBlockItem(WAND_LOOT);
+
+public static final DeferredBlock<Block> WAND_JIGSAW = BLOCKS.register("wand_jigsaw",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> WAND_JIGSAW_ITEM = ITEMS.registerSimpleBlockItem(WAND_JIGSAW);
+
+public static final DeferredBlock<Block> WAND_LOGIC = BLOCKS.register("wand_logic",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> WAND_LOGIC_ITEM = ITEMS.registerSimpleBlockItem(WAND_LOGIC);
+
+public static final DeferredBlock<Block> WAND_TANDEM = BLOCKS.register("wand_tandem",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> WAND_TANDEM_ITEM = ITEMS.registerSimpleBlockItem(WAND_TANDEM);
+
+public static final DeferredBlock<Block> LOGIC_BLOCK = BLOCKS.register("logic_block",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> LOGIC_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(LOGIC_BLOCK);
+
+public static final DeferredBlock<Block> LOGIC_BLOCK_INVIS = BLOCKS.register("logic_block_invis",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> LOGIC_BLOCK_INVIS_ITEM = ITEMS.registerSimpleBlockItem(LOGIC_BLOCK_INVIS);
+
+public static final DeferredBlock<Block> TOXIC_BLOCK = BLOCKS.register("toxic_block",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> TOXIC_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(TOXIC_BLOCK);
+
+public static final DeferredBlock<Block> MUD_BLOCK = BLOCKS.register("mud_block",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> MUD_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(MUD_BLOCK);
+
+public static final DeferredBlock<Block> ACID_BLOCK = BLOCKS.register("acid_block",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> ACID_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(ACID_BLOCK);
+
+public static final DeferredBlock<Block> SCHRABIDIC_BLOCK = BLOCKS.register("schrabidic_block",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> SCHRABIDIC_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(SCHRABIDIC_BLOCK);
+
+public static final DeferredBlock<Block> CORIUM_BLOCK = BLOCKS.register("corium_block",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> CORIUM_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(CORIUM_BLOCK);
+
+public static final DeferredBlock<Block> VOLCANIC_LAVA_BLOCK = BLOCKS.register("volcanic_lava_block",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> VOLCANIC_LAVA_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(VOLCANIC_LAVA_BLOCK);
+
+public static final DeferredBlock<Block> RAD_LAVA_BLOCK = BLOCKS.register("rad_lava_block",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> RAD_LAVA_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(RAD_LAVA_BLOCK);
+
+public static final DeferredBlock<Block> SULFURIC_ACID_BLOCK = BLOCKS.register("sulfuric_acid_block",
+        () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 10.0F).sound(SoundType.STONE)));
+public static final DeferredItem<BlockItem> SULFURIC_ACID_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(SULFURIC_ACID_BLOCK);
+
+
+}

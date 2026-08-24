@@ -1,0 +1,27 @@
+{
+  "feature": "hbm:cf_ore_depth_nether_neodymium",
+  "placement": [
+    {
+      "type": "minecraft:rarity_filter",
+      "chance": 16
+    },
+    {
+      "type": "minecraft:in_square_world"
+    },
+    {
+      "type": "minecraft:height_range",
+      "height": {
+        "type": "minecraft:uniform",
+        "min_inclusive": {
+          "absolute": 0
+        },
+        "max_inclusive": {
+          "absolute": 2
+        }
+      }
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

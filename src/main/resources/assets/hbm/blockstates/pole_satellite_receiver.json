@@ -1,0 +1,5 @@
+﻿{
+  "variants": {
+    "": { "model": "hbm:block/pole_satellite_receiver" }
+  }
+}

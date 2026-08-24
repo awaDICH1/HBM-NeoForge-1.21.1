@@ -1,0 +1,5 @@
+﻿{
+  "variants": {
+    "": { "model": "hbm:block/control_panel_custom" }
+  }
+}

@@ -1,0 +1,7 @@
+﻿{
+  "variants": {
+    "type=double": { "model": "hbm:block/brick_red_slab" },
+    "type=bottom": { "model": "hbm:block/brick_red_slab_bottom" },
+    "type=top": { "model": "hbm:block/brick_red_slab_top" }
+  }
+}

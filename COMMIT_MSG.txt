@@ -1,0 +1,14 @@
+HBM Nuclear Tech Mod 1.21.1 NeoForge migration
+
+Complete migration from HBM 1.12.2 CE to 1.21.1 NeoForge including:
+- Entity system: projectiles, missiles, mob AI (EntityRADBeast, CreeperTainted, CreeperGold)
+- Tile entity system: machine base, network sync with FNV-1a hash dedup
+- Recipe system: 429+ crafting recipes, 95 SILEX recipes, 211 assembler recipes, 32 RBMK fuel recipes
+- DataGen: 891 generated files (recipes, loot tables, worldgen)
+- GUI system: machine screens with progress bar and energy display
+- Sound system: 384 SoundEvent registrations
+- Particle system: 33 particle definitions mapping 24 textures
+- World generation: 171 configured features (57 ores x 3 types)
+- Contamination system: radiation dose calculation, effect application, chunk radiation diffusion
+- Block model fixes: steel_wall, sound naming conventions (lowercase)
+- Language files: 11713+ en_us entries

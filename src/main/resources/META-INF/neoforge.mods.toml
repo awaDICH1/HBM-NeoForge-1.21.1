@@ -1,0 +1,31 @@
+modLoader = "javafml"
+loaderVersion = "[4,)"
+license = "GPL-3.0"
+issueTrackerURL = "https://github.com/Warfactory-Official/Hbm-s-Nuclear-Tech-CE/issues"
+
+[[mods]]
+modId = "hbm"
+version = "2.5.0.6"
+displayName = "HBM's Nuclear Tech - Community Edition"
+logoFile = "hbm.png"
+logoBlur = false
+authors = "HBMMods, Drillgon200, TheOriginalGolem, Alcater, MrNorwood, Movblock"
+description = '''
+1.21.1 NeoForge 移植版。原 1.12.2 CE 的 mcmod.info 见 libs/Hbm-s-Nuclear-Tech-CE-master/src/main/resources/mcmod.info。
+'''
+
+[[dependencies.hbm]]
+    modId = "neoforge"
+    type = "required"
+    versionRange = "[21.1.0,)"
+    ordering = "NONE"
+    side = "BOTH"
+
+[[dependencies.hbm]]
+    modId = "minecraft"
+    type = "required"
+    versionRange = "[1.21.1,1.22)"
+    ordering = "NONE"
+    side = "BOTH"
+
+# 原依赖 mixinbooter 删除（NeoForge 内置 Mixin）；ctm 为可选，P9 引入兼容版。

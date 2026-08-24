@@ -1,0 +1,8 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#minecraft:is_overworld",
+  "features": [
+    "hbm:pf_ore_asbestos"
+  ],
+  "step": "underground_ores"
+}
