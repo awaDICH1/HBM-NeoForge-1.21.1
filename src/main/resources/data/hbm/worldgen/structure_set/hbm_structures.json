@@ -1,0 +1,18 @@
+{
+  "structures": [
+    {
+      "structure": "hbm:launch_site",
+      "weight": 1
+    },
+    {
+      "structure": "hbm:research_facility",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 12345,
+    "spacing": 24,
+    "separation": 12
+  }
+}

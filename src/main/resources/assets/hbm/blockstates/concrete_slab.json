@@ -1,0 +1,7 @@
+﻿{
+  "variants": {
+    "type=double": { "model": "hbm:block/concrete_slab" },
+    "type=bottom": { "model": "hbm:block/concrete_slab_bottom" },
+    "type=top": { "model": "hbm:block/concrete_slab_top" }
+  }
+}

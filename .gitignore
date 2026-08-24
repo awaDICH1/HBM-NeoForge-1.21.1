@@ -1,0 +1,30 @@
+# Gradle
+.gradle/
+build/
+out/
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.settings/
+.classpath
+.project
+.vscode/
+
+# 运行目录与日志
+run/
+logs/
+runclient_output.txt
+run_client_log*.txt
+
+# 临时诊断与编译输出
+all_errors_context.txt
+build_verify.txt
+compile_output.txt
+diagnostic_report.txt
+getReflector_context.txt
+
+# 数据生成输出（DataGen 产物，若纳入版本管理可删除此行）
+src/generated/resources/

@@ -1,0 +1,4 @@
+﻿{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": { "bottom": "hbm:block/asphalt", "top": "hbm:block/asphalt", "side": "hbm:block/asphalt" }
+}

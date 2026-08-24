@@ -1,0 +1,1358 @@
+    // TAB: consumableTab
+    // TODO: setFull3D — 1.21.1 no property, handled in model json
+    public static final DeferredItem<Item> SYRINGE_EMPTY = ITEMS.register("syringe_empty",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: consumableTab
+    // TODO: setFull3D — 1.21.1 no property, handled in model json
+    public static final DeferredItem<Item> SYRINGE_METAL_EMPTY = ITEMS.register("syringe_metal_empty",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: controlTab
+    public static final DeferredItem<Item> PISTON_SELENIUM = ITEMS.register("piston_selenium",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: controlTab
+    public static final DeferredItem<Item> THERMO_ELEMENT = ITEMS.register("thermo_element",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: controlTab
+    public static final DeferredItem<Item> CATALYTIC_CONVERTER = ITEMS.register("catalytic_converter",
+            () -> new ItemBase(new Item.Properties().stacksTo(1)));
+
+    // TAB: controlTab
+    public static final DeferredItem<Item> PART_LITHIUM = ITEMS.register("part_lithium",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: controlTab
+    public static final DeferredItem<Item> PART_BERYLLIUM = ITEMS.register("part_beryllium",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: controlTab
+    public static final DeferredItem<Item> PART_CARBON = ITEMS.register("part_carbon",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: controlTab
+    public static final DeferredItem<Item> PART_COPPER = ITEMS.register("part_copper",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: controlTab
+    public static final DeferredItem<Item> PART_PLUTONIUM = ITEMS.register("part_plutonium",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: null
+    public static final DeferredItem<Item> FUSION_CORE_INFINITE = ITEMS.register("fusion_core_infinite",
+            () -> new ItemBase(new Item.Properties().stacksTo(1)));
+
+    // TAB: controlTab
+    public static final DeferredItem<Item> GAS_EMPTY = ITEMS.register("gas_empty",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: weaponTab
+    public static final DeferredItem<Item> DISPERSER_CANISTER_EMPTY = ITEMS.register("disperser_canister_empty",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: weaponTab
+    public static final DeferredItem<Item> GLYPHID_GLAND_EMPTY = ITEMS.register("glyphid_gland_empty",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> POWDER_IRON = ITEMS.register("powder_iron",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> POWDER_GOLD = ITEMS.register("powder_gold",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> POWDER_DIAMOND = ITEMS.register("powder_diamond",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> POWDER_EMERALD = ITEMS.register("powder_emerald",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> POWDER_LAPIS = ITEMS.register("powder_lapis",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> POWDER_TITANIUM = ITEMS.register("powder_titanium",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> POWDER_TUNGSTEN = ITEMS.register("powder_tungsten",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> POWDER_SODIUM = ITEMS.register("powder_sodium",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> POWDER_CHLOROCALCITE = ITEMS.register("powder_chlorocalcite",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> POWDER_MOLYSITE = ITEMS.register("powder_molysite",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> POWDER_COPPER = ITEMS.register("powder_copper",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> POWDER_BERYLLIUM = ITEMS.register("powder_beryllium",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> POWDER_ALUMINIUM = ITEMS.register("powder_aluminium",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> POWDER_COMBINE_STEEL = ITEMS.register("powder_combine_steel",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> POWDER_CDALLOY = ITEMS.register("powder_cdalloy",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> POWDER_CHLOROPHYTE = ITEMS.register("powder_chlorophyte",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> POWDER_RED_COPPER = ITEMS.register("powder_red_copper",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> POWDER_STEEL = ITEMS.register("powder_steel",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> POWDER_STEEL_TINY = ITEMS.register("powder_steel_tiny",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> REDSTONE_DEPLETED = ITEMS.register("redstone_depleted",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> POWDER_QUARTZ = ITEMS.register("powder_quartz",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> POWDER_BORAX = ITEMS.register("powder_borax",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> POWDER_LANTHANIUM_TINY = ITEMS.register("powder_lanthanium_tiny",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> POWDER_ACTINIUM_TINY = ITEMS.register("powder_actinium_tiny",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> POWDER_BORON_TINY = ITEMS.register("powder_boron_tiny",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> POWDER_SEMTEX_MIX = ITEMS.register("powder_semtex_mix",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> POWDER_DESH = ITEMS.register("powder_desh",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> POWDER_ZIRCONIUM = ITEMS.register("powder_zirconium",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> POWDER_ASBESTOS = ITEMS.register("powder_asbestos",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> POWDER_CADMIUM = ITEMS.register("powder_cadmium",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> POWDER_BISMUTH = ITEMS.register("powder_bismuth",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> POWDER_CAESIUM = ITEMS.register("powder_caesium",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> POWDER_STRONTIUM = ITEMS.register("powder_strontium",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> POWDER_CALCIUM = ITEMS.register("powder_calcium",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> POWDER_ICE = ITEMS.register("powder_ice",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> POWDER_LIMESTONE = ITEMS.register("powder_limestone",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> POWDER_DESH_MIX = ITEMS.register("powder_desh_mix",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> POWDER_DESH_READY = ITEMS.register("powder_desh_ready",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> POWDER_METEORITE = ITEMS.register("powder_meteorite",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> POWDER_METEORITE_TINY = ITEMS.register("powder_meteorite_tiny",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> POWDER_COLTAN = ITEMS.register("powder_coltan",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> POWDER_POISON = ITEMS.register("powder_poison",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> SULFUR = ITEMS.register("sulfur",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> NITER = ITEMS.register("niter",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> FLUORITE = ITEMS.register("fluorite",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> SCRAP = ITEMS.register("scrap",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> SCRAP_OIL = ITEMS.register("scrap_oil",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> DUST = ITEMS.register("dust",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: controlTab
+    public static final DeferredItem<Item> ROD_EMPTY = ITEMS.register("rod_empty",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: controlTab
+    public static final DeferredItem<Item> ROD_DUAL_EMPTY = ITEMS.register("rod_dual_empty",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: controlTab
+    public static final DeferredItem<Item> ROD_QUAD_EMPTY = ITEMS.register("rod_quad_empty",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: controlTab
+    public static final DeferredItem<Item> ROD_ZIRNOX_EMPTY = ITEMS.register("rod_zirnox_empty",
+            () -> new ItemBase(new Item.Properties().stacksTo(64)));
+
+    // TAB: controlTab
+    public static final DeferredItem<Item> ROD_ZIRNOX_TRITIUM = ITEMS.register("rod_zirnox_tritium",
+            () -> new ItemBase(new Item.Properties().stacksTo(1).craftRemainder(ModItems.ROD_ZIRNOX_EMPTY.get())));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> RING_STARMETAL = ITEMS.register("ring_starmetal",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> FLYWHEEL_BERYLLIUM = ITEMS.register("flywheel_beryllium",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> CORDITE = ITEMS.register("cordite",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> BALLISTITE = ITEMS.register("ballistite",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> BALL_DYNAMITE = ITEMS.register("ball_dynamite",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> BALL_TNT = ITEMS.register("ball_tnt",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> BALL_TATB = ITEMS.register("ball_tatb",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> BALL_FIRECLAY = ITEMS.register("ball_fireclay",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: controlTab
+    public static final DeferredItem<Item> MOLD_BASE = ITEMS.register("mold_base",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> NEUTRON_REFLECTOR = ITEMS.register("neutron_reflector",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> RTG_UNIT = ITEMS.register("rtg_unit",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> THERMO_UNIT_EMPTY = ITEMS.register("thermo_unit_empty",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> LEVITATION_UNIT = ITEMS.register("levitation_unit",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> PELLET_BUCKSHOT = ITEMS.register("pellet_buckshot",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> PELLET_FLECHETTE = ITEMS.register("pellet_flechette",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> PELLET_CHLOROPHYTE = ITEMS.register("pellet_chlorophyte",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> PELLET_METEORITE = ITEMS.register("pellet_meteorite",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> PELLET_CANISTER = ITEMS.register("pellet_canister",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> PELLET_CLAWS = ITEMS.register("pellet_claws",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> CINNABAR = ITEMS.register("cinnabar",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> DUCTTAPE = ITEMS.register("ducttape",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> CATALYST_CLAY = ITEMS.register("catalyst_clay",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> PHOTO_PANEL = ITEMS.register("photo_panel",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> SAT_BASE = ITEMS.register("sat_base",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> THRUSTER_NUCLEAR = ITEMS.register("thruster_nuclear",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> BLADE_TITANIUM = ITEMS.register("blade_titanium",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> TURBINE_TITANIUM = ITEMS.register("turbine_titanium",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> BLADE_TUNGSTEN = ITEMS.register("blade_tungsten",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> TURBINE_TUNGSTEN = ITEMS.register("turbine_tungsten",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> BOARD_COPPER = ITEMS.register("board_copper",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> PIPES_STEEL = ITEMS.register("pipes_steel",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> DRILL_TITANIUM = ITEMS.register("drill_titanium",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> BOLT_COMPOUND = ITEMS.register("bolt_compound",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> HAZMAT_CLOTH = ITEMS.register("hazmat_cloth",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> HAZMAT_CLOTH_RED = ITEMS.register("hazmat_cloth_red",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> HAZMAT_CLOTH_GREY = ITEMS.register("hazmat_cloth_grey",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> ASBESTOS_CLOTH = ITEMS.register("asbestos_cloth",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> RAG_DAMP = ITEMS.register("rag_damp",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> RAG_PISS = ITEMS.register("rag_piss",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> FILTER_COAL = ITEMS.register("filter_coal",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> MAGNET_CIRCULAR = ITEMS.register("magnet_circular",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> CENTRIFUGE_ELEMENT = ITEMS.register("centrifuge_element",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> REACTOR_CORE = ITEMS.register("reactor_core",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> FRAGMENT_NEODYMIUM = ITEMS.register("fragment_neodymium",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> FRAGMENT_COBALT = ITEMS.register("fragment_cobalt",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> FRAGMENT_NIOBIUM = ITEMS.register("fragment_niobium",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> FRAGMENT_CERIUM = ITEMS.register("fragment_cerium",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> FRAGMENT_LANTHANIUM = ITEMS.register("fragment_lanthanium",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> FRAGMENT_ACTINIUM = ITEMS.register("fragment_actinium",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> FRAGMENT_METEORITE = ITEMS.register("fragment_meteorite",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> FRAGMENT_BORON = ITEMS.register("fragment_boron",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> FRAGMENT_COLTAN = ITEMS.register("fragment_coltan",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: consumableTab
+    public static final DeferredItem<Item> CAP_NUKA = ITEMS.register("cap_nuka",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: consumableTab
+    public static final DeferredItem<Item> CAP_QUANTUM = ITEMS.register("cap_quantum",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: consumableTab
+    public static final DeferredItem<Item> CAP_SPARKLE = ITEMS.register("cap_sparkle",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: consumableTab
+    public static final DeferredItem<Item> CAP_RAD = ITEMS.register("cap_rad",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: consumableTab
+    public static final DeferredItem<Item> CAP_KORL = ITEMS.register("cap_korl",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: consumableTab
+    public static final DeferredItem<Item> CAP_FRITZ = ITEMS.register("cap_fritz",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: consumableTab
+    public static final DeferredItem<Item> RING_PULL = ITEMS.register("ring_pull",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: consumableTab
+    public static final DeferredItem<Item> BOTTLE_EMPTY = ITEMS.register("bottle_empty",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: consumableTab
+    public static final DeferredItem<Item> BOTTLE2_EMPTY = ITEMS.register("bottle2_empty",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: consumableTab
+    public static final DeferredItem<Item> EGG_GLYPHID = ITEMS.register("egg_glyphid",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: consumableTab
+    public static final DeferredItem<Item> CAN_KEY = ITEMS.register("can_key",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: consumableTab
+    public static final DeferredItem<Item> CAN_EMPTY = ITEMS.register("can_empty",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> PLATE_IRON = ITEMS.register("plate_iron",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> PLATE_COPPER = ITEMS.register("plate_copper",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> PLATE_TITANIUM = ITEMS.register("plate_titanium",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> PLATE_ALUMINIUM = ITEMS.register("plate_aluminium",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> PLATE_GOLD = ITEMS.register("plate_gold",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> PLATE_STEEL = ITEMS.register("plate_steel",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> PLATE_COMBINE_STEEL = ITEMS.register("plate_combine_steel",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> PLATE_SATURNITE = ITEMS.register("plate_saturnite",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> PLATE_DALEKANIUM = ITEMS.register("plate_dalekanium",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> PLATE_MIXED = ITEMS.register("plate_mixed",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> PLATE_KEVLAR = ITEMS.register("plate_kevlar",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> PLATE_POLYMER = ITEMS.register("plate_polymer",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> PLATE_DESH = ITEMS.register("plate_desh",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> PLATE_DINEUTRONIUM = ITEMS.register("plate_dineutronium",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> PLATE_ARMOR_TITANIUM = ITEMS.register("plate_armor_titanium",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> PLATE_ARMOR_AJR = ITEMS.register("plate_armor_ajr",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> PLATE_ARMOR_HEV = ITEMS.register("plate_armor_hev",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> PLATE_ARMOR_LUNAR = ITEMS.register("plate_armor_lunar",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> PLATE_ARMOR_FAU = ITEMS.register("plate_armor_fau",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> PLATE_ARMOR_DNT = ITEMS.register("plate_armor_dnt",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> PLATE_DURA_STEEL = ITEMS.register("plate_dura_steel",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> PLATE_GUNMETAL = ITEMS.register("plate_gunmetal",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> PLATE_WEAPONSTEEL = ITEMS.register("plate_weaponsteel",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: templateTab
+    public static final DeferredItem<Item> TEMPLATE_FOLDER = ITEMS.register("template_folder",
+            () -> new ItemBase(new Item.Properties().stacksTo(1)));
+
+    // TAB: templateTab
+    public static final DeferredItem<Item> JOURNAL_PIP = ITEMS.register("journal_pip",
+            () -> new ItemBase(new Item.Properties().stacksTo(1)));
+
+    // TAB: templateTab
+    public static final DeferredItem<Item> JOURNAL_BJ = ITEMS.register("journal_bj",
+            () -> new ItemBase(new Item.Properties().stacksTo(1)));
+
+    // TAB: templateTab
+    public static final DeferredItem<Item> JOURNAL_SILVER = ITEMS.register("journal_silver",
+            () -> new ItemBase(new Item.Properties().stacksTo(1)));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> CRYSTAL_IRON = ITEMS.register("crystal_iron",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> CRYSTAL_GOLD = ITEMS.register("crystal_gold",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> CRYSTAL_REDSTONE = ITEMS.register("crystal_redstone",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> CRYSTAL_LAPIS = ITEMS.register("crystal_lapis",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> CRYSTAL_DIAMOND = ITEMS.register("crystal_diamond",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> CRYSTAL_TITANIUM = ITEMS.register("crystal_titanium",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> CRYSTAL_SULFUR = ITEMS.register("crystal_sulfur",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> CRYSTAL_NITER = ITEMS.register("crystal_niter",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> CRYSTAL_COPPER = ITEMS.register("crystal_copper",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> CRYSTAL_TUNGSTEN = ITEMS.register("crystal_tungsten",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> CRYSTAL_ALUMINIUM = ITEMS.register("crystal_aluminium",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> CRYSTAL_FLUORITE = ITEMS.register("crystal_fluorite",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> CRYSTAL_BERYLLIUM = ITEMS.register("crystal_beryllium",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> CRYSTAL_RARE = ITEMS.register("crystal_rare",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> CRYSTAL_CINNABAR = ITEMS.register("crystal_cinnabar",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> CRYSTAL_COBALT = ITEMS.register("crystal_cobalt",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> CRYSTAL_STARMETAL = ITEMS.register("crystal_starmetal",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> GEM_ALEXANDRITE = ITEMS.register("gem_alexandrite",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> DEUTERIUM_FILTER = ITEMS.register("deuterium_filter",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> SAWBLADE = ITEMS.register("sawblade",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> MECHANISM_REVOLVER_1 = ITEMS.register("mechanism_revolver_1",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> MECHANISM_REVOLVER_2 = ITEMS.register("mechanism_revolver_2",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> MECHANISM_RIFLE_1 = ITEMS.register("mechanism_rifle_1",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> MECHANISM_RIFLE_2 = ITEMS.register("mechanism_rifle_2",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> MECHANISM_LAUNCHER_1 = ITEMS.register("mechanism_launcher_1",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> MECHANISM_LAUNCHER_2 = ITEMS.register("mechanism_launcher_2",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> MECHANISM_SPECIAL = ITEMS.register("mechanism_special",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> PRIMER_357 = ITEMS.register("primer_357",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> PRIMER_44 = ITEMS.register("primer_44",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> PRIMER_9 = ITEMS.register("primer_9",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> PRIMER_50 = ITEMS.register("primer_50",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> PRIMER_BUCKSHOT = ITEMS.register("primer_buckshot",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> CASING_357 = ITEMS.register("casing_357",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> CASING_44 = ITEMS.register("casing_44",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> CASING_9 = ITEMS.register("casing_9",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> CASING_50 = ITEMS.register("casing_50",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> CASING_BUCKSHOT = ITEMS.register("casing_buckshot",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> COIL_GOLD = ITEMS.register("coil_gold",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> COIL_GOLD_TORUS = ITEMS.register("coil_gold_torus",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> COIL_TUNGSTEN = ITEMS.register("coil_tungsten",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> COIL_COPPER = ITEMS.register("coil_copper",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> COIL_COPPER_TORUS = ITEMS.register("coil_copper_torus",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> ASSEMBLY_NUKE = ITEMS.register("assembly_nuke",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: controlTab
+    public static final DeferredItem<Item> DEBRIS_GRAPHITE = ITEMS.register("debris_graphite",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: controlTab
+    public static final DeferredItem<Item> DEBRIS_METAL = ITEMS.register("debris_metal",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: controlTab
+    public static final DeferredItem<Item> DEBRIS_FUEL = ITEMS.register("debris_fuel",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: controlTab
+    public static final DeferredItem<Item> DEBRIS_CONCRETE = ITEMS.register("debris_concrete",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: controlTab
+    public static final DeferredItem<Item> DEBRIS_SHRAPNEL = ITEMS.register("debris_shrapnel",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: controlTab
+    public static final DeferredItem<Item> DEBRIS_EXCHANGER = ITEMS.register("debris_exchanger",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: controlTab
+    public static final DeferredItem<Item> DEBRIS_ELEMENT = ITEMS.register("debris_element",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: controlTab
+    public static final DeferredItem<Item> RBMK_FUEL_EMPTY = ITEMS.register("rbmk_fuel_empty",
+            () -> new ItemBase(new Item.Properties().stacksTo(1)));
+
+    // TAB: controlTab
+    public static final DeferredItem<Item> ICF_PELLET_EMPTY = ITEMS.register("icf_pellet_empty",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: controlTab
+    public static final DeferredItem<Item> ICF_PELLET_DEPLETED = ITEMS.register("icf_pellet_depleted",
+            () -> new ItemBase(new Item.Properties().stacksTo(1)));
+
+    // TAB: controlTab
+    public static final DeferredItem<Item> PARTICLE_EMPTY = ITEMS.register("particle_empty",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: controlTab
+    public static final DeferredItem<Item> PARTICLE_HYDROGEN = ITEMS.register("particle_hydrogen",
+            () -> new ItemBase(new Item.Properties().craftRemainder(ModItems.PARTICLE_EMPTY.get())));
+
+    // TAB: controlTab
+    public static final DeferredItem<Item> PARTICLE_COPPER = ITEMS.register("particle_copper",
+            () -> new ItemBase(new Item.Properties().craftRemainder(ModItems.PARTICLE_EMPTY.get())));
+
+    // TAB: controlTab
+    public static final DeferredItem<Item> PARTICLE_LEAD = ITEMS.register("particle_lead",
+            () -> new ItemBase(new Item.Properties().craftRemainder(ModItems.PARTICLE_EMPTY.get())));
+
+    // TAB: controlTab
+    public static final DeferredItem<Item> PARTICLE_MUON = ITEMS.register("particle_muon",
+            () -> new ItemBase(new Item.Properties().craftRemainder(ModItems.PARTICLE_EMPTY.get())));
+
+    // TAB: controlTab
+    public static final DeferredItem<Item> PARTICLE_AMAT = ITEMS.register("particle_amat",
+            () -> new ItemBase(new Item.Properties().craftRemainder(ModItems.PARTICLE_EMPTY.get())));
+
+    // TAB: controlTab
+    public static final DeferredItem<Item> PARTICLE_ASCHRAB = ITEMS.register("particle_aschrab",
+            () -> new ItemBase(new Item.Properties().craftRemainder(ModItems.PARTICLE_EMPTY.get())));
+
+    // TAB: controlTab
+    public static final DeferredItem<Item> PARTICLE_HIGGS = ITEMS.register("particle_higgs",
+            () -> new ItemBase(new Item.Properties().craftRemainder(ModItems.PARTICLE_EMPTY.get())));
+
+    // TAB: controlTab
+    public static final DeferredItem<Item> PARTICLE_TACHYON = ITEMS.register("particle_tachyon",
+            () -> new ItemBase(new Item.Properties().craftRemainder(ModItems.PARTICLE_EMPTY.get())));
+
+    // TAB: controlTab
+    public static final DeferredItem<Item> PARTICLE_DARK = ITEMS.register("particle_dark",
+            () -> new ItemBase(new Item.Properties().craftRemainder(ModItems.PARTICLE_EMPTY.get())));
+
+    // TAB: controlTab
+    public static final DeferredItem<Item> PARTICLE_STRANGE = ITEMS.register("particle_strange",
+            () -> new ItemBase(new Item.Properties().craftRemainder(ModItems.PARTICLE_EMPTY.get())));
+
+    // TAB: controlTab
+    public static final DeferredItem<Item> PARTICLE_SPARKTICLE = ITEMS.register("particle_sparkticle",
+            () -> new ItemBase(new Item.Properties().craftRemainder(ModItems.PARTICLE_EMPTY.get())));
+
+    // TAB: null
+    public static final DeferredItem<Item> PELLET_COOLANT = ITEMS.register("pellet_coolant",
+            () -> new ItemBase(new Item.Properties().stacksTo(1).durability(41400)));
+
+    // TAB: controlTab
+    public static final DeferredItem<Item> AMS_CATALYST_BLANK = ITEMS.register("ams_catalyst_blank",
+            () -> new ItemBase(new Item.Properties().stacksTo(1)));
+
+    // TAB: nukeTab
+    public static final DeferredItem<Item> GADGET_EXPLOSIVE = ITEMS.register("gadget_explosive",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: nukeTab
+    public static final DeferredItem<Item> MAN_EXPLOSIVE = ITEMS.register("man_explosive",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> MISSILE_ASSEMBLY = ITEMS.register("missile_assembly",
+            () -> new ItemBase(new Item.Properties().stacksTo(1)));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> WARHEAD_GENERIC_SMALL = ITEMS.register("warhead_generic_small",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> WARHEAD_INCENDIARY_SMALL = ITEMS.register("warhead_incendiary_small",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> WARHEAD_CLUSTER_SMALL = ITEMS.register("warhead_cluster_small",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> WARHEAD_BUSTER_SMALL = ITEMS.register("warhead_buster_small",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> WARHEAD_GENERIC_MEDIUM = ITEMS.register("warhead_generic_medium",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> WARHEAD_INCENDIARY_MEDIUM = ITEMS.register("warhead_incendiary_medium",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> WARHEAD_CLUSTER_MEDIUM = ITEMS.register("warhead_cluster_medium",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> WARHEAD_BUSTER_MEDIUM = ITEMS.register("warhead_buster_medium",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> WARHEAD_GENERIC_LARGE = ITEMS.register("warhead_generic_large",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> WARHEAD_INCENDIARY_LARGE = ITEMS.register("warhead_incendiary_large",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> WARHEAD_CLUSTER_LARGE = ITEMS.register("warhead_cluster_large",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> WARHEAD_BUSTER_LARGE = ITEMS.register("warhead_buster_large",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> WARHEAD_N2 = ITEMS.register("warhead_n2",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> WARHEAD_NUCLEAR = ITEMS.register("warhead_nuclear",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> WARHEAD_MIRVLET = ITEMS.register("warhead_mirvlet",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> WARHEAD_MIRV = ITEMS.register("warhead_mirv",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> WARHEAD_VOLCANO = ITEMS.register("warhead_volcano",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> WARHEAD_THERMO_ENDO = ITEMS.register("warhead_thermo_endo",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> WARHEAD_THERMO_EXO = ITEMS.register("warhead_thermo_exo",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> THRUSTER_SMALL = ITEMS.register("thruster_small",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> THRUSTER_MEDIUM = ITEMS.register("thruster_medium",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> THRUSTER_LARGE = ITEMS.register("thruster_large",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> CAP_ALUMINIUM = ITEMS.register("cap_aluminium",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> FINS_FLAT = ITEMS.register("fins_flat",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> FINS_SMALL_STEEL = ITEMS.register("fins_small_steel",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> FINS_BIG_STEEL = ITEMS.register("fins_big_steel",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> FINS_TRI_STEEL = ITEMS.register("fins_tri_steel",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> FINS_QUAD_TITANIUM = ITEMS.register("fins_quad_titanium",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> SPHERE_STEEL = ITEMS.register("sphere_steel",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> PEDESTAL_STEEL = ITEMS.register("pedestal_steel",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> DYSFUNCTIONAL_REACTOR = ITEMS.register("dysfunctional_reactor",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> ROTOR_STEEL = ITEMS.register("rotor_steel",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> GENERATOR_STEEL = ITEMS.register("generator_steel",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> SAT_HEAD_MAPPER = ITEMS.register("sat_head_mapper",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> SAT_HEAD_SCANNER = ITEMS.register("sat_head_scanner",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> SAT_HEAD_RADAR = ITEMS.register("sat_head_radar",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> SAT_HEAD_LASER = ITEMS.register("sat_head_laser",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> SAT_HEAD_RESONATOR = ITEMS.register("sat_head_resonator",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> SEG_10 = ITEMS.register("seg_10",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> SEG_15 = ITEMS.register("seg_15",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> SEG_20 = ITEMS.register("seg_20",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> FUEL_TANK_SMALL = ITEMS.register("fuel_tank_small",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> FUEL_TANK_MEDIUM = ITEMS.register("fuel_tank_medium",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> FUEL_TANK_LARGE = ITEMS.register("fuel_tank_large",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> TANK_STEEL = ITEMS.register("tank_steel",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> CHOPPER_HEAD = ITEMS.register("chopper_head",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> CHOPPER_GUN = ITEMS.register("chopper_gun",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> CHOPPER_TORSO = ITEMS.register("chopper_torso",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> CHOPPER_TAIL = ITEMS.register("chopper_tail",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> CHOPPER_WING = ITEMS.register("chopper_wing",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> CHOPPER_BLADES = ITEMS.register("chopper_blades",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> COMBINE_SCRAP = ITEMS.register("combine_scrap",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> SHIMMER_HEAD = ITEMS.register("shimmer_head",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> SHIMMER_AXE_HEAD = ITEMS.register("shimmer_axe_head",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> SHIMMER_HANDLE = ITEMS.register("shimmer_handle",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: partsTab
+    public static final DeferredItem<Item> TELEPAD = ITEMS.register("telepad",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: null
+    public static final DeferredItem<Item> CLOUD1 = ITEMS.register("cloud1",
+            () -> new EffectItem(new Item.Properties()));
+
+    // TAB: null
+    public static final DeferredItem<Item> CLOUD2 = ITEMS.register("cloud2",
+            () -> new EffectItem(new Item.Properties()));
+
+    // TAB: null
+    public static final DeferredItem<Item> CLOUD3 = ITEMS.register("cloud3",
+            () -> new EffectItem(new Item.Properties()));
+
+    // TAB: null
+    public static final DeferredItem<Item> CLOUD4 = ITEMS.register("cloud4",
+            () -> new EffectItem(new Item.Properties()));
+
+    // TAB: null
+    public static final DeferredItem<Item> CLOUD5 = ITEMS.register("cloud5",
+            () -> new EffectItem(new Item.Properties()));
+
+    // TAB: null
+    public static final DeferredItem<Item> CLOUD6 = ITEMS.register("cloud6",
+            () -> new EffectItem(new Item.Properties()));
+
+    // TAB: null
+    public static final DeferredItem<Item> CLOUD7 = ITEMS.register("cloud7",
+            () -> new EffectItem(new Item.Properties()));
+
+    // TAB: null
+    public static final DeferredItem<Item> CLOUD8 = ITEMS.register("cloud8",
+            () -> new EffectItem(new Item.Properties()));
+
+    // TAB: null
+    public static final DeferredItem<Item> FLAME_1 = ITEMS.register("flame_1",
+            () -> new EffectItem(new Item.Properties()));
+
+    // TAB: null
+    public static final DeferredItem<Item> FLAME_2 = ITEMS.register("flame_2",
+            () -> new EffectItem(new Item.Properties()));
+
+    // TAB: null
+    public static final DeferredItem<Item> FLAME_3 = ITEMS.register("flame_3",
+            () -> new EffectItem(new Item.Properties()));
+
+    // TAB: null
+    public static final DeferredItem<Item> FLAME_4 = ITEMS.register("flame_4",
+            () -> new EffectItem(new Item.Properties()));
+
+    // TAB: null
+    public static final DeferredItem<Item> FLAME_5 = ITEMS.register("flame_5",
+            () -> new EffectItem(new Item.Properties()));
+
+    // TAB: null
+    public static final DeferredItem<Item> FLAME_6 = ITEMS.register("flame_6",
+            () -> new EffectItem(new Item.Properties()));
+
+    // TAB: null
+    public static final DeferredItem<Item> FLAME_7 = ITEMS.register("flame_7",
+            () -> new EffectItem(new Item.Properties()));
+
+    // TAB: null
+    public static final DeferredItem<Item> FLAME_8 = ITEMS.register("flame_8",
+            () -> new EffectItem(new Item.Properties()));
+
+    // TAB: null
+    public static final DeferredItem<Item> FLAME_9 = ITEMS.register("flame_9",
+            () -> new EffectItem(new Item.Properties()));
+
+    // TAB: null
+    public static final DeferredItem<Item> FLAME_10 = ITEMS.register("flame_10",
+            () -> new EffectItem(new Item.Properties()));
+
+    // TAB: null
+    public static final DeferredItem<Item> ORANGE1 = ITEMS.register("orange1",
+            () -> new EffectItem(new Item.Properties()));
+
+    // TAB: null
+    public static final DeferredItem<Item> ORANGE2 = ITEMS.register("orange2",
+            () -> new EffectItem(new Item.Properties()));
+
+    // TAB: null
+    public static final DeferredItem<Item> ORANGE3 = ITEMS.register("orange3",
+            () -> new EffectItem(new Item.Properties()));
+
+    // TAB: null
+    public static final DeferredItem<Item> ORANGE4 = ITEMS.register("orange4",
+            () -> new EffectItem(new Item.Properties()));
+
+    // TAB: null
+    public static final DeferredItem<Item> ORANGE5 = ITEMS.register("orange5",
+            () -> new EffectItem(new Item.Properties()));
+
+    // TAB: null
+    public static final DeferredItem<Item> ORANGE6 = ITEMS.register("orange6",
+            () -> new EffectItem(new Item.Properties()));
+
+    // TAB: null
+    public static final DeferredItem<Item> ORANGE7 = ITEMS.register("orange7",
+            () -> new EffectItem(new Item.Properties()));
+
+    // TAB: null
+    public static final DeferredItem<Item> ORANGE8 = ITEMS.register("orange8",
+            () -> new EffectItem(new Item.Properties()));
+
+    // TAB: null
+    public static final DeferredItem<Item> PC1 = ITEMS.register("pc1",
+            () -> new EffectItem(new Item.Properties()));
+
+    // TAB: null
+    public static final DeferredItem<Item> PC2 = ITEMS.register("pc2",
+            () -> new EffectItem(new Item.Properties()));
+
+    // TAB: null
+    public static final DeferredItem<Item> PC3 = ITEMS.register("pc3",
+            () -> new EffectItem(new Item.Properties()));
+
+    // TAB: null
+    public static final DeferredItem<Item> PC4 = ITEMS.register("pc4",
+            () -> new EffectItem(new Item.Properties()));
+
+    // TAB: null
+    public static final DeferredItem<Item> PC5 = ITEMS.register("pc5",
+            () -> new EffectItem(new Item.Properties()));
+
+    // TAB: null
+    public static final DeferredItem<Item> PC6 = ITEMS.register("pc6",
+            () -> new EffectItem(new Item.Properties()));
+
+    // TAB: null
+    public static final DeferredItem<Item> PC7 = ITEMS.register("pc7",
+            () -> new EffectItem(new Item.Properties()));
+
+    // TAB: null
+    public static final DeferredItem<Item> PC8 = ITEMS.register("pc8",
+            () -> new EffectItem(new Item.Properties()));
+
+    // TAB: null
+    public static final DeferredItem<Item> CHLORINE1 = ITEMS.register("chlorine1",
+            () -> new EffectItem(new Item.Properties()));
+
+    // TAB: null
+    public static final DeferredItem<Item> CHLORINE2 = ITEMS.register("chlorine2",
+            () -> new EffectItem(new Item.Properties()));
+
+    // TAB: null
+    public static final DeferredItem<Item> CHLORINE3 = ITEMS.register("chlorine3",
+            () -> new EffectItem(new Item.Properties()));
+
+    // TAB: null
+    public static final DeferredItem<Item> CHLORINE4 = ITEMS.register("chlorine4",
+            () -> new EffectItem(new Item.Properties()));
+
+    // TAB: null
+    public static final DeferredItem<Item> CHLORINE5 = ITEMS.register("chlorine5",
+            () -> new EffectItem(new Item.Properties()));
+
+    // TAB: null
+    public static final DeferredItem<Item> CHLORINE6 = ITEMS.register("chlorine6",
+            () -> new EffectItem(new Item.Properties()));
+
+    // TAB: null
+    public static final DeferredItem<Item> CHLORINE7 = ITEMS.register("chlorine7",
+            () -> new EffectItem(new Item.Properties()));
+
+    // TAB: null
+    public static final DeferredItem<Item> CHLORINE8 = ITEMS.register("chlorine8",
+            () -> new EffectItem(new Item.Properties()));
+
+    // TAB: null
+    public static final DeferredItem<Item> LN2_1 = ITEMS.register("ln2_1",
+            () -> new EffectItem(new Item.Properties()));
+
+    // TAB: null
+    public static final DeferredItem<Item> LN2_2 = ITEMS.register("ln2_2",
+            () -> new EffectItem(new Item.Properties()));
+
+    // TAB: null
+    public static final DeferredItem<Item> LN2_3 = ITEMS.register("ln2_3",
+            () -> new EffectItem(new Item.Properties()));
+
+    // TAB: null
+    public static final DeferredItem<Item> LN2_4 = ITEMS.register("ln2_4",
+            () -> new EffectItem(new Item.Properties()));
+
+    // TAB: null
+    public static final DeferredItem<Item> LN2_5 = ITEMS.register("ln2_5",
+            () -> new EffectItem(new Item.Properties()));
+
+    // TAB: null
+    public static final DeferredItem<Item> LN2_6 = ITEMS.register("ln2_6",
+            () -> new EffectItem(new Item.Properties()));
+
+    // TAB: null
+    public static final DeferredItem<Item> LN2_7 = ITEMS.register("ln2_7",
+            () -> new EffectItem(new Item.Properties()));
+
+    // TAB: null
+    public static final DeferredItem<Item> LN2_8 = ITEMS.register("ln2_8",
+            () -> new EffectItem(new Item.Properties()));
+
+    // TAB: null
+    public static final DeferredItem<Item> LN2_9 = ITEMS.register("ln2_9",
+            () -> new EffectItem(new Item.Properties()));
+
+    // TAB: null
+    public static final DeferredItem<Item> LN2_10 = ITEMS.register("ln2_10",
+            () -> new EffectItem(new Item.Properties()));
+
+    // TAB: null
+    public static final DeferredItem<Item> NOTHING = ITEMS.register("nothing",
+            () -> new EffectItem(new Item.Properties()));
+
+    // TAB: controlTab
+    public static final DeferredItem<Item> DUCC = ITEMS.register("ducc",
+            () -> new ItemBase(new Item.Properties()));
+
+    // TAB: null
+    public static final DeferredItem<Item> DISCHARGE = ITEMS.register("discharge",
+            () -> new EffectItem(new Item.Properties()));
+

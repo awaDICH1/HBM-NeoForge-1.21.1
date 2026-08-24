@@ -1,0 +1,27 @@
+{
+  "feature": "hbm:cf_ore_gneiss_gas",
+  "placement": [
+    {
+      "type": "minecraft:count",
+      "count": 15
+    },
+    {
+      "type": "minecraft:in_square_world"
+    },
+    {
+      "type": "minecraft:height_range",
+      "height": {
+        "type": "minecraft:uniform",
+        "min_inclusive": {
+          "absolute": 30
+        },
+        "max_inclusive": {
+          "absolute": 39
+        }
+      }
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

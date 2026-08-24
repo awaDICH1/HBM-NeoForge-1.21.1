@@ -1,0 +1,64 @@
+// ============================================================
+// HBM Nuclear Tech CE — NeoForge 1.21.1 移植工程（P0 骨架）
+// 替换自 1.12.2 的 GTNH/RetroFuturaGradle build.gradle
+// 构建工具链：ModDevGradle（官方文档 https://docs.neoforged.net/toolchain/docs/plugins/mdg/）
+// ============================================================
+
+plugins {
+    id 'java-library'
+    id 'net.neoforged.moddev' version '2.0.138'   // 插件门户最新稳定版（plugins.gradle.org/plugin/net.neoforged.moddev）
+}
+
+version = '2.5.0.6'
+group = 'com.hbm'
+
+base {
+    archivesName = 'hbm'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)   // 1.21.1 要求 Java 21
+    }
+}
+
+neoForge {
+    // 1.21.1 官方 MDK 使用的构建号；可到 https://projects.neoforged.net/neoforge 查询并升级更新的 21.1.x
+    version = '21.1.128'
+
+    runs {
+        client {
+            client()
+            // programArguments.addAll '--username', 'Developer'
+        }
+        server {
+            server()
+        }
+        data {
+            data()
+            programArguments.addAll '--mod', 'hbm', '--all', '--output', file('src/generated/resources/').absolutePath, '--existing', file('src/main/resources/').absolutePath
+        }
+    }
+
+    mods {
+        hbm {
+            sourceSet sourceSets.main
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // 约束：不引入多余依赖。P9 阶段再按需加 JEI/TOP：
+    // compileOnly  "mezz.jei:jei-1.21.1-neoforge:19.21.0.247"
+    // runtimeOnly  "mezz.jei:jei-1.21.1-neoforge:19.21.0.247"
+}
+
+// 版本号目前直接硬编码在 neoforge.mods.toml 与 com.hbm.Tags 中；
+// 如需单一来源，可在此对 neoforge.mods.toml 做 ${version} 展开。
+tasks.named('processResources') {
+    // filesMatching('META-INF/neoforge.mods.toml') { expand 'version': project.version }
+}

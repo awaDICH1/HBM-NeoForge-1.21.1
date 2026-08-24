@@ -1,0 +1,26 @@
+package com.hbm.items;
+
+import com.hbm.Tags;
+import net.minecraft.world.item.Item;
+import net.neoforged.neoforge.registries.DeferredItem;
+import net.neoforged.neoforge.registries.DeferredRegister;
+
+/**
+ * 物品注册中心。迁移自 1.12.2 com.hbm.items.ModItems（1838 个 Item 字段）。
+ *
+ * 第一批：285 个 ItemBase 物品（tools/gen_items.ps1 生成）。
+ * 注册名与原 CE 完全一致；创造栏归属见 ModCreativeTabs（displayItems）；
+ * 特殊类（ItemCustomLore 334 / ItemBakedBase 79 / ItemMissile 63 等）后续批次迁移。
+ */
+public class ModItems {
+
+    public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(Tags.MODID);
+
+    // ===== P1 铀锭 =====
+    // 原: public static final Item ingot_uranium = new ItemCustomLore("ingot_uranium").setCreativeTab(partsTab);
+    public static final DeferredItem<Item> INGOT_URANIUM = ITEMS.register("ingot_uranium",
+            () -> new Item(new Item.Properties()));
+
+    // ===== P3 第一批：285 个 ItemBase 物品（gen_items.ps1 生成） =====
+    // 原字段形如: public static final Item xxx = new ItemBase("xxx").setCreativeTab(MainRegistry.yyyTab)
+    // 迁移: 注册名由 ITEMS.register 提供；setCreativeTab 删除（ModCreativeTabs）；属性链转 Item.Properties

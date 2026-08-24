@@ -1,0 +1,1 @@
+{ "parent": "minecraft:block/ladder", "textures": { "particle": "hbm:block/ladder_iron", "texture": "hbm:block/ladder_iron" } }

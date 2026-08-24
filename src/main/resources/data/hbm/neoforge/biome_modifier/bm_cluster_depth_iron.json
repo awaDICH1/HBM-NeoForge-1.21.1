@@ -1,0 +1,8 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#minecraft:is_overworld",
+  "features": [
+    "hbm:pf_cluster_depth_iron"
+  ],
+  "step": "underground_ores"
+}

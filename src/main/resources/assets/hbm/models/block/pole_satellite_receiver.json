@@ -1,0 +1,4 @@
+﻿{
+  "parent": "minecraft:block/cube_all",
+  "textures": { "all": "hbm:block/pole_satellite_receiver" }
+}
